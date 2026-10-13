@@ -606,6 +606,109 @@
         }
     };
 
+
+    /* ===========================================
+       CHAIN LOOP (continuous)
+       New blocks are mined on the right (accent), link to the previous block,
+       and the whole chain glides left forever while the slide is visible.
+       data-start="1024" data-speed="2.6" (seconds per block) data-mode="bg" (faint, no accent, slower)
+       Ambient motion: max one per slide (see BRAND.md).
+       =========================================== */
+    R.chainloop = {
+        mount(el) {
+            el.classList.toggle('bg', el.dataset.mode === 'bg');
+            el.innerHTML = '<div class="track"></div>';
+            const BW = +(el.dataset.block || 220), LW = 64, slot = BW + LW;
+            el._cl = { BW, LW, slot, next: +(el.dataset.start || 1024), shift: 0 };
+            el.style.setProperty('--bw', BW + 'px'); el.style.setProperty('--lw', LW + 'px');
+            const visible = Math.ceil((el.offsetWidth || 1600) / slot) + 1;
+            for (let k = 0; k < visible - 1; k++) R.chainloop.add(el, false);
+        },
+        add(el, live) {
+            const st = el._cl, track = el.querySelector('.track'), idx = st.next - (+(el.dataset.start || 1024)), x = idx * st.slot, n = st.next++;
+            if (idx > 0) {
+                const ln = h('div', { class: 'lnk' + (live ? ' live' : ''), style: `left:${x - st.LW}px` });
+                track.appendChild(ln);
+            }
+            track.querySelectorAll('.blk.accent').forEach((b) => b.classList.remove('accent'));
+            const b = h('div', { class: 'blk' + (live ? ' live accent' : ''), style: `left:${x}px`, 'data-idx': idx },
+                `<b>#${n}</b><div><span class="k">prev</span> ${idx ? fakeHash(n - 1) : '0x0000…0000'}</div><div><span class="k">hash</span> <span class="hv">${live ? 'mining…' : fakeHash(n)}</span></div>`);
+            track.appendChild(b);
+            if (live) setTimeout(() => { const hv = b.querySelector('.hv'); if (hv) hv.textContent = fakeHash(n); }, 700);
+            return idx;
+        },
+        play(el, later) {
+            if (!el._cl) R.chainloop.mount(el);
+            const st = el._cl, track = el.querySelector('.track'), speed = +(el.dataset.speed || (el.classList.contains('bg') ? 4 : 2.6)) * 1000;
+            const slide = el.closest('.slide');
+            const step = () => {
+                if (!el.isConnected || !el.classList.contains('is-playing') || (slide && !slide.classList.contains('visible'))) return;
+                R.chainloop.add(el, true);
+                // keep the newest block about one slot from the right edge
+                const lastIdx = st.next - 1 - (+(el.dataset.start || 1024));
+                const target = Math.max(0, (lastIdx + 1) * st.slot - el.offsetWidth + st.slot * 0.6);
+                later(() => { track.style.transform = `translateX(${-target}px)`; }, speed * 0.35);
+                // drop blocks that scrolled off the left edge
+                later(() => track.querySelectorAll('.blk, .lnk').forEach((n) => { if (parseFloat(n.style.left) < target - st.slot * 1.5) n.remove(); }), speed * 0.95);
+                later(step, speed);
+            };
+            later(step, 500);
+        }
+    };
+
+    /* ===========================================
+       LANDMARKS: NTU line illustrations
+       data-name="hive" | "nbs"   data-mode="bg" (faint background decoration)
+       Drawn procedurally so they scale cleanly; they draw themselves in.
+       =========================================== */
+    function hiveSVG() {
+        // The Hive (Heatherwick): a cluster of rounded towers of stacked floors, narrower at the base
+        const towers = [ // [cx, top, topW, baseW, base]  back row first
+            [150, 70, 92, 54, 360], [262, 40, 100, 58, 360], [378, 58, 96, 56, 360], [478, 96, 84, 50, 360],
+            [96, 150, 78, 46, 380], [206, 128, 96, 56, 380], [322, 110, 104, 60, 380], [430, 150, 90, 52, 380], [528, 182, 72, 44, 380]];
+        let out = '';
+        towers.forEach(([cx, top, tw, bw, base], t) => {
+            const L = (y) => cx - (bw + (tw - bw) * Math.pow((base - y) / (base - top), 0.7)) / 2, Rr = (y) => 2 * cx - L(y);
+            const side = (f) => { let d = ''; for (let y = base; y >= top; y -= 8) d += `${d ? 'L' : 'M'}${f(y).toFixed(1)} ${y}`; return d; };
+            const outline = side(L) + ` Q${cx} ${top - 14} ${Rr(top).toFixed(1)} ${top} ` + side(Rr).replace('M', 'L').split('L').filter(Boolean).reverse().map((p) => 'L' + p).join('') + ` Q${cx} ${base + 10} ${L(base).toFixed(1)} ${base}Z`;
+            out += `<path class="fillp" d="${outline}"/>`;
+            for (let y = top + 18; y < base - 4; y += 19) out += `<path d="M${L(y).toFixed(1)} ${y}Q${cx} ${y + 7} ${Rr(y).toFixed(1)} ${y}"/>`;
+            if (t === 6) out += `<path class="as" d="M${L(top + 18).toFixed(1)} ${top + 18}Q${cx} ${top + 25} ${Rr(top + 18).toFixed(1)} ${top + 18}"/>`;
+        });
+        out += '<path d="M30 392H570"/>';
+        return `<svg class="fsc-ico-svg line-ico landmark-svg" viewBox="0 0 600 420" aria-label="The Hive, NTU" role="img">${out}</svg>`;
+    }
+    function nbsSVG() {
+        // Wee Cho Yaw Plaza / NBS (Toyo Ito): gently arching six-storey timber frame, open facade, solar roof
+        const x0 = 40, x1 = 560, topY = (t) => 150 - Math.sin(Math.PI * t) * 34, botY = (t) => 372 - Math.sin(Math.PI * t) * 16;
+        const curve = (f, a = 0, b = 1) => { let d = ''; for (let i = 0; i <= 40; i++) { const t = a + (b - a) * i / 40; d += `${i ? 'L' : 'M'}${(x0 + (x1 - x0) * t).toFixed(1)} ${f(t).toFixed(1)}`; } return d; };
+        let out = `<path class="fillp" d="${curve(topY)} L${x1} ${botY(1)} ${curve(botY).replace('M', 'L').split('L').filter(Boolean).reverse().map((p) => 'L' + p).join('')}Z"/>`;
+        for (let f = 1; f < 6; f++) out += `<path d="${curve((t) => topY(t) + (botY(t) - topY(t)) * f / 6)}"/>`;
+        for (let i = 1; i < 26; i++) {
+            const t = i / 26; if (t > 0.42 && t < 0.58) continue;  // central three-storey open space
+            const x = x0 + (x1 - x0) * t, y2 = botY(t);
+            out += `<path d="M${x.toFixed(1)} ${topY(t).toFixed(1)}L${x.toFixed(1)} ${y2.toFixed(1)}"/>`;
+        }
+        // open atrium: lower three floors, big timber columns
+        const ya = (t) => topY(t) + (botY(t) - topY(t)) * 3 / 6;
+        [0.45, 0.5, 0.55].forEach((t) => { const x = x0 + (x1 - x0) * t; out += `<path d="M${x.toFixed(1)} ${ya(t).toFixed(1)}L${x.toFixed(1)} ${botY(t).toFixed(1)}"/>`; });
+        // solar roof (accent): zero-energy building
+        for (let r = 0; r < 2; r++) out += `<path class="as" d="${curve((t) => topY(t) - 12 - r * 10, 0.06, 0.94)}"/>`;
+        // Yunnan Garden canopy on both sides
+        out += '<path d="M8 380c-6-30 30-40 34-14M562 382c6-34 40-30 32-4"/>';
+        out += '<path d="M20 392H580"/>';
+        return `<svg class="fsc-ico-svg line-ico landmark-svg" viewBox="0 0 600 420" aria-label="Wee Cho Yaw Plaza, Nanyang Business School" role="img">${out}</svg>`;
+    }
+    R.landmark = {
+        mount(el) {
+            el.classList.toggle('bg', el.dataset.mode === 'bg');
+            el.innerHTML = (el.dataset.name === 'nbs' ? nbsSVG() : hiveSVG()) +
+                (el.dataset.mode === 'bg' || el.dataset.label === 'off' ? '' : `<p class="lm-cap">${el.dataset.name === 'nbs' ? 'Wee Cho Yaw Plaza · Nanyang Business School' : 'The Hive · NTU'}</p>`);
+            prepDraw(el);
+            el.querySelectorAll('.dr').forEach((n, k) => n.style.setProperty('--k', k));
+        }
+    };
+
     window.FSC = { play, update, mount, mountAll, wire, registry: R, iconSVG };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => wire());
     else wire();

@@ -33,6 +33,8 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 | `bar` | Animated bar chart, one bar highlighted | Comparing chains, protocols, costs | JSON child, `"highlight": "Label"` | 800–1100 × 440–560 |
 | `doughnut` | Animated doughnut with legend | Shares of a whole: tokenomics, market share | JSON child, `"highlight"`, `"center"`, `"centerLabel"` | 900 × 500 |
 | `candle` | Candlestick chart: hollow = up, filled = down, accent = the candle you discuss; optional volume, moving average, last-price tag, event note | Price action, volatility, event studies, market structure | JSON child (below) | 900–1200 × 480–560 |
+| `chainloop` | **Continuous**: new blocks are mined on the right (accent, "mining…" → hash), link to the chain, and the chain glides left forever | Title/section slides about blockchains; `data-mode="bg"` for a faint ambient background band | `data-start`, `data-speed` (s per block, default 2.6; bg 4), `data-block` (block width px), `data-mode="bg"` | full slide width × 200–260 |
+| `landmark` | NTU line illustrations that draw themselves in: `hive` (The Hive, stacked rounded towers) and `nbs` (Wee Cho Yaw Plaza / Nanyang Business School: arching timber frame, solar roof in accent) | Campus-life slides, title backgrounds (`data-mode="bg"`), sustainability examples | `data-name="hive|nbs"`, `data-mode="bg"`, `data-label="off"` | 600–900 × 420–640 (keeps 600:420 ratio + caption) |
 | `iconset` | Grid of icons or characters with labels, drawing in one by one | "What we'll cover", life-in-Singapore slides, cast introductions | `data-icons="bank|coin|…"`, `data-cols`, `data-size`, `data-labels="off"` | any; ~120px per icon cell |
 | `actors` | Alice & Bob scene: an item travels from left to right, directly or via a middle character | Payments, custody, intermediaries (Trent = bank), cryptography and attacks (Eve, Mallory) | `data-left`, `data-right`, `data-middle="trent|eve|mallory|none"`, `data-item` (any icon), `data-note`, `data-caption`, `data-eve-note` | 1200–1600 × 560–680 |
 
@@ -41,7 +43,7 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 Drop an icon anywhere, including inside titles or cards: `<i data-icon="hawker" data-size="96px"></i>`. Icons draw themselves in when the slide appears and take the surrounding text color; their one accent detail uses the brand accent.
 
 - **Finance & institutions:** `bank coin wallet card vault key lock shield exchange growth contract qr globe block kyc regulator`
-- **Life in Singapore:** `hawker kopi crab durian bus mrt transit hdb mbs supertree study laptop rain sun plane`
+- **Life in Singapore:** `hawker kopi crab durian bus mrt transit hdb hive nbs mbs supertree study laptop rain sun plane` (`hive` and `nbs` are small icon versions of the NTU landmarks)
 - **Characters:** `alice bob eve trent mallory` (Alice and Bob are the default pair; Trent is the trusted third party, so use him for banks and custodians; Eve eavesdrops; Mallory actively attacks). Use them consistently: the same character always plays the same role across a deck.
 
 Add a new icon by adding an entry to `icons.js` (48×48 grid, 2.2px strokes, at most one `class="a"` fill or `class="as"` stroke for the accent), then rebuild and check the gallery.
@@ -84,6 +86,20 @@ Data lives in a JSON block inside the component, so real data can be swapped in 
 - `candle`: `{ ohlc: [[open, high, low, close], …], labels?, volume?, ma?: 7, unit: "$", highlight?: index | "last", note?, source? }`. Paste real OHLC data (e.g. exported from an exchange) and always fill `source`.
 - From JS (e.g. after fetching a CSV): `FSC.update(el, data)` re-renders and replays.
 - If no JSON is given, charts render **illustrative demo data**. Never ship demo numbers in a real deck: use the user's data or clearly label figures as illustrative.
+
+### Backgrounds
+
+`landmark` and `chainloop` accept `data-mode="bg"`: low opacity, no accent, slower drawing. Position them absolutely inside the slide, behind the content, for example:
+
+```html
+<section class="slide">
+  <div data-fsc="landmark" data-name="hive" data-mode="bg" style="position:absolute;right:40px;bottom:0;width:700px;height:490px"></div>
+  <div data-fsc="chainloop" data-mode="bg" style="position:absolute;left:0;top:40px;width:1920px;height:200px"></div>
+  <h1 style="position:relative">One year at <span data-fx="underline">NTU</span>.</h1>
+</section>
+```
+
+Keep backgrounds away from the main text block (or behind empty space) so text contrast stays high. Use at most one background landmark and one background loop per slide.
 
 ## Rules for using components in decks
 

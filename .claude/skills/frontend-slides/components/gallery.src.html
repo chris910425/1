@@ -40,6 +40,10 @@
         .fx-demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 56px; padding: 20px 10px; }
         .fx-demo small { display: block; font: 16px var(--font-mono); color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
         .fx-demo p { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: 44px; line-height: 1.12; }
+        .bg-demo { background: var(--paper); }
+        .bg-title { position: absolute; left: 120px; top: 260px; }
+        .bg-title small { font: 22px var(--font-mono); color: var(--accent); letter-spacing: .14em; text-transform: uppercase; }
+        .bg-title h3 { margin-top: 18px; font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: 150px; line-height: .95; }
         @media (max-width: 900px) { .card { grid-column: span 12; } }
     </style>
 </head>
@@ -193,8 +197,36 @@
 
         <article class="card" style="--span:6">
             <div class="hd"><h2>Singapore life icons</h2><code>data-icon="hawker"</code></div>
-            <div class="frame" style="--w:1000;--h:620"><div class="inner"><div data-fsc="iconset" data-cols="5" data-size="72px" data-icons="hawker|kopi|crab|durian|bus|mrt|transit|hdb|mbs|supertree|study|laptop|rain|sun|plane"></div></div></div>
+            <div class="frame" style="--w:1000;--h:720"><div class="inner"><div data-fsc="iconset" data-cols="5" data-size="72px" data-icons="hawker|kopi|crab|durian|bus|mrt|transit|hdb|hive|nbs|mbs|supertree|study|laptop|rain|sun|plane"></div></div></div>
             <div class="hd"><p class="use">Student life in Singapore: food, transport, housing, landmarks, weather.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>Chain loop · continuous</h2><code>data-fsc="chainloop"</code></div>
+            <div class="frame" style="--w:1600;--h:240"><div class="inner"><div data-fsc="chainloop" data-start="21004512"></div></div></div>
+            <div class="hd"><p class="use">Blocks keep being mined and linked while the chain glides left. Title and section slides, or add data-mode="bg" for a faint background. Runs only while its slide is on screen.</p><button class="replay">Restart</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>The Hive · NTU</h2><code>data-name="hive"</code></div>
+            <div class="frame" style="--w:900;--h:640"><div class="inner"><div data-fsc="landmark" data-name="hive"></div></div></div>
+            <div class="hd"><p class="use">Campus-life slides, title backgrounds (data-mode="bg").</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Wee Cho Yaw Plaza · NBS</h2><code>data-name="nbs"</code></div>
+            <div class="frame" style="--w:900;--h:640"><div class="inner"><div data-fsc="landmark" data-name="nbs"></div></div></div>
+            <div class="hd"><p class="use">Business-school context, sustainability (zero-energy timber building, solar roof in accent).</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>Background use</h2><code>data-mode="bg"</code></div>
+            <div class="frame" style="--w:1920;--h:620"><div class="inner bg-demo">
+                <div data-fsc="landmark" data-name="hive" data-mode="bg" style="position:absolute;right:40px;bottom:0;width:700px;height:490px"></div>
+                <div data-fsc="chainloop" data-mode="bg" style="position:absolute;left:0;right:0;top:40px;height:200px;width:1920px"></div>
+                <div class="bg-title"><small>MSBT · Life in Singapore</small><h3>One year at <span data-fx="underline">NTU</span>.</h3></div>
+            </div></div>
+            <div class="hd"><p class="use">Faint landmark + background chain behind a title. The landmark and loop stay quiet so the text leads.</p><button class="replay">Replay</button></div>
         </article>
     </main>
 </div>

@@ -51,6 +51,8 @@ window.FSC_ICONS = (function () {
         sun: I('Heat', 'life', '<circle class="a" cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="8"/><path d="M24 5v6M24 37v6M5 24h6M37 24h6M10.5 10.5l4 4M33.5 33.5l4 4M37.5 10.5l-4 4M14.5 33.5l-4 4"/>'),
         transit: I('Transit card', 'life', '<rect x="5" y="12" width="30" height="22" rx="3"/><path d="M10 28h10M38 18c3 3 3 9 0 12M42 14.5c5 5 5 14 0 19"/><rect class="a" x="10" y="17" width="7" height="5" rx="1"/>'),
         phone: I('Phone apps', 'life', '<rect x="14" y="5" width="20" height="38" rx="3"/><path d="M21 9h6"/><rect class="a" x="18" y="14" width="5" height="5" rx="1"/><path d="M26 14h4v5h-4zM18 22h5v5h-5zM26 22h4v5h-4z"/>'),
+        hive: I('The Hive (NTU)', 'life', '<path d="M8 42c-2-9-1-19 1-27h9c2 8 3 18 1 27zM19 42c-1-11 0-22 2-31h9c2 9 3 20 2 31zM31 42c-1-8 0-16 2-22h8c1 6 1 14 0 22z"/><path d="M9 20h9M8 26h11M8 32h11M8 37h11M21 16h9M20 22h11M20 28h11M20 34h11M32 26h9M32 32h9M32 37h9M4 42h40"/><path class="as" d="M21 11h9"/>'),
+        nbs: I('Wee Cho Yaw Plaza (NBS)', 'life', '<path d="M4 20c12-4 28-4 40 0v21c-12-3-28-3-40 0z"/><path d="M4 27c12-3.5 28-3.5 40 0M4 34c12-3.5 28-3.5 40 0M11 18.5v21M18 17.5v21M30 17.5v21M37 18.5v21"/><path d="M21 31h6v8h-6z"/><path class="as" d="M7 15c11-3.5 23-3.5 34 0"/>'),
         plane: I('Travel / Changi', 'life', '<path d="M21 6c0-2 6-2 6 0v12l15 8v4l-15-4v9l5 4v3l-8-2-8 2v-3l5-4v-9L6 30v-4l15-8z"/><path class="as" d="M21 18h6"/>'),
 
         /* ---------- Characters (Alice & Bob convention) ---------- */
