@@ -44,7 +44,7 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 Drop an icon anywhere, including inside titles or cards: `<i data-icon="hawker" data-size="96px"></i>`. Icons draw themselves in when the slide appears and take the surrounding text color; their one accent detail uses the brand accent.
 
 - **Finance & institutions:** `bank coin wallet card vault key lock shield exchange growth contract qr globe block kyc regulator`
-- **Life in Singapore:** `hawker kopi crab durian bus mrt transit hdb hive nbs mbs supertree study laptop rain sun plane` (`hive` is a small icon of The Hive; use the `hive` / `oculus` components for large illustrations)
+- **Life in Singapore:** `hawker kopi crab durian bus mrt transit hdb hive mbs supertree study laptop rain sun plane` (`hive` is a small icon of The Hive; use the `hive` / `oculus` components for large illustrations)
 - **Characters:** `alice bob eve trent mallory` (Alice and Bob are the default pair; Trent is the trusted third party, so use him for banks and custodians; Eve eavesdrops; Mallory actively attacks). Use them consistently: the same character always plays the same role across a deck.
 
 Add a new icon by adding an entry to `icons.js` (48×48 grid, 2.2px strokes, at most one `class="a"` fill or `class="as"` stroke for the accent), then rebuild and check the gallery.
