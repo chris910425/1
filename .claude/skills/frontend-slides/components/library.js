@@ -45,7 +45,7 @@
         if (!c) return console.warn('FSC: unknown component', el.dataset.fsc);
         if (!el._fscSource) el._fscSource = el.innerHTML;   // keep authored content for re-mounts
         el.innerHTML = el._fscSource;
-        el.classList.add('fsc', 'fsc-' + (c.cls || el.dataset.fsc));
+        el.classList.add(c.inline ? 'fsc-inline' : 'fsc', 'fsc-' + (c.cls || el.dataset.fsc));
         el.classList.remove('is-playing', 'is-done');
         c.mount(el);
         el._fscMounted = true;
@@ -71,7 +71,12 @@
         el._fscSource = s.innerHTML;
         mount(el); play(el);
     }
-    function mountAll(root = document) { root.querySelectorAll('[data-fsc]').forEach(mount); }
+    function mountAll(root = document) {
+        // Shorthands: <i data-icon="bus"> and <span data-fx="underline"> become components
+        root.querySelectorAll('[data-icon]:not([data-fsc])').forEach((e) => { e.dataset.fsc = 'icon'; });
+        root.querySelectorAll('[data-fx]:not([data-fsc])').forEach((e) => { e.dataset.fsc = 'fx'; });
+        root.querySelectorAll('[data-fsc]').forEach(mount);
+    }
 
     /* Auto-play: on slide visibility, or on scroll-into-view outside decks */
     function wire(root = document) {
@@ -384,7 +389,224 @@
         }
     };
 
-    window.FSC = { play, update, mount, mountAll, wire, registry: R };
+
+    /* ===========================================
+       ICONS, CHARACTERS, SCENES (needs icons.js)
+       =========================================== */
+    const ICONS = () => window.FSC_ICONS || {};
+    // Returns an <svg> string for an icon or character. Line icons draw in; characters rise in.
+    function iconSVG(name, extra = '') {
+        const ic = ICONS()[name];
+        if (!ic) return `<svg class="fsc-ico-svg" viewBox="0 0 48 48"><text x="4" y="28" font-size="10">${name}?</text></svg>`;
+        return `<svg class="fsc-ico-svg ${ic.character ? 'char-svg' : 'line-ico'} ${extra}" viewBox="${ic.vb}" aria-label="${ic.label}" role="img">${ic.body}</svg>`;
+    }
+    // Mark every stroke of a line icon for draw-in, using its real length (pathLength is unreliable on rect/circle)
+    function prepDraw(scope) {
+        scope.querySelectorAll('svg.line-ico').forEach((svg) => svg.querySelectorAll('path,rect,circle,ellipse').forEach((n) => {
+            if (n.classList.contains('a')) return;
+            let len = 0; try { len = n.getTotalLength(); } catch (e) {}
+            n.classList.add('dr'); n.style.setProperty('--len', Math.ceil(len || 200) + 1);
+        }));
+    }
+
+    /* --- ICON (inline) ---  <i data-icon="bank" data-size="96px"></i> */
+    R.icon = {
+        inline: true,
+        mount(el) {
+            if (el.dataset.size) el.style.setProperty('--s', el.dataset.size);
+            el.innerHTML = iconSVG(el.dataset.icon);
+            prepDraw(el);
+        }
+    };
+
+    /* --- ICON SET (grid with labels) ---
+       data-icons="bank|coin|wallet" data-cols="5" data-size="72px" data-labels="off"
+       Works for characters too: data-icons="alice|bob|eve|trent" */
+    R.iconset = {
+        mount(el) {
+            const names = (el.dataset.icons || 'bank|coin|wallet|vault|contract').split('|');
+            if (el.dataset.size) el.style.setProperty('--s', el.dataset.size);
+            el.style.setProperty('--cols', el.dataset.cols || Math.min(names.length, 5));
+            el.innerHTML = `<div class="set">${names.map((n, i) => `<figure style="--i:${i}">${iconSVG(n)}${el.dataset.labels === 'off' ? '' : `<figcaption>${(ICONS()[n] || {}).label || n}</figcaption>`}</figure>`).join('')}</div>`;
+            prepDraw(el);
+        }
+    };
+
+    /* --- ACTORS (Alice & Bob scene) ---
+       data-left="alice" data-right="bob" data-middle="trent|eve|mallory|none"
+       data-item="coin" (any icon) data-note="5 tDEP" data-caption="Alice pays Bob through her bank"
+       data-eve-note="Eve sees only ciphertext"
+       Middle = trent: item routes through Trent (trusted third party / bank).
+       Middle = eve or mallory: item goes direct; they watch from below. */
+    R.actors = {
+        mount(el) {
+            const L = el.dataset.left || 'alice', Rt = el.dataset.right || 'bob', M = el.dataset.middle || 'none';
+            const via = M === 'trent', spy = M === 'eve' || M === 'mallory';
+            const W = 1400, H = 600, cw = 180, ch = 240, top = 90, ly = 250;
+            const xa = 340, xb = 1060, xm = 700;
+            el.style.setProperty('--xa', xa + 'px'); el.style.setProperty('--xb', xb + 'px'); el.style.setProperty('--xm', xm + 'px');
+            el.style.setProperty('--yl', ly + 'px'); el.style.setProperty('--ym', '70px');
+            el.style.setProperty('--tdur', via ? '3.4s' : '2.4s');
+            const person = (n, x, y, i, cls = '', k = 1) => `<g class="actor ${cls}" style="--i:${i}"><svg class="char-svg" x="${x}" y="${y}" width="${cw * k}" height="${ch * k}" viewBox="0 0 120 160">${(ICONS()[n] || {}).body || ''}</svg>
+                <text class="name" x="${x + cw * k / 2}" y="${y + ch * k + 38}">${(ICONS()[n] || { label: n }).label}</text></g>`;
+            const chip = `<g class="item ${via ? 'via' : ''}"><circle r="46" class="chip"/><svg x="-28" y="-28" width="56" height="56" viewBox="0 0 48 48" class="fsc-ico-svg line-ico chip-ico">${(ICONS()[el.dataset.item || 'coin'] || {}).body || ''}</svg>${el.dataset.note ? `<text class="note" y="-66">${el.dataset.note}</text>` : ''}</g>`;
+            let lines = '', mid = '';
+            if (via) {
+                lines = `<path class="route" pathLength="1" d="M${70 + cw + 10} ${ly} H${xm - cw / 2 - 20}"/><path class="route r2" pathLength="1" d="M${xm + cw / 2 + 20} ${ly} H${W - 70 - cw - 10}"/>`;
+                mid = person(M, xm - cw / 2, top, 1) + `<path class="tick" pathLength="1" d="M${xm + 60} ${top + 20} l10 10 20-22"/>`;
+            } else {
+                lines = `<path class="route" pathLength="1" d="M${70 + cw + 10} ${ly} H${W - 70 - cw - 10}"/>`;
+                if (spy) mid = `<path class="tap" pathLength="1" d="M${xm} ${ly + 8} V${340}"/>` + person(M, xm - cw * 0.4, 310, 1, 'spy', 0.8) +
+                    `<text class="eve-note" x="${xm + cw * 0.5 + 10}" y="${430}">${el.dataset.eveNote || (M === 'eve' ? 'Eve is listening…' : 'Mallory tampers…')}</text>`;
+            }
+            el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${lines}${person(L, 70, top, 0)}${mid}${person(Rt, W - 70 - cw, top, 2, 'receiver')}
+                <circle class="arrive" cx="${xb + 40}" cy="${ly}" r="30"/>${chip}</svg>${el.dataset.caption ? `<p class="cap">${el.dataset.caption}</p>` : ''}`;
+            prepDraw(el);
+        }
+    };
+
+    // Scale a hand-drawn template path (pairs of numbers only) to the word's real box, so strokes stay even
+    function fxGeom(el) {
+        el.querySelectorAll('.fx-svg').forEach((svg) => {
+            const host = svg.parentElement, fs = parseFloat(getComputedStyle(host).fontSize) || 40;
+            const [, , vw, vh] = svg.dataset.vb.split(' ').map(Number), k = svg.classList;
+            const tw = host.querySelector('.fx-t') ? host.querySelector('.fx-t').offsetWidth : host.offsetWidth;
+            const w = k.contains('o') ? tw * 1.16 : tw * 1.06, h = k.contains('o') ? fs * 1.5 : k.contains('u') ? fs * 0.3 : fs * 0.22;
+            svg.setAttribute('width', w); svg.setAttribute('height', h); svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+            let i = 0;
+            const d = svg.dataset.d.replace(/-?\d*\.?\d+/g, (n) => (+n * (i++ % 2 ? h / vh : w / vw)).toFixed(1));
+            const path = svg.querySelector('path'); path.setAttribute('d', d);
+            path.style.strokeWidth = Math.max(3, fs * 0.075);
+            path.style.setProperty('--len', Math.ceil(path.getTotalLength()) + 1);
+        });
+    }
+
+    /* ===========================================
+       TEXT EFFECTS: <span data-fx="underline">word</span>
+       underline | circle | highlight | strike (data-to="new") | type | words
+       | cycle (data-words="a|b|c", stops on last) | scramble | count (data-to, data-dec, data-prefix, data-suffix)
+       Effects use the accent: one per slide.
+       =========================================== */
+    R.fx = {
+        inline: true,
+        mount(el) {
+            const kind = el.dataset.fx, text = el.dataset.text || el.textContent;
+            el.dataset.text = text; el.classList.add('fx-' + kind);
+            const svg = (vb, d, cls) => `<svg class="fx-svg ${cls}" data-vb="${vb}" data-d="${d}" aria-hidden="true"><path/></svg>`;
+            if (kind === 'underline') el.innerHTML = `<span class="fx-t">${text}</span>` + svg('0 0 100 12', 'M2 8C22 3 48 10 70 6S92 4 98 6', 'u');
+            else if (kind === 'circle') el.innerHTML = `<span class="fx-t">${text}</span>` + svg('0 0 100 60', 'M86 10C66 0 18 2 6 22c-10 18 18 34 52 32 30-2 44-16 38-30C92 12 70 6 52 6', 'o');
+            else if (kind === 'strike') el.innerHTML = `<span class="fx-old"><span class="fx-t">${text}</span>${svg('0 0 100 10', 'M2 6C30 4 70 7 98 4', 's')}</span>${el.dataset.to ? ` <span class="fx-to">${el.dataset.to}</span>` : ''}`;
+            else if (kind === 'words') el.innerHTML = text.trim().split(/\s+/).map((w, i) => `<span class="fx-w" style="--i:${i}">${w}</span>`).join(' ');
+            else if (kind === 'cycle') { const ws = (el.dataset.words || text).split('|'); el.dataset.words = ws.join('|'); el.innerHTML = `<span class="fx-c">${ws[0]}</span>`; }
+            else if (kind === 'count') el.textContent = (el.dataset.prefix || '') + '0' + (el.dataset.suffix || '');
+            else el.innerHTML = `<span class="fx-t">${text}</span>`;
+        },
+        play(el, later) {
+            fxGeom(el);
+            const kind = el.dataset.fx, text = el.dataset.text, t = el.querySelector('.fx-t');
+            if (kind === 'type') {
+                t.textContent = ''; const caret = h('span', { class: 'caret' }); t.after(caret);
+                [...text].forEach((_, i) => later(() => { t.textContent = text.slice(0, i + 1); }, 200 + i * 45));
+                later(() => caret.remove(), 200 + text.length * 45 + 1200);
+            } else if (kind === 'scramble') {
+                const hex = '0123456789abcdef', t0 = performance.now(), dur = 1100;
+                const tick = (now) => { const p = (now - t0) / dur; if (p >= 1) { t.textContent = text; return; }
+                    t.innerHTML = [...text].map((c, i) => c === ' ' || p > (i + 1) / text.length * .85 + .15 ? c : `<span class="sc">${hex[(Math.random() * 16) | 0]}</span>`).join('');
+                    requestAnimationFrame(tick); };
+                requestAnimationFrame(tick);
+            } else if (kind === 'cycle') {
+                const ws = el.dataset.words.split('|'), c = el.querySelector('.fx-c');
+                ws.forEach((w, i) => i && later(() => { c.classList.remove('in'); void c.offsetWidth; c.textContent = w; c.classList.add('in'); if (i === ws.length - 1) c.classList.add('last'); }, 400 + i * 1100));
+            } else if (kind === 'count') {
+                const to = parseFloat(el.dataset.to || text), dec = +(el.dataset.dec || 0), t0 = performance.now(), dur = 1400;
+                const f = (v) => (el.dataset.prefix || '') + v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + (el.dataset.suffix || '');
+                const tick = (now) => { const p = Math.min((now - t0) / dur, 1); el.textContent = f(to * (1 - Math.pow(1 - p, 4))); if (p < 1) requestAnimationFrame(tick); };
+                requestAnimationFrame(tick);
+            }
+        },
+        final(el) {
+            fxGeom(el);
+            const k = el.dataset.fx;
+            if (k === 'type' || k === 'scramble') el.querySelector('.fx-t').textContent = el.dataset.text;
+            if (k === 'cycle') { const ws = el.dataset.words.split('|'); const c = el.querySelector('.fx-c'); c.textContent = ws[ws.length - 1]; c.classList.add('last'); }
+            if (k === 'count') { const dec = +(el.dataset.dec || 0); el.textContent = (el.dataset.prefix || '') + parseFloat(el.dataset.to).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + (el.dataset.suffix || ''); }
+        }
+    };
+
+    /* ===========================================
+       CANDLESTICK CHART
+       JSON: { "ohlc": [[open, high, low, close], …], "labels": ["Mon", …] (optional, shown sparsely),
+               "volume": [ … ] (optional), "ma": 7 (moving-average period, optional),
+               "unit": "$", "highlight": 23 (candle index, or "last"), "note": "ETF news" (label on highlight),
+               "source": "Illustrative" }
+       Up candles hollow, down candles filled (works in print and for colorblind viewers);
+       the highlighted candle is the accent.
+       =========================================== */
+    R.candle = {
+        cls: 'chart',
+        mount(el) {
+            let d = readJSON(el);
+            if (!d) {   // illustrative random walk
+                let p = 62000, x = 11; const ohlc = [], vol = [];
+                for (let i = 0; i < 36; i++) {
+                    x = (x * 1103515245 + 12345) >>> 0; const r1 = ((x >>> 16) & 1023) / 1023;
+                    x = (x * 1103515245 + 12345) >>> 0; const r2 = ((x >>> 16) & 1023) / 1023;
+                    const drift = i < 14 ? -0.004 : i < 22 ? 0.002 : 0.009;
+                    const o = p, c = o * (1 + drift + (r1 - 0.5) * 0.04), hi = Math.max(o, c) * (1 + r2 * 0.012), lo = Math.min(o, c) * (1 - (1 - r2) * 0.012);
+                    ohlc.push([o, hi, lo, c].map((v) => Math.round(v))); vol.push(Math.round(400 + r2 * 900 + (i === 23 ? 1400 : 0))); p = c;
+                }
+                d = { ohlc, volume: vol, ma: 7, unit: '$', highlight: 23, note: 'News breaks', source: 'Illustrative data' };
+            }
+            const W = 1000, H = 520, x0 = 10, x1 = W - 110, y0 = 30, y1 = d.volume ? 360 : 460, v0 = 384, v1 = 460;
+            const svg = frame(el, W, H), n = d.ohlc.length;
+            const hiV = Math.max(...d.ohlc.map((c) => c[1])), loV = Math.min(...d.ohlc.map((c) => c[2])), padV = (hiV - loV) * 0.08;
+            const top = hiV + padV, bot = loV - padV, Y = (v) => y1 - (y1 - y0) * (v - bot) / (top - bot);
+            const slot = (x1 - x0) / n, bw = Math.max(4, slot * 0.62), X = (i) => x0 + slot * (i + 0.5);
+            const hl = d.highlight === 'last' ? n - 1 : d.highlight;
+            // grid + right axis
+            const g = svgEl('g', { class: 'grid' }), ax = svgEl('g', { class: 'axis-l' });
+            for (let i = 0; i <= 4; i++) {
+                const v = bot + (top - bot) * i / 4, y = Y(v);
+                g.appendChild(svgEl('line', { x1: x0, x2: x1, y1: y, y2: y }));
+                const t = svgEl('text', { x: W - 8, y }); t.textContent = (d.unit === '$' ? '$' : '') + Math.round(v).toLocaleString('en-US') + (d.unit && d.unit !== '$' ? d.unit : ''); ax.appendChild(t);
+            }
+            svg.append(g, ax);
+            const maxVol = d.volume ? Math.max(...d.volume) : 1;
+            d.ohlc.forEach(([o, hi, lo, c], i) => {
+                const up = c >= o, cls = 'cd ' + (up ? 'up' : 'down') + (i === hl ? ' hl' : '');
+                const grp = svgEl('g', { class: cls, style: `--i:${i}` });
+                grp.appendChild(svgEl('line', { class: 'wick', x1: X(i), x2: X(i), y1: Y(hi), y2: Y(lo) }));
+                const yt = Y(Math.max(o, c)), yb = Y(Math.min(o, c));
+                grp.appendChild(svgEl('rect', { class: 'body', x: X(i) - bw / 2, y: yt, width: bw, height: Math.max(2, yb - yt) }));
+                svg.appendChild(grp);
+                if (d.volume) svg.appendChild(svgEl('rect', { class: 'vol' + (i === hl ? ' hl' : ''), x: X(i) - bw / 2, y: v1 - (v1 - v0) * d.volume[i] / maxVol, width: bw, height: (v1 - v0) * d.volume[i] / maxVol, style: `--i:${i}` }));
+            });
+            if (d.ma) {
+                const pts = d.ohlc.map((_, i) => i < d.ma - 1 ? null : d.ohlc.slice(i - d.ma + 1, i + 1).reduce((a, c) => a + c[3], 0) / d.ma)
+                    .map((v, i) => v == null ? null : `${X(i)},${Y(v)}`).filter(Boolean);
+                svg.appendChild(svgEl('path', { class: 'ma', pathLength: 1, d: 'M' + pts.join(' L'), style: `--n:${n}` }));
+            }
+            // last price tag
+            const last = d.ohlc[n - 1][3], ty = Y(last), tag = svgEl('g', { class: 'tag', style: `--n:${n}` });
+            tag.appendChild(svgEl('rect', { x: x1 + 4, y: ty - 15, width: 104, height: 30 }));
+            const tt = svgEl('text', { x: x1 + 56, y: ty }); tt.textContent = (d.unit === '$' ? '$' : '') + last.toLocaleString('en-US'); tag.appendChild(tt);
+            svg.appendChild(tag);
+            if (hl != null && d.note) {
+                const nt = svgEl('g', { class: 'cnote', style: `--n:${n}` }), ny = Y(d.ohlc[hl][1]) - 20;
+                nt.appendChild(svgEl('line', { x1: X(hl), x2: X(hl), y1: ny, y2: ny - 26 }));
+                const t = svgEl('text', { x: X(hl), y: ny - 36 }); t.textContent = d.note; nt.appendChild(t);
+                svg.appendChild(nt);
+            }
+            if (d.labels) {
+                const axb = svgEl('g', { class: 'axis-b' }), step = Math.ceil(n / 6);
+                d.labels.forEach((l, i) => { if (i % step) return; const t = svgEl('text', { x: X(i), y: H - 22 }); t.textContent = l; axb.appendChild(t); });
+                svg.appendChild(axb);
+            }
+            if (d.source) { const s = svgEl('text', { class: 'src', x: x0, y: H - 4 }); s.textContent = d.source; svg.appendChild(s); }
+        }
+    };
+
+    window.FSC = { play, update, mount, mountAll, wire, registry: R, iconSVG };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => wire());
     else wire();
 })();

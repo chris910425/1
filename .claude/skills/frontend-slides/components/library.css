@@ -181,3 +181,122 @@
     .fsc path, .fsc line.hot, .fsc .ln { stroke-dashoffset: 0 !important; animation: none !important; }
     .fsc .seg { stroke-dasharray: var(--v) 100 !important; animation: none !important; }
 }
+
+/* === ICONS (inline + sets) ============================= */
+.fsc-inline { display: inline-block; vertical-align: middle; position: relative; }
+.fsc-icon { width: var(--s, 64px); height: var(--s, 64px); color: var(--ink); }
+.fsc-ico-svg { width: var(--s, 64px); height: var(--s, 64px); display: block; overflow: visible; }
+.fsc-icon .fsc-ico-svg { width: 100%; height: 100%; }
+.line-ico path, .line-ico rect, .line-ico circle, .line-ico ellipse { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.line-ico .a { fill: var(--accent); stroke: none; opacity: 0; }
+.line-ico .as { stroke: var(--accent); }
+.line-ico .dr { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); }
+.is-playing .line-ico .dr { animation: fsc-draw 1s cubic-bezier(.45,0,.2,1) calc(.1s + var(--i, 0) * .07s) forwards; }
+.is-playing .line-ico .a { animation: fsc-fade .4s ease calc(.8s + var(--i, 0) * .07s) forwards; }
+.is-done .line-ico .dr { stroke-dashoffset: 0; } .is-done .line-ico .a { opacity: 1; }
+/* characters */
+.char-svg .body, .char-svg .skin { fill: var(--paper); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.char-svg .ink, .char-svg .ink-body { fill: var(--ink); }
+.char-svg .line { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+.char-svg .accent { fill: var(--accent); }
+.fsc-icon .char-svg, .fsc-iconset .char-svg { opacity: 0; }
+.fsc-icon.is-playing .char-svg, .fsc-iconset.is-playing .char-svg { animation: fsc-rise .7s cubic-bezier(.16,1,.3,1) calc(var(--i, 0) * .15s) forwards; }
+.fsc-icon.is-done .char-svg, .fsc-iconset.is-done .char-svg { opacity: 1; }
+.fsc-iconset { display: flex; align-items: center; }
+.fsc-iconset .set { width: 100%; display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 34px 20px; }
+.fsc-iconset figure { display: flex; flex-direction: column; align-items: center; gap: 14px; margin: 0; }
+.fsc-iconset figcaption { font-family: var(--font-mono); font-size: 18px; color: var(--muted); text-align: center; letter-spacing: .02em; }
+
+/* === ACTORS (Alice & Bob scenes) ====================== */
+.fsc-actors > svg { width: 100%; height: calc(100% - 40px); overflow: visible; }
+.fsc-actors .actor { opacity: 0; }
+.fsc-actors .name { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 34px; fill: var(--ink); text-anchor: middle; }
+.fsc-actors .accent { fill: var(--muted); }
+.fsc-actors .route { fill: none; stroke: var(--ink); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-actors .tap { fill: none; stroke: var(--muted); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-actors .tick { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-actors .eve-note { font-family: var(--font-mono); font-size: 22px; fill: var(--muted); opacity: 0; }
+.fsc-actors .item { opacity: 0; transform: translate(var(--xa), var(--yl)); }
+.fsc-actors .chip { fill: var(--paper); stroke: var(--accent); stroke-width: 4; }
+.fsc-actors .chip-ico { color: var(--ink); }
+.fsc-actors .chip-ico .a { opacity: 1; }
+.fsc-actors .chip-ico .dr { stroke-dashoffset: 0; stroke-dasharray: none; animation: none !important; }
+.fsc-actors .note { font-family: var(--font-mono); font-size: 24px; font-weight: 500; fill: var(--ink); text-anchor: middle; }
+.fsc-actors .arrive { fill: none; stroke: var(--accent); stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.fsc-actors .cap { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font-family: var(--font-mono); font-size: 22px; color: var(--muted); }
+.fsc-actors.is-playing .actor { animation: fsc-rise .7s cubic-bezier(.16,1,.3,1) calc(var(--i) * .15s) forwards; }
+.fsc-actors.is-playing .route { animation: fsc-draw .7s ease .6s forwards; }
+.fsc-actors.is-playing .item { animation: fsc-travel var(--tdur) cubic-bezier(.65,0,.35,1) 1.2s forwards; }
+.fsc-actors.is-playing .item.via { animation-name: fsc-travel-via; }
+.fsc-actors.is-playing .tick { animation: fsc-draw .4s ease calc(1.2s + var(--tdur) * .45) forwards; }
+.fsc-actors.is-playing .tap { animation: fsc-draw .5s ease calc(1.2s + var(--tdur) * .4) forwards; }
+.fsc-actors.is-playing .eve-note { animation: fsc-fade .5s ease calc(1.5s + var(--tdur) * .4) forwards; }
+.fsc-actors.is-playing .arrive { animation: fsc-ping 1s ease-out calc(1.2s + var(--tdur)) forwards; }
+@keyframes fsc-travel { 0% { opacity: 0; transform: translate(var(--xa), var(--yl)); } 10% { opacity: 1; } 100% { opacity: 1; transform: translate(var(--xb), var(--yl)); } }
+@keyframes fsc-travel-via { 0% { opacity: 0; transform: translate(var(--xa), var(--yl)); } 8% { opacity: 1; } 40%, 60% { opacity: 1; transform: translate(var(--xm), var(--ym)); } 100% { opacity: 1; transform: translate(var(--xb), var(--yl)); } }
+.fsc-actors.is-done .actor, .fsc-actors.is-done .eve-note, .fsc-actors.is-done .item { opacity: 1; }
+.fsc-actors.is-done .item { transform: translate(var(--xb), var(--yl)); }
+.fsc-actors.is-done .route, .fsc-actors.is-done .tap, .fsc-actors.is-done .tick { stroke-dashoffset: 0; }
+
+/* === TEXT EFFECTS ===================================== */
+.fsc-fx { white-space: nowrap; }
+.fsc-fx .fx-svg { position: absolute; overflow: visible; pointer-events: none; }
+.fsc-fx .fx-svg path { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linecap: round; stroke-dasharray: var(--len, 2000); stroke-dashoffset: var(--len, 2000); }
+.fsc-fx .fx-svg.u { left: -3%; bottom: -0.2em; }
+.fsc-fx .fx-svg.o { left: -8%; top: -0.24em; }
+.fsc-fx .fx-svg.s { left: -3%; top: 46%; }
+.fsc-fx.is-playing .fx-svg path { animation: fsc-draw .8s cubic-bezier(.45,0,.2,1) .3s forwards; }
+.fsc-fx.is-done .fx-svg path { stroke-dashoffset: 0; }
+.fsc-fx .fx-old { position: relative; display: inline-block; transition: color .4s ease 1s; }
+.fsc-fx.is-playing .fx-old, .fsc-fx.is-done .fx-old { color: var(--muted); }
+.fsc-fx .fx-to { display: inline-block; opacity: 0; }
+.fsc-fx.is-playing .fx-to { animation: fsc-rise .6s cubic-bezier(.16,1,.3,1) 1.1s forwards; }
+.fsc-fx.is-done .fx-to { opacity: 1; }
+.fsc-fx.fx-highlight .fx-t { background: linear-gradient(color-mix(in srgb, var(--accent) 45%, transparent), color-mix(in srgb, var(--accent) 45%, transparent)) no-repeat 0 88% / 0% 42%; padding: 0 .06em; }
+.fsc-fx.fx-highlight.is-playing .fx-t { animation: fsc-marker .8s cubic-bezier(.45,0,.2,1) .3s forwards; }
+.fsc-fx.fx-highlight.is-done .fx-t { background-size: 100% 42%; }
+@keyframes fsc-marker { to { background-size: 100% 42%; } }
+.fsc-fx .fx-w { display: inline-block; opacity: 0; }
+.fsc-fx.fx-words { white-space: normal; }
+.fsc-fx.is-playing .fx-w { animation: fsc-rise .7s cubic-bezier(.16,1,.3,1) calc(.1s + var(--i) * .12s) forwards; }
+.fsc-fx.is-done .fx-w { opacity: 1; }
+.fsc-fx .fx-c { display: inline-block; }
+.fsc-fx .fx-c.in { animation: fsc-rise .45s cubic-bezier(.16,1,.3,1); }
+.fsc-fx .fx-c.last { color: var(--accent); }
+.fsc-fx .caret { display: inline-block; width: .08em; height: .9em; margin-left: .04em; vertical-align: -0.08em; background: var(--accent); animation: fsc-blink 1s steps(1) infinite; }
+.fsc-fx .sc { font-family: var(--font-mono); font-weight: 400; color: var(--muted); }
+.fsc-fx.fx-count { font-variant-numeric: tabular-nums; }
+
+/* === CANDLESTICK ======================================= */
+.fsc-chart .cd .wick { stroke: var(--ink); stroke-width: 2; }
+.fsc-chart .cd .body { stroke: var(--ink); stroke-width: 2; }
+.fsc-chart .cd.up .body { fill: var(--paper); }
+.fsc-chart .cd.down .body { fill: var(--ink); }
+.fsc-chart .cd.hl .wick, .fsc-chart .cd.hl .body { stroke: var(--accent); }
+.fsc-chart .cd.hl .body { fill: var(--accent); }
+.fsc-chart .cd { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scaleY(.3); }
+.fsc-chart .vol { fill: var(--muted); opacity: .35; transform-box: fill-box; transform-origin: bottom; transform: scaleY(0); }
+.fsc-chart .vol.hl { fill: var(--accent); opacity: 1; }
+.fsc-chart .ma { fill: none; stroke: var(--muted); stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-chart .tag rect { fill: var(--ink); }
+.fsc-chart .tag text { fill: var(--paper); font-family: var(--font-mono); font-size: 17px; text-anchor: middle; dominant-baseline: central; }
+.fsc-chart .tag, .fsc-chart .cnote { opacity: 0; }
+.fsc-chart .cnote line { stroke: var(--accent); stroke-width: 2; }
+.fsc-chart .cnote text { font-family: var(--font-mono); font-size: 18px; fill: var(--ink); text-anchor: middle; }
+.fsc-chart .src { font-family: var(--font-mono); font-size: 14px; fill: var(--muted); }
+.fsc-chart.is-playing .cd { animation: fsc-candle .45s cubic-bezier(.16,1,.3,1) calc(.15s + var(--i) * .045s) forwards; }
+.fsc-chart.is-playing .vol { animation: fsc-grow-y .45s ease calc(.15s + var(--i) * .045s) forwards; }
+.fsc-chart.is-playing .ma { animation: fsc-draw 1.2s ease calc(.3s + var(--n) * .045s) forwards; }
+.fsc-chart.is-playing .tag, .fsc-chart.is-playing .cnote { animation: fsc-fade .5s ease calc(.6s + var(--n) * .045s) forwards; }
+@keyframes fsc-candle { to { opacity: 1; transform: none; } }
+.fsc-chart.is-done .cd, .fsc-chart.is-done .tag, .fsc-chart.is-done .cnote { opacity: 1; transform: none; }
+.fsc-chart.is-done .vol { transform: none; } .fsc-chart.is-done .ma { stroke-dashoffset: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .fsc-chart .cd, .fsc-chart .tag, .fsc-chart .cnote, .fsc-actors .actor, .fsc-actors .item, .fsc-actors .eve-note,
+    .char-svg, .line-ico .a, .fsc-fx .fx-w, .fsc-fx .fx-to { opacity: 1 !important; animation: none !important; }
+    .fsc-chart .cd, .fsc-chart .vol { transform: none !important; }
+    .fsc-actors .item { transform: translate(var(--xb), var(--yl)) !important; }
+    .line-ico .dr, .fsc-fx .fx-svg path, .fsc-actors .route, .fsc-actors .tap, .fsc-actors .tick, .fsc-chart .ma { stroke-dashoffset: 0 !important; animation: none !important; }
+    .fsc-fx.fx-highlight .fx-t { background-size: 100% 42% !important; animation: none !important; }
+}

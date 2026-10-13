@@ -37,6 +37,9 @@
         /* Component frames are authored in stage pixels and scaled to the card */
         .frame { position: relative; width: 100%; aspect-ratio: var(--w) / var(--h); overflow: hidden; }
         .frame > .inner { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1px); height: calc(var(--h) * 1px); transform-origin: 0 0; }
+        .fx-demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px 56px; padding: 20px 10px; }
+        .fx-demo small { display: block; font: 16px var(--font-mono); color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+        .fx-demo p { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: 44px; line-height: 1.12; }
         @media (max-width: 900px) { .card { grid-column: span 12; } }
     </style>
 </head>
@@ -141,9 +144,63 @@
             <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="doughnut"></div></div></div>
             <div class="hd"><p class="use">Shares of a whole: tokenomics, market share. Demo values are illustrative.</p><button class="replay">Replay</button></div>
         </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>Text effects</h2><code>&lt;span data-fx="…"&gt;</code></div>
+            <div class="frame" style="--w:1600;--h:600"><div class="inner fx-demo">
+                <div><small>underline</small><p>Settlement becomes <span data-fx="underline">final</span>.</p></div>
+                <div><small>circle</small><p>Banks <span data-fx="circle">tokenize</span> deposits.</p></div>
+                <div><small>highlight</small><p>Money is now <span data-fx="highlight">programmable</span>.</p></div>
+                <div><small>strike → replace</small><p>Settles in <span data-fx="strike" data-to="seconds">T+2 days</span></p></div>
+                <div><small>cycle (stops on last)</small><p>Payments that are <span data-fx="cycle" data-words="faster|cheaper|final">faster</span></p></div>
+                <div><small>words</small><p><span data-fx="words">One island. Many kopi.</span></p></div>
+                <div><small>type</small><p><span data-fx="type">Hello, Singapore.</span></p></div>
+                <div><small>count</small><p><span data-fx="count" data-to="365">365</span> days at NTU</p></div>
+                <div><small>scramble</small><p><span data-fx="scramble">Trustless</span> by design.</p></div>
+            </div></div>
+            <div class="hd"><p class="use">Decorate a key word in a title or statement. Use one per slide; it is that slide's accent moment.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:7">
+            <div class="hd"><h2>Candlestick</h2><code>data-fsc="candle"</code></div>
+            <div class="frame" style="--w:1000;--h:520"><div class="inner"><div data-fsc="candle"></div></div></div>
+            <div class="hd"><p class="use">Price action, volatility, event studies. Hollow = up, filled = down, accent = the candle you talk about. Demo data is illustrative.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:5">
+            <div class="hd"><h2>Characters</h2><code>data-icon="alice"</code></div>
+            <div class="frame" style="--w:900;--h:780"><div class="inner"><div data-fsc="iconset" data-icons="alice|bob|eve|trent|mallory" data-cols="3" data-size="210px"></div></div></div>
+            <div class="hd"><p class="use">The classic cast: Alice and Bob, Eve listens, Mallory attacks, Trent is the trusted third party (your bank).</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Scene · via Trent</h2><code>data-fsc="actors"</code></div>
+            <div class="frame" style="--w:1400;--h:660"><div class="inner"><div data-fsc="actors" data-middle="trent" data-item="coin" data-note="50 tSGD" data-caption="Alice pays Bob through a trusted bank"></div></div></div>
+            <div class="hd"><p class="use">Intermediated payments, custody, correspondent banking.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Scene · Eve listens</h2><code>data-middle="eve"</code></div>
+            <div class="frame" style="--w:1400;--h:660"><div class="inner"><div data-fsc="actors" data-middle="eve" data-item="lock" data-note="encrypted" data-eve-note="sees only ciphertext" data-caption="Alice sends Bob an encrypted message"></div></div></div>
+            <div class="hd"><p class="use">Cryptography, privacy, attacks. Swap in any icon as the item.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Finance icons</h2><code>data-icon="bank"</code></div>
+            <div class="frame" style="--w:1000;--h:620"><div class="inner"><div data-fsc="iconset" data-cols="6" data-size="72px" data-icons="bank|coin|wallet|card|vault|key|lock|shield|exchange|growth|contract|qr|globe|block|kyc|regulator"></div></div></div>
+            <div class="hd"><p class="use">Banks, payments, custody, compliance, tokens.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Singapore life icons</h2><code>data-icon="hawker"</code></div>
+            <div class="frame" style="--w:1000;--h:620"><div class="inner"><div data-fsc="iconset" data-cols="5" data-size="72px" data-icons="hawker|kopi|crab|durian|bus|mrt|transit|hdb|mbs|supertree|study|laptop|rain|sun|plane"></div></div></div>
+            <div class="hd"><p class="use">Student life in Singapore: food, transport, housing, landmarks, weather.</p><button class="replay">Replay</button></div>
+        </article>
     </main>
 </div>
 
+<!-- BUILD:INLINE icons.js -->
+<script src="icons.js"></script>
 <!-- BUILD:INLINE library.js -->
 <script src="library.js"></script>
 <script>
@@ -164,7 +221,7 @@
         e.currentTarget.setAttribute('aria-pressed', on);
     });
     document.getElementById('replayAll').addEventListener('click', all);
-    document.querySelectorAll('.card .replay').forEach((b) => b.addEventListener('click', () => FSC.play(b.closest('.card').querySelector('[data-fsc]'))));
+    document.querySelectorAll('.card .replay').forEach((b) => b.addEventListener('click', () => b.closest('.card').querySelectorAll('[data-fsc]').forEach((el) => FSC.play(el))));
     // Allow ?theme=terminal&mode=dark for screenshots
     const qs = new URLSearchParams(location.search);
     if (qs.get('theme')) document.querySelector(`[data-theme-btn="${qs.get('theme')}"]`)?.click();

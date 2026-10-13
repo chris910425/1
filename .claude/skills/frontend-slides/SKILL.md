@@ -27,10 +27,12 @@ This copy of the skill is customized with the user's own design system in [brand
 
 ## Component Library (REUSABLE VISUALS)
 
-Brand decks draw from the animated component library in [components/](components/README.md): chain append, transaction lifecycle, network gossip, Merkle tree, hash-reveal text, terminal, activity heatmap, spectrum, and line / bar / doughnut charts.
+Brand decks draw from the animated component library in [components/](components/README.md): chain append, transaction lifecycle, network gossip, Merkle tree, hash-reveal text, terminal, activity heatmap, spectrum, line / bar / doughnut / candlestick charts, Alice & Bob characters and scenes, finance and Singapore-life icons, and text effects for titles (underline, circle, highlight, strike, cycle, words, type, scramble, count).
 
 - Before Phase 3, read `components/README.md`. While planning the outline, mark which slides would genuinely explain better with a component (processes, systems, structures, comparisons, data). Typical deck: 2–5 components. Never force one onto every slide.
-- Build brand decks on `brand/tokens.css` (`<html data-theme="...">`) and inline `components/library.css` + `components/library.js` (or only the sections used).
+- Build brand decks on `brand/tokens.css` (`<html data-theme="...">`) and inline `components/library.css`, `components/icons.js` (if icons/characters are used) and `components/library.js` (or only the sections used).
+- Explaining a protocol, payment or attack? Cast it with the characters (Alice, Bob, Trent = bank, Eve, Mallory) instead of abstract boxes. Personal or life-story decks: use the Singapore-life icons.
+- Decorate the key word of a title or statement with one `data-fx` text effect where it adds emphasis; not on every slide.
 - Charts take data from a JSON block. Use the user's real numbers; if none exist, label figures as illustrative or ask.
 - When enhancing an existing deck (Mode C), look for slides whose text describes a process, system or dataset and propose swapping in a component. Tell the user which slides changed and why.
 - Images: follow the Images section of `components/README.md` (local files preferred, Unsplash only on explicit request, integrated into the composition).

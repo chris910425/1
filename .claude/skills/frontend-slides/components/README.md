@@ -4,6 +4,7 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 
 - `library.css`: component styles (one `/* === NAME === */` section per component)
 - `library.js`: builds and animates components; exposes `window.FSC`
+- `icons.js`: icon + character drawings (`window.FSC_ICONS`). Paste it **before** `library.js` whenever a deck uses icons, characters, `iconset` or `actors`.
 - `gallery.src.html`: bento preview page (source). `gallery.html` is its built, self-contained copy: run `python3 components/build.py` after any library edit, then screenshot-check it.
 
 ## How to use in a deck
@@ -31,6 +32,37 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 | `line` | Animated multi-series line chart | Trends over time | JSON child | 800–1100 × 440–560 |
 | `bar` | Animated bar chart, one bar highlighted | Comparing chains, protocols, costs | JSON child, `"highlight": "Label"` | 800–1100 × 440–560 |
 | `doughnut` | Animated doughnut with legend | Shares of a whole: tokenomics, market share | JSON child, `"highlight"`, `"center"`, `"centerLabel"` | 900 × 500 |
+| `candle` | Candlestick chart: hollow = up, filled = down, accent = the candle you discuss; optional volume, moving average, last-price tag, event note | Price action, volatility, event studies, market structure | JSON child (below) | 900–1200 × 480–560 |
+| `iconset` | Grid of icons or characters with labels, drawing in one by one | "What we'll cover", life-in-Singapore slides, cast introductions | `data-icons="bank|coin|…"`, `data-cols`, `data-size`, `data-labels="off"` | any; ~120px per icon cell |
+| `actors` | Alice & Bob scene: an item travels from left to right, directly or via a middle character | Payments, custody, intermediaries (Trent = bank), cryptography and attacks (Eve, Mallory) | `data-left`, `data-right`, `data-middle="trent|eve|mallory|none"`, `data-item` (any icon), `data-note`, `data-caption`, `data-eve-note` | 1200–1600 × 560–680 |
+
+### Icons and characters (inline)
+
+Drop an icon anywhere, including inside titles or cards: `<i data-icon="hawker" data-size="96px"></i>`. Icons draw themselves in when the slide appears and take the surrounding text color; their one accent detail uses the brand accent.
+
+- **Finance & institutions:** `bank coin wallet card vault key lock shield exchange growth contract qr globe block kyc regulator`
+- **Life in Singapore:** `hawker kopi crab durian bus mrt transit hdb mbs supertree study laptop rain sun plane`
+- **Characters:** `alice bob eve trent mallory` (Alice and Bob are the default pair; Trent is the trusted third party, so use him for banks and custodians; Eve eavesdrops; Mallory actively attacks). Use them consistently: the same character always plays the same role across a deck.
+
+Add a new icon by adding an entry to `icons.js` (48×48 grid, 2.2px strokes, at most one `class="a"` fill or `class="as"` stroke for the accent), then rebuild and check the gallery.
+
+### Text effects (inline, for titles and statements)
+
+Wrap a word or phrase: `<h2>Settlement becomes <span data-fx="underline">final</span>.</h2>`
+
+| `data-fx` | Effect | Extra attributes |
+| --- | --- | --- |
+| `underline` | Hand-drawn underline draws in | |
+| `circle` | Hand-drawn loop around the word | |
+| `highlight` | Marker sweep behind the word | |
+| `strike` | Strike-through, then the replacement appears | `data-to="seconds"` |
+| `cycle` | Swaps through words and stops on the last one (accent) | `data-words="faster|cheaper|final"` |
+| `words` | Words rise one by one (good for a whole title) | |
+| `type` | Typewriter with caret | |
+| `scramble` | Hex scramble that resolves into the word | |
+| `count` | Number counts up | `data-to`, `data-dec`, `data-prefix`, `data-suffix` |
+
+One text effect per slide, and it replaces any other accent on that slide. They work in every theme, light and dark.
 
 ### Data format (charts and heatmap)
 
@@ -49,6 +81,7 @@ Data lives in a JSON block inside the component, so real data can be swapped in 
 - `bar`: `{ labels, unit, highlight, series: [{ name, values }] }`.
 - `doughnut`: `{ labels, unit, highlight, center, centerLabel, series: [{ values }] }`.
 - `heat`: `{ rows, cols, colLabels, values: [[0..1]], low, high }`; normalize raw numbers to 0–1 first.
+- `candle`: `{ ohlc: [[open, high, low, close], …], labels?, volume?, ma?: 7, unit: "$", highlight?: index | "last", note?, source? }`. Paste real OHLC data (e.g. exported from an exchange) and always fill `source`.
 - From JS (e.g. after fetching a CSV): `FSC.update(el, data)` re-renders and replays.
 - If no JSON is given, charts render **illustrative demo data**. Never ship demo numbers in a real deck: use the user's data or clearly label figures as illustrative.
 
