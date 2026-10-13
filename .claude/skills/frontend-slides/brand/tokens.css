@@ -1,0 +1,51 @@
+/* ===========================================
+   BRAND TOKENS: Ledger / Editorial / Terminal × light / dark
+   Usage: <html data-theme="ledger"> (add class="dark" for dark mode).
+   Source of truth for colors and fonts is brand/BRAND.md; keep in sync.
+   Components in components/library.css read ONLY these variables.
+   =========================================== */
+
+/* ---------- Ledger ---------- */
+html[data-theme="ledger"] {
+    --paper: #f3f2ee; --ink: #121316; --muted: #6b6d73; --rule: rgba(18, 19, 22, .14);
+    --accent: #2445ff; --on-accent: #ffffff; --panel: #e8e7e1;
+    --font-display: 'Archivo', sans-serif; --display-weight: 900; --display-case: none; --display-tracking: -0.035em;
+    --font-body: 'Archivo', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    --radius: 0px; --stroke: 2px;
+}
+html[data-theme="ledger"].dark {
+    --paper: #0b0c10; --ink: #eceef3; --muted: #8a8f9c; --rule: rgba(236, 238, 243, .14);
+    --accent: #5a72ff; --on-accent: #0b0c10; --panel: #15171d;
+}
+
+/* ---------- Editorial ---------- */
+html[data-theme="editorial"] {
+    --paper: #f2ece0; --ink: #13302a; --muted: #5d6b63; --rule: rgba(19, 48, 42, .18);
+    --accent: #d9931c; --on-accent: #13302a; --panel: #e8dfcd;
+    --font-display: 'Fraunces', serif; --display-weight: 600; --display-case: none; --display-tracking: -0.02em;
+    --font-body: 'Instrument Sans', sans-serif; --font-mono: 'IBM Plex Mono', monospace;
+    --radius: 2px; --stroke: 2px;
+}
+html[data-theme="editorial"].dark {
+    --paper: #0f2621; --ink: #f1e9da; --muted: #9fb1a7; --rule: rgba(241, 233, 218, .16);
+    --accent: #f0ad3a; --on-accent: #13302a; --panel: #163530;
+}
+
+/* ---------- Terminal ---------- */
+html[data-theme="terminal"] {
+    --paper: #e9ebe4; --ink: #0e0f0c; --muted: #5e6158; --rule: rgba(14, 15, 12, .16);
+    --accent: #b6e400; --on-accent: #0e0f0c; --panel: #d7dacf;
+    --font-display: 'Unbounded', sans-serif; --display-weight: 800; --display-case: uppercase; --display-tracking: -0.03em;
+    --font-body: 'IBM Plex Mono', monospace; --font-mono: 'IBM Plex Mono', monospace;
+    --radius: 0px; --stroke: 2px;
+}
+html[data-theme="terminal"].dark {
+    --paper: #0c0d0b; --ink: #eef1e6; --muted: #878b7e; --rule: rgba(238, 241, 230, .14);
+    --accent: #c8ff1a; --on-accent: #0c0d0b; --panel: #1a1c17;
+}
+
+/* Font links per theme (paste the one you use into <head>):
+   Ledger:    https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500&display=swap
+   Editorial: https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap
+   Terminal:  https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap
+*/

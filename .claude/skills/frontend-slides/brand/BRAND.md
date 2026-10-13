@@ -53,6 +53,8 @@ Selection flow:
 2. Otherwise infer from the topic and purpose using the table above, **tell the user which theme you chose and why in one line**, and proceed. Do not run the 3-preview style discovery for brand decks.
 3. If the user says "show me options" → render the title slide in all three themes (light + dark) and let them pick.
 
+All theme colors and fonts are also available as ready-to-use CSS variables in `brand/tokens.css` (`<html data-theme="ledger|editorial|terminal">`, plus `class="dark"`). Use it for every brand deck so the component library matches.
+
 Reference implementations of each theme's title slide live in `brand/themes/` (`ledger.html`, `editorial.html`, `terminal.html`). Read the chosen theme's file before generating; reuse its tokens, fonts and components. Do not copy its demo text.
 
 ---

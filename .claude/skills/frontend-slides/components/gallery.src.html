@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ledger">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap">
+    <!-- BUILD:INLINE ../brand/tokens.css -->
+    <link rel="stylesheet" href="../brand/tokens.css">
+    <!-- BUILD:INLINE library.css -->
+    <link rel="stylesheet" href="library.css">
+    <style>
+        /* ===========================================
+           GALLERY CHROME (not part of the library)
+           =========================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--ink); font-family: var(--font-body); transition: background .3s, color .3s; }
+        body { padding: 40px 16px 80px; }
+        .wrap { max-width: 1480px; margin: 0 auto; }
+        header { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; }
+        h1 { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: clamp(36px, 5vw, 64px); line-height: 1; }
+        h1 span { color: var(--accent); }
+        header p { margin-top: 10px; color: var(--muted); max-width: 640px; line-height: 1.5; }
+        .controls { display: flex; flex-wrap: wrap; gap: 8px; }
+        .controls button { font: 500 13px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; padding: 10px 14px; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); border-radius: var(--radius); cursor: pointer; }
+        .controls button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+        .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+        .card { grid-column: span var(--span, 6); border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 45%, var(--paper)); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+        .card .hd { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+        .card h2 { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 22px; letter-spacing: -0.01em; }
+        .card code { font: 12px var(--font-mono); color: var(--muted); }
+        .card .use { font-size: 14px; color: var(--muted); line-height: 1.45; }
+        .card .replay { font: 500 12px var(--font-mono); color: var(--muted); background: none; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: .1em; }
+        .card .replay:hover { color: var(--ink); }
+        /* Component frames are authored in stage pixels and scaled to the card */
+        .frame { position: relative; width: 100%; aspect-ratio: var(--w) / var(--h); overflow: hidden; }
+        .frame > .inner { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1px); height: calc(var(--h) * 1px); transform-origin: 0 0; }
+        @media (max-width: 900px) { .card { grid-column: span 12; } }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <div>
+            <h1>Component library<span>.</span></h1>
+            <p>Reusable animated blocks for MSBT blockchain decks. Each one follows the active brand theme and mode. Click a card's replay to re-run it.</p>
+        </div>
+        <div class="controls" role="group" aria-label="Theme">
+            <button data-theme-btn="ledger" aria-pressed="true">Ledger</button>
+            <button data-theme-btn="editorial" aria-pressed="false">Editorial</button>
+            <button data-theme-btn="terminal" aria-pressed="false">Terminal</button>
+            <button id="mode" aria-pressed="false">Dark</button>
+            <button id="replayAll">Replay all</button>
+        </div>
+    </header>
+
+    <main class="bento">
+        <article class="card" style="--span:8">
+            <div class="hd"><h2>Chain append</h2><code>data-fsc="chain"</code></div>
+            <div class="frame" style="--w:1280;--h:300"><div class="inner"><div data-fsc="chain" data-count="4" data-start="1024"></div></div></div>
+            <div class="hd"><p class="use">How blocks link by hash. Title slides, "what is a blockchain", immutability.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:4">
+            <div class="hd"><h2>Hash reveal</h2><code>data-fsc="hash"</code></div>
+            <div class="frame" style="--w:760;--h:300"><div class="inner"><div data-fsc="hash" data-text="Trustless." data-size="96px"></div></div></div>
+            <div class="hd"><p class="use">Text effect for a key term or statement slide.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>Transaction lifecycle</h2><code>data-fsc="tx"</code></div>
+            <div class="frame" style="--w:1600;--h:260"><div class="inner"><div data-fsc="tx"></div></div></div>
+            <div class="hd"><p class="use">Any step-by-step process: tx flow, settlement, KYC onboarding, a research method. Steps are set with data-steps.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Network gossip</h2><code>data-fsc="gossip"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="gossip" data-nodes="14" data-caption="Block propagation"></div></div></div>
+            <div class="hd"><p class="use">P2P networks, consensus, propagation, decentralization.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Merkle tree</h2><code>data-fsc="merkle"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="merkle"></div></div></div>
+            <div class="hd"><p class="use">Data structures, inclusion proofs, light clients, rollups.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:5">
+            <div class="hd"><h2>Terminal</h2><code>data-fsc="term"</code></div>
+            <div class="frame" style="--w:760;--h:440"><div class="inner">
+                <div data-fsc="term" data-title="zsh — sepolia">
+                    <p data-cmd>cast call $TKN "balanceOf(address)" $ALICE</p>
+                    <p>1000.00 tDEP</p>
+                    <p data-cmd>cast send $TKN "transfer(address,uint256)" $BOB 250</p>
+                    <p class="hl">status   1 (success)</p>
+                    <p>block    21004512</p>
+                    <p>gasUsed  34,513</p>
+                </div>
+            </div></div>
+            <div class="hd"><p class="use">Smart-contract demos, CLI tooling, "how I tested it".</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:7">
+            <div class="hd"><h2>Activity heatmap</h2><code>data-fsc="heat"</code></div>
+            <div class="frame" style="--w:1040;--h:440"><div class="inner">
+                <div data-fsc="heat"><script type="application/json">{"low":"Low gas","high":"High gas"}</script></div>
+            </div></div>
+            <div class="hd"><p class="use">Usage patterns by day × hour: gas, tx count, wallet activity. Values 0–1 in JSON.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>Spectrum</h2><code>data-fsc="spec"</code></div>
+            <div class="frame" style="--w:1600;--h:380"><div class="inner">
+                <div data-fsc="spec" data-left="Centralized" data-right="Decentralized">
+                    <i data-pos="0.05">CBDC</i>
+                    <i data-pos="0.24" data-hl>Tokenized deposits</i>
+                    <i data-pos="0.46">Regulated stablecoins</i>
+                    <i data-pos="0.72">Crypto-backed stablecoins</i>
+                    <i data-pos="0.95">Bitcoin</i>
+                </div>
+            </div></div>
+            <div class="hd"><p class="use">Positioning and comparison: where your topic sits between two extremes.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:4">
+            <div class="hd"><h2>Line chart</h2><code>data-fsc="line"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="line"></div></div></div>
+            <div class="hd"><p class="use">Trends over time. Demo values are illustrative.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:4">
+            <div class="hd"><h2>Bar chart</h2><code>data-fsc="bar"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="bar"></div></div></div>
+            <div class="hd"><p class="use">Comparing chains, protocols, costs. Demo values are illustrative.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:4">
+            <div class="hd"><h2>Doughnut</h2><code>data-fsc="doughnut"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="doughnut"></div></div></div>
+            <div class="hd"><p class="use">Shares of a whole: tokenomics, market share. Demo values are illustrative.</p><button class="replay">Replay</button></div>
+        </article>
+    </main>
+</div>
+
+<!-- BUILD:INLINE library.js -->
+<script src="library.js"></script>
+<script>
+    /* Gallery wiring: frame scaling, theme/mode switch, replay */
+    const fit = () => document.querySelectorAll('.frame').forEach((f) => {
+        const w = +getComputedStyle(f).getPropertyValue('--w');
+        f.firstElementChild.style.transform = `scale(${f.clientWidth / w})`;
+    });
+    new ResizeObserver(fit).observe(document.body); fit();
+    const all = () => document.querySelectorAll('[data-fsc]').forEach((el) => FSC.play(el));
+    document.querySelectorAll('[data-theme-btn]').forEach((b) => b.addEventListener('click', () => {
+        document.documentElement.dataset.theme = b.dataset.themeBtn;
+        document.querySelectorAll('[data-theme-btn]').forEach((x) => x.setAttribute('aria-pressed', x === b));
+        all();
+    }));
+    document.getElementById('mode').addEventListener('click', (e) => {
+        const on = document.documentElement.classList.toggle('dark');
+        e.currentTarget.setAttribute('aria-pressed', on);
+    });
+    document.getElementById('replayAll').addEventListener('click', all);
+    document.querySelectorAll('.card .replay').forEach((b) => b.addEventListener('click', () => FSC.play(b.closest('.card').querySelector('[data-fsc]'))));
+    // Allow ?theme=terminal&mode=dark for screenshots
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('theme')) document.querySelector(`[data-theme-btn="${qs.get('theme')}"]`)?.click();
+    if (qs.get('mode') === 'dark') document.getElementById('mode').click();
+</script>
+</body>
+</html>

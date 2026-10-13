@@ -25,6 +25,17 @@ This copy of the skill is customized with the user's own design system in [brand
 - **Override:** if the user explicitly asks for a non-brand style (a preset, a bold template, "something different"), ignore the brand and run Phase 2 as written below.
 - Brand rules never relax the Fixed Stage Rules or the overflow and overlap checks.
 
+## Component Library (REUSABLE VISUALS)
+
+Brand decks draw from the animated component library in [components/](components/README.md): chain append, transaction lifecycle, network gossip, Merkle tree, hash-reveal text, terminal, activity heatmap, spectrum, and line / bar / doughnut charts.
+
+- Before Phase 3, read `components/README.md`. While planning the outline, mark which slides would genuinely explain better with a component (processes, systems, structures, comparisons, data). Typical deck: 2–5 components. Never force one onto every slide.
+- Build brand decks on `brand/tokens.css` (`<html data-theme="...">`) and inline `components/library.css` + `components/library.js` (or only the sections used).
+- Charts take data from a JSON block. Use the user's real numbers; if none exist, label figures as illustrative or ask.
+- When enhancing an existing deck (Mode C), look for slides whose text describes a process, system or dataset and propose swapping in a component. Tell the user which slides changed and why.
+- Images: follow the Images section of `components/README.md` (local files preferred, Unsplash only on explicit request, integrated into the composition).
+- New or changed components go into the library (not just one deck): update `library.css/js`, rebuild `components/gallery.html` with `components/build.py`, and screenshot-check it.
+
 ## Design Aesthetics
 
 You tend to converge toward generic, "on distribution" outputs. In frontend design, this creates what users call the "AI slop" aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.
@@ -386,6 +397,10 @@ This captures each slide as a screenshot and combines them into a PDF. Perfect f
 | [bold-template-pack/templates/*/design.md](bold-template-pack/templates/) | Detailed design-system docs for the selected bold template only | Phase 3 after user selection |
 | [brand/BRAND.md](brand/BRAND.md) | The user's personal design system: shared rules plus Ledger / Editorial / Terminal themes | Before Phase 2, for every new deck |
 | [brand/themes/*.html](brand/themes/) | Reference title slides for each brand theme (light and dark) | Phase 3, chosen theme only |
+| [brand/tokens.css](brand/tokens.css) | CSS variables for all brand themes × light/dark | Phase 3, every brand deck |
+| [components/README.md](components/README.md) | Component catalog, embedding rules, data format, image rules | Before Phase 3 |
+| [components/library.css](components/library.css) / [library.js](components/library.js) | Component implementation to inline into decks | Phase 3 |
+| [components/gallery.html](components/gallery.html) | Bento preview of every component (theme + mode switcher) | When reviewing or editing components |
 | [viewport-base.css](viewport-base.css)             | Mandatory fixed-stage CSS — copy into every presentation             | Phase 3 (generation)      |
 | [html-template.md](html-template.md)               | HTML structure, JS features, code quality standards                  | Phase 3 (generation)      |
 | [animation-patterns.md](animation-patterns.md)     | CSS/JS animation snippets and effect-to-feeling guide                | Phase 3 (generation)      |

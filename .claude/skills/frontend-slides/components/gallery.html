@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="ledger">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&family=JetBrains+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=Unbounded:wght@500;700;800&display=swap">
+    <style>
+/* inlined from ../brand/tokens.css */
+/* ===========================================
+   BRAND TOKENS: Ledger / Editorial / Terminal × light / dark
+   Usage: <html data-theme="ledger"> (add class="dark" for dark mode).
+   Source of truth for colors and fonts is brand/BRAND.md; keep in sync.
+   Components in components/library.css read ONLY these variables.
+   =========================================== */
+
+/* ---------- Ledger ---------- */
+html[data-theme="ledger"] {
+    --paper: #f3f2ee; --ink: #121316; --muted: #6b6d73; --rule: rgba(18, 19, 22, .14);
+    --accent: #2445ff; --on-accent: #ffffff; --panel: #e8e7e1;
+    --font-display: 'Archivo', sans-serif; --display-weight: 900; --display-case: none; --display-tracking: -0.035em;
+    --font-body: 'Archivo', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    --radius: 0px; --stroke: 2px;
+}
+html[data-theme="ledger"].dark {
+    --paper: #0b0c10; --ink: #eceef3; --muted: #8a8f9c; --rule: rgba(236, 238, 243, .14);
+    --accent: #5a72ff; --on-accent: #0b0c10; --panel: #15171d;
+}
+
+/* ---------- Editorial ---------- */
+html[data-theme="editorial"] {
+    --paper: #f2ece0; --ink: #13302a; --muted: #5d6b63; --rule: rgba(19, 48, 42, .18);
+    --accent: #d9931c; --on-accent: #13302a; --panel: #e8dfcd;
+    --font-display: 'Fraunces', serif; --display-weight: 600; --display-case: none; --display-tracking: -0.02em;
+    --font-body: 'Instrument Sans', sans-serif; --font-mono: 'IBM Plex Mono', monospace;
+    --radius: 2px; --stroke: 2px;
+}
+html[data-theme="editorial"].dark {
+    --paper: #0f2621; --ink: #f1e9da; --muted: #9fb1a7; --rule: rgba(241, 233, 218, .16);
+    --accent: #f0ad3a; --on-accent: #13302a; --panel: #163530;
+}
+
+/* ---------- Terminal ---------- */
+html[data-theme="terminal"] {
+    --paper: #e9ebe4; --ink: #0e0f0c; --muted: #5e6158; --rule: rgba(14, 15, 12, .16);
+    --accent: #b6e400; --on-accent: #0e0f0c; --panel: #d7dacf;
+    --font-display: 'Unbounded', sans-serif; --display-weight: 800; --display-case: uppercase; --display-tracking: -0.03em;
+    --font-body: 'IBM Plex Mono', monospace; --font-mono: 'IBM Plex Mono', monospace;
+    --radius: 0px; --stroke: 2px;
+}
+html[data-theme="terminal"].dark {
+    --paper: #0c0d0b; --ink: #eef1e6; --muted: #878b7e; --rule: rgba(238, 241, 230, .14);
+    --accent: #c8ff1a; --on-accent: #0c0d0b; --panel: #1a1c17;
+}
+
+/* Font links per theme (paste the one you use into <head>):
+   Ledger:    https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500&display=swap
+   Editorial: https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap
+   Terminal:  https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap
+*/
+
+</style>
+    <style>
+/* inlined from library.css */
+/* ===========================================
+   FSC — FRONTEND SLIDES COMPONENT LIBRARY (styles)
+   Reads brand tokens only (see brand/tokens.css).
+   Every component fills its container: give the host element
+   an explicit width/height in 1920×1080 stage pixels.
+   Animation starts when the element gets .is-playing (library.js).
+   =========================================== */
+
+.fsc { position: relative; width: 100%; height: 100%; color: var(--ink); font-family: var(--font-body); }
+.fsc * { box-sizing: border-box; }
+.fsc svg { max-width: none; max-height: none; display: block; }
+.fsc .mono { font-family: var(--font-mono); }
+
+@keyframes fsc-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes fsc-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fsc-slide { from { opacity: 0; transform: translateX(-36px); } to { opacity: 1; transform: none; } }
+@keyframes fsc-grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes fsc-grow-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes fsc-draw { to { stroke-dashoffset: 0; } }
+@keyframes fsc-ping { from { transform: scale(1); opacity: .7; } to { transform: scale(3.2); opacity: 0; } }
+@keyframes fsc-blink { 50% { opacity: 0; } }
+
+/* Hidden-until-played helpers */
+.fsc [data-anim] { opacity: 0; }
+.fsc.is-done [data-anim] { opacity: 1; }
+
+/* === CHAIN APPEND ====================================== */
+.fsc-chain { display: flex; align-items: center; justify-content: center; }
+.fsc-chain .row { display: flex; align-items: center; width: 100%; }
+.fsc-chain .blk {
+    flex: 1 1 0; min-width: 0; padding: 22px 22px 20px; border: var(--stroke) solid var(--ink);
+    border-radius: var(--radius); background: var(--paper); font-family: var(--font-mono);
+    font-size: 18px; line-height: 1.6; color: var(--muted); opacity: 0;
+}
+.fsc-chain .blk b { display: block; font-size: 26px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+.fsc-chain .blk .k { color: var(--ink); }
+.fsc-chain .blk.accent { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.fsc-chain .blk.accent b, .fsc-chain .blk.accent .k { color: var(--on-accent); }
+.fsc-chain .lnk { flex: 0 0 48px; height: var(--stroke); background: var(--ink); transform: scaleX(0); transform-origin: left; }
+.fsc-chain.is-playing .blk { animation: fsc-slide .7s cubic-bezier(.16,1,.3,1) calc(var(--i) * .55s) forwards; }
+.fsc-chain.is-playing .lnk { animation: fsc-grow-x .35s ease calc(var(--i) * .55s + .35s) forwards; }
+.fsc-chain.is-done .blk { opacity: 1; } .fsc-chain.is-done .lnk { transform: none; }
+
+/* === TRANSACTION LIFECYCLE ============================= */
+.fsc-tx { display: flex; flex-direction: column; justify-content: center; padding: 0 40px; }
+.fsc-tx .track { position: relative; height: var(--stroke); background: var(--rule); margin: 0 30px; }
+.fsc-tx .fill { position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: left; }
+.fsc-tx .dot { position: absolute; top: 50%; left: 0; width: 18px; height: 18px; margin: -9px 0 0 -9px; background: var(--accent); border-radius: 50%; opacity: 0; }
+.fsc-tx .stations { display: grid; grid-template-columns: repeat(var(--n), 1fr); margin: -17px -30px 0; }
+.fsc-tx .st { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.fsc-tx .st i { width: 32px; height: 32px; border-radius: 50%; border: var(--stroke) solid var(--ink); background: var(--paper); transition: background .3s; }
+.fsc-tx .st b { margin-top: 26px; font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 32px; letter-spacing: -0.01em; }
+.fsc-tx .st span { margin-top: 8px; font-family: var(--font-mono); font-size: 17px; color: var(--muted); max-width: 200px; line-height: 1.4; }
+.fsc-tx.is-playing .fill { animation: fsc-grow-x var(--dur) linear .3s forwards; }
+.fsc-tx.is-playing .dot { animation: fsc-tx-move var(--dur) linear .3s forwards; }
+@keyframes fsc-tx-move { 0% { left: 0; opacity: 1; } 99% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+.fsc-tx.is-playing .st i { animation: fsc-tx-on .3s ease calc(.3s + var(--i) * var(--step)) forwards; }
+.fsc-tx.is-playing .st:last-child i { animation-name: fsc-tx-final; }
+@keyframes fsc-tx-on { to { background: var(--ink); } }
+@keyframes fsc-tx-final { to { background: var(--accent); border-color: var(--accent); } }
+.fsc-tx.is-done .fill { transform: none; } .fsc-tx.is-done .st i { background: var(--ink); }
+.fsc-tx.is-done .st:last-child i { background: var(--accent); border-color: var(--accent); }
+
+/* === NETWORK GOSSIP ==================================== */
+.fsc-gossip svg { width: 100%; height: calc(100% - 50px); }
+.fsc-gossip line { stroke: var(--rule); stroke-width: 2; }
+.fsc-gossip line.hot { stroke: var(--ink); stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-gossip .node { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.fsc-gossip .ring { fill: none; stroke: var(--ink); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.fsc-gossip .origin { fill: var(--accent); stroke: var(--accent); }
+.fsc-gossip .ring.origin-ring { stroke: var(--accent); fill: none; }
+.fsc-gossip.is-playing line.hot { animation: fsc-draw .4s ease calc(var(--d) * .5s) forwards; }
+.fsc-gossip.is-playing .node:not(.origin) { animation: fsc-gossip-on .25s ease calc(var(--d) * .5s) forwards; }
+.fsc-gossip.is-playing .ring { animation: fsc-ping .9s ease-out calc(var(--d) * .5s) forwards; }
+@keyframes fsc-gossip-on { to { fill: var(--ink); } }
+.fsc-gossip.is-done line.hot { stroke-dashoffset: 0; } .fsc-gossip.is-done .node:not(.origin) { fill: var(--ink); }
+.fsc-gossip .cap { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 18px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; padding-top: 18px; border-top: 1px solid var(--rule); }
+.fsc-gossip .cap b { color: var(--ink); font-weight: 500; }
+
+/* === MERKLE TREE ======================================= */
+.fsc-merkle svg { width: 100%; height: 100%; }
+.fsc-merkle rect { fill: var(--paper); stroke: var(--ink); stroke-width: 2; rx: var(--radius); }
+.fsc-merkle text { font-family: var(--font-mono); font-size: 17px; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.fsc-merkle text.h { font-size: 13px; fill: var(--muted); }
+.fsc-merkle .root rect { fill: var(--accent); stroke: var(--accent); }
+.fsc-merkle .root text { fill: var(--on-accent); font-weight: 500; }
+.fsc-merkle path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-merkle g.n { opacity: 0; }
+.fsc-merkle.is-playing g.n { animation: fsc-rise .5s cubic-bezier(.16,1,.3,1) calc(var(--l) * .6s) forwards; }
+.fsc-merkle.is-playing path { animation: fsc-draw .45s ease calc(var(--l) * .6s - .2s) forwards; }
+.fsc-merkle.is-done g.n { opacity: 1; } .fsc-merkle.is-done path { stroke-dashoffset: 0; }
+
+/* === HASH REVEAL (text effect) ========================= */
+.fsc-hash { display: flex; flex-direction: column; justify-content: center; }
+.fsc-hash .word { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: var(--size, 120px); line-height: .95; white-space: pre-wrap; }
+.fsc-hash .word .sc { font-family: var(--font-mono); font-weight: 400; color: var(--muted); letter-spacing: 0; }
+.fsc-hash .digest { margin-top: 28px; font-family: var(--font-mono); font-size: 20px; color: var(--muted); letter-spacing: .04em; word-break: break-all; }
+.fsc-hash .digest b { color: var(--accent); font-weight: 500; }
+
+/* === TERMINAL ========================================== */
+.fsc-term { display: flex; flex-direction: column; border: var(--stroke) solid var(--ink); border-radius: var(--radius); background: var(--panel); overflow: hidden; }
+.fsc-term .bar { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-bottom: var(--stroke) solid var(--ink); font-family: var(--font-mono); font-size: 16px; color: var(--muted); letter-spacing: .08em; }
+.fsc-term .bar i { width: 12px; height: 12px; border: 2px solid var(--ink); }
+.fsc-term .bar span { margin-left: 12px; }
+.fsc-term .body { flex: 1; padding: 26px 30px; font-family: var(--font-mono); font-size: 20px; line-height: 1.6; overflow: hidden; }
+.fsc-term .body p { white-space: pre-wrap; color: var(--muted); }
+.fsc-term .body p[data-cmd] { color: var(--ink); }
+.fsc-term .body p[data-cmd]::before { content: '$ '; color: var(--muted); }
+.fsc-term .body p.hl { color: var(--accent); }
+.fsc-term .body p + p[data-cmd] { margin-top: 14px; }
+.fsc-term .caret { display: inline-block; width: .6em; height: 1.1em; vertical-align: -0.2em; background: var(--ink); animation: fsc-blink 1s steps(1) infinite; }
+
+/* === HEATMAP =========================================== */
+.fsc-heat { display: grid; grid-template-columns: 70px 1fr; grid-template-rows: 1fr auto auto; column-gap: 14px; }
+.fsc-heat .rows { display: grid; font-family: var(--font-mono); font-size: 16px; color: var(--muted); align-items: center; }
+.fsc-heat .grid { display: grid; gap: 4px; }
+.fsc-heat .cell { border-radius: var(--radius); opacity: 0; }
+.fsc-heat.is-playing .cell { animation: fsc-fade .4s ease calc(var(--d) * 1s) forwards; }
+.fsc-heat.is-done .cell { opacity: 1; }
+.fsc-heat .cols { grid-column: 2; display: flex; justify-content: space-between; margin-top: 10px; font-family: var(--font-mono); font-size: 15px; color: var(--muted); }
+.fsc-heat .legend { grid-column: 2; display: flex; align-items: center; gap: 12px; margin-top: 14px; font-family: var(--font-mono); font-size: 15px; color: var(--muted); }
+.fsc-heat .legend .ramp { width: 200px; height: 12px; background: linear-gradient(90deg, var(--panel), var(--accent)); }
+
+/* === SPECTRUM ========================================== */
+.fsc-spec { display: flex; flex-direction: column; justify-content: center; padding: 0 20px; }
+.fsc-spec .lane { position: relative; height: 300px; }
+.fsc-spec .axis { position: absolute; left: 0; right: 0; top: 150px; height: var(--stroke); background: var(--ink); transform: scaleX(0); transform-origin: left; }
+.fsc-spec .axis::before, .fsc-spec .axis::after { content: ''; position: absolute; top: -9px; width: var(--stroke); height: 20px; background: var(--ink); }
+.fsc-spec .axis::before { left: 0; } .fsc-spec .axis::after { right: 0; }
+.fsc-spec .mk { position: absolute; left: calc(var(--p) * 100%); width: 0; opacity: 0; }
+.fsc-spec .mk i { position: absolute; left: -9px; top: 141px; width: 18px; height: 18px; border-radius: 50%; background: var(--paper); border: var(--stroke) solid var(--ink); }
+.fsc-spec .mk .stem { position: absolute; left: -1px; width: 2px; background: var(--rule); }
+.fsc-spec .mk span { position: absolute; transform: translateX(-50%); white-space: nowrap; font-size: 22px; font-weight: 500; }
+.fsc-spec .mk.up .stem { top: 60px; height: 81px; } .fsc-spec .mk.up span { top: 20px; }
+.fsc-spec .mk.down .stem { top: 159px; height: 81px; } .fsc-spec .mk.down span { top: 248px; }
+.fsc-spec .mk.hl i { background: var(--accent); border-color: var(--accent); }
+.fsc-spec .mk.hl span { color: var(--ink); }
+.fsc-spec .mk:not(.hl) span { color: var(--muted); }
+.fsc-spec .ends { display: flex; justify-content: space-between; margin-top: 10px; font-family: var(--font-mono); font-size: 18px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.fsc-spec.is-playing .axis { animation: fsc-grow-x .9s cubic-bezier(.16,1,.3,1) forwards; }
+.fsc-spec.is-playing .mk { animation: fsc-rise .6s cubic-bezier(.16,1,.3,1) calc(.5s + var(--i) * .18s) forwards; }
+.fsc-spec.is-done .axis { transform: none; } .fsc-spec.is-done .mk { opacity: 1; }
+
+/* === CHARTS (line / bar / doughnut) ==================== */
+.fsc-chart svg { width: 100%; height: 100%; overflow: visible; }
+.fsc-chart .grid line { stroke: var(--rule); stroke-width: 1; }
+.fsc-chart .axis-l text, .fsc-chart .axis-b text { font-family: var(--font-mono); font-size: 19px; fill: var(--muted); }
+.fsc-chart .axis-l text { text-anchor: end; dominant-baseline: central; }
+.fsc-chart .axis-b text { text-anchor: middle; }
+.fsc-chart .val { font-family: var(--font-mono); font-size: 21px; fill: var(--ink); text-anchor: middle; opacity: 0; }
+.fsc-chart .val.hl { fill: var(--accent); font-weight: 500; }
+.fsc-chart .legend text { font-family: var(--font-mono); font-size: 20px; fill: var(--muted); dominant-baseline: central; }
+/* line */
+.fsc-chart .ln { fill: none; stroke: var(--muted); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-chart .ln.hl { stroke: var(--accent); stroke-width: 4; }
+.fsc-chart .area { fill: var(--accent); opacity: 0; }
+.fsc-chart .pt { fill: var(--accent); opacity: 0; }
+.fsc-chart.is-playing .ln { animation: fsc-draw 1.6s cubic-bezier(.45,0,.2,1) .2s forwards; }
+.fsc-chart.is-playing .area { animation: fsc-area .8s ease 1.4s forwards; }
+.fsc-chart.is-playing .pt, .fsc-chart.is-playing .val { animation: fsc-fade .4s ease 1.7s forwards; }
+@keyframes fsc-area { to { opacity: .08; } }
+/* bar */
+.fsc-chart .bar { fill: var(--muted); opacity: .55; transform-box: fill-box; transform-origin: bottom; transform: scaleY(0); }
+.fsc-chart .bar.hl { fill: var(--accent); opacity: 1; }
+.fsc-chart.is-playing .bar { animation: fsc-grow-y .8s cubic-bezier(.16,1,.3,1) calc(.2s + var(--i) * .08s) forwards; }
+.fsc-chart.is-playing .val { animation-delay: calc(.7s + var(--i, 0) * .08s); }
+/* doughnut */
+.fsc-chart .seg { fill: none; stroke-width: 56; stroke-dasharray: 0 100; }
+.fsc-chart.is-playing .seg { animation: fsc-seg .7s cubic-bezier(.45,0,.2,1) calc(.2s + var(--i) * .25s) forwards; }
+@keyframes fsc-seg { to { stroke-dasharray: var(--v) 100; } }
+.fsc-chart .center-big { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 64px; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.fsc-chart .center-small { font-family: var(--font-mono); font-size: 16px; fill: var(--muted); text-anchor: middle; letter-spacing: .1em; }
+.fsc-chart.is-done .ln { stroke-dashoffset: 0; } .fsc-chart.is-done .area { opacity: .08; }
+.fsc-chart.is-done .pt, .fsc-chart.is-done .val { opacity: 1; } .fsc-chart.is-done .bar { transform: none; }
+.fsc-chart.is-done .seg { stroke-dasharray: var(--v) 100; }
+
+/* === REDUCED MOTION: jump to final state =============== */
+@media (prefers-reduced-motion: reduce) {
+    .fsc .blk, .fsc [data-anim], .fsc .cell, .fsc .mk, .fsc g.n, .fsc .val, .fsc .pt { opacity: 1 !important; animation: none !important; }
+    .fsc .lnk, .fsc .fill, .fsc .axis, .fsc .bar { transform: none !important; animation: none !important; }
+    .fsc path, .fsc line.hot, .fsc .ln { stroke-dashoffset: 0 !important; animation: none !important; }
+    .fsc .seg { stroke-dasharray: var(--v) 100 !important; animation: none !important; }
+}
+
+</style>
+    <style>
+        /* ===========================================
+           GALLERY CHROME (not part of the library)
+           =========================================== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { background: var(--paper); color: var(--ink); font-family: var(--font-body); transition: background .3s, color .3s; }
+        body { padding: 40px 16px 80px; }
+        .wrap { max-width: 1480px; margin: 0 auto; }
+        header { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; }
+        h1 { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: clamp(36px, 5vw, 64px); line-height: 1; }
+        h1 span { color: var(--accent); }
+        header p { margin-top: 10px; color: var(--muted); max-width: 640px; line-height: 1.5; }
+        .controls { display: flex; flex-wrap: wrap; gap: 8px; }
+        .controls button { font: 500 13px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; padding: 10px 14px; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); border-radius: var(--radius); cursor: pointer; }
+        .controls button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+        .bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+        .card { grid-column: span var(--span, 6); border: 1px solid var(--rule); background: color-mix(in srgb, var(--panel) 45%, var(--paper)); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+        .card .hd { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+        .card h2 { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 22px; letter-spacing: -0.01em; }
+        .card code { font: 12px var(--font-mono); color: var(--muted); }
+        .card .use { font-size: 14px; color: var(--muted); line-height: 1.45; }
+        .card .replay { font: 500 12px var(--font-mono); color: var(--muted); background: none; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: .1em; }
+        .card .replay:hover { color: var(--ink); }
+        /* Component frames are authored in stage pixels and scaled to the card */
+        .frame { position: relative; width: 100%; aspect-ratio: var(--w) / var(--h); overflow: hidden; }
+        .frame > .inner { position: absolute; left: 0; top: 0; width: calc(var(--w) * 1px); height: calc(var(--h) * 1px); transform-origin: 0 0; }
+        @media (max-width: 900px) { .card { grid-column: span 12; } }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <header>
+        <div>
+            <h1>Component library<span>.</span></h1>
+            <p>Reusable animated blocks for MSBT blockchain decks. Each one follows the active brand theme and mode. Click a card's replay to re-run it.</p>
+        </div>
+        <div class="controls" role="group" aria-label="Theme">
+            <button data-theme-btn="ledger" aria-pressed="true">Ledger</button>
+            <button data-theme-btn="editorial" aria-pressed="false">Editorial</button>
+            <button data-theme-btn="terminal" aria-pressed="false">Terminal</button>
+            <button id="mode" aria-pressed="false">Dark</button>
+            <button id="replayAll">Replay all</button>
+        </div>
+    </header>
+
+    <main class="bento">
+        <article class="card" style="--span:8">
+            <div class="hd"><h2>Chain append</h2><code>data-fsc="chain"</code></div>
+            <div class="frame" style="--w:1280;--h:300"><div class="inner"><div data-fsc="chain" data-count="4" data-start="1024"></div></div></div>
+            <div class="hd"><p class="use">How blocks link by hash. Title slides, "what is a blockchain", immutability.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:4">
+            <div class="hd"><h2>Hash reveal</h2><code>data-fsc="hash"</code></div>
+            <div class="frame" style="--w:760;--h:300"><div class="inner"><div data-fsc="hash" data-text="Trustless." data-size="96px"></div></div></div>
+            <div class="hd"><p class="use">Text effect for a key term or statement slide.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>Transaction lifecycle</h2><code>data-fsc="tx"</code></div>
+            <div class="frame" style="--w:1600;--h:260"><div class="inner"><div data-fsc="tx"></div></div></div>
+            <div class="hd"><p class="use">Any step-by-step process: tx flow, settlement, KYC onboarding, a research method. Steps are set with data-steps.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Network gossip</h2><code>data-fsc="gossip"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="gossip" data-nodes="14" data-caption="Block propagation"></div></div></div>
+            <div class="hd"><p class="use">P2P networks, consensus, propagation, decentralization.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Merkle tree</h2><code>data-fsc="merkle"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="merkle"></div></div></div>
+            <div class="hd"><p class="use">Data structures, inclusion proofs, light clients, rollups.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:5">
+            <div class="hd"><h2>Terminal</h2><code>data-fsc="term"</code></div>
+            <div class="frame" style="--w:760;--h:440"><div class="inner">
+                <div data-fsc="term" data-title="zsh — sepolia">
+                    <p data-cmd>cast call $TKN "balanceOf(address)" $ALICE</p>
+                    <p>1000.00 tDEP</p>
+                    <p data-cmd>cast send $TKN "transfer(address,uint256)" $BOB 250</p>
+                    <p class="hl">status   1 (success)</p>
+                    <p>block    21004512</p>
+                    <p>gasUsed  34,513</p>
+                </div>
+            </div></div>
+            <div class="hd"><p class="use">Smart-contract demos, CLI tooling, "how I tested it".</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:7">
+            <div class="hd"><h2>Activity heatmap</h2><code>data-fsc="heat"</code></div>
+            <div class="frame" style="--w:1040;--h:440"><div class="inner">
+                <div data-fsc="heat"><script type="application/json">{"low":"Low gas","high":"High gas"}</script></div>
+            </div></div>
+            <div class="hd"><p class="use">Usage patterns by day × hour: gas, tx count, wallet activity. Values 0–1 in JSON.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>Spectrum</h2><code>data-fsc="spec"</code></div>
+            <div class="frame" style="--w:1600;--h:380"><div class="inner">
+                <div data-fsc="spec" data-left="Centralized" data-right="Decentralized">
+                    <i data-pos="0.05">CBDC</i>
+                    <i data-pos="0.24" data-hl>Tokenized deposits</i>
+                    <i data-pos="0.46">Regulated stablecoins</i>
+                    <i data-pos="0.72">Crypto-backed stablecoins</i>
+                    <i data-pos="0.95">Bitcoin</i>
+                </div>
+            </div></div>
+            <div class="hd"><p class="use">Positioning and comparison: where your topic sits between two extremes.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:4">
+            <div class="hd"><h2>Line chart</h2><code>data-fsc="line"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="line"></div></div></div>
+            <div class="hd"><p class="use">Trends over time. Demo values are illustrative.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:4">
+            <div class="hd"><h2>Bar chart</h2><code>data-fsc="bar"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="bar"></div></div></div>
+            <div class="hd"><p class="use">Comparing chains, protocols, costs. Demo values are illustrative.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:4">
+            <div class="hd"><h2>Doughnut</h2><code>data-fsc="doughnut"</code></div>
+            <div class="frame" style="--w:900;--h:500"><div class="inner"><div data-fsc="doughnut"></div></div></div>
+            <div class="hd"><p class="use">Shares of a whole: tokenomics, market share. Demo values are illustrative.</p><button class="replay">Replay</button></div>
+        </article>
+    </main>
+</div>
+
+<script>
+/* inlined from library.js */
+/* ===========================================
+   FSC — FRONTEND SLIDES COMPONENT LIBRARY (behavior)
+   Usage: <div class="fsc" data-fsc="chain" ...></div>
+   - Mounts every [data-fsc] element on load.
+   - Plays a component when its .slide becomes .visible
+     (or when scrolled into view if it is not inside a slide).
+   - API: FSC.play(el), FSC.update(el, data), FSC.mountAll(root)
+   Data for charts/heatmap lives in a child
+   <script type="application/json"> so it can be swapped for real data.
+   =========================================== */
+(function () {
+    const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const R = {};          // registry: name -> { mount(el), play(el)? , total(el)? }
+    const timers = new WeakMap();
+
+    /* ---------- helpers ---------- */
+    const h = (tag, attrs = {}, html = '') => {
+        const e = document.createElement(tag);
+        for (const k in attrs) e.setAttribute(k, attrs[k]);
+        if (html) e.innerHTML = html;
+        return e;
+    };
+    const SVGNS = 'http://www.w3.org/2000/svg';
+    const svgEl = (tag, attrs = {}) => {
+        const e = document.createElementNS(SVGNS, tag);
+        for (const k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
+    };
+    const readJSON = (el) => {
+        const s = el.querySelector('script[type="application/json"]');
+        try { return s ? JSON.parse(s.textContent) : null; } catch (e) { console.warn('FSC: bad JSON in', el); return null; }
+    };
+    // Deterministic pseudo-hash so demos look stable between renders
+    const fakeHash = (seed, len = 4) => {
+        let x = (seed * 2654435761) >>> 0, out = '';
+        for (let i = 0; i < len * 2; i++) { x = (x * 1103515245 + 12345) >>> 0; out += '0123456789abcdef'[(x >>> 16) & 15]; }
+        return '0x' + out.slice(0, len) + '…' + out.slice(len);
+    };
+    const fmt = (v, unit = '') => (Math.abs(v) >= 1000 ? v.toLocaleString('en-US') : +v.toFixed(2)) + unit;
+    const niceMax = (v) => { const p = Math.pow(10, Math.floor(Math.log10(v))); return Math.ceil(v / p * 1.1) * p; };
+
+    /* ---------- core ---------- */
+    function mount(el) {
+        const c = R[el.dataset.fsc];
+        if (!c) return console.warn('FSC: unknown component', el.dataset.fsc);
+        if (!el._fscSource) el._fscSource = el.innerHTML;   // keep authored content for re-mounts
+        el.innerHTML = el._fscSource;
+        el.classList.add('fsc', 'fsc-' + (c.cls || el.dataset.fsc));
+        el.classList.remove('is-playing', 'is-done');
+        c.mount(el);
+        el._fscMounted = true;
+        if (REDUCED) finish(el);
+    }
+    function finish(el) { el.classList.remove('is-playing'); el.classList.add('is-done'); const c = R[el.dataset.fsc]; c.final && c.final(el); }
+    function play(el) {
+        if (!el._fscMounted) mount(el);
+        if (REDUCED) return finish(el);
+        (timers.get(el) || []).forEach(clearTimeout);
+        timers.set(el, []);
+        el.classList.remove('is-playing', 'is-done');
+        void el.offsetWidth;                       // restart CSS animations
+        el.classList.add('is-playing');
+        const c = R[el.dataset.fsc];
+        c.play && c.play(el, (fn, ms) => timers.get(el).push(setTimeout(fn, ms)));
+    }
+    function update(el, data) {
+        const s = el._fscSource !== undefined ? h('div', {}, el._fscSource) : el;
+        let js = s.querySelector('script[type="application/json"]');
+        if (!js) { js = h('script', { type: 'application/json' }); s.appendChild(js); }
+        js.textContent = JSON.stringify(data);
+        el._fscSource = s.innerHTML;
+        mount(el); play(el);
+    }
+    function mountAll(root = document) { root.querySelectorAll('[data-fsc]').forEach(mount); }
+
+    /* Auto-play: on slide visibility, or on scroll-into-view outside decks */
+    function wire(root = document) {
+        mountAll(root);
+        root.querySelectorAll('.slide').forEach((slide) => {
+            const run = () => slide.classList.contains('visible') && slide.querySelectorAll('[data-fsc]').forEach(play);
+            new MutationObserver((m) => m.some((r) => r.oldValue && !r.oldValue.includes('visible')) && run())
+                .observe(slide, { attributes: true, attributeFilter: ['class'], attributeOldValue: true });
+            run();
+        });
+        const loose = [...root.querySelectorAll('[data-fsc]')].filter((e) => !e.closest('.slide'));
+        if (loose.length) {
+            const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { play(e.target); io.unobserve(e.target); } }), { threshold: 0.4 });
+            loose.forEach((e) => io.observe(e));
+        }
+    }
+
+    /* ===========================================
+       COMPONENTS
+       =========================================== */
+
+    /* --- CHAIN APPEND ---
+       data-count="4" data-start="1024"  (last block is accent)
+       Optional children <b>labels</b> are ignored; use data-labels="Genesis|…" to name blocks. */
+    R.chain = {
+        mount(el) {
+            const n = +(el.dataset.count || 4), start = +(el.dataset.start || 1024);
+            const labels = (el.dataset.labels || '').split('|').filter(Boolean);
+            const row = h('div', { class: 'row' });
+            for (let i = 0; i < n; i++) {
+                if (i) row.appendChild(h('div', { class: 'lnk', style: `--i:${i}` }));
+                const b = h('div', { class: 'blk' + (i === n - 1 ? ' accent' : ''), style: `--i:${i}` },
+                    `<b>${labels[i] || '#' + (start + i)}</b><div><span class="k">prev</span> ${i ? fakeHash(start + i - 1) : '0x0000…0000'}</div><div><span class="k">hash</span> ${fakeHash(start + i)}</div>`);
+                row.appendChild(b);
+            }
+            el.innerHTML = ''; el.appendChild(row);
+        }
+    };
+
+    /* --- TRANSACTION LIFECYCLE ---
+       data-steps="Sign:Wallet signs tx|Mempool:Waits for inclusion|…"  (Label:caption) */
+    R.tx = {
+        mount(el) {
+            const steps = (el.dataset.steps || 'Sign:Wallet signs the tx|Broadcast:Enters the mempool|Validate:Validator checks it|Include:Packed into a block|Final:Irreversible').split('|').map((s) => s.split(':'));
+            const n = steps.length, step = 0.75;
+            el.style.setProperty('--n', n); el.style.setProperty('--step', step + 's'); el.style.setProperty('--dur', (n - 1) * step + 's');
+            el.innerHTML = `<div class="track"><div class="fill"></div><div class="dot"></div></div>
+                <div class="stations">${steps.map(([t, c], i) => `<div class="st" style="--i:${i}"><i></i><b>${t}</b>${c ? `<span>${c}</span>` : ''}</div>`).join('')}</div>`;
+        }
+    };
+
+    /* --- NETWORK GOSSIP ---
+       data-nodes="14" data-caption="Block propagation" ; origin node is accent. */
+    R.gossip = {
+        mount(el) {
+            const n = Math.min(+(el.dataset.nodes || 14), 20), W = 880, H = 440;
+            // golden-angle spiral layout, stretched to the box: deterministic and evenly spread
+            const pts = Array.from({ length: n }, (_, i) => {
+                const r = Math.sqrt((i + 0.5) / n), a = i * 2.399963;
+                return [W / 2 + Math.cos(a) * r * (W / 2 - 40), H / 2 + Math.sin(a) * r * (H / 2 - 30)];
+            });
+            const d2 = (a, b) => (pts[a][0] - pts[b][0]) ** 2 + (pts[a][1] - pts[b][1]) ** 2;
+            const edges = new Set();
+            pts.forEach((_, i) => pts.map((_, j) => j).filter((j) => j !== i).sort((a, b) => d2(i, a) - d2(i, b)).slice(0, 3)
+                .forEach((j) => edges.add(i < j ? i + '-' + j : j + '-' + i)));
+            const adj = pts.map(() => []);
+            [...edges].forEach((e) => { const [a, b] = e.split('-').map(Number); adj[a].push(b); adj[b].push(a); });
+            const origin = +(el.dataset.origin || n - 1), hop = pts.map(() => Infinity); hop[origin] = 0;
+            const q = [origin];
+            while (q.length) { const u = q.shift(); adj[u].forEach((v) => { if (hop[v] === Infinity) { hop[v] = hop[u] + 1; q.push(v); } }); }
+            const maxHop = Math.max(...hop.filter(isFinite));
+            const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid meet' });
+            [...edges].forEach((e) => {
+                const [a, b] = e.split('-').map(Number);
+                const attrs = { x1: pts[a][0], y1: pts[a][1], x2: pts[b][0], y2: pts[b][1] };
+                svg.appendChild(svgEl('line', attrs));
+                // "hot" overlay drawn from the earlier-reached node outward
+                const [s, t] = hop[a] <= hop[b] ? [a, b] : [b, a];
+                if (hop[t] === hop[s] + 1) svg.appendChild(svgEl('line', { class: 'hot', pathLength: 1, x1: pts[s][0], y1: pts[s][1], x2: pts[t][0], y2: pts[t][1], style: `--d:${hop[s]}` }));
+            });
+            pts.forEach(([x, y], i) => {
+                svg.appendChild(svgEl('circle', { class: 'ring' + (i === origin ? ' origin-ring' : ''), cx: x, cy: y, r: 13, style: `--d:${hop[i]}` }));
+                svg.appendChild(svgEl('circle', { class: 'node' + (i === origin ? ' origin' : ''), cx: x, cy: y, r: 13, style: `--d:${hop[i]}` }));
+            });
+            el.innerHTML = '';
+            el.appendChild(svg);
+            el.appendChild(h('div', { class: 'cap' }, `<span>${el.dataset.caption || 'Block propagation'}</span><span><b>${n}</b> nodes · <b>${maxHop}</b> hops</span>`));
+        }
+    };
+
+    /* --- MERKLE TREE ---
+       data-leaves="Tx1|Tx2|…" (power of two: 4 or 8). Root is accent. */
+    R.merkle = {
+        mount(el) {
+            const leaves = (el.dataset.leaves || 'Tx1|Tx2|Tx3|Tx4|Tx5|Tx6|Tx7|Tx8').split('|');
+            const levels = [leaves];
+            while (levels[levels.length - 1].length > 1) {
+                const prev = levels[levels.length - 1], next = [];
+                for (let i = 0; i < prev.length; i += 2) next.push(prev.length === 2 ? 'Root' : 'H' + (levels.length) + '·' + (i / 2 + 1));
+                levels.push(next);
+            }
+            const W = 900, H = 500, L = levels.length, bw = Math.min(96, W / leaves.length - 16), bh = 54;
+            const y = (l) => H - 40 - l * ((H - 80) / (L - 1)) - bh / 2;
+            const x = (l, i) => (W / levels[l].length) * (i + 0.5);
+            const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid meet' });
+            let seed = 7;
+            for (let l = 1; l < L; l++) levels[l].forEach((_, i) => [2 * i, 2 * i + 1].forEach((c) => {
+                svg.appendChild(svgEl('path', { pathLength: 1, d: `M${x(l - 1, c)} ${y(l - 1)} V${(y(l - 1) + y(l) + bh) / 2} H${x(l, i)} V${y(l) + bh}`, style: `--l:${l}` }));
+            }));
+            levels.forEach((lv, l) => lv.forEach((name, i) => {
+                const w = l === L - 1 ? 200 : bw, g = svgEl('g', { class: 'n' + (l === L - 1 ? ' root' : ''), style: `--l:${l}` });
+                g.appendChild(svgEl('rect', { x: x(l, i) - w / 2, y: y(l), width: w, height: bh }));
+                const t = svgEl('text', { x: x(l, i), y: y(l) + (l === 0 ? bh / 2 : 19) }); t.textContent = name; g.appendChild(t);
+                if (l > 0) { const hh = svgEl('text', { class: 'h', x: x(l, i), y: y(l) + 38 }); hh.textContent = fakeHash(seed++, 3); g.appendChild(hh); }
+                svg.appendChild(g);
+            }));
+            el.innerHTML = ''; el.appendChild(svg);
+        }
+    };
+
+    /* --- HASH REVEAL (text effect) ---
+       data-text="Trustless." data-size="120px" ; shows a fake digest under the word
+       unless data-digest="off". */
+    R.hash = {
+        mount(el) {
+            const text = el.dataset.text || el.textContent.trim() || 'Trustless.';
+            el.dataset.text = text;
+            if (el.dataset.size) el.style.setProperty('--size', el.dataset.size);
+            el.innerHTML = `<div class="word">${text}</div>` + (el.dataset.digest === 'off' ? '' : `<div class="digest mono">sha256 → <b>${fakeHash(text.length * 97, 10)}</b></div>`);
+        },
+        play(el, later) {
+            const word = el.querySelector('.word'), text = el.dataset.text, hex = '0123456789abcdef', dur = 1300, t0 = performance.now();
+            const tick = (t) => {
+                const p = (t - t0) / dur;
+                if (p >= 1 || !el.classList.contains('is-playing')) { word.textContent = text; return; }
+                word.innerHTML = [...text].map((ch, i) => (ch === ' ' || p > (i + 1) / text.length * 0.85 + 0.15) ? ch
+                    : `<span class="sc">${hex[(Math.random() * 16) | 0]}</span>`).join('');
+                requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        },
+        final(el) { const w = el.querySelector('.word'); if (w) w.textContent = el.dataset.text; }
+    };
+
+    /* --- TERMINAL ---
+       Children: <p data-cmd>command</p> lines are typed; other <p> are output.
+       Add class="hl" to ONE output line for the accent. data-title="zsh — sepolia" */
+    R.term = {
+        cls: 'term',
+        mount(el) {
+            const lines = [...el.querySelectorAll('p')].map((p) => p.outerHTML).join('');
+            el.innerHTML = `<div class="bar"><i></i><i></i><i></i><span>${el.dataset.title || 'terminal'}</span></div><div class="body">${lines}</div>`;
+            el.querySelectorAll('.body p').forEach((p) => { p.dataset.full = p.textContent; });
+        },
+        play(el, later) {
+            const ps = [...el.querySelectorAll('.body p')];
+            ps.forEach((p) => { p.textContent = ''; p.style.visibility = 'hidden'; });
+            const caret = h('span', { class: 'caret' });
+            let t = 300;
+            ps.forEach((p) => {
+                const full = p.dataset.full;
+                if (p.hasAttribute('data-cmd')) {
+                    later(() => { p.style.visibility = 'visible'; p.appendChild(caret); }, t);
+                    for (let i = 1; i <= full.length; i++) later(() => { p.textContent = full.slice(0, i); p.appendChild(caret); }, t += 32);
+                    t += 350;
+                } else {
+                    later(() => { p.style.visibility = 'visible'; p.textContent = full; p.appendChild(caret); }, t += 140);
+                }
+            });
+        },
+        final(el) { el.querySelectorAll('.body p').forEach((p) => { p.style.visibility = 'visible'; p.textContent = p.dataset.full; }); }
+    };
+    R.terminal = R.term;
+
+    /* --- HEATMAP ---
+       JSON: { "rows": ["Mon",…], "cols": 24, "colLabels": ["00h","06h","12h","18h","24h"],
+               "values": [[0..1,…],…], "low": "Low gas", "high": "High gas" }
+       Values are 0..1 (normalize your data). Omit "values" for a demo pattern. */
+    R.heat = {
+        cls: 'heat',
+        mount(el) {
+            const d = Object.assign({ rows: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], cols: 24, colLabels: ['00h', '06h', '12h', '18h', '24h'], low: 'Low', high: 'High' }, readJSON(el) || {});
+            const vals = d.values || d.rows.map((_, r) => Array.from({ length: d.cols }, (_, c) => {
+                const day = r < 5 ? 1 : 0.55, peak = Math.exp(-((c - 15) ** 2) / 18) * 0.85 + Math.exp(-((c - 9) ** 2) / 10) * 0.35;
+                return Math.min(1, Math.max(0.04, day * peak + 0.08 * (((r * 31 + c * 17) % 7) / 7)));
+            }));
+            const json = el.querySelector('script[type="application/json"]');
+            el.innerHTML = '';
+            if (json) el.appendChild(json);
+            const rows = h('div', { class: 'rows', style: `grid-template-rows:repeat(${d.rows.length},1fr)` }, d.rows.map((r) => `<div>${r}</div>`).join(''));
+            const grid = h('div', { class: 'grid', style: `grid-template-columns:repeat(${d.cols},1fr);grid-template-rows:repeat(${d.rows.length},1fr)` });
+            vals.forEach((row, r) => row.forEach((v, c) => grid.appendChild(h('div', {
+                class: 'cell', style: `--d:${((r + c) / (d.rows.length + d.cols)).toFixed(3)};background:color-mix(in srgb, var(--accent) ${Math.round(v * 100)}%, var(--panel))`, title: `${d.rows[r]} ${c}: ${v}`
+            }))));
+            el.append(rows, grid,
+                h('div', { class: 'cols' }, d.colLabels.map((l) => `<span>${l}</span>`).join('')),
+                h('div', { class: 'legend' }, `<span>${d.low}</span><span class="ramp"></span><span>${d.high}</span>`));
+        }
+    };
+    R.heatmap = R.heat;
+
+    /* --- SPECTRUM ---
+       data-left="Centralized" data-right="Decentralized"
+       Children: <i data-pos="0.25">Tokenized deposits</i> ; add data-hl to ONE item. */
+    R.spec = {
+        cls: 'spec',
+        mount(el) {
+            const items = [...el.querySelectorAll('i[data-pos]')].map((i) => ({ p: +i.dataset.pos, t: i.innerHTML, hl: i.hasAttribute('data-hl') })).sort((a, b) => a.p - b.p);
+            el.innerHTML = `<div class="lane"><div class="axis"></div>${items.map((it, k) =>
+                `<div class="mk ${k % 2 ? 'down' : 'up'}${it.hl ? ' hl' : ''}" style="--p:${it.p};--i:${k}"><div class="stem"></div><i></i><span>${it.t}</span></div>`).join('')}</div>
+                <div class="ends"><span>← ${el.dataset.left || 'Centralized'}</span><span>${el.dataset.right || 'Decentralized'} →</span></div>`;
+        }
+    };
+    R.spectrum = R.spec;
+
+    /* --- CHARTS (shared frame) ---
+       JSON: { "labels": [...], "series": [{ "name": "...", "values": [...], "highlight": true }],
+               "unit": "%", "highlight": "LabelName" (bar/doughnut) } */
+    function frame(el, W, H, pad) {
+        const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid meet' });
+        const json = el.querySelector('script[type="application/json"]');
+        el.innerHTML = ''; if (json) el.appendChild(json); el.appendChild(svg);
+        return svg;
+    }
+    function gridY(svg, max, unit, x0, x1, y0, y1, ticks = 4) {
+        const g = svgEl('g', { class: 'grid' }), ax = svgEl('g', { class: 'axis-l' });
+        for (let i = 0; i <= ticks; i++) {
+            const y = y1 - (y1 - y0) * i / ticks;
+            g.appendChild(svgEl('line', { x1: x0, x2: x1, y1: y, y2: y }));
+            const t = svgEl('text', { x: x0 - 14, y }); t.textContent = fmt(max * i / ticks, unit); ax.appendChild(t);
+        }
+        svg.append(g, ax);
+    }
+
+    R.line = {
+        cls: 'chart',
+        mount(el) {
+            const d = readJSON(el) || { labels: ['2021', '2022', '2023', '2024', '2025', '2026'], unit: ' bn', series: [
+                { name: 'Stablecoins', values: [5, 140, 125, 160, 230, 290], highlight: true },
+                { name: 'Tokenized deposits', values: [0, 1, 4, 12, 30, 62] }] };
+            const W = 900, H = 500, x0 = 90, x1 = W - 30, y0 = 30, y1 = H - 60;
+            const svg = frame(el, W, H);
+            const max = niceMax(Math.max(...d.series.flatMap((s) => s.values)));
+            gridY(svg, max, d.unit || '', x0, x1, y0, y1);
+            const X = (i) => x0 + (x1 - x0) * i / (d.labels.length - 1), Y = (v) => y1 - (y1 - y0) * v / max;
+            const axb = svgEl('g', { class: 'axis-b' });
+            d.labels.forEach((l, i) => { const t = svgEl('text', { x: X(i), y: y1 + 34 }); t.textContent = l; axb.appendChild(t); });
+            svg.appendChild(axb);
+            d.series.forEach((s) => {
+                const pts = s.values.map((v, i) => `${X(i)},${Y(v)}`);
+                if (s.highlight) svg.appendChild(svgEl('path', { class: 'area', d: `M${X(0)},${y1} L${pts.join(' L')} L${X(s.values.length - 1)},${y1} Z` }));
+                svg.appendChild(svgEl('path', { class: 'ln' + (s.highlight ? ' hl' : ''), pathLength: 1, d: 'M' + pts.join(' L') }));
+                const lx = X(s.values.length - 1), ly = Y(s.values[s.values.length - 1]);
+                if (s.highlight) svg.appendChild(svgEl('circle', { class: 'pt', cx: lx, cy: ly, r: 7 }));
+                const t = svgEl('text', { class: 'val' + (s.highlight ? ' hl' : ''), x: lx - 10, y: ly - 18, 'text-anchor': 'end' });
+                t.textContent = `${s.name} · ${fmt(s.values[s.values.length - 1], d.unit || '')}`; t.style.textAnchor = 'end';
+                svg.appendChild(t);
+            });
+        }
+    };
+
+    R.bar = {
+        cls: 'chart',
+        mount(el) {
+            const d = readJSON(el) || { labels: ['Bitcoin', 'Ethereum', 'Polygon', 'Solana', 'Avalanche'], unit: '', highlight: 'Solana',
+                series: [{ name: 'TPS (observed)', values: [7, 15, 190, 1050, 120] }] };
+            const vals = d.series[0].values, W = 900, H = 500, x0 = 90, x1 = W - 20, y0 = 40, y1 = H - 60;
+            const svg = frame(el, W, H);
+            const max = niceMax(Math.max(...vals));
+            gridY(svg, max, d.unit || '', x0, x1, y0, y1);
+            const slot = (x1 - x0) / vals.length, bw = Math.min(110, slot * 0.58);
+            const axb = svgEl('g', { class: 'axis-b' });
+            vals.forEach((v, i) => {
+                const cx = x0 + slot * (i + 0.5), top = y1 - (y1 - y0) * v / max, hl = d.labels[i] === d.highlight;
+                svg.appendChild(svgEl('rect', { class: 'bar' + (hl ? ' hl' : ''), x: cx - bw / 2, y: top, width: bw, height: y1 - top, style: `--i:${i}` }));
+                const t = svgEl('text', { class: 'val' + (hl ? ' hl' : ''), x: cx, y: top - 14, style: `--i:${i}` }); t.textContent = fmt(v, d.unit || ''); svg.appendChild(t);
+                const l = svgEl('text', { x: cx, y: y1 + 34 }); l.textContent = d.labels[i]; axb.appendChild(l);
+            });
+            svg.appendChild(axb);
+        }
+    };
+
+    R.doughnut = {
+        cls: 'chart',
+        mount(el) {
+            const d = readJSON(el) || { labels: ['Community', 'Ecosystem fund', 'Team', 'Investors', 'Treasury'], unit: '%', highlight: 'Community',
+                center: '1B', centerLabel: 'TOTAL SUPPLY', series: [{ values: [38, 22, 18, 14, 8] }] };
+            const vals = d.series[0].values, total = vals.reduce((a, b) => a + b, 0);
+            const W = 900, H = 500, cx = 250, cy = 250, r = 170;
+            const svg = frame(el, W, H);
+            // ink shades for non-highlighted slices; highlight gets the accent
+            const shades = ['var(--ink)', 'var(--muted)', 'color-mix(in srgb, var(--muted) 55%, var(--paper))', 'color-mix(in srgb, var(--muted) 30%, var(--paper))', 'var(--rule)'];
+            let acc = 0, k = 0;
+            const g = svgEl('g', { transform: `rotate(-90 ${cx} ${cy})` });
+            const leg = svgEl('g', { class: 'legend' });
+            vals.forEach((v, i) => {
+                const pct = v / total * 100, hl = d.labels[i] === d.highlight, col = hl ? 'var(--accent)' : shades[k++ % shades.length];
+                g.appendChild(svgEl('circle', { class: 'seg', cx, cy, r, pathLength: 100, stroke: col, 'stroke-dashoffset': -acc, style: `--v:${Math.max(pct - 0.6, 0.1)};--i:${i}` }));
+                acc += pct;
+                const ly = 110 + i * 62;
+                leg.appendChild(svgEl('rect', { x: 540, y: ly - 10, width: 20, height: 20, fill: col }));
+                const t = svgEl('text', { x: 576, y: ly }); t.textContent = d.labels[i]; leg.appendChild(t);
+                const tv = svgEl('text', { class: 'val' + (hl ? ' hl' : ''), x: 870, y: ly, 'text-anchor': 'end', style: `--i:${i}` });
+                tv.textContent = fmt(v, d.unit || ''); tv.style.textAnchor = 'end'; tv.style.dominantBaseline = 'central'; leg.appendChild(tv);
+            });
+            svg.append(g, leg);
+            const c1 = svgEl('text', { class: 'center-big', x: cx, y: cy - 8 }); c1.textContent = d.center || fmt(total, d.unit || '');
+            const c2 = svgEl('text', { class: 'center-small', x: cx, y: cy + 44 }); c2.textContent = d.centerLabel || '';
+            svg.append(c1, c2);
+        }
+    };
+
+    window.FSC = { play, update, mount, mountAll, wire, registry: R };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => wire());
+    else wire();
+})();
+
+</script>
+<script>
+    /* Gallery wiring: frame scaling, theme/mode switch, replay */
+    const fit = () => document.querySelectorAll('.frame').forEach((f) => {
+        const w = +getComputedStyle(f).getPropertyValue('--w');
+        f.firstElementChild.style.transform = `scale(${f.clientWidth / w})`;
+    });
+    new ResizeObserver(fit).observe(document.body); fit();
+    const all = () => document.querySelectorAll('[data-fsc]').forEach((el) => FSC.play(el));
+    document.querySelectorAll('[data-theme-btn]').forEach((b) => b.addEventListener('click', () => {
+        document.documentElement.dataset.theme = b.dataset.themeBtn;
+        document.querySelectorAll('[data-theme-btn]').forEach((x) => x.setAttribute('aria-pressed', x === b));
+        all();
+    }));
+    document.getElementById('mode').addEventListener('click', (e) => {
+        const on = document.documentElement.classList.toggle('dark');
+        e.currentTarget.setAttribute('aria-pressed', on);
+    });
+    document.getElementById('replayAll').addEventListener('click', all);
+    document.querySelectorAll('.card .replay').forEach((b) => b.addEventListener('click', () => FSC.play(b.closest('.card').querySelector('[data-fsc]'))));
+    // Allow ?theme=terminal&mode=dark for screenshots
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('theme')) document.querySelector(`[data-theme-btn="${qs.get('theme')}"]`)?.click();
+    if (qs.get('mode') === 'dark') document.getElementById('mode').click();
+</script>
+</body>
+</html>
