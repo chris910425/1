@@ -388,20 +388,72 @@ html[data-theme="terminal"].dark {
 .fsc-chainloop.bg .blk.accent { background: var(--paper); border-color: var(--ink); color: var(--muted); }
 .fsc-chainloop.bg .blk.accent b, .fsc-chainloop.bg .blk.accent .k { color: var(--ink); }
 
-/* === LANDMARKS (NTU illustrations) ==================== */
-.fsc-landmark { display: flex; flex-direction: column; color: var(--ink); }
-.fsc-landmark .landmark-svg { width: 100%; height: 100%; flex: 1; min-height: 0; }
-.fsc-landmark .landmark-svg path { stroke-width: 2; }
-.fsc-landmark .landmark-svg .fillp { fill: var(--paper); }
-.fsc-landmark.is-playing .line-ico .dr { animation: fsc-draw 1.1s cubic-bezier(.45,0,.2,1) calc(var(--k) * .018s) forwards; }
-.fsc-landmark .lm-cap { margin-top: 10px; text-align: center; font-family: var(--font-mono); font-size: 18px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.fsc-landmark.bg { opacity: .14; pointer-events: none; }
-.fsc-landmark.bg .landmark-svg .as { stroke: currentColor; }
-.fsc-landmark.bg .landmark-svg .fillp { fill: var(--paper); }
-.fsc-landmark.bg.is-playing .line-ico .dr { animation-duration: 2.4s; animation-delay: calc(var(--k) * .03s); }
+/* === THE HIVE: exterior =============================== */
+.fsc-hive, .fsc-oculus { display: flex; flex-direction: column; color: var(--ink); }
+/* The Hive keeps its real materials in both modes: pale ribbed concrete, dark core, dark gaps */
+.fsc-hive { --stone: var(--paper); --line: var(--ink); --shadow: var(--ink); --coreC: var(--ink); --ribC: var(--paper); --leafC: color-mix(in srgb, var(--ink) 72%, var(--paper)); }
+html.dark .fsc-hive { --stone: color-mix(in srgb, var(--ink) 86%, var(--paper)); --line: var(--paper); --shadow: var(--paper); --coreC: color-mix(in srgb, var(--ink) 16%, var(--paper)); --ribC: var(--ink); --leafC: color-mix(in srgb, var(--ink) 55%, var(--paper)); }
+.fsc-hive .hive-svg, .fsc-oculus .oculus-svg { width: 100%; flex: 1; min-height: 0; overflow: visible; }
+.fsc-hive .pod { fill: var(--stone); stroke: var(--line); stroke-width: 2.2; stroke-linejoin: round; }
+.fsc-hive .rib-h { fill: none; stroke: var(--line); stroke-opacity: .32; stroke-width: 1.1; stroke-linecap: round; }
+.fsc-hive .shade { pointer-events: none; }
+.fsc-hive .trunk, .fsc-hive .blade { fill: none; stroke: color-mix(in srgb, var(--ink) 75%, var(--paper)); stroke-width: 2.2; stroke-linecap: round; }
+.fsc-hive .leaf.lt { fill: color-mix(in srgb, var(--leafC) 60%, var(--stone)); }
+.fsc-hive .slit { fill: var(--shadow); }
+.fsc-hive .depth1 .pod { stroke-width: 2; }
+.fsc-hive .depth2 .pod { fill: color-mix(in srgb, var(--stone) 82%, var(--shadow)); stroke: color-mix(in srgb, var(--line) 55%, var(--stone)); stroke-width: 1.8; }
+.fsc-hive .depth2 .slit { fill: color-mix(in srgb, var(--shadow) 70%, var(--stone)); }
+.fsc-hive .core { fill: var(--coreC); }
+.fsc-hive .rib { fill: none; stroke: var(--ribC); stroke-opacity: .28; stroke-width: 1.4; }
+.fsc-hive .rib.band { stroke-opacity: .45; }
+.fsc-hive .door { fill: var(--ribC); opacity: .15; }
+.fsc-hive .leaf { fill: var(--leafC); }
+.fsc-hive .vine { fill: none; stroke: color-mix(in srgb, var(--ink) 70%, var(--paper)); stroke-width: 1.6; }
+.fsc-hive .ground { fill: none; stroke: var(--ink); stroke-width: 2; }
+/* night: the gaps glow */
+.fsc-hive .night .slit.glow { fill: var(--accent); filter: drop-shadow(0 0 5px var(--accent)); }
+.fsc-hive .night .depth2 .slit.glow { fill: color-mix(in srgb, var(--accent) 70%, var(--paper)); filter: drop-shadow(0 0 5px var(--accent)); }
+/* build-up animation: towers stack from the ground, floor by floor */
+.fsc-hive .pod-g, .fsc-hive .plants, .fsc-hive .vine.late, .fsc-hive .core-g, .fsc-hive .slit { opacity: 0; }
+.fsc-hive.is-playing .pod-g { animation: fsc-rise .55s cubic-bezier(.16,1,.3,1) calc(var(--o) * .12s + var(--p) * .11s) forwards; }
+.fsc-hive.is-playing .core-g { transform-box: fill-box; transform-origin: bottom; animation: fsc-core 1.1s cubic-bezier(.16,1,.3,1) .2s forwards; }
+@keyframes fsc-core { from { opacity: 0; transform: scaleY(.2); } to { opacity: 1; transform: none; } }
+.fsc-hive.is-playing .slit { animation: fsc-fade .6s ease calc(var(--o) * .12s) forwards; }
+.fsc-hive.is-playing .night .slit.glow { animation: fsc-fade 1s ease calc(1.6s + var(--o) * .1s) forwards; }
+.fsc-hive.is-playing .plants, .fsc-hive.is-playing .vine.late { transform-box: fill-box; transform-origin: bottom; animation: fsc-grow 1s cubic-bezier(.16,1,.3,1) calc(1.3s + var(--o) * .08s) forwards; }
+@keyframes fsc-grow { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+.fsc-hive.is-done .pod-g, .fsc-hive.is-done .plants, .fsc-hive.is-done .vine.late, .fsc-hive.is-done .core-g, .fsc-hive.is-done .slit { opacity: 1; }
+
+/* === THE HIVE: atrium looking up (oculus) ============= */
+.fsc-oculus { --deep: var(--ink); --light: var(--paper); }
+html.dark .fsc-oculus { --deep: var(--paper); --light: var(--ink); }
+.fsc-oculus .oculus-svg { overflow: hidden; }
+.fsc-oculus .slab { fill: color-mix(in srgb, var(--deep) var(--shade), var(--light)); }
+.fsc-oculus .lip { fill: none; stroke: var(--light); stroke-opacity: .16; stroke-width: 12; }
+.fsc-oculus .edge { fill: none; stroke: var(--light); stroke-opacity: .7; stroke-width: 2.4; }
+.fsc-oculus .rail { fill: none; stroke: var(--light); stroke-opacity: .22; stroke-width: 1.2; }
+.fsc-oculus .vines ellipse { fill: color-mix(in srgb, var(--light) 70%, var(--accent)); opacity: .8; }
+.fsc-oculus .glass { fill: color-mix(in srgb, var(--accent) 22%, var(--light)); filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 40%, var(--light))); }
+.fsc-oculus .grid { fill: none; stroke: var(--deep); stroke-opacity: .12; stroke-width: 1.5; }
+.fsc-oculus .ring { opacity: 0; transform-box: view-box; transform-origin: 50% 50%; }
+.fsc-oculus .sky { opacity: 0; }
+.fsc-oculus .vines { opacity: 0; }
+.fsc-oculus.is-playing .ring { animation: fsc-ring .9s cubic-bezier(.16,1,.3,1) calc(var(--k) * .09s) forwards; }
+@keyframes fsc-ring { from { opacity: 0; transform: scale(1.12); } to { opacity: 1; transform: none; } }
+.fsc-oculus.is-playing .sky { animation: fsc-fade 1.2s ease 1.1s forwards; }
+.fsc-oculus.is-playing .vines { animation: fsc-fade .8s ease 1.8s forwards; }
+.fsc-oculus.is-done .ring, .fsc-oculus.is-done .sky, .fsc-oculus.is-done .vines { opacity: 1; }
+.fsc-oculus.spin-on .spin { transform-box: view-box; transform-origin: 54% 47%; animation: fsc-spin 240s linear infinite; }
+@keyframes fsc-spin { to { transform: rotate(360deg); } }
+
+/* shared caption + background mode */
+.fsc-hive .lm-cap, .fsc-oculus .lm-cap { margin-top: 10px; text-align: center; font-family: var(--font-mono); font-size: 18px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.fsc-hive.bg, .fsc-oculus.bg { opacity: .16; pointer-events: none; }
+.fsc-hive.bg .night .slit.glow { filter: none; }
 
 @media (prefers-reduced-motion: reduce) {
     .fsc-chainloop .track { transition: none; }
+    .fsc-hive *, .fsc-oculus * { animation: none !important; opacity: 1 !important; transform: none !important; }
     .fsc-chainloop .blk.live, .fsc-chainloop .lnk.live { animation: none; }
 }
 
@@ -439,6 +491,9 @@ html[data-theme="terminal"].dark {
         .bg-title { position: absolute; left: 120px; top: 260px; }
         .bg-title small { font: 22px var(--font-mono); color: var(--accent); letter-spacing: .14em; text-transform: uppercase; }
         .bg-title h3 { margin-top: 18px; font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: 150px; line-height: .95; }
+        .night-demo .night-title { position: absolute; left: 40px; top: 200px; }
+        .night-title small { font: 20px var(--font-mono); color: var(--accent); letter-spacing: .14em; text-transform: uppercase; }
+        .night-title h3 { margin-top: 18px; font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: 76px; line-height: 1; }
         @media (max-width: 900px) { .card { grid-column: span 12; } }
     </style>
 </head>
@@ -592,7 +647,7 @@ html[data-theme="terminal"].dark {
 
         <article class="card" style="--span:6">
             <div class="hd"><h2>Singapore life icons</h2><code>data-icon="hawker"</code></div>
-            <div class="frame" style="--w:1000;--h:720"><div class="inner"><div data-fsc="iconset" data-cols="5" data-size="72px" data-icons="hawker|kopi|crab|durian|bus|mrt|transit|hdb|hive|nbs|mbs|supertree|study|laptop|rain|sun|plane"></div></div></div>
+            <div class="frame" style="--w:1000;--h:720"><div class="inner"><div data-fsc="iconset" data-cols="5" data-size="72px" data-icons="hawker|kopi|crab|durian|bus|mrt|transit|hdb|hive|mbs|supertree|study|laptop|rain|sun|plane"></div></div></div>
             <div class="hd"><p class="use">Student life in Singapore: food, transport, housing, landmarks, weather.</p><button class="replay">Replay</button></div>
         </article>
 
@@ -602,26 +657,33 @@ html[data-theme="terminal"].dark {
             <div class="hd"><p class="use">Blocks keep being mined and linked while the chain glides left. Title and section slides, or add data-mode="bg" for a faint background. Runs only while its slide is on screen.</p><button class="replay">Restart</button></div>
         </article>
 
-        <article class="card" style="--span:6">
-            <div class="hd"><h2>The Hive · NTU</h2><code>data-name="hive"</code></div>
-            <div class="frame" style="--w:900;--h:640"><div class="inner"><div data-fsc="landmark" data-name="hive"></div></div></div>
-            <div class="hd"><p class="use">Campus-life slides, title backgrounds (data-mode="bg").</p><button class="replay">Replay</button></div>
+        <article class="card" style="--span:7">
+            <div class="hd"><h2>The Hive · day</h2><code>data-fsc="hive"</code></div>
+            <div class="frame" style="--w:1000;--h:720"><div class="inner"><div data-fsc="hive"></div></div></div>
+            <div class="hd"><p class="use">Towers of ribbed "baskets" stack up floor by floor around the stair core, then the roof gardens grow.</p><button class="replay">Replay</button></div>
         </article>
 
-        <article class="card" style="--span:6">
-            <div class="hd"><h2>Wee Cho Yaw Plaza · NBS</h2><code>data-name="nbs"</code></div>
-            <div class="frame" style="--w:900;--h:640"><div class="inner"><div data-fsc="landmark" data-name="nbs"></div></div></div>
-            <div class="hd"><p class="use">Business-school context, sustainability (zero-energy timber building, solar roof in accent).</p><button class="replay">Replay</button></div>
+        <article class="card" style="--span:5">
+            <div class="hd"><h2>Inside · looking up</h2><code>data-fsc="oculus"</code></div>
+            <div class="frame" style="--w:720;--h:1008"><div class="inner"><div data-fsc="oculus" data-spin="on"></div></div></div>
+            <div class="hd"><p class="use">The scalloped atrium closing in on the skylight. Great as a section-divider background; data-spin="on" turns very slowly.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>The Hive · night</h2><code>data-glow="on"</code></div>
+            <div class="frame" style="--w:1600;--h:760"><div class="inner night-demo"><div data-fsc="hive" data-glow="on" style="width:1060px;height:760px;margin-left:540px"></div>
+                <div class="night-title"><small>MSBT · Life in Singapore</small><h3>Late nights<br>at <span data-fx="highlight">The Hive</span>.</h3></div></div></div>
+            <div class="hd"><p class="use">Night version: the gaps between floors glow in the accent. Best in dark mode.</p><button class="replay">Replay</button></div>
         </article>
 
         <article class="card" style="--span:12">
             <div class="hd"><h2>Background use</h2><code>data-mode="bg"</code></div>
             <div class="frame" style="--w:1920;--h:620"><div class="inner bg-demo">
-                <div data-fsc="landmark" data-name="hive" data-mode="bg" style="position:absolute;right:40px;bottom:0;width:700px;height:490px"></div>
+                <div data-fsc="oculus" data-mode="bg" style="position:absolute;right:0;top:0;width:900px;height:620px"></div>
                 <div data-fsc="chainloop" data-mode="bg" style="position:absolute;left:0;right:0;top:40px;height:200px;width:1920px"></div>
                 <div class="bg-title"><small>MSBT · Life in Singapore</small><h3>One year at <span data-fx="underline">NTU</span>.</h3></div>
             </div></div>
-            <div class="hd"><p class="use">Faint landmark + background chain behind a title. The landmark and loop stay quiet so the text leads.</p><button class="replay">Replay</button></div>
+            <div class="hd"><p class="use">Faint Hive atrium + background chain behind a title. Backgrounds stay quiet so the text leads.</p><button class="replay">Replay</button></div>
         </article>
     </main>
 </div>
@@ -681,8 +743,7 @@ window.FSC_ICONS = (function () {
         sun: I('Heat', 'life', '<circle class="a" cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="8"/><path d="M24 5v6M24 37v6M5 24h6M37 24h6M10.5 10.5l4 4M33.5 33.5l4 4M37.5 10.5l-4 4M14.5 33.5l-4 4"/>'),
         transit: I('Transit card', 'life', '<rect x="5" y="12" width="30" height="22" rx="3"/><path d="M10 28h10M38 18c3 3 3 9 0 12M42 14.5c5 5 5 14 0 19"/><rect class="a" x="10" y="17" width="7" height="5" rx="1"/>'),
         phone: I('Phone apps', 'life', '<rect x="14" y="5" width="20" height="38" rx="3"/><path d="M21 9h6"/><rect class="a" x="18" y="14" width="5" height="5" rx="1"/><path d="M26 14h4v5h-4zM18 22h5v5h-5zM26 22h4v5h-4z"/>'),
-        hive: I('The Hive (NTU)', 'life', '<path d="M8 42c-2-9-1-19 1-27h9c2 8 3 18 1 27zM19 42c-1-11 0-22 2-31h9c2 9 3 20 2 31zM31 42c-1-8 0-16 2-22h8c1 6 1 14 0 22z"/><path d="M9 20h9M8 26h11M8 32h11M8 37h11M21 16h9M20 22h11M20 28h11M20 34h11M32 26h9M32 32h9M32 37h9M4 42h40"/><path class="as" d="M21 11h9"/>'),
-        nbs: I('Wee Cho Yaw Plaza (NBS)', 'life', '<path d="M4 20c12-4 28-4 40 0v21c-12-3-28-3-40 0z"/><path d="M4 27c12-3.5 28-3.5 40 0M4 34c12-3.5 28-3.5 40 0M11 18.5v21M18 17.5v21M30 17.5v21M37 18.5v21"/><path d="M21 31h6v8h-6z"/><path class="as" d="M7 15c11-3.5 23-3.5 34 0"/>'),
+        hive: I('The Hive (NTU)', 'life', '<path d="M20 7h7v35h-7zM23.5 7v35"/><path d="M6 16c0-2 12-2 12 0v5c0 2-12 2-12 0zM6.5 24c0-2 11-2 11 0v5c0 2-11 2-11 0zM7.5 32c0-2 9-2 9 0v5c0 2-9 2-9 0zM29 10c0-5 13-5 13 0v6c0 2-13 2-13 0zM29 20c0-2 13-2 13 0v6c0 2-13 2-13 0zM30 30c0-2 11-2 11 0v6c0 2-11 2-11 0z"/><path class="as" d="M7 13c2-3 4-3 5-1 1-3 4-3 6 0"/>'),
         plane: I('Travel / Changi', 'life', '<path d="M21 6c0-2 6-2 6 0v12l15 8v4l-15-4v9l5 4v3l-8-2-8 2v-3l5-4v-9L6 30v-4l15-8z"/><path class="as" d="M21 18h6"/>'),
 
         /* ---------- Characters (Alice & Bob convention) ---------- */
@@ -1356,57 +1417,148 @@ window.FSC_ICONS = (function () {
     };
 
     /* ===========================================
-       LANDMARKS: NTU line illustrations
-       data-name="hive" | "nbs"   data-mode="bg" (faint background decoration)
-       Drawn procedurally so they scale cleanly; they draw themselves in.
+       THE HIVE (NTU Learning Hub) — illustrations
+       data-fsc="hive"    exterior: towers of stacked, ribbed "baskets" around a ribbed stair core.
+                          data-glow="on" = night version: gaps between baskets glow in the accent.
+       data-fsc="oculus"  interior looking up: scalloped balcony rings around the skylight, vines.
+                          data-spin="on" = very slow ambient rotation.
+       Both accept data-mode="bg" (faint background) and data-label="off".
        =========================================== */
-    function hiveSVG() {
-        // The Hive (Heatherwick): a cluster of rounded towers of stacked floors, narrower at the base
-        const towers = [ // [cx, top, topW, baseW, base]  back row first
-            [150, 70, 92, 54, 360], [262, 40, 100, 58, 360], [378, 58, 96, 56, 360], [478, 96, 84, 50, 360],
-            [96, 150, 78, 46, 380], [206, 128, 96, 56, 380], [322, 110, 104, 60, 380], [430, 150, 90, 52, 380], [528, 182, 72, 44, 380]];
-        let out = '';
-        towers.forEach(([cx, top, tw, bw, base], t) => {
-            const L = (y) => cx - (bw + (tw - bw) * Math.pow((base - y) / (base - top), 0.7)) / 2, Rr = (y) => 2 * cx - L(y);
-            const side = (f) => { let d = ''; for (let y = base; y >= top; y -= 8) d += `${d ? 'L' : 'M'}${f(y).toFixed(1)} ${y}`; return d; };
-            const outline = side(L) + ` Q${cx} ${top - 14} ${Rr(top).toFixed(1)} ${top} ` + side(Rr).replace('M', 'L').split('L').filter(Boolean).reverse().map((p) => 'L' + p).join('') + ` Q${cx} ${base + 10} ${L(base).toFixed(1)} ${base}Z`;
-            out += `<path class="fillp" d="${outline}"/>`;
-            for (let y = top + 18; y < base - 4; y += 19) out += `<path d="M${L(y).toFixed(1)} ${y}Q${cx} ${y + 7} ${Rr(y).toFixed(1)} ${y}"/>`;
-            if (t === 6) out += `<path class="as" d="M${L(top + 18).toFixed(1)} ${top + 18}Q${cx} ${top + 25} ${Rr(top + 18).toFixed(1)} ${top + 18}"/>`;
+    let uid = 0;
+    const rnd = (seed) => () => { seed = (seed * 1103515245 + 12345) >>> 0; return ((seed >>> 16) & 32767) / 32767; };
+    const bez = (p0, p1, p2, p3, t) => { const u = 1 - t; return u * u * u * p0 + 3 * u * u * t * p1 + 3 * u * t * t * p2 + t * t * t * p3; };
+
+    function hiveExterior(glow) {
+        const r = rnd(42), gid = 'hv' + (++uid);
+        const defs = `<defs><linearGradient id="${gid}x" x1="0" x2="1"><stop offset="0" style="stop-color:var(--shadow);stop-opacity:.42"/><stop offset=".2" style="stop-color:var(--shadow);stop-opacity:.08"/><stop offset=".55" style="stop-color:var(--shadow);stop-opacity:0"/><stop offset=".85" style="stop-color:var(--shadow);stop-opacity:.14"/><stop offset="1" style="stop-color:var(--shadow);stop-opacity:.48"/></linearGradient>` +
+            `<linearGradient id="${gid}y" x1="0" x2="0" y1="0" y2="1"><stop offset="0" style="stop-color:var(--shadow);stop-opacity:.1"/><stop offset=".25" style="stop-color:var(--shadow);stop-opacity:0"/><stop offset=".72" style="stop-color:var(--shadow);stop-opacity:0"/><stop offset="1" style="stop-color:var(--shadow);stop-opacity:.38"/></linearGradient></defs>`;
+        // [cx, width, top, base, pods, depth(0 front,1 mid,2 back), profile, plants]
+        const towers = [
+            [878, 50, 430, 600, 5, 2, 'taper', 1], [826, 78, 300, 628, 7, 2, 'taper', 1], [190, 82, 236, 638, 7, 2, 'taper', 1],
+            [742, 104, 246, 636, 7, 1, 'taper', 1], ['core'],
+            [307, 196, 222, 645, 6, 0, 'top', 2], [612, 172, 46, 645, 8, 0, 'dome', 0]];
+        const prof = { taper: (k) => 1 - 0.22 * k, top: (k) => 1 - 0.26 * k * k, dome: (k) => [0.9, 0.97, 1, 1, 0.99, 0.96, 0.91, 0.86][Math.round(k * 7)] };
+        let out = '', order = 0;
+        const leaves = (x0, x1, y, n, big) => {
+            let o = '';
+            const mw = x1 - x0, mh = big ? 46 : 22;
+            for (let i = 0; i < n; i++) {   // leafy mound: denser and taller in the middle
+                const u = r(), x = x0 + mw * u, hgt = mh * Math.sin(Math.PI * u) * (0.4 + 0.6 * r()), yy = y - hgt;
+                const rx = (big ? 7 : 5) + r() * 5, ry = rx * (0.45 + r() * 0.2), rot = (r() * 160 - 80).toFixed(0);
+                o += `<ellipse class="leaf${r() > 0.6 ? ' lt' : ''}" cx="${x.toFixed(1)}" cy="${yy.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" transform="rotate(${rot} ${x.toFixed(1)} ${yy.toFixed(1)})"/>`;
+            }
+            if (big) {   // a small tree and a few grass blades, like the roof garden in the photo
+                const tx = x0 + mw * 0.62;
+                o += `<path class="trunk" d="M${tx} ${y}C${tx - 2} ${y - 30} ${tx + 6} ${y - 50} ${tx + 2} ${y - 72}"/>`;
+                for (let i = 0; i < 26; i++) { const a = r() * Math.PI * 2, rr = 26 * Math.sqrt(r()), x = tx + 2 + Math.cos(a) * rr * 1.3, yy = y - 80 + Math.sin(a) * rr * 0.8;
+                    o += `<ellipse class="leaf${r() > 0.5 ? ' lt' : ''}" cx="${x.toFixed(1)}" cy="${yy.toFixed(1)}" rx="${(6 + r() * 4).toFixed(1)}" ry="${(3 + r() * 2).toFixed(1)}" transform="rotate(${(r() * 180).toFixed(0)} ${x.toFixed(1)} ${yy.toFixed(1)})"/>`; }
+                for (let i = 0; i < 7; i++) { const x = x0 + mw * (0.1 + r() * 0.4), hh = 30 + r() * 30, lean = (r() - 0.5) * 24; o += `<path class="blade" d="M${x.toFixed(1)} ${y}q${(lean / 2).toFixed(1)} ${(-hh / 2).toFixed(1)} ${lean.toFixed(1)} ${(-hh).toFixed(1)}"/>`; }
+            }
+            return o;
+        };
+        const vine = (x, y, len) => {
+            let d = `M${x} ${y}`, o = '';
+            for (let i = 1; i <= len / 14; i++) { const yy = y + i * 14, xx = x + Math.sin(i * 0.9) * 5; d += `L${xx.toFixed(1)} ${yy}`; if (i % 2) o += `<ellipse class="leaf" cx="${(xx + (i % 4 ? 5 : -5)).toFixed(1)}" cy="${yy}" rx="4" ry="2.4"/>`; }
+            return `<path class="vine" d="${d}"/>` + o;
+        };
+        towers.forEach((tw) => {
+            if (tw[0] === 'core') {   // ribbed, faceted stair core
+                const x0 = 406, x1 = 520, top = 78, base = 645;
+                let c = `<path class="core" d="M${x0} ${base}V${top + 10}l9-10 10 8 10-8 10 8 10-8 10 8 10-8 10 8 10-8 10 8 6-6V${base}z"/>`;
+                for (let x = x0 + 10; x < x1; x += 10) c += `<path class="rib" d="M${x} ${top + 6}V${base}"/>`;
+                for (let y = top + 70; y < base; y += 62) c += `<path class="rib band" d="M${x0} ${y}l9 6 10-6 10 6 10-6 10 6 10-6 10 6 10-6 10 6 10-6 10 6 5-4"/>`;
+                c += `<rect class="door" x="440" y="598" width="44" height="47"/>`;
+                out += `<g class="tw core-g" style="--o:${order++}">${c}</g>`;
+                return;
+            }
+            const [cx, W, top, base, n, depth, p, plants] = tw, gap = 6, ph = (base - top) / n - gap;
+            let g = '', slits = '';
+            // dark (or glowing) gap under each basket, sized to the narrower of the two neighbours
+            for (let i = 0; i < n - 1; i++) {
+                const wbI = W * prof[p](n > 1 ? i / (n - 1) : 0) * 0.8, wtN = W * prof[p]((i + 1) / (n - 1)) * 0.93, ws = Math.min(wbI, wtN) * 0.98;
+                const yb = top + i * (ph + gap) + ph;
+                slits += `<rect class="slit${glow ? ' glow' : ''}" x="${(cx - ws / 2).toFixed(1)}" y="${(yb - 6).toFixed(1)}" width="${ws.toFixed(1)}" height="${gap + 16}" rx="6"/>`;
+            }
+            g += slits;
+            for (let i = 0; i < n; i++) {
+                const k = n > 1 ? i / (n - 1) : 0, w = W * prof[p](k), y0 = top + i * (ph + gap), wt = w * 0.93, wb = w * 0.8, cv = 7;
+                const isCap = p === 'dome' && i === 0;
+                const L = [cx - wt / 2, cx - w / 2 - 4, cx - w / 2 - 1, cx - wb / 2], Rr = L.map((x) => 2 * cx - x);
+                const pts = [y0, y0 + ph * 0.25, y0 + ph * 0.7, y0 + ph];
+                const topEdge = isCap ? `M${L[0]} ${y0 + 18}C${L[0]} ${y0 - 22} ${Rr[0]} ${y0 - 22} ${Rr[0]} ${y0 + 18}` : `M${L[0]} ${y0}Q${cx} ${y0 + cv} ${Rr[0]} ${y0}`;
+                const d = (isCap ? `M${L[0]} ${y0 + 18}C${L[0]} ${y0 - 22} ${Rr[0]} ${y0 - 22} ${Rr[0]} ${y0 + 18}` : `M${L[0]} ${y0}Q${cx} ${y0 + cv} ${Rr[0]} ${y0}`) +
+                    `C${Rr[1]} ${pts[1]} ${Rr[2]} ${pts[2]} ${Rr[3]} ${pts[3]}Q${cx} ${pts[3] + cv * 1.6} ${L[3]} ${pts[3]}C${L[2]} ${pts[2]} ${L[1]} ${pts[1]} ${L[0]} ${isCap ? y0 + 18 : y0}Z`;
+                let pod = `<path class="pod" d="${d}"/><path class="shade" fill="url(#${gid}x)" d="${d}"/><path class="shade" fill="url(#${gid}y)" d="${d}"/>`;
+                // ribbed texture: horizontal grooves with broken panel joints
+                for (let s2 = 1; s2 <= 10; s2++) {
+                    const t = s2 / 11, yy = bez(pts[0], pts[1], pts[2], pts[3], t), xl = bez(L[0], L[1], L[2], L[3], t) + 2, xr = 2 * cx - xl;
+                    if (isCap && t < 0.3) continue;
+                    const dash = [60 + r() * 140, 2 + r() * 4, 30 + r() * 120, 2 + r() * 3].map((v) => v.toFixed(0)).join(' ');
+                    pod += `<path class="rib-h" style="stroke-dasharray:${dash};stroke-dashoffset:${(r() * 80).toFixed(0)}" d="M${xl.toFixed(1)} ${yy.toFixed(1)}Q${cx} ${(yy + cv * (0.8 + t)).toFixed(1)} ${xr.toFixed(1)} ${yy.toFixed(1)}"/>`;
+                }
+                g += `<g class="pod-g" style="--p:${n - 1 - i}">${pod}</g>`;
+                void topEdge;
+            }
+            if (plants) g += `<g class="plants">${leaves(cx - W * 0.47, cx + W * 0.47, top + 6, plants === 2 ? 70 : 26, plants === 2)}${vine(cx - W * 0.46, top + 12, plants === 2 ? 150 : 60)}${plants === 2 ? vine(cx + W * 0.44, top + 14, 50) : ''}</g>`;
+            out += `<g class="tw depth${depth}" style="--o:${order++}">${g}</g>`;
         });
-        out += '<path d="M30 392H570"/>';
-        return `<svg class="fsc-ico-svg line-ico landmark-svg" viewBox="0 0 600 420" aria-label="The Hive, NTU" role="img">${out}</svg>`;
+        out += vine(694, 250, 300).replace('class="vine"', 'class="vine late"');
+        out += '<path class="ground" d="M20 648H980"/>';
+        return `<svg class="hive-svg${glow ? ' night' : ''}" viewBox="0 0 1000 680" role="img" aria-label="The Hive, NTU Learning Hub">${defs}${out}</svg>`;
     }
-    function nbsSVG() {
-        // Wee Cho Yaw Plaza / NBS (Toyo Ito): gently arching six-storey timber frame, open facade, solar roof
-        const x0 = 40, x1 = 560, topY = (t) => 150 - Math.sin(Math.PI * t) * 34, botY = (t) => 372 - Math.sin(Math.PI * t) * 16;
-        const curve = (f, a = 0, b = 1) => { let d = ''; for (let i = 0; i <= 40; i++) { const t = a + (b - a) * i / 40; d += `${i ? 'L' : 'M'}${(x0 + (x1 - x0) * t).toFixed(1)} ${f(t).toFixed(1)}`; } return d; };
-        let out = `<path class="fillp" d="${curve(topY)} L${x1} ${botY(1)} ${curve(botY).replace('M', 'L').split('L').filter(Boolean).reverse().map((p) => 'L' + p).join('')}Z"/>`;
-        for (let f = 1; f < 6; f++) out += `<path d="${curve((t) => topY(t) + (botY(t) - topY(t)) * f / 6)}"/>`;
-        for (let i = 1; i < 26; i++) {
-            const t = i / 26; if (t > 0.42 && t < 0.58) continue;  // central three-storey open space
-            const x = x0 + (x1 - x0) * t, y2 = botY(t);
-            out += `<path d="M${x.toFixed(1)} ${topY(t).toFixed(1)}L${x.toFixed(1)} ${y2.toFixed(1)}"/>`;
+
+    function hiveOculus() {
+        const id = 'oc' + (++uid), r = rnd(7), rings = 11;
+        let out = '', clip = '';
+        const shape = (cx, cy, R, lobes, amp, rot) => {
+            let d = '';
+            for (let i = 0; i <= 360; i++) {
+                const th = (i / 360) * Math.PI * 2 + rot, rr = R - amp * Math.pow(Math.abs(Math.sin((lobes * th) / 2)), 0.8);
+                d += `${i ? 'L' : 'M'}${(cx + Math.cos(th) * rr).toFixed(1)} ${(cy + Math.sin(th) * rr).toFixed(1)}`;
+            }
+            return d + 'Z';
+        };
+        for (let k = 0; k < rings; k++) {
+            const t = k / (rings - 1), R = 780 * Math.pow(1 - t, 1.25) + 110, lobes = 12 + (k % 3), amp = R * 0.13;
+            const cx = 500 + 60 * t, cy = 520 - 110 * t, rot = k * 0.11 + 0.2;
+            const d = shape(cx, cy, R, lobes, amp, rot), shade = Math.round(94 - 50 * t);
+            // railing: short radial ticks just inside the balcony edge
+            let ticks = '';
+            for (let a = 0; a < 360; a += 2.2) {
+                const th = (a / 180) * Math.PI + rot, rr = R - amp * Math.pow(Math.abs(Math.sin((lobes * th) / 2)), 0.8);
+                const x1 = cx + Math.cos(th) * rr, y1 = cy + Math.sin(th) * rr, x2 = cx + Math.cos(th) * (rr - 9 - 4 * (1 - t)), y2 = cy + Math.sin(th) * (rr - 9 - 4 * (1 - t));
+                ticks += `M${x1.toFixed(1)} ${y1.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}`;
+            }
+            let vines = '';
+            if (k >= 2 && k <= 8) for (let v = 0; v < 34; v++) {
+                const a = (10 + r() * 55) / 180 * Math.PI, rr = R - amp * Math.pow(Math.abs(Math.sin((lobes * (a - rot)) / 2)), 0.8) - 4 - r() * 14;
+                const x = cx + Math.cos(a) * rr, y = cy + Math.sin(a) * rr;
+                vines += `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${(5 + r() * 4).toFixed(1)}" ry="${(2.6 + r() * 1.6).toFixed(1)}" transform="rotate(${(r() * 180).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`;
+            }
+            out += `<g class="ring" style="--k:${k}"><path class="slab" style="--shade:${shade}%" d="${d}"/><path class="lip" d="${d}"/><path class="rail" d="${ticks}"/><path class="edge" d="${d}"/>${vines ? `<g class="vines">${vines}</g>` : ''}</g>`;
+            if (k === rings - 1) clip = d;
         }
-        // open atrium: lower three floors, big timber columns
-        const ya = (t) => topY(t) + (botY(t) - topY(t)) * 3 / 6;
-        [0.45, 0.5, 0.55].forEach((t) => { const x = x0 + (x1 - x0) * t; out += `<path d="M${x.toFixed(1)} ${ya(t).toFixed(1)}L${x.toFixed(1)} ${botY(t).toFixed(1)}"/>`; });
-        // solar roof (accent): zero-energy building
-        for (let r = 0; r < 2; r++) out += `<path class="as" d="${curve((t) => topY(t) - 12 - r * 10, 0.06, 0.94)}"/>`;
-        // Yunnan Garden canopy on both sides
-        out += '<path d="M8 380c-6-30 30-40 34-14M562 382c6-34 40-30 32-4"/>';
-        out += '<path d="M20 392H580"/>';
-        return `<svg class="fsc-ico-svg line-ico landmark-svg" viewBox="0 0 600 420" aria-label="Wee Cho Yaw Plaza, Nanyang Business School" role="img">${out}</svg>`;
+        // skylight with glazing grid
+        let grid = '';
+        for (let x = 300; x < 800; x += 22) grid += `M${x} 200V700`;
+        out += `<g class="sky"><clipPath id="${id}"><path d="${clip}"/></clipPath><path class="glass" d="${clip}"/><path class="grid" clip-path="url(#${id})" d="${grid}M300 380H800M300 470H800"/></g>`;
+        return `<svg class="oculus-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="The Hive atrium, looking up"><g class="spin">${out}</g></svg>`;
     }
-    R.landmark = {
+
+    R.hive = {
         mount(el) {
             el.classList.toggle('bg', el.dataset.mode === 'bg');
-            el.innerHTML = (el.dataset.name === 'nbs' ? nbsSVG() : hiveSVG()) +
-                (el.dataset.mode === 'bg' || el.dataset.label === 'off' ? '' : `<p class="lm-cap">${el.dataset.name === 'nbs' ? 'Wee Cho Yaw Plaza · Nanyang Business School' : 'The Hive · NTU'}</p>`);
-            prepDraw(el);
-            el.querySelectorAll('.dr').forEach((n, k) => n.style.setProperty('--k', k));
+            el.innerHTML = hiveExterior(el.dataset.glow === 'on') + (el.dataset.mode === 'bg' || el.dataset.label === 'off' ? '' : '<p class="lm-cap">The Hive · NTU</p>');
         }
     };
+    R.oculus = {
+        mount(el) {
+            el.classList.toggle('bg', el.dataset.mode === 'bg');
+            el.classList.toggle('spin-on', el.dataset.spin === 'on');
+            el.innerHTML = hiveOculus() + (el.dataset.mode === 'bg' || el.dataset.label === 'off' ? '' : '<p class="lm-cap">Inside The Hive · looking up</p>');
+        }
+    };
+    R.landmark = R.hive;   // backwards compatibility with earlier decks
 
     window.FSC = { play, update, mount, mountAll, wire, registry: R, iconSVG };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => wire());
