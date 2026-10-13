@@ -15,6 +15,16 @@ Create zero-dependency, animation-rich HTML presentations that run entirely in t
 4. **Progressive Disclosure** — Read lightweight style indexes first. For bold templates, use small preview cards for style previews and load the full `design.md` only after the user picks that template.
 5. **Fixed 16:9 Stage (NON-NEGOTIABLE)** — Every deck uses a 1920×1080 slide canvas scaled as a whole to the viewport. Slides must stay 16:9 on every screen, including phones. Do not reflow slide content to fit the device.
 
+## Personal Brand System (DEFAULT LOOK)
+
+This copy of the skill is customized with the user's own design system in [brand/BRAND.md](brand/BRAND.md).
+
+- **Every new deck uses the brand by default.** Read `brand/BRAND.md` before Phase 2. It defines shared rules (sparing accent, subtle motion, deck-title-only header, light + dark variants) and three themes: **Ledger**, **Editorial**, **Terminal**.
+- **Pick the theme** from the topic/purpose using the table in BRAND.md, or use the one the user names. State the chosen theme and the reason in one line, then continue. Read only that theme's reference file in `brand/themes/` before generating.
+- **Skip the generic 3-style discovery** for brand decks. If the user asks for options, show the title slide in the three brand themes instead.
+- **Override:** if the user explicitly asks for a non-brand style (a preset, a bold template, "something different"), ignore the brand and run Phase 2 as written below.
+- Brand rules never relax the Fixed Stage Rules or the overflow and overlap checks.
+
 ## Design Aesthetics
 
 You tend to converge toward generic, "on distribution" outputs. In frontend design, this creates what users call the "AI slop" aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.
@@ -130,6 +140,8 @@ If user provides an image folder:
 ## Phase 2: Style Discovery
 
 **This is the "show, don't tell" phase.** Most people can't articulate design preferences in words.
+
+> **Brand decks skip this phase.** When the Personal Brand System applies (the default), choose a brand theme per `brand/BRAND.md` and go to Phase 3. Use the steps below only when the user asked for a non-brand style.
 
 ### Step 2.0: Generate 3 Style Previews Directly
 
@@ -372,6 +384,8 @@ This captures each slide as a screenshot and combines them into a PDF. Perfect f
 | [bold-template-pack/selection-index.json](bold-template-pack/selection-index.json) | Compact bold template metadata for candidate selection | Phase 2 (style selection) |
 | [bold-template-pack/templates/*/preview.md](bold-template-pack/templates/) | Lightweight style cards for shortlisted bold title previews | Phase 2 after shortlisting |
 | [bold-template-pack/templates/*/design.md](bold-template-pack/templates/) | Detailed design-system docs for the selected bold template only | Phase 3 after user selection |
+| [brand/BRAND.md](brand/BRAND.md) | The user's personal design system: shared rules plus Ledger / Editorial / Terminal themes | Before Phase 2, for every new deck |
+| [brand/themes/*.html](brand/themes/) | Reference title slides for each brand theme (light and dark) | Phase 3, chosen theme only |
 | [viewport-base.css](viewport-base.css)             | Mandatory fixed-stage CSS — copy into every presentation             | Phase 3 (generation)      |
 | [html-template.md](html-template.md)               | HTML structure, JS features, code quality standards                  | Phase 3 (generation)      |
 | [animation-patterns.md](animation-patterns.md)     | CSS/JS animation snippets and effect-to-feeling guide                | Phase 3 (generation)      |

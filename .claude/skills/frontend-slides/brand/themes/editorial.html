@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editorial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+/* ===========================================
+   FIXED 16:9 STAGE: MANDATORY BASE STYLES
+   Include this ENTIRE file in every presentation.
+   Slides are authored at 1920×1080 and scaled as a whole.
+   =========================================== */
+
+/* 1. Lock the browser viewport */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 2. Full-window deck viewport */
+.deck-viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 3. Fixed 16:9 design canvas.
+   JavaScript sets transform: translate(...) scale(...). */
+.deck-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    transform-origin: 0 0;
+    background: var(--slide-bg, #fff);
+}
+
+/* 4. Slides stack inside the fixed stage.
+   Content must be laid out at 1920×1080, not reflowed per device. */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--slide-bg, #fff);
+}
+
+.slide.active,
+.slide.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* 5. Keep media inside authored slide bounds */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 6. Presentation chrome stays outside the slide design system */
+.deck-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 7. Print one fixed-size slide per page */
+@media print {
+    html,
+    body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-viewport {
+        position: static;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-stage {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none !important;
+        background: none;
+    }
+
+    .slide {
+        position: relative;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 1920px;
+        height: 1080px;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .deck-controls {
+        display: none !important;
+    }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.slide.visible .reveal{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.25s}.d3{transition-delay:.4s}.d4{transition-delay:.55s}
+.theme-hint{position:fixed;right:16px;bottom:12px;font:12px monospace;opacity:.45;color:var(--ink);z-index:5}
+
+:root{--paper:#f2ece0;--ink:#13302a;--muted:#5d6b63;--rule:rgba(19,48,42,.18);--accent:#d9931c;--panel:#e8dfcd;--stage-bg:var(--paper);--slide-bg:var(--paper)}
+:root.dark{--paper:#0f2621;--ink:#f1e9da;--muted:#9fb1a7;--rule:rgba(241,233,218,.16);--accent:#f0ad3a;--panel:#163530}
+.slide{color:var(--ink);font-family:'Instrument Sans',sans-serif;background:radial-gradient(900px 700px at 85% 40%,color-mix(in srgb,var(--accent) 14%,transparent),transparent 70%),var(--paper)}
+.top{position:absolute;left:140px;right:140px;top:80px;display:flex;justify-content:space-between;font-size:22px;letter-spacing:.06em;color:var(--muted);border-bottom:1px solid var(--rule);padding-bottom:26px}
+.top i{font-family:'Fraunces',serif;font-style:italic;color:var(--ink)}
+.kicker{position:absolute;left:140px;top:270px;font:400 22px 'IBM Plex Mono',monospace;color:var(--accent);letter-spacing:.12em;text-transform:uppercase}
+h1{position:absolute;left:134px;top:320px;font-family:'Fraunces',serif;font-weight:600;font-size:150px;line-height:.98;letter-spacing:-.02em;max-width:1050px;font-variation-settings:'opsz' 144}
+h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+.sub{position:absolute;left:140px;top:770px;font-size:34px;color:var(--muted);max-width:880px;line-height:1.4}
+.orb{position:absolute;right:150px;top:270px;width:520px;height:560px}
+.node{position:absolute;width:150px;height:150px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font:400 18px 'IBM Plex Mono',monospace;background:var(--paper)}
+.node.a{left:0;top:40px}.node.b{left:300px;top:0;background:var(--accent);border-color:var(--accent);color:#13302a}.node.c{left:180px;top:300px}.node.d{left:400px;top:330px;width:110px;height:110px}
+.orb svg{position:absolute;inset:0;width:100%;height:100%}.orb line{stroke:var(--ink);stroke-width:2;stroke-dasharray:6 8}
+.who{position:absolute;left:140px;bottom:90px;font-size:22px;color:var(--muted)}.who b{color:var(--ink);font-weight:600}
+
+.stack{position:absolute;left:140px;top:240px;width:1000px}.stack>*{position:static!important}.stack h1{font-size:118px;margin:22px 0 0 -6px}.stack .sub{margin-top:40px}
+</style></head><body>
+<div class="deck-viewport"><main class="deck-stage" id="deckStage">
+<section class="slide active"><div class="top reveal d1"><span><i>MSBT</i> · Blockchain Seminar</span><span>Group 04 · 13 Oct 2026</span></div>
+<div class="stack"><p class="kicker reveal d1">Research presentation</p>
+<h1 class="reveal d2">Tokenized deposits, <em>the future of bank money</em></h1>
+<p class="sub reveal d3">How commercial bank money moves on-chain, and what it means for settlement and stablecoins.</p></div>
+<div class="orb reveal d3"><svg viewBox="0 0 520 560"><line x1="75" y1="115" x2="375" y2="75"/><line x1="75" y1="115" x2="255" y2="375"/><line x1="375" y1="75" x2="255" y2="375"/><line x1="255" y1="375" x2="455" y2="385"/><line x1="375" y1="75" x2="455" y2="385"/></svg>
+<div class="node a">Bank A</div><div class="node b">Ledger</div><div class="node c">Bank B</div><div class="node d">Client</div></div>
+<div class="who reveal d4">Presented by <b>Your Name</b></div></section>
+</main></div>
+<script>
+/* Stage scaling + theme toggle (press D, or ?theme=dark) */
+const st=document.getElementById('deckStage');
+const fit=()=>{const f=Math.min(innerWidth/1920,innerHeight/1080);st.style.transform=`translate(${(innerWidth-1920*f)/2}px,${(innerHeight-1080*f)/2}px) scale(${f})`;};
+fit();addEventListener('resize',fit);
+if(new URLSearchParams(location.search).get('theme')==='dark')document.documentElement.classList.add('dark');
+addEventListener('keydown',e=>{if(e.key==='d'||e.key==='D')document.documentElement.classList.toggle('dark');});
+requestAnimationFrame(()=>document.querySelector('.slide').classList.add('visible'));
+</script></body></html>
