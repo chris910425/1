@@ -40,6 +40,9 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 | `sgdots` | Singapore as a dot matrix rippling out from home, with labelled hotspots | Section openers, "where I've been", network/coverage ideas | JSON `{ "home": {lat, lon}, "places": [...], "spacing": 13, "caption"? }` | 1100–1600 × 640–900 |
 | `mrt` | MRT-style line diagram; a train stops at each station, passed stations light up | Commutes, timelines told as a journey, step sequences | JSON `{ "line", "color"?, "caption"?, "stations": [{ "name", "code"?, "note"? }] }` (3–9 stations) | 1500–1700 × 380–460 |
 | `flight` | Plane flies from home to Singapore over a real map; distance counts up (computed from coordinates) | "How I got here", exchange/travel slides | JSON `{ "from": {name, lat, lon}, "to": {name, lat, lon}, "caption"? }`. The default origin (Taipei) is only an example: always set the presenter's real home | 1000–1400 × 680–860 |
+| `contract` | Legal document: clauses appear, one is highlighted, a signature writes itself, then a seal stamps down | Smart contracts vs legal contracts, agreements, terms | `data-title`, `data-party`, `data-ref`, `data-date`, `data-signer`, `data-seal="EXECUTED"`, `data-hl` (clause no.); child `<li>` clauses | 800–1000 × 680–800 |
+| `scales` | Scales of justice: arguments drop into two pans and the beam tips to the heavier side | Trade-offs, debates, regulation vs innovation | JSON `{ "left": { "label", "items": [], "weight"? }, "right": {...}, "caption"? }` | 1000–1300 × 680–800 |
+| `botanical` | Fine-line botanical illustration that draws itself in (ink lines, no pastel florals) | Corner/edge decoration, dividers, title frames, quote slides | `data-name="laurel|olive|eucalyptus|fern|wildflower|orchid"` (orchid = Vanda Miss Joaquim), `data-flip="x"` to mirror | any; ~300–400 wide × 420 tall per sprig |
 | `iconset` | Grid of icons or characters with labels, drawing in one by one | "What we'll cover", life-in-Singapore slides, cast introductions | `data-icons="bank|coin|…"`, `data-cols`, `data-size`, `data-labels="off"` | any; ~120px per icon cell |
 | `actors` | Alice & Bob scene: an item travels from left to right, directly or via a middle character | Payments, custody, intermediaries (Trent = bank), cryptography and attacks (Eve, Mallory) | `data-left`, `data-right`, `data-middle="trent|eve|mallory|none"`, `data-item` (any icon), `data-note`, `data-caption`, `data-eve-note` | 1200–1600 × 560–680 |
 
@@ -49,6 +52,7 @@ Drop an icon anywhere, including inside titles or cards: `<i data-icon="hawker" 
 
 - **Finance & institutions:** `bank coin wallet card vault key lock shield exchange growth contract qr globe block kyc regulator`
 - **Life in Singapore:** `hawker kopi crab durian bus mrt transit hdb hive mbs supertree study laptop rain sun plane` (`hive` is a small icon of The Hive)
+- **Law:** `gavel court justice statute section quill seal contractsign handcuffs fingerprint evidence briefcase lawbooks copyright privacy compliance`
 - **Characters:** `alice bob eve trent mallory` (Alice and Bob are the default pair; Trent is the trusted third party, so use him for banks and custodians; Eve eavesdrops; Mallory actively attacks). Use them consistently: the same character always plays the same role across a deck.
 
 Add a new icon by adding an entry to `icons.js` (48×48 grid, 2.2px strokes, at most one `class="a"` fill or `class="as"` stroke for the accent), then rebuild and check the gallery.
@@ -106,6 +110,10 @@ Data lives in a JSON block inside the component, so real data can be swapped in 
 ```
 
 Keep backgrounds away from the main text block (or behind empty space) so text contrast stays high. Use at most one background loop per slide.
+
+### Botanicals as decoration
+
+Place them absolutely in a slide corner, partly off the edge, behind the content, e.g. `<div data-fsc="botanical" data-name="olive" style="position:absolute;right:-40px;bottom:-30px;width:420px;height:460px"></div>`. Use one or two per slide at most, in the theme's ink color. Laurel and olive suit law and academia; the orchid suits Singapore topics.
 
 ## Rules for using components in decks
 

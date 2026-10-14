@@ -1,0 +1,128 @@
+[
+ {
+  "key": "garamond",
+  "label": "Law & academia",
+  "display": "Cormorant Garamond",
+  "body": "EB Garamond",
+  "tc": "Noto Serif TC",
+  "link": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap",
+  "use": "Legal, policy, history, formal academic decks"
+ },
+ {
+  "key": "caslon",
+  "label": "Legal document",
+  "display": "Libre Caslon Text",
+  "body": "Libre Caslon Text",
+  "tc": "Noto Serif TC",
+  "link": "https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap",
+  "use": "Contracts, statutes, case studies: feels like a printed judgment"
+ },
+ {
+  "key": "cactus",
+  "label": "Classical 繁體",
+  "display": "Cactus Classical Serif",
+  "body": "EB Garamond",
+  "tc": "Cactus Classical Serif",
+  "link": "https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=EB+Garamond:wght@400;500&display=swap",
+  "use": "Chinese-first decks with a traditional, book-like feel"
+ },
+ {
+  "key": "bodoni",
+  "label": "Renaissance editorial",
+  "display": "Bodoni Moda",
+  "body": "Cormorant Garamond",
+  "tc": "Noto Serif TC",
+  "link": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+TC:wght@400;700&display=swap",
+  "use": "Statue/collage decks, culture, luxury (the Renacimiento look)"
+ },
+ {
+  "key": "playfair",
+  "label": "Classic magazine",
+  "display": "Playfair Display",
+  "body": "Source Sans 3",
+  "tc": "Noto Serif TC",
+  "link": "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap",
+  "use": "Storytelling, interviews, features"
+ },
+ {
+  "key": "instrument",
+  "label": "Modern elegant",
+  "display": "Instrument Serif",
+  "body": "Instrument Sans",
+  "tc": "Chiron Sung HK",
+  "link": "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Chiron+Sung+HK:wght@400;600&display=swap",
+  "use": "Design, culture, personal stories with a refined touch"
+ },
+ {
+  "key": "poster",
+  "label": "Condensed poster",
+  "display": "Bebas Neue",
+  "body": "Barlow",
+  "tc": "Noto Sans TC",
+  "link": "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&family=Noto+Sans+TC:wght@500;900&display=swap",
+  "use": "Big loud titles (the AERIS look), events, pitches"
+ },
+ {
+  "key": "sora",
+  "label": "Clean tech",
+  "display": "Sora",
+  "body": "Manrope",
+  "tc": "Noto Sans TC",
+  "link": "https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap",
+  "use": "Product, fintech, blockchain explainers"
+ },
+ {
+  "key": "bricolage",
+  "label": "Friendly grotesk",
+  "display": "Bricolage Grotesque",
+  "body": "Bricolage Grotesque",
+  "tc": "Chiron Hei HK",
+  "link": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Chiron+Hei+HK:wght@400;700&display=swap",
+  "use": "Student life, workshops, approachable talks"
+ },
+ {
+  "key": "syne",
+  "label": "Art-school expressive",
+  "display": "Syne",
+  "body": "DM Sans",
+  "tc": "Noto Sans TC",
+  "link": "https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&family=Noto+Sans+TC:wght@400;700&display=swap",
+  "use": "Creative pitches, manifestos, bold covers"
+ },
+ {
+  "key": "wenkai",
+  "label": "Literary handwritten",
+  "display": "LXGW WenKai TC",
+  "body": "LXGW WenKai TC",
+  "tc": "LXGW WenKai TC",
+  "link": "https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&display=swap",
+  "use": "Personal reflections, letters, warm Chinese-first slides"
+ },
+ {
+  "key": "rounded",
+  "label": "Warm & friendly",
+  "display": "Nunito",
+  "body": "Nunito",
+  "tc": "Huninn",
+  "link": "https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Huninn&display=swap",
+  "use": "Life-in-Singapore, casual sharing, younger audiences"
+ },
+ {
+  "key": "notes",
+  "label": "Casual notes",
+  "display": "Caveat",
+  "body": "DM Sans",
+  "tc": "Iansui",
+  "link": "https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:wght@400;500&family=Iansui&display=swap",
+  "use": "Annotations, sticky-note style, diary slides"
+ },
+ {
+  "key": "mono",
+  "label": "Typewriter / code",
+  "display": "Space Mono",
+  "body": "Space Mono",
+  "tc": "LXGW WenKai Mono TC",
+  "link": "https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=LXGW+WenKai+Mono+TC:wght@400;700&display=swap",
+  "use": "Technical demos, smart-contract code, logs"
+ }
+]

@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Font Pairings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:wght@400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Noto+Serif+TC:wght@400;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=EB+Garamond:wght@400;500&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,600;6..96,700&family=Cormorant+Garamond:wght@400;500&family=Noto+Serif+TC:wght@400;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Chiron+Sung+HK:wght@400;600&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600&family=Noto+Sans+TC:wght@500;900&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Chiron+Hei+HK:wght@400;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&family=Noto+Sans+TC:wght@400;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@400;700&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=Huninn&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:wght@400;500&family=Iansui&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=LXGW+WenKai+Mono+TC:wght@400;700&display=swap">
+<style>
+:root { --bg:#f3f1ec; --ink:#1b1b1d; --muted:#76736e; --card:#fbfaf7; --rule:rgba(0,0,0,.12); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg:#141415; --ink:#eeebe5; --muted:#8d8a85; --card:#1c1c1e; --rule:rgba(255,255,255,.12); } }
+:root[data-theme="dark"] { --bg:#141415; --ink:#eeebe5; --muted:#8d8a85; --card:#1c1c1e; --rule:rgba(255,255,255,.12); }
+/* ===========================================
+   FONT PAIRINGS: English + 繁體 (Traditional Chinese)
+   Usage: <html data-theme="..." data-font="garamond"> overrides the theme's fonts.
+   Each stack lists the English font first, then the matching Traditional Chinese font,
+   so mixed English/中文 text picks the right glyphs automatically.
+   Load the pairing's Google Fonts link (see fonts.json or BRAND.md).
+   =========================================== */
+[data-font="garamond"] { --font-display: 'Cormorant Garamond', 'Noto Serif TC', serif; --font-body: 'EB Garamond', 'Noto Serif TC', sans-serif; --display-weight: 600; --display-tracking: -0.01em; --display-case: none; }
+[data-font="caslon"] { --font-display: 'Libre Caslon Text', 'Noto Serif TC', serif; --font-body: 'Libre Caslon Text', 'Noto Serif TC', sans-serif; --display-weight: 700; --display-tracking: -0.01em; --display-case: none; }
+[data-font="cactus"] { --font-display: 'Cactus Classical Serif', 'Cactus Classical Serif', serif; --font-body: 'EB Garamond', 'Cactus Classical Serif', sans-serif; --display-weight: 400; --display-tracking: 0; --display-case: none; }
+[data-font="bodoni"] { --font-display: 'Bodoni Moda', 'Noto Serif TC', serif; --font-body: 'Cormorant Garamond', 'Noto Serif TC', sans-serif; --display-weight: 700; --display-tracking: -0.02em; --display-case: none; }
+[data-font="playfair"] { --font-display: 'Playfair Display', 'Noto Serif TC', serif; --font-body: 'Source Sans 3', 'Noto Sans TC', sans-serif; --display-weight: 700; --display-tracking: -0.015em; --display-case: none; }
+[data-font="instrument"] { --font-display: 'Instrument Serif', 'Chiron Sung HK', serif; --font-body: 'Instrument Sans', 'Chiron Sung HK', sans-serif; --display-weight: 400; --display-tracking: -0.02em; --display-case: none; }
+[data-font="poster"] { --font-display: 'Bebas Neue', 'Noto Sans TC', serif; --font-body: 'Barlow', 'Noto Sans TC', sans-serif; --display-weight: 400; --display-tracking: 0.01em; --display-case: none; }
+[data-font="sora"] { --font-display: 'Sora', 'Noto Sans TC', serif; --font-body: 'Manrope', 'Noto Sans TC', sans-serif; --display-weight: 700; --display-tracking: -0.03em; --display-case: none; }
+[data-font="bricolage"] { --font-display: 'Bricolage Grotesque', 'Chiron Hei HK', serif; --font-body: 'Bricolage Grotesque', 'Chiron Hei HK', sans-serif; --display-weight: 800; --display-tracking: -0.035em; --display-case: none; }
+[data-font="syne"] { --font-display: 'Syne', 'Noto Sans TC', serif; --font-body: 'DM Sans', 'Noto Sans TC', sans-serif; --display-weight: 800; --display-tracking: -0.02em; --display-case: none; }
+[data-font="wenkai"] { --font-display: 'LXGW WenKai TC', 'LXGW WenKai TC', serif; --font-body: 'LXGW WenKai TC', 'LXGW WenKai TC', sans-serif; --display-weight: 700; --display-tracking: 0; --display-case: none; }
+[data-font="rounded"] { --font-display: 'Nunito', 'Huninn', serif; --font-body: 'Nunito', 'Huninn', sans-serif; --display-weight: 800; --display-tracking: -0.01em; --display-case: none; }
+[data-font="notes"] { --font-display: 'Caveat', 'Iansui', serif; --font-body: 'DM Sans', 'Iansui', sans-serif; --display-weight: 700; --display-tracking: 0; --display-case: none; }
+[data-font="mono"] { --font-display: 'Space Mono', 'LXGW WenKai Mono TC', serif; --font-body: 'Space Mono', 'LXGW WenKai Mono TC', sans-serif; --display-weight: 700; --display-tracking: -0.01em; --display-case: none; }
+
+/* Chinese text: relax tight tracking and uppercase (set lang="zh-Hant" on the element or <html>) */
+:lang(zh-Hant) { --display-tracking: 0.01em; --display-case: none; }
+:lang(zh-Hant) h1, :lang(zh-Hant) h2, :lang(zh-Hant) h3 { letter-spacing: 0.02em; line-height: 1.25; }
+
+* { margin:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--ink); font-family:'DM Sans','Noto Sans TC',sans-serif; padding:40px 16px 80px; }
+.wrap { max-width:1400px; margin:0 auto; }
+h1.top { font:600 clamp(32px,5vw,56px)/1 'Instrument Serif',serif; } .intro { margin:12px 0 32px; color:var(--muted); max-width:720px; line-height:1.5; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr)); gap:16px; }
+.card { background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:24px; display:flex; flex-direction:column; gap:14px; }
+.card header { display:flex; justify-content:space-between; gap:8px; font:500 12px 'Space Mono',monospace; color:var(--muted); }
+.card .lbl { text-transform:uppercase; letter-spacing:.08em; }
+.card h2 { font-size:38px; line-height:1.05; } .card h3 { font-size:32px; line-height:1.25; letter-spacing:.02em; }
+.card p { font-size:16px; line-height:1.6; color:var(--ink); opacity:.85; }
+.card footer { margin-top:auto; padding-top:12px; border-top:1px solid var(--rule); font:13px/1.6 'DM Sans',sans-serif; color:var(--muted); }
+</style></head><body><div class="wrap">
+<h1 class="top">Font pairings · 字體搭配</h1>
+<p class="intro">Each pairing is an English font plus a matching 繁體 font. Use one in a deck with <code>data-font="…"</code>; it works on top of any theme (Ledger, Editorial, Terminal, Index).</p>
+<div class="grid"><article class="card" data-font="garamond"><header><span class="key">data-font="garamond"</span><span class="lbl">Law & academia</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Cormorant Garamond · EB Garamond · Noto Serif TC<br><em>Legal, policy, history, formal academic decks</em></footer></article><article class="card" data-font="caslon"><header><span class="key">data-font="caslon"</span><span class="lbl">Legal document</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Libre Caslon Text · Libre Caslon Text · Noto Serif TC<br><em>Contracts, statutes, case studies: feels like a printed judgment</em></footer></article><article class="card" data-font="cactus"><header><span class="key">data-font="cactus"</span><span class="lbl">Classical 繁體</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Cactus Classical Serif · EB Garamond · Cactus Classical Serif<br><em>Chinese-first decks with a traditional, book-like feel</em></footer></article><article class="card" data-font="bodoni"><header><span class="key">data-font="bodoni"</span><span class="lbl">Renaissance editorial</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Bodoni Moda · Cormorant Garamond · Noto Serif TC<br><em>Statue/collage decks, culture, luxury (the Renacimiento look)</em></footer></article><article class="card" data-font="playfair"><header><span class="key">data-font="playfair"</span><span class="lbl">Classic magazine</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Playfair Display · Source Sans 3 · Noto Serif TC<br><em>Storytelling, interviews, features</em></footer></article><article class="card" data-font="instrument"><header><span class="key">data-font="instrument"</span><span class="lbl">Modern elegant</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Instrument Serif · Instrument Sans · Chiron Sung HK<br><em>Design, culture, personal stories with a refined touch</em></footer></article><article class="card" data-font="poster"><header><span class="key">data-font="poster"</span><span class="lbl">Condensed poster</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Bebas Neue · Barlow · Noto Sans TC<br><em>Big loud titles (the AERIS look), events, pitches</em></footer></article><article class="card" data-font="sora"><header><span class="key">data-font="sora"</span><span class="lbl">Clean tech</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Sora · Manrope · Noto Sans TC<br><em>Product, fintech, blockchain explainers</em></footer></article><article class="card" data-font="bricolage"><header><span class="key">data-font="bricolage"</span><span class="lbl">Friendly grotesk</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Bricolage Grotesque · Bricolage Grotesque · Chiron Hei HK<br><em>Student life, workshops, approachable talks</em></footer></article><article class="card" data-font="syne"><header><span class="key">data-font="syne"</span><span class="lbl">Art-school expressive</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Syne · DM Sans · Noto Sans TC<br><em>Creative pitches, manifestos, bold covers</em></footer></article><article class="card" data-font="wenkai"><header><span class="key">data-font="wenkai"</span><span class="lbl">Literary handwritten</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>LXGW WenKai TC · LXGW WenKai TC · LXGW WenKai TC<br><em>Personal reflections, letters, warm Chinese-first slides</em></footer></article><article class="card" data-font="rounded"><header><span class="key">data-font="rounded"</span><span class="lbl">Warm & friendly</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Nunito · Nunito · Huninn<br><em>Life-in-Singapore, casual sharing, younger audiences</em></footer></article><article class="card" data-font="notes"><header><span class="key">data-font="notes"</span><span class="lbl">Casual notes</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Caveat · DM Sans · Iansui<br><em>Annotations, sticky-note style, diary slides</em></footer></article><article class="card" data-font="mono"><header><span class="key">data-font="mono"</span><span class="lbl">Typewriter / code</span></header>
+<h2 style="font-family:var(--font-display);font-weight:var(--display-weight);letter-spacing:var(--display-tracking)">Smart contracts, real obligations.</h2>
+<h3 style="font-family:var(--font-display);font-weight:var(--display-weight)">智能合約，真實的義務。</h3>
+<p style="font-family:var(--font-body)">Blockchains do not replace the law; they change how it is enforced. 區塊鏈不會取代法律，但會改變法律被執行的方式。</p>
+<footer>Space Mono · Space Mono · LXGW WenKai Mono TC<br><em>Technical demos, smart-contract code, logs</em></footer></article></div></div></body></html>

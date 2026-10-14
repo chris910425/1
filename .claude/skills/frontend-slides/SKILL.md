@@ -27,9 +27,10 @@ This copy of the skill is customized with the user's own design system in [brand
 
 ## Component Library (REUSABLE VISUALS)
 
-Brand decks draw from the animated component library in [components/](components/README.md): chain append, transaction lifecycle, network gossip, Merkle tree, hash-reveal text, terminal, spectrum, continuous chain loop, line / bar / doughnut / candlestick charts, Alice & Bob characters and scenes, finance and Singapore-life icons, Singapore maps (island pins, dot-matrix island, MRT journey, flight from home), and text effects for titles (underline, circle, highlight, strike, cycle, words, type, scramble, count).
+Brand decks draw from the animated component library in [components/](components/README.md): chain append, transaction lifecycle, network gossip, Merkle tree, hash-reveal text, terminal, spectrum, continuous chain loop, line / bar / doughnut / candlestick charts, Alice & Bob characters and scenes, finance and Singapore-life icons, Singapore maps (island pins, dot-matrix island, MRT journey, flight from home), law icons, contract (signed & sealed), scales of justice, fine-line botanicals, and text effects for titles (underline, circle, highlight, strike, cycle, words, type, scramble, count).
 
 - Before Phase 3, read `components/README.md`. While planning the outline, mark which slides would genuinely explain better with a component (processes, systems, structures, comparisons, data). Typical deck: 2–5 components. Never force one onto every slide.
+- Fonts: optionally apply one of the 14 English + 繁體 pairings with `data-font` (see `brand/fonts.css`, specimen `brand/fonts.html`); for Chinese decks always set `lang="zh-Hant"`.
 - For slide layouts (section headers, big numbers, ranked bars, process steps, statements), use `components/layouts.css`; see `brand/themes/index.html`.
 - Build brand decks on `brand/tokens.css` (`<html data-theme="...">`) and inline `components/library.css`, `components/icons.js` (if icons/characters are used) and `components/library.js` (or only the sections used).
 - Explaining a protocol, payment or attack? Cast it with the characters (Alice, Bob, Trent = bank, Eve, Mallory) instead of abstract boxes. Personal or life-story decks: use the Singapore-life icons.

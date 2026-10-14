@@ -1,0 +1,25 @@
+/* ===========================================
+   FONT PAIRINGS: English + 繁體 (Traditional Chinese)
+   Usage: <html data-theme="..." data-font="garamond"> overrides the theme's fonts.
+   Each stack lists the English font first, then the matching Traditional Chinese font,
+   so mixed English/中文 text picks the right glyphs automatically.
+   Load the pairing's Google Fonts link (see fonts.json or BRAND.md).
+   =========================================== */
+html[data-font="garamond"] { --font-display: 'Cormorant Garamond', 'Noto Serif TC', serif; --font-body: 'EB Garamond', 'Noto Serif TC', sans-serif; --display-weight: 600; --display-tracking: -0.01em; --display-case: none; }
+html[data-font="caslon"] { --font-display: 'Libre Caslon Text', 'Noto Serif TC', serif; --font-body: 'Libre Caslon Text', 'Noto Serif TC', sans-serif; --display-weight: 700; --display-tracking: -0.01em; --display-case: none; }
+html[data-font="cactus"] { --font-display: 'Cactus Classical Serif', 'Cactus Classical Serif', serif; --font-body: 'EB Garamond', 'Cactus Classical Serif', sans-serif; --display-weight: 400; --display-tracking: 0; --display-case: none; }
+html[data-font="bodoni"] { --font-display: 'Bodoni Moda', 'Noto Serif TC', serif; --font-body: 'Cormorant Garamond', 'Noto Serif TC', sans-serif; --display-weight: 700; --display-tracking: -0.02em; --display-case: none; }
+html[data-font="playfair"] { --font-display: 'Playfair Display', 'Noto Serif TC', serif; --font-body: 'Source Sans 3', 'Noto Sans TC', sans-serif; --display-weight: 700; --display-tracking: -0.015em; --display-case: none; }
+html[data-font="instrument"] { --font-display: 'Instrument Serif', 'Chiron Sung HK', serif; --font-body: 'Instrument Sans', 'Chiron Sung HK', sans-serif; --display-weight: 400; --display-tracking: -0.02em; --display-case: none; }
+html[data-font="poster"] { --font-display: 'Bebas Neue', 'Noto Sans TC', serif; --font-body: 'Barlow', 'Noto Sans TC', sans-serif; --display-weight: 400; --display-tracking: 0.01em; --display-case: none; }
+html[data-font="sora"] { --font-display: 'Sora', 'Noto Sans TC', serif; --font-body: 'Manrope', 'Noto Sans TC', sans-serif; --display-weight: 700; --display-tracking: -0.03em; --display-case: none; }
+html[data-font="bricolage"] { --font-display: 'Bricolage Grotesque', 'Chiron Hei HK', serif; --font-body: 'Bricolage Grotesque', 'Chiron Hei HK', sans-serif; --display-weight: 800; --display-tracking: -0.035em; --display-case: none; }
+html[data-font="syne"] { --font-display: 'Syne', 'Noto Sans TC', serif; --font-body: 'DM Sans', 'Noto Sans TC', sans-serif; --display-weight: 800; --display-tracking: -0.02em; --display-case: none; }
+html[data-font="wenkai"] { --font-display: 'LXGW WenKai TC', 'LXGW WenKai TC', serif; --font-body: 'LXGW WenKai TC', 'LXGW WenKai TC', sans-serif; --display-weight: 700; --display-tracking: 0; --display-case: none; }
+html[data-font="rounded"] { --font-display: 'Nunito', 'Huninn', serif; --font-body: 'Nunito', 'Huninn', sans-serif; --display-weight: 800; --display-tracking: -0.01em; --display-case: none; }
+html[data-font="notes"] { --font-display: 'Caveat', 'Iansui', serif; --font-body: 'DM Sans', 'Iansui', sans-serif; --display-weight: 700; --display-tracking: 0; --display-case: none; }
+html[data-font="mono"] { --font-display: 'Space Mono', 'LXGW WenKai Mono TC', serif; --font-body: 'Space Mono', 'LXGW WenKai Mono TC', sans-serif; --display-weight: 700; --display-tracking: -0.01em; --display-case: none; }
+
+/* Chinese text: relax tight tracking and uppercase (set lang="zh-Hant" on the element or <html>) */
+:lang(zh-Hant) { --display-tracking: 0.01em; --display-case: none; }
+:lang(zh-Hant) h1, :lang(zh-Hant) h2, :lang(zh-Hant) h3 { letter-spacing: 0.02em; line-height: 1.25; }

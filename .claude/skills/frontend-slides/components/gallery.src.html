@@ -47,6 +47,7 @@
         .night-demo .night-title { position: absolute; left: 40px; top: 200px; }
         .night-title small { font: 20px var(--font-mono); color: var(--accent); letter-spacing: .14em; text-transform: uppercase; }
         .night-title h3 { margin-top: 18px; font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: 76px; line-height: 1; }
+        .bot-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px; }
         @media (max-width: 900px) { .card { grid-column: span 12; } }
     </style>
 </head>
@@ -237,6 +238,33 @@
             <div class="hd"><h2>Flight from home</h2><code>data-fsc="flight"</code></div>
             <div class="frame" style="--w:1200;--h:760"><div class="inner"><div data-fsc="flight"><script type="application/json">{"caption":"Home → Singapore"}</script></div></div></div>
             <div class="hd"><p class="use">A plane flies from your hometown to Singapore over a real map while the distance counts up. "Taipei" is only an example: set your real hometown.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>Law icons</h2><code>data-icon="gavel"</code></div>
+            <div class="frame" style="--w:1600;--h:420"><div class="inner"><div data-fsc="iconset" data-cols="8" data-size="76px" data-icons="gavel|court|justice|statute|section|quill|seal|contractsign|handcuffs|fingerprint|evidence|briefcase|lawbooks|copyright|privacy|compliance"></div></div></div>
+            <div class="hd"><p class="use">Courts, regulation, contracts, IP, privacy, compliance.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Contract · signed &amp; sealed</h2><code>data-fsc="contract"</code></div>
+            <div class="frame" style="--w:900;--h:760"><div class="inner"><div data-fsc="contract" data-seal="EXECUTED" data-hl="2"></div></div></div>
+            <div class="hd"><p class="use">Clauses appear, one is highlighted, the signature writes itself, then the seal stamps down. Smart-contract vs legal-contract slides.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:6">
+            <div class="hd"><h2>Scales · weighing two sides</h2><code>data-fsc="scales"</code></div>
+            <div class="frame" style="--w:1100;--h:760"><div class="inner"><div data-fsc="scales"><script type="application/json">{"caption":"How regulators weigh crypto"}</script></div></div></div>
+            <div class="hd"><p class="use">Arguments drop into each pan and the beam tips toward the heavier side. Debates, trade-offs, policy.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>Botanicals</h2><code>data-fsc="botanical"</code></div>
+            <div class="frame" style="--w:1800;--h:460"><div class="inner bot-row">
+                <div data-fsc="botanical" data-name="laurel"></div><div data-fsc="botanical" data-name="olive"></div><div data-fsc="botanical" data-name="eucalyptus"></div>
+                <div data-fsc="botanical" data-name="fern"></div><div data-fsc="botanical" data-name="wildflower"></div><div data-fsc="botanical" data-name="orchid"></div>
+            </div></div>
+            <div class="hd"><p class="use">Fine-line botanical decorations: laurel wreath, olive branch, eucalyptus, fern, wildflowers and Singapore's Vanda Miss Joaquim orchid. Corners, dividers, title frames.</p><button class="replay">Replay</button></div>
         </article>
     </main>
 </div>

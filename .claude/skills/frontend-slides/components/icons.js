@@ -35,6 +35,24 @@ window.FSC_ICONS = (function () {
         kyc: I('KYC / identity', 'finance', '<rect x="6" y="10" width="36" height="28" rx="3"/><circle cx="17" cy="22" r="4"/><path d="M11 32c1-4.5 11-4.5 12 0M27 20h10M27 26h10M27 32h6"/><circle class="a" cx="37" cy="32" r="2"/>'),
         regulator: I('Regulator', 'finance', '<path d="M24 6v34M14 40h20M10 12h28"/><path d="M10 12 5 24h10zM38 12l-5 12h10z"/><path class="a" d="M5 24a5 3 0 0 0 10 0zM33 24a5 3 0 0 0 10 0z"/><circle cx="24" cy="8" r="2"/>'),
 
+        /* ---------- Law ---------- */
+        gavel: I('Gavel', 'law', '<path d="M17 8l11 11M11 14l11 11M14 11l11 11"/><rect x="13" y="6" width="8" height="18" rx="2" transform="rotate(-45 17 15)"/><path d="M23 21l14 14"/><path d="M6 42h18M9 42v-4h12v4"/><path class="as" d="M30 40h12"/>'),
+        court: I('Court', 'law', '<path d="M5 17 24 6l19 11z"/><path d="M9 21v15M17 21v15M31 21v15M39 21v15M6 17h36M6 40h36M4 44h40"/><circle class="a" cx="24" cy="12.5" r="2.4"/>'),
+        justice: I('Scales of justice', 'law', '<path d="M24 6v34M16 42h16M10 12h28"/><path d="M10 12 4 26M10 12l6 14M38 12l-6 14M38 12l6 14"/><path d="M3 26a7 4 0 0 0 14 0zM31 26a7 4 0 0 0 14 0z"/><circle class="a" cx="24" cy="8" r="2.6"/>'),
+        statute: I('Statute book', 'law', '<path d="M10 6h24a4 4 0 0 1 4 4v32H14a4 4 0 0 1-4-4z"/><path d="M10 38a4 4 0 0 1 4-4h24"/><path class="as" d="M27 13c-1.5-2-6-2-6 1s6 2 6 5-4.5 3-6 1M21 16c-2 1-2 3 0 4"/>'),
+        section: I('Section §', 'law', '<path d="M30 10c-2-4-12-4-12 2s12 4 12 11-10 7-12 3M18 18c-4 2-4 7 1 9M30 26c4 2 4 7-1 9-3 1-9 1-11-3"/>'),
+        quill: I('Quill / signature', 'law', '<path d="M40 6C26 8 16 18 13 32l3 3c14-3 24-13 26-27z"/><path d="M13 32l-4 10M20 28l12-12"/><path class="as" d="M6 42c4-3 7 1 10-1s4-4 7-2 4 2 6 1"/>'),
+        seal: I('Seal / stamp', 'law', '<path d="M18 6h12v8a6 6 0 0 1-6 6 6 6 0 0 1-6-6z"/><path d="M14 20h20l3 8H11z"/><rect x="9" y="28" width="30" height="5" rx="1"/><path class="as" d="M10 40h28"/>'),
+        contractsign: I('Signed contract', 'law', '<path d="M10 4h18l8 8v32H10z"/><path d="M28 4v8h8M15 16h14M15 21h16M15 26h12"/><path class="as" d="M15 36c3-4 5 1 8-1s3-3 5-1 3 1 4 0"/>'),
+        handcuffs: I('Handcuffs', 'law', '<circle cx="13" cy="30" r="8"/><circle cx="35" cy="30" r="8"/><path d="M13 22v-5M35 22v-5M13 17h22"/><path class="as" d="M19 14l2 3-2 3M29 14l-2 3 2 3"/>'),
+        fingerprint: I('Fingerprint', 'law', '<path d="M12 18a13 13 0 0 1 24 0M10 26c0-8 6-14 14-14s14 6 14 14v3M16 40c-2-4-2-9-2-13a10 10 0 0 1 20 0v4M22 42c-2-5-3-10-3-15a5 5 0 0 1 10 0c0 5 1 9 3 13"/><path class="as" d="M24 27c0 6 1 11 4 16"/>'),
+        evidence: I('Evidence', 'law', '<circle cx="20" cy="20" r="12"/><path d="M29 29l13 13"/><path d="M14 20h12M20 14v12"/><circle class="a" cx="20" cy="20" r="2.4"/>'),
+        briefcase: I('Briefcase', 'law', '<rect x="5" y="14" width="38" height="26" rx="3"/><path d="M17 14v-4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M5 25h38"/><rect class="a" x="21" y="22" width="6" height="6" rx="1"/>'),
+        lawbooks: I('Law library', 'law', '<rect x="6" y="10" width="8" height="32" rx="1"/><rect x="16" y="6" width="8" height="36" rx="1"/><path d="M27 12l7-2 8 30-7 2z"/><path d="M6 16h8M6 36h8M16 12h8M16 36h8"/><path class="as" d="M4 44h40"/>'),
+        copyright: I('Copyright / IP', 'law', '<circle cx="24" cy="24" r="17"/><path d="M30 18a8 8 0 1 0 0 12"/><circle class="a" cx="38" cy="10" r="3"/>'),
+        privacy: I('Privacy / data', 'law', '<path d="M4 24s7-12 20-12 20 12 20 12-7 12-20 12S4 24 4 24z"/><circle cx="24" cy="24" r="6"/><path class="as" d="M8 40 40 8"/>'),
+        compliance: I('Compliance', 'law', '<rect x="9" y="6" width="30" height="36" rx="3"/><path d="M17 6v-2h14v2M15 18l3 3 5-6M27 18h8M15 30l3 3 5-6M27 30h8"/><circle class="a" cx="36" cy="38" r="3"/>'),
+
         /* ---------- Life in Singapore ---------- */
         hawker: I('Hawker food', 'life', '<path d="M6 25h36c0 9.5-8 16-18 16S6 34.5 6 25z"/><path d="M28 21 40 7M32 22 44 10M15 18c-2-3 2-5 0-8M21 18c-2-3 2-5 0-8"/><path class="a" d="M12 25c2-4.5 7-6.5 12-6.5S34 20.5 36 25z"/>'),
         kopi: I('Kopi', 'life', '<path d="M10 18h24v12a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z"/><path d="M34 21h3a5 5 0 0 1 0 10h-3M6 43h32M18 13c-2-2 2-4 0-7M26 13c-2-2 2-4 0-7"/><path class="as" d="M13 22h18"/>'),

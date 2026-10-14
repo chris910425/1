@@ -10,7 +10,10 @@
    =========================================== */
 (function () {
     const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const R = {};          // registry: name -> { mount(el), play(el)? , total(el)? }
+    const R = {};
+    let uid = 0;                // unique ids for SVG defs
+    const bez = (p0, p1, p2, p3, t) => { const u = 1 - t; return u * u * u * p0 + 3 * u * u * t * p1 + 3 * u * t * t * p2 + t * t * t * p3; };
+    const rnd = (seed) => () => { seed = (seed * 1103515245 + 12345) >>> 0; return ((seed >>> 16) & 32767) / 32767; };          // registry: name -> { mount(el), play(el)? , total(el)? }
     const timers = new WeakMap();
 
     /* ---------- helpers ---------- */
@@ -43,7 +46,7 @@
     function mount(el) {
         const c = R[el.dataset.fsc];
         if (!c) return console.warn('FSC: unknown component', el.dataset.fsc);
-        if (!el._fscSource) el._fscSource = el.innerHTML;   // keep authored content for re-mounts
+        if (el._fscSource === undefined) el._fscSource = el.innerHTML;   // keep authored content for re-mounts
         el.innerHTML = el._fscSource;
         el.classList.add(c.inline ? 'fsc-inline' : 'fsc', 'fsc-' + (c.cls || el.dataset.fsc));
         el.classList.remove('is-playing', 'is-done');
@@ -823,6 +826,119 @@
             later(() => { const t0 = performance.now(); const tick = (now) => { const p = Math.min((now - t0) / 2600, 1); big.textContent = Math.round(km * (1 - Math.pow(1 - p, 3))).toLocaleString('en-US') + ' km'; if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); }, 900);
         },
         final(el) { el.querySelector('.km').textContent = el._km.toLocaleString('en-US') + ' km'; el.querySelector('.plane').style.opacity = 0; }
+    };
+
+    /* ===========================================
+       LAW: contract (clauses → signature → seal) · scales (two sides weighed)
+       =========================================== */
+    /* --- CONTRACT ---
+       data-title="Token Purchase Agreement" data-party="Alice & Bob" data-seal="EXECUTED" data-hl="2" (clause to highlight, 1-based)
+       Children: <li>clause text</li> … */
+    R.contract = {
+        mount(el) {
+            const items = [...el.querySelectorAll('li')].map((li) => li.innerHTML);
+            const clauses = items.length ? items : ['The Issuer mints tokens 1:1 against deposits held.', 'Tokens are transferable only between verified wallets.', 'Redemption settles within one business day.', 'This agreement is governed by the laws of Singapore.'];
+            const hl = +(el.dataset.hl || 2);
+            const sig = 'M8 46c10-30 18-38 22-30s-10 34-4 30 14-36 22-32-6 28 2 26 10-18 16-18 2 14 8 12 12-10 18-8';
+            el.innerHTML = `<div class="paper"><div class="ctop"><span class="mono">${el.dataset.ref || 'AGREEMENT No. 0x7e1c'}</span><span class="mono">${el.dataset.date || '14 Oct 2026'}</span></div>
+                <h4>${el.dataset.title || 'Token Purchase Agreement'}</h4><p class="parties">${el.dataset.party || 'between Alice and Bob'}</p>
+                <ol>${clauses.map((c, i) => `<li class="${i + 1 === hl ? 'hl' : ''}" style="--i:${i}"><span class="cn">§ ${i + 1}</span><span>${c}</span></li>`).join('')}</ol>
+                <div class="sign"><svg viewBox="0 0 200 60" class="sig"><path pathLength="1" d="${sig}"/></svg><span class="sline">${el.dataset.signer || 'Signed: Alice'}</span></div>
+                <div class="seal"><svg viewBox="0 0 120 120"><defs><path id="sealc${++uid}" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
+                <circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="34"/><text><textPath href="#sealc${uid}" textLength="268" lengthAdjust="spacing">${el.dataset.seal || 'EXECUTED'} · ${el.dataset.seal || 'EXECUTED'} · </textPath></text>
+                <path class="tick" d="M46 60l10 10 18-22"/></svg></div></div>`;
+        }
+    };
+
+    /* --- SCALES ---
+       JSON: { "left": { "label": "Innovation", "items": ["Faster settlement", "…"], "weight": 3 },
+               "right": { "label": "Protection", "items": ["…"], "weight": 2 }, "caption"?: "…" }
+       The beam tips toward the heavier side (weight defaults to item count). */
+    R.scales = {
+        mount(el) {
+            const d = Object.assign({ left: { label: 'Innovation', items: ['Instant settlement', 'Programmable money', 'Open access'] }, right: { label: 'Protection', items: ['Investor safeguards', 'AML / KYC'] } }, readJSON(el) || {});
+            const wl = d.left.weight ?? d.left.items.length, wr = d.right.weight ?? d.right.items.length;
+            el.style.setProperty('--tilt', Math.max(-12, Math.min(12, (wr - wl) * 5)) + 'deg');
+            const side = (s, cls) => `<div class="pan-wrap ${cls}"><div class="chain"></div><div class="pan"><div class="chips">${s.items.map((t, i) => `<span style="--i:${i}">${t}</span>`).join('')}</div></div><div class="plabel">${s.label}</div></div>`;
+            el.innerHTML = `<div class="stage"><div class="post"></div><div class="base"></div><div class="beam">${side(d.left, 'l')}${side(d.right, 'r')}<i class="pivot"></i></div></div>${d.caption ? `<p class="cap">${d.caption}</p>` : ''}`;
+        }
+    };
+
+    /* ===========================================
+       BOTANICALS: fine-line botanical illustrations (not florals-cute: ink, thin lines)
+       data-name="laurel | olive | eucalyptus | fern | wildflower | orchid"  data-flip="x" (mirror)
+       Draw-in: stems first, then leaves grow along them.
+       =========================================== */
+    function leafPath(len, w) { return `M0 0C${len * .3} ${-w} ${len * .7} ${-w} ${len} 0C${len * .7} ${w} ${len * .3} ${w} 0 0Z`; }
+    function botanicalSVG(name) {
+        const r = rnd(name.length * 131 + 7); let out = '', k = 0;
+        const leaf = (x, y, ang, len, w, extra = '') => `<g class="lf" style="--k:${k++}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(1)})"><path class="blade${extra}" d="${leafPath(len, w)}"/><path class="rib" d="M${len * .08} 0L${len * .85} 0"/></g>`;
+        const stem = (p0, p1, p2, p3) => `<path class="stem" pathLength="1" d="M${p0}C${p1} ${p2} ${p3}"/>`;
+        const along = (P, t) => [bez(P[0][0], P[1][0], P[2][0], P[3][0], t), bez(P[0][1], P[1][1], P[2][1], P[3][1], t)];
+        const tang = (P, t) => { const a = along(P, t), b = along(P, Math.min(1, t + .01)); return Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI; };
+        const branch = (P, n, len, w, spread, opts = {}) => {
+            out += stem(...P.map((p) => p.join(' ')));
+            for (let i = 1; i <= n; i++) {
+                const t = (opts.from ?? .08) + (1 - (opts.from ?? .08)) * i / (n + 1), [x, y] = along(P, t), a = tang(P, t), sc = opts.taper ? 1 - t * .45 : 1;
+                out += leaf(x, y, a - spread, len * sc * (.85 + r() * .3), w * sc);
+                if (opts.pairs || i % 2) out += leaf(x, y, a + spread, len * sc * (.85 + r() * .3), w * sc);
+            }
+            if (opts.tip !== false) { const [x, y] = along(P, 1); out += leaf(x, y, tang(P, .99), len * .8, w * .8); }
+        };
+        if (name === 'laurel') {   // wreath: two mirrored arcs of paired leaves
+            const arc = (dir) => { const P = [[200, 380], [200 + dir * 150, 360], [200 + dir * 170, 140], [200 + dir * 60, 40]]; branch(P, 11, 46, 13, 38, { pairs: true, taper: true }); };
+            arc(-1); arc(1);
+            out += `<path class="stem" pathLength="1" d="M170 382c10 12 50 12 60 0M185 384l-14 22M215 384l14 22"/>`;
+            return { vb: '0 0 400 420', out };
+        }
+        if (name === 'olive') {
+            const P = [[30, 370], [140, 300], [230, 170], [370, 60]]; branch(P, 14, 74, 9, 32, { taper: true });
+            [[.35, 1], [.52, -1], [.7, 1]].forEach(([t, s2]) => { const [x, y] = along(P, t), a = tang(P, t) + 90 * s2;
+                const ox = x + Math.cos(a * Math.PI / 180) * 22, oy = y + Math.sin(a * Math.PI / 180) * 22;
+                out += `<g class="lf" style="--k:${k++}"><path class="stem thin" d="M${x.toFixed(1)} ${y.toFixed(1)}L${ox.toFixed(1)} ${oy.toFixed(1)}"/><ellipse class="fruit" cx="${ox.toFixed(1)}" cy="${oy.toFixed(1)}" rx="9" ry="12" transform="rotate(${a.toFixed(0)} ${ox.toFixed(1)} ${oy.toFixed(1)})"/></g>`; });
+            return { vb: '0 0 400 420', out };
+        }
+        if (name === 'eucalyptus') {
+            const P = [[60, 20], [120, 140], [90, 260], [190, 400]];
+            out += stem(...P.map((p) => p.join(' ')));
+            for (let i = 0; i < 11; i++) { const t = .06 + i * .085, [x, y] = along(P, t), a = tang(P, t) + (i % 2 ? 70 : -70), sz = 30 + r() * 8;
+                out += `<g class="lf" style="--k:${k++}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${a.toFixed(1)})"><path class="blade" d="M0 0C${sz * .2} ${-sz * .8} ${sz * 1.2} ${-sz * .8} ${sz * 1.2} 0S${sz * .2} ${sz * .8} 0 0Z"/><path class="rib" d="M2 0L${sz * 1.05} 0"/></g>`; }
+            return { vb: '0 0 300 420', out };
+        }
+        if (name === 'fern') {
+            const P = [[40, 400], [90, 260], [180, 120], [330, 40]]; out += stem(...P.map((p) => p.join(' ')));
+            for (let i = 0; i < 24; i++) { const t = .05 + i * .038, [x, y] = along(P, t), a = tang(P, t), L = 70 * (1 - t * .8);
+                [-1, 1].forEach((sd) => { const ang = a + sd * 62; out += `<g class="lf" style="--k:${k++}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(1)})"><path class="blade" d="M0 0C${L * .2} ${-L * .16} ${L * .8} ${-L * .1} ${L} 0C${L * .8} ${L * .1} ${L * .2} ${L * .16} 0 0Z"/></g>`; });
+            }
+            return { vb: '0 0 400 420', out };
+        }
+        if (name === 'wildflower') {
+            const stems = [[[120, 410], [118, 300], [100, 200], [80, 90]], [[150, 410], [160, 320], [200, 220], [230, 130]], [[135, 410], [140, 330], [150, 260], [160, 190]]];
+            stems.forEach((P, si) => { out += stem(...P.map((p) => p.join(' ')));
+                const [x, y] = P[3];
+                for (let i = 0; i < 9; i++) { const a = -90 + (i - 4) * 18, L = 26 + r() * 10, ex = x + Math.cos(a * Math.PI / 180) * L, ey = y + Math.sin(a * Math.PI / 180) * L * .7;
+                    out += `<g class="lf" style="--k:${k++}"><path class="stem thin" d="M${x} ${y}L${ex.toFixed(1)} ${ey.toFixed(1)}"/><circle class="bud" cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="${si === 2 ? 5 : 3.5}"/></g>`; }
+                out += leaf(P[1][0], P[1][1], si % 2 ? -40 : -140, 60, 8);
+            });
+            [[100, 410, -100], [170, 410, -75], [140, 410, -88]].forEach(([x, y, a]) => out += `<g class="lf" style="--k:${k++}" transform="translate(${x} ${y}) rotate(${a})"><path class="blade" d="${leafPath(150, 5)}"/></g>`);
+            return { vb: '0 0 320 420', out };
+        }
+        // orchid: Vanda Miss Joaquim spray (Singapore's national flower), drawn as fine line art
+        const P = [[60, 410], [80, 280], [140, 170], [260, 70]]; out += stem(...P.map((p) => p.join(' ')));
+        [[.45, 1], [.7, .85], [.95, .7]].forEach(([t, sc]) => { const [x, y] = along(P, t), s3 = 46 * sc;
+            let f = `<g class="lf flower" style="--k:${k++}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(tang(P, t) - 60).toFixed(1)})">`;
+            [0, 72, 144, 216, 288].forEach((a) => f += `<path class="blade" transform="rotate(${a})" d="M0 0C${s3 * .25} ${-s3 * .35} ${s3 * .85} ${-s3 * .35} ${s3} 0C${s3 * .85} ${s3 * .35} ${s3 * .25} ${s3 * .35} 0 0Z"/>`);
+            f += `<path class="blade lip" transform="rotate(108)" d="M0 0C${s3 * .4} ${-s3 * .6} ${s3 * 1.25} ${-s3 * .7} ${s3 * 1.1} 0C${s3 * 1.25} ${s3 * .7} ${s3 * .4} ${s3 * .6} 0 0Z"/><circle class="bud" r="5"/></g>`;
+            out += f; });
+        [[.12, -150], [.22, -30]].forEach(([t, a]) => { const [x, y] = along(P, t); out += leaf(x, y, a, 120, 14); });
+        return { vb: '0 0 340 420', out };
+    }
+    R.botanical = {
+        mount(el) {
+            const name = el.dataset.name || 'olive', { vb, out } = botanicalSVG(name);
+            el.classList.toggle('flip', el.dataset.flip === 'x');
+            el.innerHTML = `<svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${out}</svg>`;
+        }
     };
 
     window.FSC = { play, update, mount, mountAll, wire, registry: R, iconSVG };

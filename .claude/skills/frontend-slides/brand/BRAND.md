@@ -177,7 +177,30 @@ Reference implementations live in `brand/themes/` (`ledger.html`, `editorial.htm
 
 Reference deck: `brand/themes/index.html`.
 
-## 7. Logo and icons
+## 7. Font pairings (English + 繁體)
+
+`brand/fonts.css` defines 14 pairings that sit on top of any theme: `<html data-theme="index" data-font="garamond">`. Each pairing stacks an English font with a matching Traditional Chinese font, so mixed 中英 text renders consistently. Load the pairing's Google Fonts link from `brand/fonts.json`. Visual specimen: `brand/fonts.html`.
+
+| `data-font` | Feel | English display / body | 繁體 |
+| --- | --- | --- | --- |
+| `garamond` | Law & academia | Cormorant Garamond / EB Garamond | Noto Serif TC |
+| `caslon` | Legal document | Libre Caslon Text | Noto Serif TC |
+| `cactus` | Classical 繁體 | Cactus Classical Serif / EB Garamond | Cactus Classical Serif |
+| `bodoni` | Renaissance editorial | Bodoni Moda / Cormorant Garamond | Noto Serif TC |
+| `playfair` | Classic magazine | Playfair Display / Source Sans 3 | Noto Serif TC + Noto Sans TC |
+| `instrument` | Modern elegant | Instrument Serif / Instrument Sans | Chiron Sung HK |
+| `poster` | Condensed poster | Bebas Neue / Barlow | Noto Sans TC |
+| `sora` | Clean tech | Sora / Manrope | Noto Sans TC |
+| `bricolage` | Friendly grotesk | Bricolage Grotesque | Chiron Hei HK |
+| `syne` | Art-school expressive | Syne / DM Sans | Noto Sans TC |
+| `wenkai` | Literary handwritten | LXGW WenKai TC (霞鶩文楷) | same |
+| `rounded` | Warm & friendly | Nunito | Huninn (粉圓) |
+| `notes` | Casual notes | Caveat / DM Sans | Iansui (芫荽) |
+| `mono` | Typewriter / code | Space Mono | LXGW WenKai Mono TC |
+
+Rules: one pairing per deck; for Chinese text set `lang="zh-Hant"` so tracking and uppercase relax automatically. The four themes also fall back to Noto Sans/Serif TC for Chinese even without a pairing.
+
+## 8. Logo and icons
 
 - The user has no logo. Do not invent one, and do not use the NTU crest or any institution's logo. Course names may appear as text only.
 - Icons: simple line icons drawn as inline SVG, 2px stroke in `--ink`, square or round caps to match the theme (Ledger/Terminal square, Editorial round). No emoji as icons, no icon fonts.
