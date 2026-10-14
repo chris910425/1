@@ -5,7 +5,7 @@
    - Plays a component when its .slide becomes .visible
      (or when scrolled into view if it is not inside a slide).
    - API: FSC.play(el), FSC.update(el, data), FSC.mountAll(root)
-   Data for charts/heatmap lives in a child
+   Data for charts lives in a child
    <script type="application/json"> so it can be swapped for real data.
    =========================================== */
 (function () {
@@ -250,33 +250,6 @@
         final(el) { el.querySelectorAll('.body p').forEach((p) => { p.style.visibility = 'visible'; p.textContent = p.dataset.full; }); }
     };
     R.terminal = R.term;
-
-    /* --- HEATMAP ---
-       JSON: { "rows": ["Mon",…], "cols": 24, "colLabels": ["00h","06h","12h","18h","24h"],
-               "values": [[0..1,…],…], "low": "Low gas", "high": "High gas" }
-       Values are 0..1 (normalize your data). Omit "values" for a demo pattern. */
-    R.heat = {
-        cls: 'heat',
-        mount(el) {
-            const d = Object.assign({ rows: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], cols: 24, colLabels: ['00h', '06h', '12h', '18h', '24h'], low: 'Low', high: 'High' }, readJSON(el) || {});
-            const vals = d.values || d.rows.map((_, r) => Array.from({ length: d.cols }, (_, c) => {
-                const day = r < 5 ? 1 : 0.55, peak = Math.exp(-((c - 15) ** 2) / 18) * 0.85 + Math.exp(-((c - 9) ** 2) / 10) * 0.35;
-                return Math.min(1, Math.max(0.04, day * peak + 0.08 * (((r * 31 + c * 17) % 7) / 7)));
-            }));
-            const json = el.querySelector('script[type="application/json"]');
-            el.innerHTML = '';
-            if (json) el.appendChild(json);
-            const rows = h('div', { class: 'rows', style: `grid-template-rows:repeat(${d.rows.length},1fr)` }, d.rows.map((r) => `<div>${r}</div>`).join(''));
-            const grid = h('div', { class: 'grid', style: `grid-template-columns:repeat(${d.cols},1fr);grid-template-rows:repeat(${d.rows.length},1fr)` });
-            vals.forEach((row, r) => row.forEach((v, c) => grid.appendChild(h('div', {
-                class: 'cell', style: `--d:${((r + c) / (d.rows.length + d.cols)).toFixed(3)};background:color-mix(in srgb, var(--accent) ${Math.round(v * 100)}%, var(--panel))`, title: `${d.rows[r]} ${c}: ${v}`
-            }))));
-            el.append(rows, grid,
-                h('div', { class: 'cols' }, d.colLabels.map((l) => `<span>${l}</span>`).join('')),
-                h('div', { class: 'legend' }, `<span>${d.low}</span><span class="ramp"></span><span>${d.high}</span>`));
-        }
-    };
-    R.heatmap = R.heat;
 
     /* --- SPECTRUM ---
        data-left="Centralized" data-right="Decentralized"
@@ -611,7 +584,7 @@
        CHAIN LOOP (continuous)
        New blocks are mined on the right (accent), link to the previous block,
        and the whole chain glides left forever while the slide is visible.
-       data-start="1024" data-speed="2.6" (seconds per block) data-mode="bg" (faint, no accent, slower)
+       data-start="1024" data-speed="1.3" (seconds per block) data-mode="bg" (faint, no accent, slower)
        Ambient motion: max one per slide (see BRAND.md).
        =========================================== */
     R.chainloop = {
@@ -634,12 +607,12 @@
             const b = h('div', { class: 'blk' + (live ? ' live accent' : ''), style: `left:${x}px`, 'data-idx': idx },
                 `<b>#${n}</b><div><span class="k">prev</span> ${idx ? fakeHash(n - 1) : '0x0000…0000'}</div><div><span class="k">hash</span> <span class="hv">${live ? 'mining…' : fakeHash(n)}</span></div>`);
             track.appendChild(b);
-            if (live) setTimeout(() => { const hv = b.querySelector('.hv'); if (hv) hv.textContent = fakeHash(n); }, 700);
+            if (live) setTimeout(() => { const hv = b.querySelector('.hv'); if (hv) hv.textContent = fakeHash(n); }, 350);
             return idx;
         },
         play(el, later) {
             if (!el._cl) R.chainloop.mount(el);
-            const st = el._cl, track = el.querySelector('.track'), speed = +(el.dataset.speed || (el.classList.contains('bg') ? 4 : 2.6)) * 1000;
+            const st = el._cl, track = el.querySelector('.track'), speed = +(el.dataset.speed || (el.classList.contains('bg') ? 2 : 1.3)) * 1000;
             const slide = el.closest('.slide');
             const step = () => {
                 if (!el.isConnected || !el.classList.contains('is-playing') || (slide && !slide.classList.contains('visible'))) return;
@@ -652,153 +625,9 @@
                 later(() => track.querySelectorAll('.blk, .lnk').forEach((n) => { if (parseFloat(n.style.left) < target - st.slot * 1.5) n.remove(); }), speed * 0.95);
                 later(step, speed);
             };
-            later(step, 500);
+            later(step, 300);
         }
     };
-
-    /* ===========================================
-       THE HIVE (NTU Learning Hub) — illustrations
-       data-fsc="hive"    exterior: towers of stacked, ribbed "baskets" around a ribbed stair core.
-                          data-glow="on" = night version: gaps between baskets glow in the accent.
-       data-fsc="oculus"  interior looking up: scalloped balcony rings around the skylight, vines.
-                          data-spin="on" = very slow ambient rotation.
-       Both accept data-mode="bg" (faint background) and data-label="off".
-       =========================================== */
-    let uid = 0;
-    const rnd = (seed) => () => { seed = (seed * 1103515245 + 12345) >>> 0; return ((seed >>> 16) & 32767) / 32767; };
-    const bez = (p0, p1, p2, p3, t) => { const u = 1 - t; return u * u * u * p0 + 3 * u * u * t * p1 + 3 * u * t * t * p2 + t * t * t * p3; };
-
-    function hiveExterior(glow) {
-        const r = rnd(42), gid = 'hv' + (++uid);
-        const defs = `<defs><linearGradient id="${gid}x" x1="0" x2="1"><stop offset="0" style="stop-color:var(--shadow);stop-opacity:.42"/><stop offset=".2" style="stop-color:var(--shadow);stop-opacity:.08"/><stop offset=".55" style="stop-color:var(--shadow);stop-opacity:0"/><stop offset=".85" style="stop-color:var(--shadow);stop-opacity:.14"/><stop offset="1" style="stop-color:var(--shadow);stop-opacity:.48"/></linearGradient>` +
-            `<linearGradient id="${gid}y" x1="0" x2="0" y1="0" y2="1"><stop offset="0" style="stop-color:var(--shadow);stop-opacity:.1"/><stop offset=".25" style="stop-color:var(--shadow);stop-opacity:0"/><stop offset=".72" style="stop-color:var(--shadow);stop-opacity:0"/><stop offset="1" style="stop-color:var(--shadow);stop-opacity:.38"/></linearGradient></defs>`;
-        // [cx, width, top, base, pods, depth(0 front,1 mid,2 back), profile, plants]
-        const towers = [
-            [878, 50, 430, 600, 5, 2, 'taper', 1], [826, 78, 300, 628, 7, 2, 'taper', 1], [190, 82, 236, 638, 7, 2, 'taper', 1],
-            [742, 104, 246, 636, 7, 1, 'taper', 1], ['core'],
-            [307, 196, 222, 645, 6, 0, 'top', 2], [612, 172, 46, 645, 8, 0, 'dome', 0]];
-        const prof = { taper: (k) => 1 - 0.22 * k, top: (k) => 1 - 0.26 * k * k, dome: (k) => [0.9, 0.97, 1, 1, 0.99, 0.96, 0.91, 0.86][Math.round(k * 7)] };
-        let out = '', order = 0;
-        const leaves = (x0, x1, y, n, big) => {
-            let o = '';
-            const mw = x1 - x0, mh = big ? 46 : 22;
-            for (let i = 0; i < n; i++) {   // leafy mound: denser and taller in the middle
-                const u = r(), x = x0 + mw * u, hgt = mh * Math.sin(Math.PI * u) * (0.4 + 0.6 * r()), yy = y - hgt;
-                const rx = (big ? 7 : 5) + r() * 5, ry = rx * (0.45 + r() * 0.2), rot = (r() * 160 - 80).toFixed(0);
-                o += `<ellipse class="leaf${r() > 0.6 ? ' lt' : ''}" cx="${x.toFixed(1)}" cy="${yy.toFixed(1)}" rx="${rx.toFixed(1)}" ry="${ry.toFixed(1)}" transform="rotate(${rot} ${x.toFixed(1)} ${yy.toFixed(1)})"/>`;
-            }
-            if (big) {   // a small tree and a few grass blades, like the roof garden in the photo
-                const tx = x0 + mw * 0.62;
-                o += `<path class="trunk" d="M${tx} ${y}C${tx - 2} ${y - 30} ${tx + 6} ${y - 50} ${tx + 2} ${y - 72}"/>`;
-                for (let i = 0; i < 26; i++) { const a = r() * Math.PI * 2, rr = 26 * Math.sqrt(r()), x = tx + 2 + Math.cos(a) * rr * 1.3, yy = y - 80 + Math.sin(a) * rr * 0.8;
-                    o += `<ellipse class="leaf${r() > 0.5 ? ' lt' : ''}" cx="${x.toFixed(1)}" cy="${yy.toFixed(1)}" rx="${(6 + r() * 4).toFixed(1)}" ry="${(3 + r() * 2).toFixed(1)}" transform="rotate(${(r() * 180).toFixed(0)} ${x.toFixed(1)} ${yy.toFixed(1)})"/>`; }
-                for (let i = 0; i < 7; i++) { const x = x0 + mw * (0.1 + r() * 0.4), hh = 30 + r() * 30, lean = (r() - 0.5) * 24; o += `<path class="blade" d="M${x.toFixed(1)} ${y}q${(lean / 2).toFixed(1)} ${(-hh / 2).toFixed(1)} ${lean.toFixed(1)} ${(-hh).toFixed(1)}"/>`; }
-            }
-            return o;
-        };
-        const vine = (x, y, len) => {
-            let d = `M${x} ${y}`, o = '';
-            for (let i = 1; i <= len / 14; i++) { const yy = y + i * 14, xx = x + Math.sin(i * 0.9) * 5; d += `L${xx.toFixed(1)} ${yy}`; if (i % 2) o += `<ellipse class="leaf" cx="${(xx + (i % 4 ? 5 : -5)).toFixed(1)}" cy="${yy}" rx="4" ry="2.4"/>`; }
-            return `<path class="vine" d="${d}"/>` + o;
-        };
-        towers.forEach((tw) => {
-            if (tw[0] === 'core') {   // ribbed, faceted stair core
-                const x0 = 406, x1 = 520, top = 78, base = 645;
-                let c = `<path class="core" d="M${x0} ${base}V${top + 10}l9-10 10 8 10-8 10 8 10-8 10 8 10-8 10 8 10-8 10 8 6-6V${base}z"/>`;
-                for (let x = x0 + 10; x < x1; x += 10) c += `<path class="rib" d="M${x} ${top + 6}V${base}"/>`;
-                for (let y = top + 70; y < base; y += 62) c += `<path class="rib band" d="M${x0} ${y}l9 6 10-6 10 6 10-6 10 6 10-6 10 6 10-6 10 6 10-6 10 6 5-4"/>`;
-                c += `<rect class="door" x="440" y="598" width="44" height="47"/>`;
-                out += `<g class="tw core-g" style="--o:${order++}">${c}</g>`;
-                return;
-            }
-            const [cx, W, top, base, n, depth, p, plants] = tw, gap = 6, ph = (base - top) / n - gap;
-            let g = '', slits = '';
-            // dark (or glowing) gap under each basket, sized to the narrower of the two neighbours
-            for (let i = 0; i < n - 1; i++) {
-                const wbI = W * prof[p](n > 1 ? i / (n - 1) : 0) * 0.8, wtN = W * prof[p]((i + 1) / (n - 1)) * 0.93, ws = Math.min(wbI, wtN) * 0.98;
-                const yb = top + i * (ph + gap) + ph;
-                slits += `<rect class="slit${glow ? ' glow' : ''}" x="${(cx - ws / 2).toFixed(1)}" y="${(yb - 6).toFixed(1)}" width="${ws.toFixed(1)}" height="${gap + 16}" rx="6"/>`;
-            }
-            g += slits;
-            for (let i = 0; i < n; i++) {
-                const k = n > 1 ? i / (n - 1) : 0, w = W * prof[p](k), y0 = top + i * (ph + gap), wt = w * 0.93, wb = w * 0.8, cv = 7;
-                const isCap = p === 'dome' && i === 0;
-                const L = [cx - wt / 2, cx - w / 2 - 4, cx - w / 2 - 1, cx - wb / 2], Rr = L.map((x) => 2 * cx - x);
-                const pts = [y0, y0 + ph * 0.25, y0 + ph * 0.7, y0 + ph];
-                const topEdge = isCap ? `M${L[0]} ${y0 + 18}C${L[0]} ${y0 - 22} ${Rr[0]} ${y0 - 22} ${Rr[0]} ${y0 + 18}` : `M${L[0]} ${y0}Q${cx} ${y0 + cv} ${Rr[0]} ${y0}`;
-                const d = (isCap ? `M${L[0]} ${y0 + 18}C${L[0]} ${y0 - 22} ${Rr[0]} ${y0 - 22} ${Rr[0]} ${y0 + 18}` : `M${L[0]} ${y0}Q${cx} ${y0 + cv} ${Rr[0]} ${y0}`) +
-                    `C${Rr[1]} ${pts[1]} ${Rr[2]} ${pts[2]} ${Rr[3]} ${pts[3]}Q${cx} ${pts[3] + cv * 1.6} ${L[3]} ${pts[3]}C${L[2]} ${pts[2]} ${L[1]} ${pts[1]} ${L[0]} ${isCap ? y0 + 18 : y0}Z`;
-                let pod = `<path class="pod" d="${d}"/><path class="shade" fill="url(#${gid}x)" d="${d}"/><path class="shade" fill="url(#${gid}y)" d="${d}"/>`;
-                // ribbed texture: horizontal grooves with broken panel joints
-                for (let s2 = 1; s2 <= 10; s2++) {
-                    const t = s2 / 11, yy = bez(pts[0], pts[1], pts[2], pts[3], t), xl = bez(L[0], L[1], L[2], L[3], t) + 2, xr = 2 * cx - xl;
-                    if (isCap && t < 0.3) continue;
-                    const dash = [60 + r() * 140, 2 + r() * 4, 30 + r() * 120, 2 + r() * 3].map((v) => v.toFixed(0)).join(' ');
-                    pod += `<path class="rib-h" style="stroke-dasharray:${dash};stroke-dashoffset:${(r() * 80).toFixed(0)}" d="M${xl.toFixed(1)} ${yy.toFixed(1)}Q${cx} ${(yy + cv * (0.8 + t)).toFixed(1)} ${xr.toFixed(1)} ${yy.toFixed(1)}"/>`;
-                }
-                g += `<g class="pod-g" style="--p:${n - 1 - i}">${pod}</g>`;
-                void topEdge;
-            }
-            if (plants) g += `<g class="plants">${leaves(cx - W * 0.47, cx + W * 0.47, top + 6, plants === 2 ? 70 : 26, plants === 2)}${vine(cx - W * 0.46, top + 12, plants === 2 ? 150 : 60)}${plants === 2 ? vine(cx + W * 0.44, top + 14, 50) : ''}</g>`;
-            out += `<g class="tw depth${depth}" style="--o:${order++}">${g}</g>`;
-        });
-        out += vine(694, 250, 300).replace('class="vine"', 'class="vine late"');
-        out += '<path class="ground" d="M20 648H980"/>';
-        return `<svg class="hive-svg${glow ? ' night' : ''}" viewBox="0 0 1000 680" role="img" aria-label="The Hive, NTU Learning Hub">${defs}${out}</svg>`;
-    }
-
-    function hiveOculus() {
-        const id = 'oc' + (++uid), r = rnd(7), rings = 11;
-        let out = '', clip = '';
-        const shape = (cx, cy, R, lobes, amp, rot) => {
-            let d = '';
-            for (let i = 0; i <= 360; i++) {
-                const th = (i / 360) * Math.PI * 2 + rot, rr = R - amp * Math.pow(Math.abs(Math.sin((lobes * th) / 2)), 0.8);
-                d += `${i ? 'L' : 'M'}${(cx + Math.cos(th) * rr).toFixed(1)} ${(cy + Math.sin(th) * rr).toFixed(1)}`;
-            }
-            return d + 'Z';
-        };
-        for (let k = 0; k < rings; k++) {
-            const t = k / (rings - 1), R = 780 * Math.pow(1 - t, 1.25) + 110, lobes = 12 + (k % 3), amp = R * 0.13;
-            const cx = 500 + 60 * t, cy = 520 - 110 * t, rot = k * 0.11 + 0.2;
-            const d = shape(cx, cy, R, lobes, amp, rot), shade = Math.round(94 - 50 * t);
-            // railing: short radial ticks just inside the balcony edge
-            let ticks = '';
-            for (let a = 0; a < 360; a += 2.2) {
-                const th = (a / 180) * Math.PI + rot, rr = R - amp * Math.pow(Math.abs(Math.sin((lobes * th) / 2)), 0.8);
-                const x1 = cx + Math.cos(th) * rr, y1 = cy + Math.sin(th) * rr, x2 = cx + Math.cos(th) * (rr - 9 - 4 * (1 - t)), y2 = cy + Math.sin(th) * (rr - 9 - 4 * (1 - t));
-                ticks += `M${x1.toFixed(1)} ${y1.toFixed(1)}L${x2.toFixed(1)} ${y2.toFixed(1)}`;
-            }
-            let vines = '';
-            if (k >= 2 && k <= 8) for (let v = 0; v < 34; v++) {
-                const a = (10 + r() * 55) / 180 * Math.PI, rr = R - amp * Math.pow(Math.abs(Math.sin((lobes * (a - rot)) / 2)), 0.8) - 4 - r() * 14;
-                const x = cx + Math.cos(a) * rr, y = cy + Math.sin(a) * rr;
-                vines += `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="${(5 + r() * 4).toFixed(1)}" ry="${(2.6 + r() * 1.6).toFixed(1)}" transform="rotate(${(r() * 180).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`;
-            }
-            out += `<g class="ring" style="--k:${k}"><path class="slab" style="--shade:${shade}%" d="${d}"/><path class="lip" d="${d}"/><path class="rail" d="${ticks}"/><path class="edge" d="${d}"/>${vines ? `<g class="vines">${vines}</g>` : ''}</g>`;
-            if (k === rings - 1) clip = d;
-        }
-        // skylight with glazing grid
-        let grid = '';
-        for (let x = 300; x < 800; x += 22) grid += `M${x} 200V700`;
-        out += `<g class="sky"><clipPath id="${id}"><path d="${clip}"/></clipPath><path class="glass" d="${clip}"/><path class="grid" clip-path="url(#${id})" d="${grid}M300 380H800M300 470H800"/></g>`;
-        return `<svg class="oculus-svg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="The Hive atrium, looking up"><g class="spin">${out}</g></svg>`;
-    }
-
-    R.hive = {
-        mount(el) {
-            el.classList.toggle('bg', el.dataset.mode === 'bg');
-            el.innerHTML = hiveExterior(el.dataset.glow === 'on') + (el.dataset.mode === 'bg' || el.dataset.label === 'off' ? '' : '<p class="lm-cap">The Hive · NTU</p>');
-        }
-    };
-    R.oculus = {
-        mount(el) {
-            el.classList.toggle('bg', el.dataset.mode === 'bg');
-            el.classList.toggle('spin-on', el.dataset.spin === 'on');
-            el.innerHTML = hiveOculus() + (el.dataset.mode === 'bg' || el.dataset.label === 'off' ? '' : '<p class="lm-cap">Inside The Hive · looking up</p>');
-        }
-    };
-    R.landmark = R.hive;   // backwards compatibility with earlier decks
 
     window.FSC = { play, update, mount, mountAll, wire, registry: R, iconSVG };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => wire());

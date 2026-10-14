@@ -18,7 +18,7 @@ The brand is one shared rulebook plus **three themes**. The themes are deliberat
 ### Motion: subtle
 - Default entrance: fade + 24–36px rise, `cubic-bezier(0.16, 1, 0.3, 1)`, 0.8–0.9s, staggered by ~0.12–0.15s.
 - At most **one signature effect per deck** (e.g. the chain blocks linking, a node diagram drawing in). No count-ups on every slide, no bouncing.
-- **Continuous motion** is limited to: the Terminal status dot, the `chainloop` component, and `oculus` with `data-spin="on"` (user-approved ambient loops). Use `chainloop` on title/section slides or as a faint `data-mode="bg"` band, at most one per slide; it pauses automatically when its slide is not visible.
+- **Continuous motion** is limited to: the Terminal status dot, and the `chainloop` component (user-approved ambient loop). Use `chainloop` on title/section slides or as a faint `data-mode="bg"` band, at most one per slide; it pauses automatically when its slide is not visible.
 - Always keep `prefers-reduced-motion` support.
 
 ### Slide chrome

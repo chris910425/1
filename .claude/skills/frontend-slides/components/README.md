@@ -27,15 +27,12 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 | `merkle` | Merkle tree building from leaves to an accent root | Data structures, inclusion proofs, light clients, rollups | `data-leaves="Tx1|…"` (4 or 8) | 800–1000 × 440–520 |
 | `hash` | Word scrambles through hex, then resolves; optional digest line | Statement slides, key terms, section openers | text via `data-text`, `data-size`, `data-digest="off"` | width of text × 220–320 |
 | `term` | Terminal window typing commands with output | Smart-contract demos, CLI tooling, testing steps | child `<p data-cmd>` (typed) and `<p>` (output); `class="hl"` on ONE line; `data-title` | 700–900 × 380–480 |
-| `heat` | Day × hour grid shaded by intensity | Gas/tx/wallet activity patterns, any matrix of 0–1 values | JSON child (below) | 900–1200 × 380–480 |
 | `spec` | Items positioned along an axis between two extremes | Positioning, comparisons, taxonomies | `data-left`, `data-right`; child `<i data-pos="0..1">`, `data-hl` on ONE | 1400–1680 × 340–400 |
 | `line` | Animated multi-series line chart | Trends over time | JSON child | 800–1100 × 440–560 |
 | `bar` | Animated bar chart, one bar highlighted | Comparing chains, protocols, costs | JSON child, `"highlight": "Label"` | 800–1100 × 440–560 |
 | `doughnut` | Animated doughnut with legend | Shares of a whole: tokenomics, market share | JSON child, `"highlight"`, `"center"`, `"centerLabel"` | 900 × 500 |
 | `candle` | Candlestick chart: hollow = up, filled = down, accent = the candle you discuss; optional volume, moving average, last-price tag, event note | Price action, volatility, event studies, market structure | JSON child (below) | 900–1200 × 480–560 |
-| `chainloop` | **Continuous**: new blocks are mined on the right (accent, "mining…" → hash), link to the chain, and the chain glides left forever | Title/section slides about blockchains; `data-mode="bg"` for a faint ambient background band | `data-start`, `data-speed` (s per block, default 2.6; bg 4), `data-block` (block width px), `data-mode="bg"` | full slide width × 200–260 |
-| `hive` | The Hive (NTU Learning Hub), exterior: towers of shaded, ribbed "baskets" stack up floor by floor around the ribbed stair core, then roof gardens and vines grow. Keeps its real materials (pale concrete, dark core) in light and dark mode | Campus-life slides, NTU title slides, `data-mode="bg"` backgrounds | `data-glow="on"` (night: gaps glow in the accent, best in dark mode), `data-mode="bg"`, `data-label="off"` | 900–1200 × 640–860 (≈ 1000:680 + caption) |
-| `oculus` | Inside The Hive looking up: scalloped balcony rings closing in on a glowing skylight, with vines | Section dividers, atmospheric backgrounds, "community/learning" slides | `data-spin="on"` (very slow ambient rotation), `data-mode="bg"`, `data-label="off"`; fills its box (crops like a cover image) | any; works full-bleed |
+| `chainloop` | **Continuous**: new blocks are mined on the right (accent, "mining…" → hash), link to the chain, and the chain glides left forever | Title/section slides about blockchains; `data-mode="bg"` for a faint ambient background band | `data-start`, `data-speed` (s per block, default 1.3; bg 2), `data-block` (block width px), `data-mode="bg"` | full slide width × 200–260 |
 | `iconset` | Grid of icons or characters with labels, drawing in one by one | "What we'll cover", life-in-Singapore slides, cast introductions | `data-icons="bank|coin|…"`, `data-cols`, `data-size`, `data-labels="off"` | any; ~120px per icon cell |
 | `actors` | Alice & Bob scene: an item travels from left to right, directly or via a middle character | Payments, custody, intermediaries (Trent = bank), cryptography and attacks (Eve, Mallory) | `data-left`, `data-right`, `data-middle="trent|eve|mallory|none"`, `data-item` (any icon), `data-note`, `data-caption`, `data-eve-note` | 1200–1600 × 560–680 |
 
@@ -44,7 +41,7 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 Drop an icon anywhere, including inside titles or cards: `<i data-icon="hawker" data-size="96px"></i>`. Icons draw themselves in when the slide appears and take the surrounding text color; their one accent detail uses the brand accent.
 
 - **Finance & institutions:** `bank coin wallet card vault key lock shield exchange growth contract qr globe block kyc regulator`
-- **Life in Singapore:** `hawker kopi crab durian bus mrt transit hdb hive mbs supertree study laptop rain sun plane` (`hive` is a small icon of The Hive; use the `hive` / `oculus` components for large illustrations)
+- **Life in Singapore:** `hawker kopi crab durian bus mrt transit hdb hive mbs supertree study laptop rain sun plane` (`hive` is a small icon of The Hive)
 - **Characters:** `alice bob eve trent mallory` (Alice and Bob are the default pair; Trent is the trusted third party, so use him for banks and custodians; Eve eavesdrops; Mallory actively attacks). Use them consistently: the same character always plays the same role across a deck.
 
 Add a new icon by adding an entry to `icons.js` (48×48 grid, 2.2px strokes, at most one `class="a"` fill or `class="as"` stroke for the accent), then rebuild and check the gallery.
@@ -67,7 +64,7 @@ Wrap a word or phrase: `<h2>Settlement becomes <span data-fx="underline">final</
 
 One text effect per slide, and it replaces any other accent on that slide. They work in every theme, light and dark.
 
-### Data format (charts and heatmap)
+### Data format (charts)
 
 Data lives in a JSON block inside the component, so real data can be swapped in without touching layout code:
 
@@ -83,24 +80,22 @@ Data lives in a JSON block inside the component, so real data can be swapped in 
 - `line`: `{ labels, unit, series: [{ name, values, highlight? }] }`; one series should have `"highlight": true`.
 - `bar`: `{ labels, unit, highlight, series: [{ name, values }] }`.
 - `doughnut`: `{ labels, unit, highlight, center, centerLabel, series: [{ values }] }`.
-- `heat`: `{ rows, cols, colLabels, values: [[0..1]], low, high }`; normalize raw numbers to 0–1 first.
 - `candle`: `{ ohlc: [[open, high, low, close], …], labels?, volume?, ma?: 7, unit: "$", highlight?: index | "last", note?, source? }`. Paste real OHLC data (e.g. exported from an exchange) and always fill `source`.
 - From JS (e.g. after fetching a CSV): `FSC.update(el, data)` re-renders and replays.
 - If no JSON is given, charts render **illustrative demo data**. Never ship demo numbers in a real deck: use the user's data or clearly label figures as illustrative.
 
 ### Backgrounds
 
-`hive`, `oculus` and `chainloop` accept `data-mode="bg"`: low opacity, no accent, slower drawing. Position them absolutely inside the slide, behind the content, for example:
+`chainloop` accepts `data-mode="bg"`: low opacity, no accent, slower drawing. Position them absolutely inside the slide, behind the content, for example:
 
 ```html
 <section class="slide">
-  <div data-fsc="oculus" data-mode="bg" style="position:absolute;right:40px;bottom:0;width:700px;height:490px"></div>
   <div data-fsc="chainloop" data-mode="bg" style="position:absolute;left:0;top:40px;width:1920px;height:200px"></div>
   <h1 style="position:relative">One year at <span data-fx="underline">NTU</span>.</h1>
 </section>
 ```
 
-Keep backgrounds away from the main text block (or behind empty space) so text contrast stays high. Use at most one background illustration and one background loop per slide. `data-spin="on"` on `oculus` counts as the slide's ambient loop.
+Keep backgrounds away from the main text block (or behind empty space) so text contrast stays high. Use at most one background loop per slide.
 
 ## Rules for using components in decks
 
