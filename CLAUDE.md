@@ -5,7 +5,7 @@ This repo is the user's personal slide-making workspace. The user is an MSBT (bl
 ## What's here
 
 - `.claude/skills/frontend-slides/`: the slide-making skill, customized:
-  - `brand/BRAND.md` + `brand/tokens.css`: the user's design system (themes **Ledger**, **Editorial**, **Terminal**, each light + dark). Every deck uses it by default.
+  - `brand/BRAND.md` + `brand/tokens.css`: the user's design system (themes **Ledger**, **Editorial**, **Terminal**, **Index**, each light + dark). Every deck uses it by default.
   - `components/`: the reusable animated component library (see `components/README.md`). Preview page: `components/gallery.html` (rebuild with `python3 .claude/skills/frontend-slides/components/build.py`).
 - `decks/`: one folder per deck: `decks/<deck-name>/`.
 - `inspiration/`: templates and styles the user liked. When the user shares an image or link they like, save the image file (or the link) here and add a row to `inspiration/README.md` describing what they liked. Check this folder when choosing a look for a new deck.

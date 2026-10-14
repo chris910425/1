@@ -19,7 +19,7 @@ Create zero-dependency, animation-rich HTML presentations that run entirely in t
 
 This copy of the skill is customized with the user's own design system in [brand/BRAND.md](brand/BRAND.md).
 
-- **Every new deck uses the brand by default.** Read `brand/BRAND.md` before Phase 2. It defines shared rules (sparing accent, subtle motion, deck-title-only header, light + dark variants) and three themes: **Ledger**, **Editorial**, **Terminal**.
+- **Every new deck uses the brand by default.** Read `brand/BRAND.md` before Phase 2. It defines shared rules (sparing accent, subtle motion, deck-title-only header, light + dark variants) and four themes: **Ledger**, **Editorial**, **Terminal**, **Index**.
 - **Pick the theme** from the topic/purpose using the table in BRAND.md, or use the one the user names. State the chosen theme and the reason in one line, then continue. Read only that theme's reference file in `brand/themes/` before generating.
 - **Skip the generic 3-style discovery** for brand decks. If the user asks for options, show the title slide in the three brand themes instead.
 - **Override:** if the user explicitly asks for a non-brand style (a preset, a bold template, "something different"), ignore the brand and run Phase 2 as written below.
@@ -30,6 +30,7 @@ This copy of the skill is customized with the user's own design system in [brand
 Brand decks draw from the animated component library in [components/](components/README.md): chain append, transaction lifecycle, network gossip, Merkle tree, hash-reveal text, terminal, spectrum, continuous chain loop, line / bar / doughnut / candlestick charts, Alice & Bob characters and scenes, finance and Singapore-life icons, and text effects for titles (underline, circle, highlight, strike, cycle, words, type, scramble, count).
 
 - Before Phase 3, read `components/README.md`. While planning the outline, mark which slides would genuinely explain better with a component (processes, systems, structures, comparisons, data). Typical deck: 2–5 components. Never force one onto every slide.
+- For slide layouts (section headers, big numbers, ranked bars, process steps, statements), use `components/layouts.css`; see `brand/themes/index.html`.
 - Build brand decks on `brand/tokens.css` (`<html data-theme="...">`) and inline `components/library.css`, `components/icons.js` (if icons/characters are used) and `components/library.js` (or only the sections used).
 - Explaining a protocol, payment or attack? Cast it with the characters (Alice, Bob, Trent = bank, Eve, Mallory) instead of abstract boxes. Personal or life-story decks: use the Singapore-life icons.
 - Decorate the key word of a title or statement with one `data-fx` text effect where it adds emphasis; not on every slide.

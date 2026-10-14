@@ -5,6 +5,7 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 - `library.css`: component styles (one `/* === NAME === */` section per component)
 - `library.js`: builds and animates components; exposes `window.FSC`
 - `vendor/rough-notation.js`: [Rough Notation](https://roughnotation.com) (MIT) for hand-drawn text effects. Paste it before `library.js` whenever a deck uses `underline`, `circle`, `highlight`, `strike`, `box`, `bracket` or `crossed`; keep its license header.
+- `layouts.css`: Swiss pitch-document slide layouts (section header, giant word, ranked bars, big numbers, process steps, statement, panel backgrounds). Signature of the Index theme, usable in every theme. Examples: `brand/themes/index.html`.
 - `icons.js`: icon + character drawings (`window.FSC_ICONS`). Paste it **before** `library.js` whenever a deck uses icons, characters, `iconset` or `actors`.
 - `gallery.src.html`: bento preview page (source). `gallery.html` is its built, self-contained copy: run `python3 components/build.py` after any library edit, then screenshot-check it.
 

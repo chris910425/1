@@ -1,5 +1,5 @@
 /* ===========================================
-   BRAND TOKENS: Ledger / Editorial / Terminal × light / dark
+   BRAND TOKENS: Ledger / Editorial / Terminal / Index × light / dark
    Usage: <html data-theme="ledger"> (add class="dark" for dark mode).
    Source of truth for colors and fonts is brand/BRAND.md; keep in sync.
    Components in components/library.css read ONLY these variables.
@@ -44,8 +44,22 @@ html[data-theme="terminal"].dark {
     --accent: #c8ff1a; --on-accent: #0c0d0b; --panel: #1a1c17;
 }
 
+/* ---------- Index (Swiss pitch-document look) ---------- */
+html[data-theme="index"] {
+    --paper: #fbfaf8; --ink: #1c1c1e; --muted: #8e8b86; --rule: rgba(28, 28, 30, .22);
+    --accent: #ff4b2b; --on-accent: #f4efe8; --panel: #ebe7e1;
+    --font-display: 'Hanken Grotesk', sans-serif; --display-weight: 500; --display-case: none; --display-tracking: -0.035em;
+    --font-body: 'Hanken Grotesk', sans-serif; --font-mono: 'Hanken Grotesk', sans-serif;
+    --radius: 6px; --stroke: 1.5px;
+}
+html[data-theme="index"].dark {
+    --paper: #1c1c1e; --ink: #f1ede7; --muted: #75726e; --rule: rgba(241, 237, 231, .2);
+    --accent: #ff5536; --on-accent: #f4efe8; --panel: #262628;
+}
+
 /* Font links per theme (paste the one you use into <head>):
    Ledger:    https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500&display=swap
    Editorial: https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap
    Terminal:  https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap
+   Index:     https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap
 */

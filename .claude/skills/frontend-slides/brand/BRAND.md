@@ -48,6 +48,7 @@ All existing frontend-slides rules still apply: 1920×1080 stage scaled as a who
 | **Ledger** | Technical, precise, research-report | Technical deep-dives, protocol/architecture explainers, data-heavy or reading-first decks. **Default if nothing else fits.** |
 | **Editorial** | Academic, warm, considered | Policy, regulation, economics, literature reviews, case studies, essays-as-slides. |
 | **Terminal** | Bold, crypto-native, energetic | Pitches, hackathons, product demos, debates, anything that should feel punchy. |
+| **Index** | Swiss pitch document: confident, minimal, data-forward | Business cases, pitches, project reports, metrics-heavy decks, anything that should feel like a design-studio proposal. |
 
 Selection flow:
 1. If the user names a theme → use it.
@@ -56,7 +57,7 @@ Selection flow:
 
 All theme colors and fonts are also available as ready-to-use CSS variables in `brand/tokens.css` (`<html data-theme="ledger|editorial|terminal">`, plus `class="dark"`). Use it for every brand deck so the component library matches.
 
-Reference implementations of each theme's title slide live in `brand/themes/` (`ledger.html`, `editorial.html`, `terminal.html`). Read the chosen theme's file before generating; reuse its tokens, fonts and components. Do not copy its demo text.
+Reference implementations live in `brand/themes/` (`ledger.html`, `editorial.html`, `terminal.html` title slides, and `index.html`, a 6-slide reference deck). Read the chosen theme's file before generating; reuse its tokens, fonts and components. Do not copy its demo text.
 
 ---
 
@@ -147,7 +148,36 @@ Reference implementations of each theme's title slide live in `brand/themes/` (`
 
 ---
 
-## 6. Logo and icons
+## 6. Theme: Index
+
+**Personality:** a Swiss-style studio pitch document. Huge neutral grotesk type, numbered sections, hairline rules, tiny bracketed labels, and one hot orange. Inspired by the "Noteform" pitch template in `inspiration/noteform-pitch/` (our own version: never copy its name, copy or photos).
+
+**Fonts** (Google Fonts): `family=Hanken+Grotesk:wght@400;500;600;700`. Display 500, tracking −0.035 to −0.055em; section titles and big words in UPPERCASE; body 500, 19–30px; labels 600, 17px, uppercase, written as `↓ (LABEL)`.
+
+**Tokens**
+| Token | Light | Dark |
+| --- | --- | --- |
+| `--paper` | `#fbfaf8` | `#1c1c1e` |
+| `--ink` | `#1c1c1e` | `#f1ede7` |
+| `--muted` | `#8e8b86` | `#75726e` |
+| `--accent` | `#ff4b2b` | `#ff5536` |
+| `--on-accent` | `#f4efe8` | `#f4efe8` |
+| `--panel` | `#ebe7e1` (warm cream) | `#262628` |
+
+**Signature elements** (all in `components/layouts.css`, usable in any theme):
+- Slides alternate panel colors: `bg-paper`, `bg-panel` (cream), `bg-ink` (near-black), `bg-accent` (orange, used for section openers only).
+- Section header `lx-head`: hairline on top, muted section number ("4.5") in a 340px left column, UPPERCASE title.
+- `lx-giant`: one enormous word or number (cover title, section number "1").
+- `lx-rank`: ranked rows (number, BIG WORD, solid bar); the highlighted row's bar is the accent.
+- `lx-stats`: big-number grid with small bold label and muted caption.
+- `lx-steps`: process rows (1 ISSUE / 2 TRANSFER / 3 REDEEM) with a short description column.
+- `lx-quote` + `lx-quote-by`: big UPPERCASE statement with a muted second half.
+- Photos: rounded corners (6px), placed in the right column; label above them with `lx-label`.
+- Accent rule still applies: the orange appears once per slide (or as the whole background of a section opener).
+
+Reference deck: `brand/themes/index.html`.
+
+## 7. Logo and icons
 
 - The user has no logo. Do not invent one, and do not use the NTU crest or any institution's logo. Course names may appear as text only.
 - Icons: simple line icons drawn as inline SVG, 2px stroke in `--ink`, square or round caps to match the theme (Ledger/Terminal square, Editorial round). No emoji as icons, no icon fonts.
