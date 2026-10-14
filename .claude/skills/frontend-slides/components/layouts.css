@@ -122,3 +122,13 @@ html.dark .ph-bg.is-dim::after, .bg-ink .ph-bg.is-dim::after { background: color
 .num-badge { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid var(--accent); color: var(--accent); font-family: var(--font-display); font-size: 22px; }
 .card-soft { background: color-mix(in srgb, var(--panel) 75%, transparent); border: 1px solid var(--rule); border-radius: var(--radius); padding: 28px 30px; }
 @media (prefers-reduced-motion: reduce) { .ph-bg.is-kenburns img, .shape-blob.morph { animation: none !important; } }
+
+
+/* --- Image placeholder (templates ship without photos; swap in an <img class="ph"> later) --- */
+.ph-slot { position: relative; overflow: hidden; background:
+    linear-gradient(160deg, color-mix(in srgb, var(--ink) 18%, var(--panel)) 0%, color-mix(in srgb, var(--ink) 42%, var(--panel)) 100%); }
+.ph-slot::after { content: ''; position: absolute; left: 50%; top: 50%; width: 64px; height: 48px; margin: -24px 0 0 -32px; opacity: .45;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 48' fill='none' stroke='white' stroke-width='3' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='60' height='44' rx='4'/%3E%3Cpath d='M2 38l16-16 12 12 8-8 24 20'/%3E%3Ccircle cx='46' cy='14' r='5'/%3E%3C/svg%3E") center / contain no-repeat; }
+.ph-slot.is-dark { background: linear-gradient(160deg, color-mix(in srgb, var(--ink) 70%, #000) 0%, color-mix(in srgb, var(--ink) 85%, #000) 100%); }
+.tone-dark .ph-slot { background: linear-gradient(160deg, color-mix(in srgb, var(--ink) 30%, var(--paper)) 0%, color-mix(in srgb, var(--ink) 12%, var(--paper)) 100%); }
+.ph-slot.no-icon::after { display: none; }

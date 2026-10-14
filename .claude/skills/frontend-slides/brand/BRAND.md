@@ -183,15 +183,15 @@ Reference deck: `brand/themes/index.html`.
 
 **Personality:** muted slate + warm greige, organic blob shapes, photos inside arches and circles, airy letter-spaced capitals. Remade from the "Prezfull" template (`inspiration/templates/slate-organic-prezfull.webp`).
 **Fonts:** `family=Josefin+Sans:wght@300;400;600&family=Mulish:wght@400;500;600` (+ Noto Sans TC). Titles Josefin Sans 400, UPPERCASE, tracking 0.06em; body Mulish.
-**Tokens:** light paper `#e8e3db`, ink `#2a2d32`, panel `#d5cdc1`, accent `#3a4654`; dark paper `#2b2f35`, ink `#ece6dc`, accent `#c9b9a2`. Use `class="tone-dark"` on single slides to alternate light/dark inside a light deck.
-**Signature:** `.shape-blob` (optionally `.morph`), photos with `.ph-arch` / `.ph-circle`, outline pill buttons, timeline of filled circles, three-arch image gallery, glass panel over a full-bleed photo. Reference deck: `brand/themes/slate.html`.
+**Tokens:** light paper `#e2dbd0`, mid `#cbc2b4` (`tone-mid`), ink `#2b2b2e`, accent/dark slate `#44474d`; dark paper `#3e4146`, ink `#ece6dc`. Alternate `tone-dark` / `tone-mid` slides like the original.
+**Signature layouts (reference deck `brand/themes/slate.html`, 12 slides, faithful to the template):** dark photo cover with organic corner shapes and centred title + outline button; Who we are (light/dark split with pill photo); Problem/Solution (two circle photos on a diagonal); Market (dark numbered tabs with arrow + bar chart + donuts); Mission (circle photo over a dark wave); Meet the team (4 cards); Phone mockup with progress bars; Timeline of circles; Cycle diagram; Business model 01/02/03 over a photo band; Image gallery; three arches + Thank you. Images are `.ph-slot` placeholders: replace with `<img class="ph …">`.
 
 ## 6c. Theme: Heritage
 
 **Personality:** aged parchment, dark-brown alternate slides, classical engraved capitals, double-rule frames, sepia photos, a row of line icons like museum artefacts. Remade from the "Mexico Archaeology Initiative" deck (`inspiration/templates/heritage-archaeology.webp`).
 **Fonts:** `family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400` (+ Noto Serif TC). Titles Cinzel 600 UPPERCASE; body EB Garamond.
-**Tokens:** light paper `#efe5d2`, ink `#3a2a1e`, panel `#e3d4b8`, accent `#9a6a35`; dark paper `#2f231a`, ink `#f1e5cf`, accent `#c99a5b`. `tone-dark` gives the dark-brown slides.
-**Signature:** `.tex-paper` background, `.frame-double`, `.rule-orn` ornamental rules, `.num-badge` numbered circles, `.card-soft`, sepia photo treatment (`.ph-bg.is-sepia`), stat circles over a photo. Reference deck: `brand/themes/heritage.html`.
+**Tokens:** light parchment `#ecdfc5`, ink `#3a281b`, panel `#e0cfae`, accent `#a5804b`; dark brown `#3b2a1f`, ink `#f1e4cb`, accent `#c9a26a`. `tone-dark` gives the dark-brown slides.
+**Signature:** **Signature layouts (reference deck `brand/themes/heritage.html`, 11 slides, faithful to the template):** framed cover (title, double rule, bullet subtitle, wide sepia photo, artefact icon row, double-ruled footer band); Contents (photo + 01–05 badge rows); Introduction (dark, photo + two columns); Leadership team (6 portrait cards); The Challenge (icon cards + 60% AT RISK box); Our Solution (dark photo grid); How it works (4 icon columns); Competitive landscape (dark 2×2 matrix); Measurable impact (stat circles over photo); Execution roadmap (4 arched photos); Partnership inquiries. Small running header on every content slide. Photos get `filter: sepia(.4)` or `.ph-bg.is-sepia`.
 
 ## 7. Font pairings (English + 繁體)
 
