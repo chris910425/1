@@ -4,3 +4,6 @@ Templates, slides and styles the user liked. Claude adds every image or link the
 
 | # | Source | What I liked | Use for |
 | --- | --- | --- | --- |
+| 1 | `noteform-pitch/01–10.jpg`: "Studio Noteform" pitch-deck template (shared 2026-10-14) | Swiss/International style: huge neutral grotesk type, numbered sections ("4.5 METRICS"), hairline rules, tiny label text in brackets "(AVERAGE FOLLOWERS)", one hot red-orange accent (~#FF4B2B), panels alternating white / warm cream / near-black / orange, big metric numbers, simple bar rows, photo grids with rounded corners | Candidate for a new brand theme; metrics, process, team, pricing and case-study layouts |
+| 2 | `illustrated-architecture/colosseum-flat-vector.jpg`: "Colosseum" template by EaTemp (Pinterest) | Detailed flat-vector illustration of a landmark in a small palette (navy, peach, cream), soft paper background, elegant serif titles | The style the user wants for The Hive / NTU illustrations |
+| 3 | `illustrated-architecture/vintage-collage.jpg`: "Ancient European Architecture" deck by Dave Poojan (Pinterest) | Vintage collage: aged paper texture, cut-out building photos with torn edges, botanical stickers, condensed bold titles mixed with script | Alternative style for The Hive / campus-life slides |
