@@ -4,6 +4,7 @@ Reusable animated HTML components for brand decks. They read only the brand toke
 
 - `library.css`: component styles (one `/* === NAME === */` section per component)
 - `library.js`: builds and animates components; exposes `window.FSC`
+- `vendor/rough-notation.js`: [Rough Notation](https://roughnotation.com) (MIT) for hand-drawn text effects. Paste it before `library.js` whenever a deck uses `underline`, `circle`, `highlight`, `strike`, `box`, `bracket` or `crossed`; keep its license header.
 - `icons.js`: icon + character drawings (`window.FSC_ICONS`). Paste it **before** `library.js` whenever a deck uses icons, characters, `iconset` or `actors`.
 - `gallery.src.html`: bento preview page (source). `gallery.html` is its built, self-contained copy: run `python3 components/build.py` after any library edit, then screenshot-check it.
 
@@ -52,12 +53,15 @@ Wrap a word or phrase: `<h2>Settlement becomes <span data-fx="underline">final</
 
 | `data-fx` | Effect | Extra attributes |
 | --- | --- | --- |
-| `underline` | Hand-drawn underline draws in | |
-| `circle` | Hand-drawn loop around the word | |
-| `highlight` | Marker sweep behind the word | |
-| `strike` | Strike-through, then the replacement appears | `data-to="seconds"` |
+| `underline` | Hand-drawn underline (Rough Notation) | |
+| `circle` | Hand-drawn circle around the word | |
+| `highlight` | Hand-drawn marker behind the word | |
+| `box` | Hand-drawn box around the word | |
+| `bracket` | Hand-drawn brackets around a phrase | `data-brackets="left,right"` (also `top`, `bottom`) |
+| `crossed` | Hand-drawn cross-out | |
+| `strike` | Hand-drawn strike-through, then the replacement appears | `data-to="seconds"` |
 | `cycle` | Swaps through words and stops on the last one (accent) | `data-words="faster|cheaper|final"` |
-| `words` | Words rise one by one (good for a whole title) | |
+| `words` | Words rise one by one (good for a whole title); Chinese text without spaces rises character by character | |
 | `type` | Typewriter with caret | |
 | `scramble` | Hex scramble that resolves into the word | |
 | `count` | Number counts up | `data-to`, `data-dec`, `data-prefix`, `data-suffix` |

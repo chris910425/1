@@ -438,45 +438,54 @@
         }
     };
 
-    // Scale a hand-drawn template path (pairs of numbers only) to the word's real box, so strokes stay even
-    function fxGeom(el) {
-        el.querySelectorAll('.fx-svg').forEach((svg) => {
-            const host = svg.parentElement, fs = parseFloat(getComputedStyle(host).fontSize) || 40;
-            const [, , vw, vh] = svg.dataset.vb.split(' ').map(Number), k = svg.classList;
-            const tw = host.querySelector('.fx-t') ? host.querySelector('.fx-t').offsetWidth : host.offsetWidth;
-            const w = k.contains('o') ? tw * 1.16 : tw * 1.06, h = k.contains('o') ? fs * 1.5 : k.contains('u') ? fs * 0.3 : fs * 0.22;
-            svg.setAttribute('width', w); svg.setAttribute('height', h); svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-            let i = 0;
-            const d = svg.dataset.d.replace(/-?\d*\.?\d+/g, (n) => (+n * (i++ % 2 ? h / vh : w / vw)).toFixed(1));
-            const path = svg.querySelector('path'); path.setAttribute('d', d);
-            path.style.strokeWidth = Math.max(3, fs * 0.075);
-            path.style.setProperty('--len', Math.ceil(path.getTotalLength()) + 1);
-        });
-    }
-
     /* ===========================================
        TEXT EFFECTS: <span data-fx="underline">word</span>
-       underline | circle | highlight | strike (data-to="new") | type | words
+       Hand-drawn (Rough Notation): underline | circle | highlight | strike (data-to="new") | box | bracket | crossed
+       Others: type | words
        | cycle (data-words="a|b|c", stops on last) | scramble | count (data-to, data-dec, data-prefix, data-suffix)
        Effects use the accent: one per slide.
        =========================================== */
+    /* Hand-drawn effects use Rough Notation (vendor/rough-notation.js, MIT).
+       Its positions are measured in screen pixels, so we divide by the stage scale. */
+    const RN_TYPES = { underline: 'underline', circle: 'circle', highlight: 'highlight', strike: 'strike-through', box: 'box', bracket: 'bracket', crossed: 'crossed-off' };
+    function accentColor(el, alpha) {
+        const c = getComputedStyle(el).getPropertyValue('--accent').trim() || '#2445ff';
+        if (alpha == null || !/^#[0-9a-f]{6}$/i.test(c)) return c;
+        const n = parseInt(c.slice(1), 16);
+        return `rgba(${n >> 16}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
+    }
+    function roughAnnotate(el, animate) {
+        if (el._rn) { el._rn.remove(); el._rn = null; }
+        if (!window.RoughNotation) return;
+        const kind = el.dataset.fx, t = el.querySelector('.fx-t'), fs = parseFloat(getComputedStyle(el).fontSize) || 40;
+        const opts = {
+            type: RN_TYPES[kind], animate, animationDuration: kind === 'highlight' ? 900 : 800, iterations: 2,
+            color: kind === 'highlight' ? accentColor(el, 0.42) : accentColor(el),
+            strokeWidth: Math.max(2, fs * 0.055), padding: kind === 'circle' ? fs * 0.18 : kind === 'box' ? fs * 0.1 : 2, multiline: kind === 'highlight' || kind === 'underline'
+        };
+        if (kind === 'bracket') opts.brackets = (el.dataset.brackets || 'left,right').split(',');
+        const ann = RoughNotation.annotate(t, opts);
+        ann.svgRect = (svg, r) => {   // undo the stage/frame transform scale
+            const s = svg.getBoundingClientRect(), k = s.width / 100 || 1;
+            return { x: ((r.x || r.left) - (s.x || s.left)) / k, y: ((r.y || r.top) - (s.y || s.top)) / k, w: r.width / k, h: r.height / k };
+        };
+        el._rn = ann; ann.show();
+    }
+
     R.fx = {
         inline: true,
         mount(el) {
             const kind = el.dataset.fx, text = el.dataset.text || el.textContent;
             el.dataset.text = text; el.classList.add('fx-' + kind);
-            const svg = (vb, d, cls) => `<svg class="fx-svg ${cls}" data-vb="${vb}" data-d="${d}" aria-hidden="true"><path/></svg>`;
-            if (kind === 'underline') el.innerHTML = `<span class="fx-t">${text}</span>` + svg('0 0 100 12', 'M2 8C22 3 48 10 70 6S92 4 98 6', 'u');
-            else if (kind === 'circle') el.innerHTML = `<span class="fx-t">${text}</span>` + svg('0 0 100 60', 'M86 10C66 0 18 2 6 22c-10 18 18 34 52 32 30-2 44-16 38-30C92 12 70 6 52 6', 'o');
-            else if (kind === 'strike') el.innerHTML = `<span class="fx-old"><span class="fx-t">${text}</span>${svg('0 0 100 10', 'M2 6C30 4 70 7 98 4', 's')}</span>${el.dataset.to ? ` <span class="fx-to">${el.dataset.to}</span>` : ''}`;
-            else if (kind === 'words') el.innerHTML = text.trim().split(/\s+/).map((w, i) => `<span class="fx-w" style="--i:${i}">${w}</span>`).join(' ');
+            if (kind === 'strike') el.innerHTML = `<span class="fx-old"><span class="fx-t">${text}</span></span>${el.dataset.to ? ` <span class="fx-to">${el.dataset.to}</span>` : ''}`;
+            else if (kind === 'words') el.innerHTML = (/\s/.test(text.trim()) ? text.trim().split(/\s+/) : [...text.trim()]).map((w, i) => `<span class="fx-w" style="--i:${i}">${w}</span>`).join(/\s/.test(text.trim()) ? ' ' : '');
             else if (kind === 'cycle') { const ws = (el.dataset.words || text).split('|'); el.dataset.words = ws.join('|'); el.innerHTML = `<span class="fx-c">${ws[0]}</span>`; }
             else if (kind === 'count') el.textContent = (el.dataset.prefix || '') + '0' + (el.dataset.suffix || '');
             else el.innerHTML = `<span class="fx-t">${text}</span>`;
         },
         play(el, later) {
-            fxGeom(el);
             const kind = el.dataset.fx, text = el.dataset.text, t = el.querySelector('.fx-t');
+            if (RN_TYPES[kind]) { if (el._rn) { el._rn.remove(); el._rn = null; } later(() => roughAnnotate(el, true), 300); return; }
             if (kind === 'type') {
                 t.textContent = ''; const caret = h('span', { class: 'caret' }); t.after(caret);
                 [...text].forEach((_, i) => later(() => { t.textContent = text.slice(0, i + 1); }, 200 + i * 45));
@@ -498,8 +507,8 @@
             }
         },
         final(el) {
-            fxGeom(el);
             const k = el.dataset.fx;
+            if (RN_TYPES[k]) roughAnnotate(el, false);
             if (k === 'type' || k === 'scramble') el.querySelector('.fx-t').textContent = el.dataset.text;
             if (k === 'cycle') { const ws = el.dataset.words.split('|'); const c = el.querySelector('.fx-c'); c.textContent = ws[ws.length - 1]; c.classList.add('last'); }
             if (k === 'count') { const dec = +(el.dataset.dec || 0); el.textContent = (el.dataset.prefix || '') + parseFloat(el.dataset.to).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + (el.dataset.suffix || ''); }

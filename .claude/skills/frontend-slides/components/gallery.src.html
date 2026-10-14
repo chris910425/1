@@ -146,12 +146,15 @@
 
         <article class="card" style="--span:12">
             <div class="hd"><h2>Text effects</h2><code>&lt;span data-fx="…"&gt;</code></div>
-            <div class="frame" style="--w:1600;--h:600"><div class="inner fx-demo">
+            <div class="frame" style="--w:1600;--h:820"><div class="inner fx-demo">
                 <div><small>underline</small><p>Settlement becomes <span data-fx="underline">final</span>.</p></div>
                 <div><small>circle</small><p>Banks <span data-fx="circle">tokenize</span> deposits.</p></div>
                 <div><small>highlight</small><p>Money is now <span data-fx="highlight">programmable</span>.</p></div>
                 <div><small>strike → replace</small><p>Settles in <span data-fx="strike" data-to="seconds">T+2 days</span></p></div>
                 <div><small>cycle (stops on last)</small><p>Payments that are <span data-fx="cycle" data-words="faster|cheaper|final">faster</span></p></div>
+                <div><small>box</small><p>Keys are <span data-fx="box">yours</span>.</p></div>
+                <div><small>bracket</small><p><span data-fx="bracket">Not your keys, not your coins.</span></p></div>
+                <div><small>crossed off</small><p>Middlemen: <span data-fx="crossed">required</span></p></div>
                 <div><small>words</small><p><span data-fx="words">One island. Many kopi.</span></p></div>
                 <div><small>type</small><p><span data-fx="type">Hello, Singapore.</span></p></div>
                 <div><small>count</small><p><span data-fx="count" data-to="365">365</span> days at NTU</p></div>
@@ -213,6 +216,8 @@
     </main>
 </div>
 
+<!-- BUILD:INLINE vendor/rough-notation.js -->
+<script src="vendor/rough-notation.js"></script>
 <!-- BUILD:INLINE icons.js -->
 <script src="icons.js"></script>
 <!-- BUILD:INLINE library.js -->
