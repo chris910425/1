@@ -247,6 +247,7 @@
 <script src="library.js"></script>
 <script>
     /* Gallery wiring: frame scaling, theme/mode switch, replay */
+    if (!document.documentElement.dataset.theme) document.documentElement.dataset.theme = 'ledger';
     const fit = () => document.querySelectorAll('.frame').forEach((f) => {
         const w = +getComputedStyle(f).getPropertyValue('--w');
         f.firstElementChild.style.transform = `scale(${f.clientWidth / w})`;

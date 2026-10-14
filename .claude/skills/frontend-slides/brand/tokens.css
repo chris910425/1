@@ -6,14 +6,14 @@
    =========================================== */
 
 /* ---------- Ledger ---------- */
-html[data-theme="ledger"] {
+:root, html[data-theme="ledger"] {
     --paper: #f3f2ee; --ink: #121316; --muted: #6b6d73; --rule: rgba(18, 19, 22, .14);
     --accent: #2445ff; --on-accent: #ffffff; --panel: #e8e7e1;
     --font-display: 'Archivo', sans-serif; --display-weight: 900; --display-case: none; --display-tracking: -0.035em;
     --font-body: 'Archivo', sans-serif; --font-mono: 'JetBrains Mono', monospace;
     --radius: 0px; --stroke: 2px;
 }
-html[data-theme="ledger"].dark {
+:root.dark, html[data-theme="ledger"].dark {
     --paper: #0b0c10; --ink: #eceef3; --muted: #8a8f9c; --rule: rgba(236, 238, 243, .14);
     --accent: #5a72ff; --on-accent: #0b0c10; --panel: #15171d;
 }
