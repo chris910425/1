@@ -214,11 +214,37 @@
             </div></div>
             <div class="hd"><p class="use">Faint chain loop behind a title. Backgrounds stay quiet so the text leads.</p><button class="replay">Replay</button></div>
         </article>
+
+        <article class="card" style="--span:7">
+            <div class="hd"><h2>Island map · my places</h2><code>data-fsc="sgmap"</code></div>
+            <div class="frame" style="--w:1200;--h:700"><div class="inner"><div data-fsc="sgmap"><script type="application/json">{"title":"My Singapore"}</script></div></div></div>
+            <div class="hd"><p class="use">Real outline of Singapore draws in, your places drop in as pins, then a route travels between them. Places are real coordinates, so edit them in the JSON.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:5">
+            <div class="hd"><h2>Dot-matrix island</h2><code>data-fsc="sgdots"</code></div>
+            <div class="frame" style="--w:1200;--h:700"><div class="inner"><div data-fsc="sgdots"><script type="application/json">{"caption":"Everything starts from NTU"}</script></div></div></div>
+            <div class="hd"><p class="use">Singapore drawn in dots that ripple out from home, like a network lighting up. Section openers, "where I've been".</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:12">
+            <div class="hd"><h2>MRT journey</h2><code>data-fsc="mrt"</code></div>
+            <div class="frame" style="--w:1600;--h:420"><div class="inner"><div data-fsc="mrt"><script type="application/json">{"caption":"NTU → City Hall · about an hour"}</script></div></div></div>
+            <div class="hd"><p class="use">Your commute as an MRT line diagram: the train stops at each station. Stations, codes, notes and line color are editable.</p><button class="replay">Replay</button></div>
+        </article>
+
+        <article class="card" style="--span:7">
+            <div class="hd"><h2>Flight from home</h2><code>data-fsc="flight"</code></div>
+            <div class="frame" style="--w:1200;--h:760"><div class="inner"><div data-fsc="flight"><script type="application/json">{"caption":"Home → Singapore"}</script></div></div></div>
+            <div class="hd"><p class="use">A plane flies from your hometown to Singapore over a real map while the distance counts up. "Taipei" is only an example: set your real hometown.</p><button class="replay">Replay</button></div>
+        </article>
     </main>
 </div>
 
 <!-- BUILD:INLINE vendor/rough-notation.js -->
 <script src="vendor/rough-notation.js"></script>
+<!-- BUILD:INLINE geo.js -->
+<script src="geo.js"></script>
 <!-- BUILD:INLINE icons.js -->
 <script src="icons.js"></script>
 <!-- BUILD:INLINE library.js -->

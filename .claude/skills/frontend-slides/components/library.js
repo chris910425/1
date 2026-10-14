@@ -638,6 +638,193 @@
         }
     };
 
+    /* ===========================================
+       MAPS (need geo.js): sgmap · sgdots · mrt · flight
+       Real outlines from Natural Earth (public domain). Places use real lat/lon.
+       =========================================== */
+    const GEO = () => window.FSC_GEO || { sg: [], region: [] };
+    // Fit lon/lat into a W×H box (equirectangular, corrected for latitude)
+    function projector(box, W, H, pad) {
+        const [x0, x1, y0, y1] = box, k = Math.cos(((y0 + y1) / 2) * Math.PI / 180);
+        const s = Math.min((W - 2 * pad) / ((x1 - x0) * k), (H - 2 * pad) / (y1 - y0));
+        const ox = (W - (x1 - x0) * k * s) / 2, oy = (H - (y1 - y0) * s) / 2;
+        const f = (lon, lat) => [ox + (lon - x0) * k * s, oy + (y1 - lat) * s];
+        f.kmPerPx = 111.32 / s; return f;
+    }
+    // Smooth closed outline (Catmull-Rom → Bézier)
+    function smoothPath(pts) {
+        const n = pts.length, P = (i) => pts[(i + n) % n]; let d = `M${P(0)[0].toFixed(1)} ${P(0)[1].toFixed(1)}`;
+        for (let i = 0; i < n; i++) {
+            const p0 = P(i - 1), p1 = P(i), p2 = P(i + 1), p3 = P(i + 2);
+            d += `C${(p1[0] + (p2[0] - p0[0]) / 6).toFixed(1)} ${(p1[1] + (p2[1] - p0[1]) / 6).toFixed(1)} ${(p2[0] - (p3[0] - p1[0]) / 6).toFixed(1)} ${(p2[1] - (p3[1] - p1[1]) / 6).toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+        }
+        return d + 'Z';
+    }
+    const SG_BOX = [103.6, 104.05, 1.22, 1.48];
+    const SG_PLACES = [
+        { name: 'NTU', lat: 1.3483, lon: 103.6831, note: 'Home base', side: 'top' },
+        { name: 'Jurong East', lat: 1.3331, lon: 103.7423, side: 'bottom' },
+        { name: 'Orchard', lat: 1.3048, lon: 103.8318, side: 'right' },
+        { name: 'Chinatown', lat: 1.2836, lon: 103.8443, side: 'left' },
+        { name: 'Marina Bay', lat: 1.2834, lon: 103.8607, side: 'bottom' },
+        { name: 'Changi Airport', lat: 1.3644, lon: 103.9915, side: 'top' }];
+    const haversine = (a, b) => { const r = (d) => d * Math.PI / 180, dl = r(b.lat - a.lat), dn = r(b.lon - a.lon);
+        const h = Math.sin(dl / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dn / 2) ** 2; return 12742 * Math.asin(Math.sqrt(h)); };
+    function moveAlong(path, dot, dur, later, delay, done) {
+        const L = path.getTotalLength();
+        later(() => { const t0 = performance.now(); dot.style.opacity = 1;
+            const tick = (now) => { const p = Math.min((now - t0) / dur, 1), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2, pt = path.getPointAtLength(e * L);
+                const pt2 = path.getPointAtLength(Math.min(L, e * L + 1)); dot.setAttribute('transform', `translate(${pt.x} ${pt.y}) rotate(${Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * 180 / Math.PI})`);
+                if (p < 1) requestAnimationFrame(tick); else done && done(); };
+            requestAnimationFrame(tick); }, delay);
+    }
+
+    /* --- SGMAP: island outline + pins + route ---
+       JSON: { "places": [{ "name", "lat", "lon", "note"?, "side"?: "left|right|top|bottom" }], "route": true, "title"?: "My week" } */
+    R.sgmap = {
+        cls: 'map',
+        mount(el) {
+            const d = Object.assign({ places: SG_PLACES, route: true }, readJSON(el) || {});
+            const W = 1200, H = 700, pr = projector(SG_BOX, W, H, 40);
+            const svg = frame(el, W, H);
+            const g = svgEl('g', { class: 'grat' });
+            for (let lon = 103.6; lon <= 104.05; lon += 0.05) { const [x] = pr(lon, 1.3); g.appendChild(svgEl('line', { x1: x, x2: x, y1: 0, y2: H })); }
+            for (let lat = 1.2; lat <= 1.5; lat += 0.05) { const [, y] = pr(103.8, lat); g.appendChild(svgEl('line', { x1: 0, x2: W, y1: y, y2: y })); }
+            svg.appendChild(g);
+            svg.appendChild(svgEl('path', { class: 'island', pathLength: 1, d: smoothPath(GEO().sg.map(([x, y]) => pr(x, y))) }));
+            const pts = d.places.map((p) => pr(p.lon, p.lat));
+            if (d.route && pts.length > 1) {
+                let path = `M${pts[0][0]} ${pts[0][1]}`;
+                for (let i = 1; i < pts.length; i++) { const [ax, ay] = pts[i - 1], [bx, by] = pts[i], mx = (ax + bx) / 2, my = (ay + by) / 2 - Math.hypot(bx - ax, by - ay) * 0.18; path += `Q${mx.toFixed(1)} ${my.toFixed(1)} ${bx} ${by}`; }
+                svg.appendChild(svgEl('path', { class: 'route', pathLength: 1, d: path }));
+                const dot = svgEl('g', { class: 'traveller' }); dot.appendChild(svgEl('circle', { r: 9 })); svg.appendChild(dot);
+            }
+            d.places.forEach((p, i) => {
+                const [x, y] = pts[i], side = p.side || 'right', g2 = svgEl('g', { class: 'pin' + (i === 0 ? ' home' : ''), style: `--i:${i}`, transform: `translate(${x} ${y})` });
+                g2.appendChild(svgEl('circle', { class: 'ring', r: 16 })); g2.appendChild(svgEl('circle', { class: 'core', r: 7 }));
+                const off = { right: [22, 8, 'start'], left: [-22, 8, 'end'], top: [0, p.note ? -50 : -28, 'middle'], bottom: [0, 42, 'middle'] }[side];
+                const t = svgEl('text', { class: 'pname', x: off[0], y: off[1], 'text-anchor': off[2] }); t.textContent = p.name; g2.appendChild(t);
+                if (p.note) { const n = svgEl('text', { class: 'pnote', x: off[0], y: off[1] + 22, 'text-anchor': off[2] }); n.textContent = p.note; g2.appendChild(n); }
+                svg.appendChild(g2);
+            });
+            // scale bar + north arrow
+            const km = 5, px = km / pr.kmPerPx / Math.cos(1.35 * Math.PI / 180);
+            const sb = svgEl('g', { class: 'scale', transform: `translate(${W - 60 - px} ${H - 40})` });
+            sb.appendChild(svgEl('path', { d: `M0 0V-8M0 0H${px.toFixed(1)}V-8` })); const st = svgEl('text', { x: px / 2, y: -14, 'text-anchor': 'middle' }); st.textContent = `${km} km`; sb.appendChild(st); svg.appendChild(sb);
+            const na = svgEl('g', { class: 'scale', transform: `translate(${W - 60} 60)` }); na.appendChild(svgEl('path', { d: 'M0 -26L9 6L0 0L-9 6Z', class: 'north' })); const nt = svgEl('text', { y: 30, 'text-anchor': 'middle' }); nt.textContent = 'N'; na.appendChild(nt); svg.appendChild(na);
+            if (d.title) { const tt = svgEl('text', { class: 'mtitle', x: 40, y: 56 }); tt.textContent = d.title; svg.appendChild(tt); }
+        },
+        play(el, later) {
+            const route = el.querySelector('.route'), dot = el.querySelector('.traveller');
+            if (route && dot) { dot.style.opacity = 0; moveAlong(route, dot, 3200, later, 2400); }
+        },
+        final(el) { const dot = el.querySelector('.traveller'); if (dot) dot.style.opacity = 0; }
+    };
+
+    /* --- SGDOTS: dot-matrix island, rippling out from home ---
+       JSON: { "home": { "lat", "lon" }, "places": [{ "name", "lat", "lon" }], "spacing": 13, "caption": "..." } */
+    R.sgdots = {
+        cls: 'map',
+        mount(el) {
+            const d = Object.assign({ home: SG_PLACES[0], places: SG_PLACES.slice(0, 1).concat(SG_PLACES.slice(4)), spacing: 13 }, readJSON(el) || {});
+            const W = 1200, H = 700, pr = projector(SG_BOX, W, H, 40), poly = GEO().sg.map(([x, y]) => pr(x, y));
+            const inside = (x, y) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const [xi, yi] = poly[i], [xj, yj] = poly[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+            const svg = frame(el, W, H), [hx, hy] = pr(d.home.lon, d.home.lat), sp = d.spacing;
+            let maxD = 0; const dots = [];
+            for (let y = sp / 2; y < H; y += sp) for (let x = sp / 2 + ((y / sp) % 2 ? sp / 2 : 0); x < W; x += sp) if (inside(x, y)) { const dd = Math.hypot(x - hx, y - hy); maxD = Math.max(maxD, dd); dots.push([x, y, dd]); }
+            const g = svgEl('g', { class: 'dots' });
+            dots.forEach(([x, y, dd]) => g.appendChild(svgEl('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: 3.4, style: `--t:${(dd / maxD).toFixed(3)}` })));
+            svg.appendChild(g);
+            d.places.forEach((p, i) => {
+                const [x, y] = pr(p.lon, p.lat), dd = Math.hypot(x - hx, y - hy), gg = svgEl('g', { class: 'hot' + (i === 0 ? ' home' : ''), transform: `translate(${x} ${y})`, style: `--t:${(dd / maxD).toFixed(3)}` });
+                gg.appendChild(svgEl('circle', { class: 'pulse', r: 10 })); gg.appendChild(svgEl('circle', { class: 'core', r: 8 }));
+                const t = svgEl('text', { x: 0, y: -24, 'text-anchor': 'middle' }); t.textContent = p.name; gg.appendChild(t); svg.appendChild(gg);
+            });
+            if (d.caption) { const c = svgEl('text', { class: 'mtitle', x: 40, y: H - 36 }); c.textContent = d.caption; svg.appendChild(c); }
+        }
+    };
+
+    /* --- MRT: schematic line journey with a moving train ---
+       JSON: { "line": "East–West Line", "color"?: "#009645", "caption"?: "NTU → City Hall · about 55 min",
+               "stations": [{ "name", "code"?, "note"? }] } */
+    R.mrt = {
+        cls: 'map',
+        mount(el) {
+            const d = Object.assign({ line: 'East–West Line', caption: 'Pioneer → City Hall', stations: [
+                { name: 'Pioneer', code: 'EW28', note: 'Bus from NTU' }, { name: 'Boon Lay', code: 'EW27' }, { name: 'Jurong East', code: 'EW24', note: 'Change for NS' },
+                { name: 'Clementi', code: 'EW23' }, { name: 'Buona Vista', code: 'EW21' }, { name: 'Outram Park', code: 'EW16' }, { name: 'Raffles Place', code: 'EW14' }, { name: 'City Hall', code: 'EW13' }] }, readJSON(el) || {});
+            const W = 1600, H = 420, x0 = 90, x1 = W - 90, y = 230, n = d.stations.length, X = (i) => x0 + (x1 - x0) * i / (n - 1);
+            const svg = frame(el, W, H);
+            if (d.color) el.style.setProperty('--line', d.color);
+            const head = svgEl('g', { class: 'mrt-head' });
+            head.appendChild(svgEl('rect', { x: x0 - 10, y: 40, width: 18, height: 18, rx: 4, class: 'chip' }));
+            const ht = svgEl('text', { x: x0 + 20, y: 55 }); ht.textContent = d.line; head.appendChild(ht);
+            const cp = svgEl('text', { x: x1 + 10, y: 55, 'text-anchor': 'end', class: 'cap' }); cp.textContent = d.caption || ''; head.appendChild(cp); svg.appendChild(head);
+            svg.appendChild(svgEl('path', { class: 'track', d: `M${x0} ${y}H${x1}` }));
+            const run = svgEl('path', { class: 'run', d: `M${x0} ${y}H${x1}`, pathLength: 1 }); svg.appendChild(run);
+            d.stations.forEach((s, i) => {
+                const g = svgEl('g', { class: 'stn', style: `--i:${i};--n:${n}`, transform: `translate(${X(i)} ${y})` });
+                g.appendChild(svgEl('circle', { r: 15 }));
+                const up = i % 2 === 0, nm = svgEl('text', { class: 'sname', y: up ? -42 : 58, 'text-anchor': 'middle' }); nm.textContent = s.name; g.appendChild(nm);
+                if (s.code) { const c = svgEl('text', { class: 'scode', y: up ? -72 : 84, 'text-anchor': 'middle' }); c.textContent = s.code; g.appendChild(c); }
+                if (s.note) { const no = svgEl('text', { class: 'snote', y: up ? 58 : -42, 'text-anchor': 'middle' }); no.textContent = s.note; g.appendChild(no); }
+                svg.appendChild(g);
+            });
+            const train = svgEl('g', { class: 'train' }); train.appendChild(svgEl('rect', { x: -26, y: -11, width: 52, height: 22, rx: 11 })); svg.appendChild(train);
+            el._mrt = { X, y, n }; el.style.setProperty('--mrt-dur', ((n - 1) * 0.78) + 's');
+        },
+        play(el, later) {
+            const { X, y, n } = el._mrt, train = el.querySelector('.train'), stns = el.querySelectorAll('.stn'), seg = 520, stop = 260;
+            stns.forEach((s) => s.classList.remove('passed')); train.setAttribute('transform', `translate(${X(0)} ${y})`); stns[0].classList.add('passed');
+            let t = 900;
+            for (let i = 1; i < n; i++) {
+                const a = X(i - 1), b = X(i), start = t;
+                later(() => { const t0 = performance.now(); const tick = (now) => { const p = Math.min((now - t0) / seg, 1), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+                    train.setAttribute('transform', `translate(${a + (b - a) * e} ${y})`); if (p < 1) requestAnimationFrame(tick); else stns[i].classList.add('passed'); }; requestAnimationFrame(tick); }, start);
+                t += seg + stop;
+            }
+        },
+        final(el) { const { X, y, n } = el._mrt; el.querySelector('.train').setAttribute('transform', `translate(${X(n - 1)} ${y})`); el.querySelectorAll('.stn').forEach((s) => s.classList.add('passed')); }
+    };
+
+    /* --- FLIGHT: arc from home to Singapore over a real SE-Asia map, distance counts up ---
+       JSON: { "from": { "name", "lat", "lon" }, "to": { "name", "lat", "lon" }, "caption"?: "..." }
+       Default origin is an example (Taipei): always set "from" to the presenter's real home. */
+    R.flight = {
+        cls: 'map',
+        mount(el) {
+            const d = Object.assign({ from: { name: 'Taipei', lat: 25.03, lon: 121.56 }, to: { name: 'Singapore', lat: 1.29, lon: 103.85 } }, readJSON(el) || {});
+            const lons = [d.from.lon, d.to.lon], lats = [d.from.lat, d.to.lat];
+            const box = [Math.min(...lons) - 9, Math.max(...lons) + 9, Math.min(...lats) - 7, Math.max(...lats) + 6];
+            const W = 1200, H = 760, pr = projector(box, W, H, 0), svg = frame(el, W, H);
+            const g = svgEl('g', { class: 'grat' });
+            for (let lon = Math.ceil(box[0] / 5) * 5; lon <= box[1]; lon += 5) { const [x] = pr(lon, 0); g.appendChild(svgEl('line', { x1: x, x2: x, y1: 0, y2: H })); }
+            for (let lat = Math.ceil(box[2] / 5) * 5; lat <= box[3]; lat += 5) { const [, yy] = pr(0, lat); g.appendChild(svgEl('line', { x1: 0, x2: W, y1: yy, y2: yy })); }
+            svg.appendChild(g);
+            const land = svgEl('g', { class: 'land' });
+            GEO().region.forEach((poly) => land.appendChild(svgEl('path', { d: 'M' + poly.map(([x, y]) => pr(x, y).map((v) => v.toFixed(1)).join(' ')).join('L') + 'Z' })));
+            svg.appendChild(land);
+            const A = pr(d.from.lon, d.from.lat), B = pr(d.to.lon, d.to.lat), mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2, len = Math.hypot(B[0] - A[0], B[1] - A[1]);
+            const nx = -(B[1] - A[1]) / len, ny = (B[0] - A[0]) / len, bend = len * 0.28 * (nx > 0 ? 1 : -1);
+            const arc = svgEl('path', { class: 'arc', pathLength: 1, d: `M${A[0]} ${A[1]}Q${mx + nx * bend} ${my + ny * bend} ${B[0]} ${B[1]}` }); svg.appendChild(arc);
+            [[A, d.from, 'from'], [B, d.to, 'to']].forEach(([p, info, cls]) => { const gg = svgEl('g', { class: 'end ' + cls, transform: `translate(${p[0]} ${p[1]})` });
+                gg.appendChild(svgEl('circle', { class: 'ring', r: 16 })); gg.appendChild(svgEl('circle', { class: 'core', r: 8 }));
+                const t = svgEl('text', { x: 24, y: 8 }); t.textContent = info.name; gg.appendChild(t); svg.appendChild(gg); });
+            const plane = svgEl('g', { class: 'plane' }); plane.appendChild(svgEl('path', { d: 'M18 0L-6 -4L-14 -16L-18 -16L-12 -3L-20 -2L-24 -8L-27 -8L-24 0L-27 8L-24 8L-20 2L-12 3L-18 16L-14 16L-6 4Z' })); svg.appendChild(plane);
+            const km = Math.round(haversine(d.from, d.to));
+            const box2 = svgEl('g', { class: 'dist', transform: `translate(40 ${H - 50})` });
+            const big = svgEl('text', { class: 'km' }); big.textContent = '0 km'; box2.appendChild(big);
+            const cap = svgEl('text', { class: 'kcap', y: -86 }); cap.textContent = d.caption || `${d.from.name} → ${d.to.name}`; box2.appendChild(cap); svg.appendChild(box2);
+            el._km = km;
+        },
+        play(el, later) {
+            const arc = el.querySelector('.arc'), plane = el.querySelector('.plane'), big = el.querySelector('.km'), km = el._km;
+            plane.style.opacity = 0; moveAlong(arc, plane, 2600, later, 900);
+            later(() => { const t0 = performance.now(); const tick = (now) => { const p = Math.min((now - t0) / 2600, 1); big.textContent = Math.round(km * (1 - Math.pow(1 - p, 3))).toLocaleString('en-US') + ' km'; if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); }, 900);
+        },
+        final(el) { el.querySelector('.km').textContent = el._km.toLocaleString('en-US') + ' km'; el.querySelector('.plane').style.opacity = 0; }
+    };
+
     window.FSC = { play, update, mount, mountAll, wire, registry: R, iconSVG };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => wire());
     else wire();

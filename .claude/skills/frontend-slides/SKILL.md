@@ -27,7 +27,7 @@ This copy of the skill is customized with the user's own design system in [brand
 
 ## Component Library (REUSABLE VISUALS)
 
-Brand decks draw from the animated component library in [components/](components/README.md): chain append, transaction lifecycle, network gossip, Merkle tree, hash-reveal text, terminal, spectrum, continuous chain loop, line / bar / doughnut / candlestick charts, Alice & Bob characters and scenes, finance and Singapore-life icons, and text effects for titles (underline, circle, highlight, strike, cycle, words, type, scramble, count).
+Brand decks draw from the animated component library in [components/](components/README.md): chain append, transaction lifecycle, network gossip, Merkle tree, hash-reveal text, terminal, spectrum, continuous chain loop, line / bar / doughnut / candlestick charts, Alice & Bob characters and scenes, finance and Singapore-life icons, Singapore maps (island pins, dot-matrix island, MRT journey, flight from home), and text effects for titles (underline, circle, highlight, strike, cycle, words, type, scramble, count).
 
 - Before Phase 3, read `components/README.md`. While planning the outline, mark which slides would genuinely explain better with a component (processes, systems, structures, comparisons, data). Typical deck: 2–5 components. Never force one onto every slide.
 - For slide layouts (section headers, big numbers, ranked bars, process steps, statements), use `components/layouts.css`; see `brand/themes/index.html`.

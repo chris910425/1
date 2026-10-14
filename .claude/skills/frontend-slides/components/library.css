@@ -305,3 +305,63 @@
     .fsc-chainloop .track { transition: none; }
     .fsc-chainloop .blk.live, .fsc-chainloop .lnk.live { animation: none; }
 }
+
+/* === MAPS ============================================== */
+.fsc-map svg { width: 100%; height: 100%; overflow: visible; }
+.fsc-map .grat line { stroke: var(--rule); stroke-width: 1; }
+.fsc-map .mtitle { font-family: var(--font-mono); font-size: 20px; letter-spacing: .12em; text-transform: uppercase; fill: var(--muted); }
+.fsc-map .island { fill: var(--panel); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; }
+.fsc-map.is-playing .island { animation: fsc-draw 1.8s cubic-bezier(.45,0,.2,1) .2s forwards, fsc-fillin .8s ease 1.6s forwards; }
+@keyframes fsc-fillin { to { fill-opacity: 1; } }
+.fsc-map .route { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-map.is-playing .route { animation: fsc-draw 3.2s cubic-bezier(.45,0,.2,1) 2.4s forwards; }
+.fsc-map .traveller circle { fill: var(--accent); stroke: var(--paper); stroke-width: 3; }
+.fsc-map .traveller { opacity: 0; }
+.fsc-map .pin { opacity: 0; }
+.fsc-map .pin .core { fill: var(--ink); } .fsc-map .pin .ring { fill: none; stroke: var(--ink); stroke-width: 2; opacity: .35; }
+.fsc-map .pin.home .core { fill: var(--accent); } .fsc-map .pin.home .ring { stroke: var(--accent); opacity: .6; }
+.fsc-map .pname { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 26px; fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 7px; stroke-linejoin: round; }
+.fsc-map .pnote { font-family: var(--font-mono); font-size: 17px; fill: var(--muted); paint-order: stroke; stroke: var(--paper); stroke-width: 6px; }
+.fsc-map.is-playing .pin { animation: fsc-pin .6s cubic-bezier(.34,1.56,.64,1) calc(1.4s + var(--i) * .15s) forwards; }
+@keyframes fsc-pin { from { opacity: 0; translate: 0 -24px; } to { opacity: 1; translate: 0 0; } }
+.fsc-map .scale path { fill: none; stroke: var(--muted); stroke-width: 2; } .fsc-map .scale .north { fill: var(--muted); stroke: none; }
+.fsc-map .scale text { font-family: var(--font-mono); font-size: 15px; fill: var(--muted); }
+/* dot matrix */
+.fsc-map .dots circle { fill: var(--ink); opacity: 0; transform-box: fill-box; transform-origin: center; }
+.fsc-map.is-playing .dots circle { animation: fsc-dot .5s ease calc(.2s + var(--t) * 1.8s) forwards; }
+@keyframes fsc-dot { from { opacity: 0; transform: scale(.2); } 60% { opacity: .9; transform: scale(1.4); } to { opacity: .45; transform: none; } }
+.fsc-map .hot { opacity: 0; } .fsc-map .hot .core { fill: var(--ink); } .fsc-map .hot.home .core { fill: var(--accent); }
+.fsc-map .hot .pulse { fill: none; stroke: var(--accent); stroke-width: 2.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.fsc-map .hot text { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 30px; fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 8px; stroke-linejoin: round; }
+.fsc-map.is-playing .hot { animation: fsc-fade .4s ease calc(.3s + var(--t) * 1.8s) forwards; }
+.fsc-map.is-playing .hot.home .pulse { animation: fsc-ping 1.6s ease-out .3s 3; }
+/* MRT */
+.fsc-map { --line: var(--accent); }
+.fsc-map .mrt-head text { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 30px; fill: var(--ink); }
+.fsc-map .mrt-head .cap { font-family: var(--font-mono); font-size: 20px; fill: var(--muted); font-weight: 400; text-transform: none; }
+.fsc-map .mrt-head .chip { fill: var(--line); }
+.fsc-map .track { stroke: var(--rule); stroke-width: 16; stroke-linecap: round; }
+.fsc-map .run { stroke: var(--line); stroke-width: 16; stroke-linecap: round; fill: none; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-map.is-playing .run { animation: fsc-draw calc(var(--mrt-dur, 6s)) linear .9s forwards; }
+.fsc-map .stn circle { fill: var(--paper); stroke: var(--muted); stroke-width: 5; transition: stroke .3s; }
+.fsc-map .stn.passed circle { stroke: var(--line); }
+.fsc-map .sname { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 24px; fill: var(--muted); transition: fill .3s; }
+.fsc-map .stn.passed .sname { fill: var(--ink); }
+.fsc-map .scode { font-family: var(--font-mono); font-size: 15px; fill: var(--muted); }
+.fsc-map .snote { font-family: var(--font-mono); font-size: 15px; fill: var(--accent); }
+.fsc-map .train rect { fill: var(--ink); stroke: var(--paper); stroke-width: 3; }
+/* flight */
+.fsc-map .land path { fill: var(--panel); stroke: color-mix(in srgb, var(--ink) 30%, var(--panel)); stroke-width: 1; }
+.fsc-map .arc { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-map.is-playing .arc { animation: fsc-draw 2.6s cubic-bezier(.45,0,.2,1) .9s forwards; }
+.fsc-map .end .core { fill: var(--ink); } .fsc-map .end.to .core { fill: var(--accent); } .fsc-map .end .ring { fill: none; stroke: var(--ink); stroke-width: 2; opacity: .35; }
+.fsc-map .end text { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 28px; fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 6px; }
+.fsc-map .plane { opacity: 0; } .fsc-map .plane path { fill: var(--ink); stroke: var(--paper); stroke-width: 2; }
+.fsc-map .km { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 96px; letter-spacing: var(--display-tracking); fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 10px; }
+.fsc-map .kcap { font-family: var(--font-mono); font-size: 20px; letter-spacing: .1em; text-transform: uppercase; fill: var(--muted); paint-order: stroke; stroke: var(--paper); stroke-width: 6px; }
+.fsc-map.is-done .island { stroke-dashoffset: 0; fill-opacity: 1; } .fsc-map.is-done .route, .fsc-map.is-done .arc, .fsc-map.is-done .run { stroke-dashoffset: 0; }
+.fsc-map.is-done .pin, .fsc-map.is-done .hot { opacity: 1; } .fsc-map.is-done .dots circle { opacity: .55; }
+@media (prefers-reduced-motion: reduce) {
+    .fsc-map .island, .fsc-map .route, .fsc-map .arc, .fsc-map .run { stroke-dashoffset: 0 !important; fill-opacity: 1 !important; animation: none !important; }
+    .fsc-map .pin, .fsc-map .hot { opacity: 1 !important; animation: none !important; } .fsc-map .dots circle { opacity: .55 !important; animation: none !important; }
+}
