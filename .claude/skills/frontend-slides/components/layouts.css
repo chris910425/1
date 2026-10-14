@@ -71,3 +71,54 @@
 .slide .lx-rank .bar i { transform: scaleX(0); transition: transform 1s cubic-bezier(.16,1,.3,1); transition-delay: calc(.3s + var(--d, 0) * .12s); }
 .slide.visible .lx-rank .bar i { transform: none; }
 @media (prefers-reduced-motion: reduce) { .slide .lx-reveal, .slide .lx-rank .bar i { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+
+/* ===========================================
+   PHOTO BACKGROUNDS — make real photos sit quietly behind content.
+   <div class="ph-bg is-blur is-dim"><img src="..." alt=""></div> as the first child of a .slide.
+   Combine modifiers: is-blur · is-dim · is-fade-left · is-fade-bottom · is-duotone · is-sepia · is-mono · is-kenburns
+   Put text on .glass for a frosted panel over busy photos.
+   =========================================== */
+.ph-bg { position: absolute; inset: 0; overflow: hidden; z-index: -1; background: var(--ink); }  /* slides are stacking contexts, so -1 sits behind all content */
+.ph-bg img { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; max-width: none; max-height: none; }
+.ph-bg.is-blur img { filter: blur(14px) saturate(.9); }
+.ph-bg.is-dim::after { content: ''; position: absolute; inset: 0; background: color-mix(in srgb, var(--paper) 62%, transparent); }
+html.dark .ph-bg.is-dim::after, .bg-ink .ph-bg.is-dim::after { background: color-mix(in srgb, var(--paper) 70%, transparent); }
+.ph-bg.is-fade-left::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--paper) 0%, var(--paper) 30%, color-mix(in srgb, var(--paper) 40%, transparent) 62%, transparent 100%); }
+.ph-bg.is-fade-bottom::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, var(--paper) 0%, var(--paper) 18%, transparent 70%); }
+.ph-bg.is-mono img { filter: grayscale(1) contrast(1.05); }
+.ph-bg.is-sepia img { filter: sepia(.75) saturate(.8) contrast(.95) brightness(.95); }
+.ph-bg.is-duotone img { filter: grayscale(1) contrast(1.1); mix-blend-mode: multiply; opacity: .9; }
+.ph-bg.is-duotone { background: var(--accent); }
+.ph-bg.is-duotone::before { content: ''; position: absolute; inset: 0; background: var(--paper); mix-blend-mode: screen; opacity: .35; z-index: 1; }
+.ph-bg.is-kenburns img { animation: ph-kb 22s ease-in-out infinite alternate; }
+@keyframes ph-kb { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.12) translate(-2%, -1.5%); } }
+.glass { background: color-mix(in srgb, var(--paper) 55%, transparent); backdrop-filter: blur(18px) saturate(1.1); -webkit-backdrop-filter: blur(18px); border: 1px solid color-mix(in srgb, var(--paper) 60%, transparent); border-radius: var(--radius); }
+
+/* --- Photo shapes (masks) --- */
+.ph { display: block; object-fit: cover; }
+.ph-arch { border-radius: 999px 999px var(--radius) var(--radius); }
+.ph-circle { border-radius: 50%; aspect-ratio: 1; }
+.ph-pill { border-radius: 999px; }
+.ph-blob { border-radius: 58% 42% 46% 54% / 48% 56% 44% 52%; }
+.ph-frame { border: 10px solid var(--paper); outline: 1px solid var(--rule); outline-offset: 8px; }
+
+/* --- Organic shapes (Slate signature) --- */
+.shape-blob { position: absolute; background: var(--c, var(--panel)); border-radius: 62% 38% 47% 53% / 44% 52% 48% 56%; }
+.shape-blob.b2 { border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%; }
+.shape-blob.morph { animation: blob-morph 14s ease-in-out infinite alternate; }
+@keyframes blob-morph { 50% { border-radius: 45% 55% 38% 62% / 58% 40% 60% 42%; } 100% { border-radius: 55% 45% 60% 40% / 40% 62% 38% 60%; } }
+
+/* --- Paper texture + frames (Heritage signature) --- */
+.tex-paper { background-color: var(--paper);
+  background-image:
+    radial-gradient(1200px 500px at 15% 10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%),
+    radial-gradient(900px 700px at 90% 85%, color-mix(in srgb, var(--ink) 8%, transparent), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3  0 0 0 0 .22  0 0 0 0 .14  0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.frame-double { position: absolute; inset: 36px; border: 2px solid var(--ink); outline: 1px solid var(--ink); outline-offset: -10px; pointer-events: none; opacity: .75; }
+.rule-orn { display: flex; align-items: center; gap: 18px; color: var(--muted); }
+.rule-orn::before, .rule-orn::after { content: ''; flex: 1; height: 0; border-top: 3px double currentColor; }
+.cap-title { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: uppercase; letter-spacing: var(--display-tracking); line-height: 1.05; }
+.num-badge { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid var(--accent); color: var(--accent); font-family: var(--font-display); font-size: 22px; }
+.card-soft { background: color-mix(in srgb, var(--panel) 75%, transparent); border: 1px solid var(--rule); border-radius: var(--radius); padding: 28px 30px; }
+@media (prefers-reduced-motion: reduce) { .ph-bg.is-kenburns img, .shape-blob.morph { animation: none !important; } }

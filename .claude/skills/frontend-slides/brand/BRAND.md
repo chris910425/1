@@ -48,6 +48,8 @@ All existing frontend-slides rules still apply: 1920×1080 stage scaled as a who
 | **Ledger** | Technical, precise, research-report | Technical deep-dives, protocol/architecture explainers, data-heavy or reading-first decks. **Default if nothing else fits.** |
 | **Editorial** | Academic, warm, considered | Policy, regulation, economics, literature reviews, case studies, essays-as-slides. |
 | **Terminal** | Bold, crypto-native, energetic | Pitches, hackathons, product demos, debates, anything that should feel punchy. |
+| **Slate** | Calm, organic, photo-led | Personal stories, life-in-Singapore, culture, portfolio-style decks with strong photos. |
+| **Heritage** | Classical, warm, archival | History, law, heritage, research proposals, anything that should feel scholarly and timeless. |
 | **Index** | Swiss pitch document: confident, minimal, data-forward | Business cases, pitches, project reports, metrics-heavy decks, anything that should feel like a design-studio proposal. |
 
 Selection flow:
@@ -176,6 +178,20 @@ Reference implementations live in `brand/themes/` (`ledger.html`, `editorial.htm
 - Accent rule still applies: the orange appears once per slide (or as the whole background of a section opener).
 
 Reference deck: `brand/themes/index.html`.
+
+## 6b. Theme: Slate
+
+**Personality:** muted slate + warm greige, organic blob shapes, photos inside arches and circles, airy letter-spaced capitals. Remade from the "Prezfull" template (`inspiration/templates/slate-organic-prezfull.webp`).
+**Fonts:** `family=Josefin+Sans:wght@300;400;600&family=Mulish:wght@400;500;600` (+ Noto Sans TC). Titles Josefin Sans 400, UPPERCASE, tracking 0.06em; body Mulish.
+**Tokens:** light paper `#e8e3db`, ink `#2a2d32`, panel `#d5cdc1`, accent `#3a4654`; dark paper `#2b2f35`, ink `#ece6dc`, accent `#c9b9a2`. Use `class="tone-dark"` on single slides to alternate light/dark inside a light deck.
+**Signature:** `.shape-blob` (optionally `.morph`), photos with `.ph-arch` / `.ph-circle`, outline pill buttons, timeline of filled circles, three-arch image gallery, glass panel over a full-bleed photo. Reference deck: `brand/themes/slate.html`.
+
+## 6c. Theme: Heritage
+
+**Personality:** aged parchment, dark-brown alternate slides, classical engraved capitals, double-rule frames, sepia photos, a row of line icons like museum artefacts. Remade from the "Mexico Archaeology Initiative" deck (`inspiration/templates/heritage-archaeology.webp`).
+**Fonts:** `family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400` (+ Noto Serif TC). Titles Cinzel 600 UPPERCASE; body EB Garamond.
+**Tokens:** light paper `#efe5d2`, ink `#3a2a1e`, panel `#e3d4b8`, accent `#9a6a35`; dark paper `#2f231a`, ink `#f1e5cf`, accent `#c99a5b`. `tone-dark` gives the dark-brown slides.
+**Signature:** `.tex-paper` background, `.frame-double`, `.rule-orn` ornamental rules, `.num-badge` numbered circles, `.card-soft`, sepia photo treatment (`.ph-bg.is-sepia`), stat circles over a photo. Reference deck: `brand/themes/heritage.html`.
 
 ## 7. Font pairings (English + 繁體)
 

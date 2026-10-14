@@ -1,5 +1,5 @@
 /* ===========================================
-   BRAND TOKENS: Ledger / Editorial / Terminal / Index × light / dark
+   BRAND TOKENS: Ledger / Editorial / Terminal / Index / Slate / Heritage × light / dark
    Usage: <html data-theme="ledger"> (add class="dark" for dark mode).
    Source of truth for colors and fonts is brand/BRAND.md; keep in sync.
    Components in components/library.css read ONLY these variables.
@@ -57,10 +57,43 @@ html[data-theme="index"].dark {
     --accent: #ff5536; --on-accent: #f4efe8; --panel: #262628;
 }
 
+/* ---------- Slate (organic, muted, photo-led) ---------- */
+html[data-theme="slate"] {
+    --paper: #e8e3db; --ink: #2a2d32; --muted: #7a766f; --rule: rgba(42, 45, 50, .16);
+    --accent: #3a4654; --on-accent: #efe9e0; --panel: #d5cdc1;
+    --font-display: 'Josefin Sans', 'Noto Sans TC', sans-serif; --display-weight: 400; --display-case: uppercase; --display-tracking: 0.06em;
+    --font-body: 'Mulish', 'Noto Sans TC', sans-serif; --font-mono: 'Mulish', 'Noto Sans TC', sans-serif;
+    --radius: 18px; --stroke: 1.5px;
+}
+html[data-theme="slate"].dark {
+    --paper: #2b2f35; --ink: #ece6dc; --muted: #9b958c; --rule: rgba(236, 230, 220, .16);
+    --accent: #c9b9a2; --on-accent: #2b2f35; --panel: #3a3f46;
+}
+
+/* ---------- Heritage (parchment, sepia, classical serif) ---------- */
+html[data-theme="heritage"] {
+    --paper: #efe5d2; --ink: #3a2a1e; --muted: #8a735f; --rule: rgba(58, 42, 30, .25);
+    --accent: #9a6a35; --on-accent: #f6eddc; --panel: #e3d4b8;
+    --font-display: 'Cinzel', 'Noto Serif TC', serif; --display-weight: 600; --display-case: uppercase; --display-tracking: 0.04em;
+    --font-body: 'EB Garamond', 'Noto Serif TC', serif; --font-mono: 'EB Garamond', 'Noto Serif TC', serif;
+    --radius: 10px; --stroke: 1.5px;
+}
+html[data-theme="heritage"].dark {
+    --paper: #2f231a; --ink: #f1e5cf; --muted: #b39d84; --rule: rgba(241, 229, 207, .2);
+    --accent: #c99a5b; --on-accent: #2f231a; --panel: #3d2e22;
+}
+
+/* Local dark sections inside a light deck: add class="tone-dark" to a slide */
+html[data-theme="slate"] .tone-dark { --paper: #2b2f35; --ink: #ece6dc; --muted: #9b958c; --rule: rgba(236,230,220,.16); --accent: #c9b9a2; --on-accent: #2b2f35; --panel: #3a3f46; }
+html[data-theme="heritage"] .tone-dark { --paper: #34261c; --ink: #f1e5cf; --muted: #b39d84; --rule: rgba(241,229,207,.2); --accent: #c99a5b; --on-accent: #2f231a; --panel: #43332636; }
+.tone-dark { background: var(--paper); color: var(--ink); }
+
 /* Font links per theme (paste the one you use into <head>; add the 繁體 fonts when the deck has Chinese:
    &family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@400;600;700):
    Ledger:    https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500&display=swap
    Editorial: https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap
    Terminal:  https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap
    Index:     https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap
+   Slate:     https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Mulish:wght@400;500;600&display=swap
+   Heritage:  https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap
 */

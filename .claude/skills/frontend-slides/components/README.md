@@ -130,6 +130,21 @@ Place them absolutely in a slide corner, partly off the edge, behind the content
 3. Add a card to `gallery.src.html`, run `build.py`, and screenshot the gallery in all three themes, light and dark.
 4. Add a row to the catalog above.
 
+## Photo backgrounds (layouts.css)
+
+Make real photos sit quietly behind content instead of fighting it. Put `<div class="ph-bg …"><img src="…" alt=""></div>` as the first child of a slide and combine:
+
+| Class | Effect | Use when |
+| --- | --- | --- |
+| `is-blur` + `is-dim` | Soft blur and a paper-colored veil | Text-heavy slides over any photo |
+| `is-fade-left` / `is-fade-bottom` | Photo dissolves into the background on one side | Title on one side, photo on the other |
+| `is-mono` / `is-sepia` | Black-and-white / sepia | Keep photos in the theme's palette (Heritage uses sepia) |
+| `is-duotone` | Photo recolored in the theme's accent + paper | Bold section openers |
+| `is-kenburns` | Very slow zoom-and-drift | Covers and closing slides (ambient motion) |
+| `.glass` (on a text box) | Frosted panel over a sharp photo | When the photo itself is the story |
+
+Shape a photo instead of using it full-bleed: `.ph-arch`, `.ph-circle`, `.ph-pill`, `.ph-blob`, `.ph-frame`. Shared photos live in `assets/photos/` (see its README for usage notes).
+
 ## Images
 
 Decks can include images; treat them as part of the composition, not decoration.

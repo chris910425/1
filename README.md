@@ -15,7 +15,7 @@ Claude handles saving and GitHub for you.
 
 ## What's inside
 
-- **Brand:** four looks (Ledger, Editorial, Terminal, Index), each in light and dark mode.
+- **Brand:** six looks (Ledger, Editorial, Terminal, Index, Slate, Heritage), each in light and dark mode.
 - **Component library:** animated blockchain diagrams, charts (incl. candlesticks), Alice & Bob characters, finance, law and Singapore-life icons, Singapore maps, contract & scales of justice, botanical line art, hand-drawn text effects, and a continuous chain animation. Preview: `.claude/skills/frontend-slides/components/gallery.html`.
 - **Fonts:** 14 English + 繁體 pairings. Preview: `.claude/skills/frontend-slides/brand/fonts.html`.
 - **Example deck:** `decks/aurelia-gt.html`.

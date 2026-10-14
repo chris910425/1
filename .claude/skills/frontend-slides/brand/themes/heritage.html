@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="heritage">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Heritage Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+TC:wght@400;600&display=swap">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ===========================================
+   BRAND TOKENS: Ledger / Editorial / Terminal / Index / Slate / Heritage × light / dark
+   Usage: <html data-theme="ledger"> (add class="dark" for dark mode).
+   Source of truth for colors and fonts is brand/BRAND.md; keep in sync.
+   Components in components/library.css read ONLY these variables.
+   =========================================== */
+
+/* ---------- Ledger ---------- */
+:root, html[data-theme="ledger"] {
+    --paper: #f3f2ee; --ink: #121316; --muted: #6b6d73; --rule: rgba(18, 19, 22, .14);
+    --accent: #2445ff; --on-accent: #ffffff; --panel: #e8e7e1;
+    --font-display: 'Archivo', 'Noto Sans TC', sans-serif; --display-weight: 900; --display-case: none; --display-tracking: -0.035em;
+    --font-body: 'Archivo', 'Noto Sans TC', sans-serif; --font-mono: 'JetBrains Mono', 'LXGW WenKai Mono TC', monospace;
+    --radius: 0px; --stroke: 2px;
+}
+:root.dark, html[data-theme="ledger"].dark {
+    --paper: #0b0c10; --ink: #eceef3; --muted: #8a8f9c; --rule: rgba(236, 238, 243, .14);
+    --accent: #5a72ff; --on-accent: #0b0c10; --panel: #15171d;
+}
+
+/* ---------- Editorial ---------- */
+html[data-theme="editorial"] {
+    --paper: #f2ece0; --ink: #13302a; --muted: #5d6b63; --rule: rgba(19, 48, 42, .18);
+    --accent: #d9931c; --on-accent: #13302a; --panel: #e8dfcd;
+    --font-display: 'Fraunces', 'Noto Serif TC', serif; --display-weight: 600; --display-case: none; --display-tracking: -0.02em;
+    --font-body: 'Instrument Sans', 'Noto Sans TC', sans-serif; --font-mono: 'IBM Plex Mono', 'LXGW WenKai Mono TC', monospace;
+    --radius: 2px; --stroke: 2px;
+}
+html[data-theme="editorial"].dark {
+    --paper: #0f2621; --ink: #f1e9da; --muted: #9fb1a7; --rule: rgba(241, 233, 218, .16);
+    --accent: #f0ad3a; --on-accent: #13302a; --panel: #163530;
+}
+
+/* ---------- Terminal ---------- */
+html[data-theme="terminal"] {
+    --paper: #e9ebe4; --ink: #0e0f0c; --muted: #5e6158; --rule: rgba(14, 15, 12, .16);
+    --accent: #b6e400; --on-accent: #0e0f0c; --panel: #d7dacf;
+    --font-display: 'Unbounded', 'Noto Sans TC', sans-serif; --display-weight: 800; --display-case: uppercase; --display-tracking: -0.03em;
+    --font-body: 'IBM Plex Mono', 'LXGW WenKai Mono TC', monospace; --font-mono: 'IBM Plex Mono', 'LXGW WenKai Mono TC', monospace;
+    --radius: 0px; --stroke: 2px;
+}
+html[data-theme="terminal"].dark {
+    --paper: #0c0d0b; --ink: #eef1e6; --muted: #878b7e; --rule: rgba(238, 241, 230, .14);
+    --accent: #c8ff1a; --on-accent: #0c0d0b; --panel: #1a1c17;
+}
+
+/* ---------- Index (Swiss pitch-document look) ---------- */
+html[data-theme="index"] {
+    --paper: #fbfaf8; --ink: #1c1c1e; --muted: #8e8b86; --rule: rgba(28, 28, 30, .22);
+    --accent: #ff4b2b; --on-accent: #f4efe8; --panel: #ebe7e1;
+    --font-display: 'Hanken Grotesk', 'Noto Sans TC', sans-serif; --display-weight: 500; --display-case: none; --display-tracking: -0.035em;
+    --font-body: 'Hanken Grotesk', 'Noto Sans TC', sans-serif; --font-mono: 'Hanken Grotesk', 'Noto Sans TC', sans-serif;
+    --radius: 6px; --stroke: 1.5px;
+}
+html[data-theme="index"].dark {
+    --paper: #1c1c1e; --ink: #f1ede7; --muted: #75726e; --rule: rgba(241, 237, 231, .2);
+    --accent: #ff5536; --on-accent: #f4efe8; --panel: #262628;
+}
+
+/* ---------- Slate (organic, muted, photo-led) ---------- */
+html[data-theme="slate"] {
+    --paper: #e8e3db; --ink: #2a2d32; --muted: #7a766f; --rule: rgba(42, 45, 50, .16);
+    --accent: #3a4654; --on-accent: #efe9e0; --panel: #d5cdc1;
+    --font-display: 'Josefin Sans', 'Noto Sans TC', sans-serif; --display-weight: 400; --display-case: uppercase; --display-tracking: 0.06em;
+    --font-body: 'Mulish', 'Noto Sans TC', sans-serif; --font-mono: 'Mulish', 'Noto Sans TC', sans-serif;
+    --radius: 18px; --stroke: 1.5px;
+}
+html[data-theme="slate"].dark {
+    --paper: #2b2f35; --ink: #ece6dc; --muted: #9b958c; --rule: rgba(236, 230, 220, .16);
+    --accent: #c9b9a2; --on-accent: #2b2f35; --panel: #3a3f46;
+}
+
+/* ---------- Heritage (parchment, sepia, classical serif) ---------- */
+html[data-theme="heritage"] {
+    --paper: #efe5d2; --ink: #3a2a1e; --muted: #8a735f; --rule: rgba(58, 42, 30, .25);
+    --accent: #9a6a35; --on-accent: #f6eddc; --panel: #e3d4b8;
+    --font-display: 'Cinzel', 'Noto Serif TC', serif; --display-weight: 600; --display-case: uppercase; --display-tracking: 0.04em;
+    --font-body: 'EB Garamond', 'Noto Serif TC', serif; --font-mono: 'EB Garamond', 'Noto Serif TC', serif;
+    --radius: 10px; --stroke: 1.5px;
+}
+html[data-theme="heritage"].dark {
+    --paper: #2f231a; --ink: #f1e5cf; --muted: #b39d84; --rule: rgba(241, 229, 207, .2);
+    --accent: #c99a5b; --on-accent: #2f231a; --panel: #3d2e22;
+}
+
+/* Local dark sections inside a light deck: add class="tone-dark" to a slide */
+html[data-theme="slate"] .tone-dark { --paper: #2b2f35; --ink: #ece6dc; --muted: #9b958c; --rule: rgba(236,230,220,.16); --accent: #c9b9a2; --on-accent: #2b2f35; --panel: #3a3f46; }
+html[data-theme="heritage"] .tone-dark { --paper: #34261c; --ink: #f1e5cf; --muted: #b39d84; --rule: rgba(241,229,207,.2); --accent: #c99a5b; --on-accent: #2f231a; --panel: #43332636; }
+.tone-dark { background: var(--paper); color: var(--ink); }
+
+/* Font links per theme (paste the one you use into <head>; add the 繁體 fonts when the deck has Chinese:
+   &family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@400;600;700):
+   Ledger:    https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800;900&family=JetBrains+Mono:wght@400;500&display=swap
+   Editorial: https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap
+   Terminal:  https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap
+   Index:     https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&display=swap
+   Slate:     https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Mulish:wght@400;500;600&display=swap
+   Heritage:  https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap
+*/
+
+/* ===========================================
+   FIXED 16:9 STAGE: MANDATORY BASE STYLES
+   Include this ENTIRE file in every presentation.
+   Slides are authored at 1920×1080 and scaled as a whole.
+   =========================================== */
+
+/* 1. Lock the browser viewport */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 2. Full-window deck viewport */
+.deck-viewport {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: var(--stage-bg, #000);
+}
+
+/* 3. Fixed 16:9 design canvas.
+   JavaScript sets transform: translate(...) scale(...). */
+.deck-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    transform-origin: 0 0;
+    background: var(--slide-bg, #fff);
+}
+
+/* 4. Slides stack inside the fixed stage.
+   Content must be laid out at 1920×1080, not reflowed per device. */
+.slide {
+    position: absolute;
+    inset: 0;
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    background: var(--slide-bg, #fff);
+}
+
+.slide.active,
+.slide.visible {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* 5. Keep media inside authored slide bounds */
+img,
+video,
+canvas,
+svg {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 6. Presentation chrome stays outside the slide design system */
+.deck-controls {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+/* 7. Print one fixed-size slide per page */
+@media print {
+    html,
+    body {
+        width: 1920px;
+        height: auto;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-viewport {
+        position: static;
+        overflow: visible;
+        background: #fff;
+    }
+
+    .deck-stage {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: none !important;
+        background: none;
+    }
+
+    .slide {
+        position: relative;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        width: 1920px;
+        height: 1080px;
+        break-after: page;
+        page-break-after: always;
+    }
+
+    .slide:last-child {
+        break-after: auto;
+        page-break-after: auto;
+    }
+
+    .deck-controls {
+        display: none !important;
+    }
+}
+
+/* 8. Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+
+/* ===========================================
+   FSC — FRONTEND SLIDES COMPONENT LIBRARY (styles)
+   Reads brand tokens only (see brand/tokens.css).
+   Every component fills its container: give the host element
+   an explicit width/height in 1920×1080 stage pixels.
+   Animation starts when the element gets .is-playing (library.js).
+   =========================================== */
+
+.fsc { position: relative; width: 100%; height: 100%; color: var(--ink); font-family: var(--font-body); }
+.fsc * { box-sizing: border-box; }
+.fsc svg { max-width: none; max-height: none; display: block; }
+.fsc .mono { font-family: var(--font-mono); }
+
+@keyframes fsc-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes fsc-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fsc-slide { from { opacity: 0; transform: translateX(-36px); } to { opacity: 1; transform: none; } }
+@keyframes fsc-grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes fsc-grow-y { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes fsc-draw { to { stroke-dashoffset: 0; } }
+@keyframes fsc-ping { from { transform: scale(1); opacity: .7; } to { transform: scale(3.2); opacity: 0; } }
+@keyframes fsc-blink { 50% { opacity: 0; } }
+
+/* Hidden-until-played helpers */
+.fsc [data-anim] { opacity: 0; }
+.fsc.is-done [data-anim] { opacity: 1; }
+
+/* === CHAIN APPEND ====================================== */
+.fsc-chain { display: flex; align-items: center; justify-content: center; }
+.fsc-chain .row { display: flex; align-items: center; width: 100%; }
+.fsc-chain .blk {
+    flex: 1 1 0; min-width: 0; padding: 22px 22px 20px; border: var(--stroke) solid var(--ink);
+    border-radius: var(--radius); background: var(--paper); font-family: var(--font-mono);
+    font-size: 18px; line-height: 1.6; color: var(--muted); opacity: 0;
+}
+.fsc-chain .blk b { display: block; font-size: 26px; font-weight: 500; color: var(--ink); margin-bottom: 10px; }
+.fsc-chain .blk .k { color: var(--ink); }
+.fsc-chain .blk.accent { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.fsc-chain .blk.accent b, .fsc-chain .blk.accent .k { color: var(--on-accent); }
+.fsc-chain .lnk { flex: 0 0 48px; height: var(--stroke); background: var(--ink); transform: scaleX(0); transform-origin: left; }
+.fsc-chain.is-playing .blk { animation: fsc-slide .7s cubic-bezier(.16,1,.3,1) calc(var(--i) * .55s) forwards; }
+.fsc-chain.is-playing .lnk { animation: fsc-grow-x .35s ease calc(var(--i) * .55s + .35s) forwards; }
+.fsc-chain.is-done .blk { opacity: 1; } .fsc-chain.is-done .lnk { transform: none; }
+
+/* === TRANSACTION LIFECYCLE ============================= */
+.fsc-tx { display: flex; flex-direction: column; justify-content: center; padding: 0 40px; }
+.fsc-tx .track { position: relative; height: var(--stroke); background: var(--rule); margin: 0 30px; }
+.fsc-tx .fill { position: absolute; inset: 0; background: var(--ink); transform: scaleX(0); transform-origin: left; }
+.fsc-tx .dot { position: absolute; top: 50%; left: 0; width: 18px; height: 18px; margin: -9px 0 0 -9px; background: var(--accent); border-radius: 50%; opacity: 0; }
+.fsc-tx .stations { display: grid; grid-template-columns: repeat(var(--n), 1fr); margin: -17px -30px 0; }
+.fsc-tx .st { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.fsc-tx .st i { width: 32px; height: 32px; border-radius: 50%; border: var(--stroke) solid var(--ink); background: var(--paper); transition: background .3s; }
+.fsc-tx .st b { margin-top: 26px; font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 32px; letter-spacing: -0.01em; }
+.fsc-tx .st span { margin-top: 8px; font-family: var(--font-mono); font-size: 17px; color: var(--muted); max-width: 200px; line-height: 1.4; }
+.fsc-tx.is-playing .fill { animation: fsc-grow-x var(--dur) linear .3s forwards; }
+.fsc-tx.is-playing .dot { animation: fsc-tx-move var(--dur) linear .3s forwards; }
+@keyframes fsc-tx-move { 0% { left: 0; opacity: 1; } 99% { opacity: 1; } 100% { left: 100%; opacity: 0; } }
+.fsc-tx.is-playing .st i { animation: fsc-tx-on .3s ease calc(.3s + var(--i) * var(--step)) forwards; }
+.fsc-tx.is-playing .st:last-child i { animation-name: fsc-tx-final; }
+@keyframes fsc-tx-on { to { background: var(--ink); } }
+@keyframes fsc-tx-final { to { background: var(--accent); border-color: var(--accent); } }
+.fsc-tx.is-done .fill { transform: none; } .fsc-tx.is-done .st i { background: var(--ink); }
+.fsc-tx.is-done .st:last-child i { background: var(--accent); border-color: var(--accent); }
+
+/* === NETWORK GOSSIP ==================================== */
+.fsc-gossip svg { width: 100%; height: calc(100% - 50px); }
+.fsc-gossip line { stroke: var(--rule); stroke-width: 2; }
+.fsc-gossip line.hot { stroke: var(--ink); stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-gossip .node { fill: var(--paper); stroke: var(--ink); stroke-width: 2; }
+.fsc-gossip .ring { fill: none; stroke: var(--ink); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.fsc-gossip .origin { fill: var(--accent); stroke: var(--accent); }
+.fsc-gossip .ring.origin-ring { stroke: var(--accent); fill: none; }
+.fsc-gossip.is-playing line.hot { animation: fsc-draw .4s ease calc(var(--d) * .5s) forwards; }
+.fsc-gossip.is-playing .node:not(.origin) { animation: fsc-gossip-on .25s ease calc(var(--d) * .5s) forwards; }
+.fsc-gossip.is-playing .ring { animation: fsc-ping .9s ease-out calc(var(--d) * .5s) forwards; }
+@keyframes fsc-gossip-on { to { fill: var(--ink); } }
+.fsc-gossip.is-done line.hot { stroke-dashoffset: 0; } .fsc-gossip.is-done .node:not(.origin) { fill: var(--ink); }
+.fsc-gossip .cap { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 18px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; padding-top: 18px; border-top: 1px solid var(--rule); }
+.fsc-gossip .cap b { color: var(--ink); font-weight: 500; }
+
+/* === MERKLE TREE ======================================= */
+.fsc-merkle svg { width: 100%; height: 100%; }
+.fsc-merkle rect { fill: var(--paper); stroke: var(--ink); stroke-width: 2; rx: var(--radius); }
+.fsc-merkle text { font-family: var(--font-mono); font-size: 17px; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.fsc-merkle text.h { font-size: 13px; fill: var(--muted); }
+.fsc-merkle .root rect { fill: var(--accent); stroke: var(--accent); }
+.fsc-merkle .root text { fill: var(--on-accent); font-weight: 500; }
+.fsc-merkle path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-merkle g.n { opacity: 0; }
+.fsc-merkle.is-playing g.n { animation: fsc-rise .5s cubic-bezier(.16,1,.3,1) calc(var(--l) * .6s) forwards; }
+.fsc-merkle.is-playing path { animation: fsc-draw .45s ease calc(var(--l) * .6s - .2s) forwards; }
+.fsc-merkle.is-done g.n { opacity: 1; } .fsc-merkle.is-done path { stroke-dashoffset: 0; }
+
+/* === HASH REVEAL (text effect) ========================= */
+.fsc-hash { display: flex; flex-direction: column; justify-content: center; }
+.fsc-hash .word { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); letter-spacing: var(--display-tracking); font-size: var(--size, 120px); line-height: .95; white-space: pre-wrap; }
+.fsc-hash .word .sc { font-family: var(--font-mono); font-weight: 400; color: var(--muted); letter-spacing: 0; }
+.fsc-hash .digest { margin-top: 28px; font-family: var(--font-mono); font-size: 20px; color: var(--muted); letter-spacing: .04em; word-break: break-all; }
+.fsc-hash .digest b { color: var(--accent); font-weight: 500; }
+
+/* === TERMINAL ========================================== */
+.fsc-term { display: flex; flex-direction: column; border: var(--stroke) solid var(--ink); border-radius: var(--radius); background: var(--panel); overflow: hidden; }
+.fsc-term .bar { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-bottom: var(--stroke) solid var(--ink); font-family: var(--font-mono); font-size: 16px; color: var(--muted); letter-spacing: .08em; }
+.fsc-term .bar i { width: 12px; height: 12px; border: 2px solid var(--ink); }
+.fsc-term .bar span { margin-left: 12px; }
+.fsc-term .body { flex: 1; padding: 26px 30px; font-family: var(--font-mono); font-size: 20px; line-height: 1.6; overflow: hidden; }
+.fsc-term .body p { white-space: pre-wrap; color: var(--muted); }
+.fsc-term .body p[data-cmd] { color: var(--ink); }
+.fsc-term .body p[data-cmd]::before { content: '$ '; color: var(--muted); }
+.fsc-term .body p.hl { color: var(--accent); }
+.fsc-term .body p + p[data-cmd] { margin-top: 14px; }
+.fsc-term .caret { display: inline-block; width: .6em; height: 1.1em; vertical-align: -0.2em; background: var(--ink); animation: fsc-blink 1s steps(1) infinite; }
+
+/* === SPECTRUM ========================================== */
+.fsc-spec { display: flex; flex-direction: column; justify-content: center; padding: 0 20px; }
+.fsc-spec .lane { position: relative; height: 300px; }
+.fsc-spec .axis { position: absolute; left: 0; right: 0; top: 150px; height: var(--stroke); background: var(--ink); transform: scaleX(0); transform-origin: left; }
+.fsc-spec .axis::before, .fsc-spec .axis::after { content: ''; position: absolute; top: -9px; width: var(--stroke); height: 20px; background: var(--ink); }
+.fsc-spec .axis::before { left: 0; } .fsc-spec .axis::after { right: 0; }
+.fsc-spec .mk { position: absolute; left: calc(var(--p) * 100%); width: 0; opacity: 0; }
+.fsc-spec .mk i { position: absolute; left: -9px; top: 141px; width: 18px; height: 18px; border-radius: 50%; background: var(--paper); border: var(--stroke) solid var(--ink); }
+.fsc-spec .mk .stem { position: absolute; left: -1px; width: 2px; background: var(--rule); }
+.fsc-spec .mk span { position: absolute; transform: translateX(-50%); white-space: nowrap; font-size: 22px; font-weight: 500; }
+.fsc-spec .mk.up .stem { top: 60px; height: 81px; } .fsc-spec .mk.up span { top: 20px; }
+.fsc-spec .mk.down .stem { top: 159px; height: 81px; } .fsc-spec .mk.down span { top: 248px; }
+.fsc-spec .mk.hl i { background: var(--accent); border-color: var(--accent); }
+.fsc-spec .mk.hl span { color: var(--ink); }
+.fsc-spec .mk:not(.hl) span { color: var(--muted); }
+.fsc-spec .ends { display: flex; justify-content: space-between; margin-top: 10px; font-family: var(--font-mono); font-size: 18px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.fsc-spec.is-playing .axis { animation: fsc-grow-x .9s cubic-bezier(.16,1,.3,1) forwards; }
+.fsc-spec.is-playing .mk { animation: fsc-rise .6s cubic-bezier(.16,1,.3,1) calc(.5s + var(--i) * .18s) forwards; }
+.fsc-spec.is-done .axis { transform: none; } .fsc-spec.is-done .mk { opacity: 1; }
+
+/* === CHARTS (line / bar / doughnut) ==================== */
+.fsc-chart svg { width: 100%; height: 100%; overflow: visible; }
+.fsc-chart .grid line { stroke: var(--rule); stroke-width: 1; }
+.fsc-chart .axis-l text, .fsc-chart .axis-b text { font-family: var(--font-mono); font-size: 19px; fill: var(--muted); }
+.fsc-chart .axis-l text { text-anchor: end; dominant-baseline: central; }
+.fsc-chart .axis-b text { text-anchor: middle; }
+.fsc-chart .val { font-family: var(--font-mono); font-size: 21px; fill: var(--ink); text-anchor: middle; opacity: 0; }
+.fsc-chart .val.hl { fill: var(--accent); font-weight: 500; }
+.fsc-chart .legend text { font-family: var(--font-mono); font-size: 20px; fill: var(--muted); dominant-baseline: central; }
+/* line */
+.fsc-chart .ln { fill: none; stroke: var(--muted); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-chart .ln.hl { stroke: var(--accent); stroke-width: 4; }
+.fsc-chart .area { fill: var(--accent); opacity: 0; }
+.fsc-chart .pt { fill: var(--accent); opacity: 0; }
+.fsc-chart.is-playing .ln { animation: fsc-draw 1.6s cubic-bezier(.45,0,.2,1) .2s forwards; }
+.fsc-chart.is-playing .area { animation: fsc-area .8s ease 1.4s forwards; }
+.fsc-chart.is-playing .pt, .fsc-chart.is-playing .val { animation: fsc-fade .4s ease 1.7s forwards; }
+@keyframes fsc-area { to { opacity: .08; } }
+/* bar */
+.fsc-chart .bar { fill: var(--muted); opacity: .55; transform-box: fill-box; transform-origin: bottom; transform: scaleY(0); }
+.fsc-chart .bar.hl { fill: var(--accent); opacity: 1; }
+.fsc-chart.is-playing .bar { animation: fsc-grow-y .8s cubic-bezier(.16,1,.3,1) calc(.2s + var(--i) * .08s) forwards; }
+.fsc-chart.is-playing .val { animation-delay: calc(.7s + var(--i, 0) * .08s); }
+/* doughnut */
+.fsc-chart .seg { fill: none; stroke-width: 56; stroke-dasharray: 0 100; }
+.fsc-chart.is-playing .seg { animation: fsc-seg .7s cubic-bezier(.45,0,.2,1) calc(.2s + var(--i) * .25s) forwards; }
+@keyframes fsc-seg { to { stroke-dasharray: var(--v) 100; } }
+.fsc-chart .center-big { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 64px; fill: var(--ink); text-anchor: middle; dominant-baseline: central; }
+.fsc-chart .center-small { font-family: var(--font-mono); font-size: 16px; fill: var(--muted); text-anchor: middle; letter-spacing: .1em; }
+.fsc-chart.is-done .ln { stroke-dashoffset: 0; } .fsc-chart.is-done .area { opacity: .08; }
+.fsc-chart.is-done .pt, .fsc-chart.is-done .val { opacity: 1; } .fsc-chart.is-done .bar { transform: none; }
+.fsc-chart.is-done .seg { stroke-dasharray: var(--v) 100; }
+
+/* === REDUCED MOTION: jump to final state =============== */
+@media (prefers-reduced-motion: reduce) {
+    .fsc .blk, .fsc [data-anim], .fsc .mk, .fsc g.n, .fsc .val, .fsc .pt { opacity: 1 !important; animation: none !important; }
+    .fsc .lnk, .fsc .fill, .fsc .axis, .fsc .bar { transform: none !important; animation: none !important; }
+    .fsc path, .fsc line.hot, .fsc .ln { stroke-dashoffset: 0 !important; animation: none !important; }
+    .fsc .seg { stroke-dasharray: var(--v) 100 !important; animation: none !important; }
+}
+
+/* === ICONS (inline + sets) ============================= */
+.fsc-inline { display: inline-block; vertical-align: middle; position: relative; }
+.fsc-icon { width: var(--s, 64px); height: var(--s, 64px); color: var(--ink); }
+.fsc-ico-svg { width: var(--s, 64px); height: var(--s, 64px); display: block; overflow: visible; }
+.fsc-icon .fsc-ico-svg { width: 100%; height: 100%; }
+.line-ico path, .line-ico rect, .line-ico circle, .line-ico ellipse { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.line-ico .a { fill: var(--accent); stroke: none; opacity: 0; }
+.line-ico .as { stroke: var(--accent); }
+.line-ico .dr { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); }
+.is-playing .line-ico .dr { animation: fsc-draw 1s cubic-bezier(.45,0,.2,1) calc(.1s + var(--i, 0) * .07s) forwards; }
+.is-playing .line-ico .a { animation: fsc-fade .4s ease calc(.8s + var(--i, 0) * .07s) forwards; }
+.is-done .line-ico .dr { stroke-dashoffset: 0; } .is-done .line-ico .a { opacity: 1; }
+/* characters */
+.char-svg .body, .char-svg .skin { fill: var(--paper); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.char-svg .ink, .char-svg .ink-body { fill: var(--ink); }
+.char-svg .line { fill: none; stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+.char-svg .accent { fill: var(--accent); }
+.fsc-icon .char-svg, .fsc-iconset .char-svg { opacity: 0; }
+.fsc-icon.is-playing .char-svg, .fsc-iconset.is-playing .char-svg { animation: fsc-rise .7s cubic-bezier(.16,1,.3,1) calc(var(--i, 0) * .15s) forwards; }
+.fsc-icon.is-done .char-svg, .fsc-iconset.is-done .char-svg { opacity: 1; }
+.fsc-iconset { display: flex; align-items: center; }
+.fsc-iconset .set { width: 100%; display: grid; grid-template-columns: repeat(var(--cols), 1fr); gap: 34px 20px; }
+.fsc-iconset figure { display: flex; flex-direction: column; align-items: center; gap: 14px; margin: 0; }
+.fsc-iconset figcaption { font-family: var(--font-mono); font-size: 18px; color: var(--muted); text-align: center; letter-spacing: .02em; }
+
+/* === ACTORS (Alice & Bob scenes) ====================== */
+.fsc-actors > svg { width: 100%; height: calc(100% - 40px); overflow: visible; }
+.fsc-actors .actor { opacity: 0; }
+.fsc-actors .name { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 34px; fill: var(--ink); text-anchor: middle; }
+.fsc-actors .accent { fill: var(--muted); }
+.fsc-actors .route { fill: none; stroke: var(--ink); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-actors .tap { fill: none; stroke: var(--muted); stroke-width: 2; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-actors .tick { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-actors .eve-note { font-family: var(--font-mono); font-size: 22px; fill: var(--muted); opacity: 0; }
+.fsc-actors .item { opacity: 0; transform: translate(var(--xa), var(--yl)); }
+.fsc-actors .chip { fill: var(--paper); stroke: var(--accent); stroke-width: 4; }
+.fsc-actors .chip-ico { color: var(--ink); }
+.fsc-actors .chip-ico .a { opacity: 1; }
+.fsc-actors .chip-ico .dr { stroke-dashoffset: 0; stroke-dasharray: none; animation: none !important; }
+.fsc-actors .note { font-family: var(--font-mono); font-size: 24px; font-weight: 500; fill: var(--ink); text-anchor: middle; }
+.fsc-actors .arrive { fill: none; stroke: var(--accent); stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.fsc-actors .cap { position: absolute; left: 0; right: 0; bottom: 0; text-align: center; font-family: var(--font-mono); font-size: 22px; color: var(--muted); }
+.fsc-actors.is-playing .actor { animation: fsc-rise .7s cubic-bezier(.16,1,.3,1) calc(var(--i) * .15s) forwards; }
+.fsc-actors.is-playing .route { animation: fsc-draw .7s ease .6s forwards; }
+.fsc-actors.is-playing .item { animation: fsc-travel var(--tdur) cubic-bezier(.65,0,.35,1) 1.2s forwards; }
+.fsc-actors.is-playing .item.via { animation-name: fsc-travel-via; }
+.fsc-actors.is-playing .tick { animation: fsc-draw .4s ease calc(1.2s + var(--tdur) * .45) forwards; }
+.fsc-actors.is-playing .tap { animation: fsc-draw .5s ease calc(1.2s + var(--tdur) * .4) forwards; }
+.fsc-actors.is-playing .eve-note { animation: fsc-fade .5s ease calc(1.5s + var(--tdur) * .4) forwards; }
+.fsc-actors.is-playing .arrive { animation: fsc-ping 1s ease-out calc(1.2s + var(--tdur)) forwards; }
+@keyframes fsc-travel { 0% { opacity: 0; transform: translate(var(--xa), var(--yl)); } 10% { opacity: 1; } 100% { opacity: 1; transform: translate(var(--xb), var(--yl)); } }
+@keyframes fsc-travel-via { 0% { opacity: 0; transform: translate(var(--xa), var(--yl)); } 8% { opacity: 1; } 40%, 60% { opacity: 1; transform: translate(var(--xm), var(--ym)); } 100% { opacity: 1; transform: translate(var(--xb), var(--yl)); } }
+.fsc-actors.is-done .actor, .fsc-actors.is-done .eve-note, .fsc-actors.is-done .item { opacity: 1; }
+.fsc-actors.is-done .item { transform: translate(var(--xb), var(--yl)); }
+.fsc-actors.is-done .route, .fsc-actors.is-done .tap, .fsc-actors.is-done .tick { stroke-dashoffset: 0; }
+
+/* === TEXT EFFECTS ===================================== */
+.fsc-fx { white-space: nowrap; }
+.fsc-fx .fx-old { position: relative; display: inline-block; transition: color .4s ease 1s; }
+.fsc-fx .fx-t { position: relative; }
+.fsc-fx .rough-annotation { z-index: 0; }
+.fsc-fx.is-playing .fx-old, .fsc-fx.is-done .fx-old { color: var(--muted); }
+.fsc-fx .fx-to { display: inline-block; opacity: 0; }
+.fsc-fx.is-playing .fx-to { animation: fsc-rise .6s cubic-bezier(.16,1,.3,1) 1.1s forwards; }
+.fsc-fx.is-done .fx-to { opacity: 1; }
+.fsc-fx .fx-w { display: inline-block; opacity: 0; }
+.fsc-fx.fx-words { white-space: normal; }
+.fsc-fx.is-playing .fx-w { animation: fsc-rise .7s cubic-bezier(.16,1,.3,1) calc(.1s + var(--i) * .12s) forwards; }
+.fsc-fx.is-done .fx-w { opacity: 1; }
+.fsc-fx .fx-c { display: inline-block; }
+.fsc-fx .fx-c.in { animation: fsc-rise .45s cubic-bezier(.16,1,.3,1); }
+.fsc-fx .fx-c.last { color: var(--accent); }
+.fsc-fx .caret { display: inline-block; width: .08em; height: .9em; margin-left: .04em; vertical-align: -0.08em; background: var(--accent); animation: fsc-blink 1s steps(1) infinite; }
+.fsc-fx .sc { font-family: var(--font-mono); font-weight: 400; color: var(--muted); }
+.fsc-fx.fx-count { font-variant-numeric: tabular-nums; }
+
+/* === CANDLESTICK ======================================= */
+.fsc-chart .cd .wick { stroke: var(--ink); stroke-width: 2; }
+.fsc-chart .cd .body { stroke: var(--ink); stroke-width: 2; }
+.fsc-chart .cd.up .body { fill: var(--paper); }
+.fsc-chart .cd.down .body { fill: var(--ink); }
+.fsc-chart .cd.hl .wick, .fsc-chart .cd.hl .body { stroke: var(--accent); }
+.fsc-chart .cd.hl .body { fill: var(--accent); }
+.fsc-chart .cd { opacity: 0; transform-box: fill-box; transform-origin: center; transform: scaleY(.3); }
+.fsc-chart .vol { fill: var(--muted); opacity: .35; transform-box: fill-box; transform-origin: bottom; transform: scaleY(0); }
+.fsc-chart .vol.hl { fill: var(--accent); opacity: 1; }
+.fsc-chart .ma { fill: none; stroke: var(--muted); stroke-width: 2.5; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-chart .tag rect { fill: var(--ink); }
+.fsc-chart .tag text { fill: var(--paper); font-family: var(--font-mono); font-size: 17px; text-anchor: middle; dominant-baseline: central; }
+.fsc-chart .tag, .fsc-chart .cnote { opacity: 0; }
+.fsc-chart .cnote line { stroke: var(--accent); stroke-width: 2; }
+.fsc-chart .cnote text { font-family: var(--font-mono); font-size: 18px; fill: var(--ink); text-anchor: middle; }
+.fsc-chart .src { font-family: var(--font-mono); font-size: 14px; fill: var(--muted); }
+.fsc-chart.is-playing .cd { animation: fsc-candle .45s cubic-bezier(.16,1,.3,1) calc(.15s + var(--i) * .045s) forwards; }
+.fsc-chart.is-playing .vol { animation: fsc-grow-y .45s ease calc(.15s + var(--i) * .045s) forwards; }
+.fsc-chart.is-playing .ma { animation: fsc-draw 1.2s ease calc(.3s + var(--n) * .045s) forwards; }
+.fsc-chart.is-playing .tag, .fsc-chart.is-playing .cnote { animation: fsc-fade .5s ease calc(.6s + var(--n) * .045s) forwards; }
+@keyframes fsc-candle { to { opacity: 1; transform: none; } }
+.fsc-chart.is-done .cd, .fsc-chart.is-done .tag, .fsc-chart.is-done .cnote { opacity: 1; transform: none; }
+.fsc-chart.is-done .vol { transform: none; } .fsc-chart.is-done .ma { stroke-dashoffset: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .fsc-chart .cd, .fsc-chart .tag, .fsc-chart .cnote, .fsc-actors .actor, .fsc-actors .item, .fsc-actors .eve-note,
+    .char-svg, .line-ico .a, .fsc-fx .fx-w, .fsc-fx .fx-to { opacity: 1 !important; animation: none !important; }
+    .fsc-chart .cd, .fsc-chart .vol { transform: none !important; }
+    .fsc-actors .item { transform: translate(var(--xb), var(--yl)) !important; }
+    .line-ico .dr, .fsc-actors .route, .fsc-actors .tap, .fsc-actors .tick, .fsc-chart .ma { stroke-dashoffset: 0 !important; animation: none !important; }
+}
+
+/* === CHAIN LOOP (continuous) ========================== */
+.fsc-chainloop { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.fsc-chainloop .track { position: absolute; left: 0; top: 50%; height: 0; transition: transform .6s cubic-bezier(.65,0,.35,1); }
+.fsc-chainloop .blk {
+    position: absolute; top: 0; transform: translateY(-50%); width: var(--bw); padding: 20px 20px 18px;
+    border: var(--stroke) solid var(--ink); border-radius: var(--radius); background: var(--paper);
+    font-family: var(--font-mono); font-size: 17px; line-height: 1.6; color: var(--muted); white-space: nowrap;
+    transition: background .6s ease, border-color .6s ease, color .6s ease;
+}
+.fsc-chainloop .blk b { display: block; font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+.fsc-chainloop .blk .k { color: var(--ink); }
+.fsc-chainloop .blk.accent { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.fsc-chainloop .blk.accent b, .fsc-chainloop .blk.accent .k { color: var(--on-accent); }
+.fsc-chainloop .blk.live { animation: fsc-mine .4s cubic-bezier(.16,1,.3,1); }
+@keyframes fsc-mine { from { opacity: 0; transform: translateY(-50%) scale(.85); } to { opacity: 1; transform: translateY(-50%); } }
+.fsc-chainloop .lnk { position: absolute; top: 0; width: var(--lw); height: var(--stroke); background: var(--ink); transform-origin: left; }
+.fsc-chainloop .lnk.live { animation: fsc-grow-x .25s ease .25s both; }
+.fsc-chainloop.bg { opacity: .16; }
+.fsc-chainloop.bg .blk.accent { background: var(--paper); border-color: var(--ink); color: var(--muted); }
+.fsc-chainloop.bg .blk.accent b, .fsc-chainloop.bg .blk.accent .k { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+    .fsc-chainloop .track { transition: none; }
+    .fsc-chainloop .blk.live, .fsc-chainloop .lnk.live { animation: none; }
+}
+
+/* === MAPS ============================================== */
+.fsc-map svg { width: 100%; height: 100%; overflow: visible; }
+.fsc-map .grat line { stroke: var(--rule); stroke-width: 1; }
+.fsc-map .mtitle { font-family: var(--font-mono); font-size: 20px; letter-spacing: .12em; text-transform: uppercase; fill: var(--muted); }
+.fsc-map .island { fill: var(--panel); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; }
+.fsc-map.is-playing .island { animation: fsc-draw 1.8s cubic-bezier(.45,0,.2,1) .2s forwards, fsc-fillin .8s ease 1.6s forwards; }
+@keyframes fsc-fillin { to { fill-opacity: 1; } }
+.fsc-map .route { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-map.is-playing .route { animation: fsc-draw 3.2s cubic-bezier(.45,0,.2,1) 2.4s forwards; }
+.fsc-map .traveller circle { fill: var(--accent); stroke: var(--paper); stroke-width: 3; }
+.fsc-map .traveller { opacity: 0; }
+.fsc-map .pin { opacity: 0; }
+.fsc-map .pin .core { fill: var(--ink); } .fsc-map .pin .ring { fill: none; stroke: var(--ink); stroke-width: 2; opacity: .35; }
+.fsc-map .pin.home .core { fill: var(--accent); } .fsc-map .pin.home .ring { stroke: var(--accent); opacity: .6; }
+.fsc-map .pname { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 26px; fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 7px; stroke-linejoin: round; }
+.fsc-map .pnote { font-family: var(--font-mono); font-size: 17px; fill: var(--muted); paint-order: stroke; stroke: var(--paper); stroke-width: 6px; }
+.fsc-map.is-playing .pin { animation: fsc-pin .6s cubic-bezier(.34,1.56,.64,1) calc(1.4s + var(--i) * .15s) forwards; }
+@keyframes fsc-pin { from { opacity: 0; translate: 0 -24px; } to { opacity: 1; translate: 0 0; } }
+.fsc-map .scale path { fill: none; stroke: var(--muted); stroke-width: 2; } .fsc-map .scale .north { fill: var(--muted); stroke: none; }
+.fsc-map .scale text { font-family: var(--font-mono); font-size: 15px; fill: var(--muted); }
+/* dot matrix */
+.fsc-map .dots circle { fill: var(--ink); opacity: 0; transform-box: fill-box; transform-origin: center; }
+.fsc-map.is-playing .dots circle { animation: fsc-dot .5s ease calc(.2s + var(--t) * 1.8s) forwards; }
+@keyframes fsc-dot { from { opacity: 0; transform: scale(.2); } 60% { opacity: .9; transform: scale(1.4); } to { opacity: .45; transform: none; } }
+.fsc-map .hot { opacity: 0; } .fsc-map .hot .core { fill: var(--ink); } .fsc-map .hot.home .core { fill: var(--accent); }
+.fsc-map .hot .pulse { fill: none; stroke: var(--accent); stroke-width: 2.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+.fsc-map .hot text { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 30px; fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 8px; stroke-linejoin: round; }
+.fsc-map.is-playing .hot { animation: fsc-fade .4s ease calc(.3s + var(--t) * 1.8s) forwards; }
+.fsc-map.is-playing .hot.home .pulse { animation: fsc-ping 1.6s ease-out .3s 3; }
+/* MRT */
+.fsc-map { --line: var(--accent); }
+.fsc-map .mrt-head text { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 30px; fill: var(--ink); }
+.fsc-map .mrt-head .cap { font-family: var(--font-mono); font-size: 20px; fill: var(--muted); font-weight: 400; text-transform: none; }
+.fsc-map .mrt-head .chip { fill: var(--line); }
+.fsc-map .track { stroke: var(--rule); stroke-width: 16; stroke-linecap: round; }
+.fsc-map .run { stroke: var(--line); stroke-width: 16; stroke-linecap: round; fill: none; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-map.is-playing .run { animation: fsc-draw calc(var(--mrt-dur, 6s)) linear .9s forwards; }
+.fsc-map .stn circle { fill: var(--paper); stroke: var(--muted); stroke-width: 5; transition: stroke .3s; }
+.fsc-map .stn.passed circle { stroke: var(--line); }
+.fsc-map .sname { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 24px; fill: var(--muted); transition: fill .3s; }
+.fsc-map .stn.passed .sname { fill: var(--ink); }
+.fsc-map .scode { font-family: var(--font-mono); font-size: 15px; fill: var(--muted); }
+.fsc-map .snote { font-family: var(--font-mono); font-size: 15px; fill: var(--accent); }
+.fsc-map .train rect { fill: var(--ink); stroke: var(--paper); stroke-width: 3; }
+/* flight */
+.fsc-map .land path { fill: var(--panel); stroke: color-mix(in srgb, var(--ink) 30%, var(--panel)); stroke-width: 1; }
+.fsc-map .arc { fill: none; stroke: var(--accent); stroke-width: 3; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-map.is-playing .arc { animation: fsc-draw 2.6s cubic-bezier(.45,0,.2,1) .9s forwards; }
+.fsc-map .end .core { fill: var(--ink); } .fsc-map .end.to .core { fill: var(--accent); } .fsc-map .end .ring { fill: none; stroke: var(--ink); stroke-width: 2; opacity: .35; }
+.fsc-map .end text { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 28px; fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 6px; }
+.fsc-map .plane { opacity: 0; } .fsc-map .plane path { fill: var(--ink); stroke: var(--paper); stroke-width: 2; }
+.fsc-map .km { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 96px; letter-spacing: var(--display-tracking); fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 10px; }
+.fsc-map .kcap { font-family: var(--font-mono); font-size: 20px; letter-spacing: .1em; text-transform: uppercase; fill: var(--muted); paint-order: stroke; stroke: var(--paper); stroke-width: 6px; }
+.fsc-map.is-done .island { stroke-dashoffset: 0; fill-opacity: 1; } .fsc-map.is-done .route, .fsc-map.is-done .arc, .fsc-map.is-done .run { stroke-dashoffset: 0; }
+.fsc-map.is-done .pin, .fsc-map.is-done .hot { opacity: 1; } .fsc-map.is-done .dots circle { opacity: .55; }
+@media (prefers-reduced-motion: reduce) {
+    .fsc-map .island, .fsc-map .route, .fsc-map .arc, .fsc-map .run { stroke-dashoffset: 0 !important; fill-opacity: 1 !important; animation: none !important; }
+    .fsc-map .pin, .fsc-map .hot { opacity: 1 !important; animation: none !important; } .fsc-map .dots circle { opacity: .55 !important; animation: none !important; }
+}
+
+/* === CONTRACT ========================================== */
+.fsc-contract { display: flex; align-items: center; justify-content: center; }
+.fsc-contract .paper { position: relative; width: 100%; height: 100%; background: var(--paper); border: 1px solid var(--rule); border-radius: var(--radius); box-shadow: 0 30px 60px -30px rgba(0,0,0,.35); padding: 44px 56px; font-family: var(--font-body); color: var(--ink); overflow: hidden; }
+.fsc-contract .ctop { display: flex; justify-content: space-between; font-size: 15px; color: var(--muted); letter-spacing: .08em; border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+.fsc-contract h4 { margin-top: 26px; font-family: var(--font-display); font-weight: var(--display-weight); font-size: 40px; letter-spacing: var(--display-tracking); text-transform: var(--display-case); }
+.fsc-contract .parties { margin-top: 6px; font-size: 18px; color: var(--muted); font-style: italic; }
+.fsc-contract ol { list-style: none; padding: 0; margin: 26px 0 0; }
+.fsc-contract li { display: grid; grid-template-columns: 54px 1fr; padding: 10px 12px; margin: 0 -12px; font-size: 19px; line-height: 1.45; opacity: 0; border-left: 3px solid transparent; }
+.fsc-contract li .cn { font-family: var(--font-mono); font-size: 16px; color: var(--muted); padding-top: 3px; }
+.fsc-contract li.hl { background: color-mix(in srgb, var(--accent) 10%, transparent); border-left-color: var(--accent); }
+.fsc-contract.is-playing li { animation: fsc-rise .5s ease calc(.2s + var(--i) * .25s) forwards; }
+.fsc-contract .sign { position: absolute; left: 56px; bottom: 40px; width: 300px; }
+.fsc-contract .sig { width: 220px; height: 66px; display: block; }
+.fsc-contract .sig path { fill: none; stroke: var(--ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-contract.is-playing .sig path { animation: fsc-draw 1.4s cubic-bezier(.45,0,.2,1) 1.6s forwards; }
+.fsc-contract .sline { display: block; border-top: 1px solid var(--ink); padding-top: 6px; font-family: var(--font-mono); font-size: 14px; color: var(--muted); }
+.fsc-contract .seal { position: absolute; right: 46px; bottom: 30px; width: 150px; height: 150px; color: var(--accent); opacity: 0; transform: scale(2.2) rotate(-30deg); }
+.fsc-contract .seal svg { width: 100%; height: 100%; }
+.fsc-contract .seal circle { fill: none; stroke: currentColor; stroke-width: 4; }
+.fsc-contract .seal circle + circle { stroke-width: 2; }
+.fsc-contract .seal text { font-family: var(--font-mono); font-size: 13px; font-weight: 600; fill: currentColor; letter-spacing: .05em; }
+.fsc-contract .seal .tick { fill: none; stroke: currentColor; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.fsc-contract.is-playing .seal { animation: fsc-stamp .45s cubic-bezier(.5,0,.75,0) 3.2s forwards; }
+@keyframes fsc-stamp { 0% { opacity: 0; transform: scale(2.2) rotate(-30deg); } 80% { opacity: .95; transform: scale(.92) rotate(-12deg); } 100% { opacity: .9; transform: scale(1) rotate(-12deg); } }
+.fsc-contract.is-done li { opacity: 1; } .fsc-contract.is-done .sig path { stroke-dashoffset: 0; } .fsc-contract.is-done .seal { opacity: .9; transform: rotate(-12deg); }
+
+/* === SCALES ============================================ */
+.fsc-scales { display: flex; flex-direction: column; }
+.fsc-scales .stage { position: relative; flex: 1; }
+.fsc-scales .post { position: absolute; left: 50%; top: 12%; bottom: 8%; width: 8px; margin-left: -4px; background: var(--ink); border-radius: 4px; }
+.fsc-scales .base { position: absolute; left: 50%; bottom: 6%; width: 220px; height: 14px; margin-left: -110px; background: var(--ink); border-radius: 7px; }
+.fsc-scales .beam { position: absolute; left: 22%; right: 22%; top: 12%; margin-top: -4px; height: 8px; background: var(--ink); border-radius: 4px; transform-origin: 50% 50%; transform: rotate(0deg); transition: transform 1.4s cubic-bezier(.34,1.3,.64,1); }
+.fsc-scales.is-playing .beam, .fsc-scales.is-done .beam { transform: rotate(var(--tilt)); transition-delay: 1.6s; }
+.fsc-scales .pivot { position: absolute; left: 50%; top: 50%; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%; background: var(--accent); }
+.fsc-scales .pan-wrap { position: absolute; top: 4px; width: 360px; display: flex; flex-direction: column; align-items: center; transform: rotate(calc(-1 * var(--tilt))); transform-origin: 50% 0; transition: transform 1.4s cubic-bezier(.34,1.3,.64,1); }
+.fsc-scales:not(.is-playing):not(.is-done) .pan-wrap { transform: none; }
+.fsc-scales.is-playing .pan-wrap { transition-delay: 1.6s; }
+.fsc-scales .pan-wrap.l { left: -180px; } .fsc-scales .pan-wrap.r { right: -180px; }
+.fsc-scales .chain { width: 2px; height: 120px; background: var(--muted); }
+.fsc-scales .pan { width: 100%; min-height: 70px; border-bottom: 6px solid var(--ink); border-radius: 0 0 180px 180px / 0 0 60px 60px; padding: 0 20px 18px; display: flex; align-items: flex-end; justify-content: center; }
+.fsc-scales .chips { display: flex; flex-wrap: wrap-reverse; justify-content: center; gap: 8px; }
+.fsc-scales .chips span { font-family: var(--font-mono); font-size: 18px; padding: 8px 14px; border: 1.5px solid var(--ink); border-radius: var(--radius); background: var(--paper); opacity: 0; transform: translateY(-60px); }
+.fsc-scales.is-playing .chips span { animation: fsc-drop .5s cubic-bezier(.34,1.56,.64,1) calc(.3s + var(--i) * .25s) forwards; }
+@keyframes fsc-drop { to { opacity: 1; transform: none; } }
+.fsc-scales .plabel { margin-top: 18px; font-family: var(--font-display); font-weight: var(--display-weight); text-transform: var(--display-case); font-size: 36px; letter-spacing: var(--display-tracking); }
+.fsc-scales .cap { text-align: center; font-family: var(--font-mono); font-size: 20px; color: var(--muted); }
+.fsc-scales.is-done .chips span { opacity: 1; transform: none; }
+
+/* === BOTANICALS ======================================== */
+.fsc-botanical svg { width: 100%; height: 100%; overflow: visible; }
+.fsc-botanical.flip svg { transform: scaleX(-1); }
+.fsc-botanical .stem { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.fsc-botanical .stem.thin { stroke-width: 1.2; stroke-dasharray: none; }
+.fsc-botanical .blade { fill: color-mix(in srgb, var(--panel) 70%, transparent); stroke: var(--ink); stroke-width: 1.4; stroke-linejoin: round; }
+.fsc-botanical .lip { fill: color-mix(in srgb, var(--accent) 12%, var(--panel)); }
+.fsc-botanical .rib { fill: none; stroke: var(--ink); stroke-width: .8; opacity: .6; }
+.fsc-botanical .fruit { fill: var(--ink); opacity: .85; }
+.fsc-botanical .bud { fill: var(--ink); }
+.fsc-botanical .lf { opacity: 0; transform-box: fill-box; transform-origin: 0 50%; }
+.fsc-botanical.is-playing .stem { animation: fsc-draw 1.4s cubic-bezier(.45,0,.2,1) .1s forwards; }
+.fsc-botanical.is-playing .lf { animation: fsc-fade .6s ease calc(.6s + var(--k) * .035s) forwards; }
+.fsc-botanical.is-done .stem { stroke-dashoffset: 0; } .fsc-botanical.is-done .lf { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+    .fsc-contract li, .fsc-contract .seal, .fsc-scales .chips span, .fsc-botanical .lf { opacity: 1 !important; animation: none !important; transform: none !important; }
+    .fsc-contract .sig path, .fsc-botanical .stem { stroke-dashoffset: 0 !important; animation: none !important; }
+}
+
+/* ===========================================
+   LAYOUTS — Swiss pitch-document slide layouts (signature of the Index theme,
+   usable in every theme). Authored for the 1920×1080 stage; read brand tokens only.
+   Reveal animations run when the slide gets .visible.
+   =========================================== */
+
+/* --- Panel backgrounds: flip tokens so everything inside adapts --- */
+.bg-paper { background: var(--paper) !important; color: var(--ink); }
+.bg-panel { background: var(--panel) !important; color: var(--ink); }
+.bg-ink   { --paper-x: var(--paper); background: var(--ink) !important; color: var(--paper); --rule: color-mix(in srgb, var(--paper) 22%, transparent); --muted: color-mix(in srgb, var(--paper) 45%, var(--ink)); }
+.bg-ink .lx-big, .bg-ink .lx-title { color: var(--paper); }
+.bg-accent { background: var(--accent) !important; color: var(--on-accent); --rule: color-mix(in srgb, var(--on-accent) 45%, transparent); --muted: color-mix(in srgb, var(--on-accent) 70%, var(--accent)); }
+.bg-accent .lx-big, .bg-accent .lx-title, .bg-accent .lx-giant { color: var(--on-accent); }
+
+/* --- Running header (deck title only, per brand rules) --- */
+.lx-chrome { position: absolute; left: 64px; right: 64px; top: 52px; display: flex; justify-content: space-between; align-items: flex-start; font-family: var(--font-body); font-weight: 600; font-size: 19px; line-height: 1.25; }
+.lx-chrome .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: currentColor; margin-right: 14px; vertical-align: 2px; }
+.lx-chrome .mark { width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid currentColor; position: relative; opacity: .7; }
+.lx-chrome .mark::after { content: ''; position: absolute; inset: 5px; border-radius: 50%; border: 1.5px dotted currentColor; }
+
+/* --- Section header: hairline, number, title --- */
+.lx-head { position: absolute; left: 64px; right: 64px; top: 250px; border-top: var(--stroke) solid var(--rule); display: grid; grid-template-columns: 340px 1fr; padding-top: 22px; }
+.lx-head .num { font-family: var(--font-display); font-size: 66px; font-weight: 400; letter-spacing: -0.02em; color: var(--muted); opacity: .7; line-height: 1; }
+.lx-head .lx-title { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 66px; letter-spacing: var(--display-tracking); line-height: 1; text-transform: uppercase; }
+.lx-head .lx-title small { display: block; color: var(--muted); font-size: inherit; font-weight: inherit; }
+
+/* --- Bracket label: "↓ (AVERAGE FOLLOWERS)" --- */
+.lx-label { font-family: var(--font-body); font-weight: 600; font-size: 17px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.lx-label::before { content: '↓ ('; } .lx-label::after { content: ')'; }
+
+/* --- Giant word / number (cover, section openers) --- */
+.lx-giant { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: -0.055em; line-height: .78; font-size: var(--size, 430px); color: var(--ink); }
+
+/* --- Big-number grid --- */
+.lx-stats { position: absolute; left: 404px; right: 64px; top: 450px; display: grid; grid-template-columns: repeat(var(--cols, 2), 1fr); column-gap: 40px; }
+.lx-stats .stat { border-bottom: var(--stroke) solid var(--rule); padding: 26px 0 18px; }
+.lx-stats .stat h4 { font: 600 21px var(--font-body); }
+.lx-stats .stat p { margin-top: 10px; max-width: 520px; font: 400 18px/1.35 var(--font-body); color: var(--muted); }
+.lx-stats .stat .lx-big { margin-top: 26px; font-family: var(--font-display); font-weight: var(--display-weight); font-size: 150px; letter-spacing: -0.045em; line-height: .9; }
+
+/* --- Ranked rows with bars --- */
+.lx-rank { position: absolute; left: 64px; right: 64px; top: 410px; }
+.lx-rank .row { display: grid; grid-template-columns: 340px 760px 1fr; align-items: center; height: 120px; border-bottom: var(--stroke) solid var(--rule); }
+.lx-rank .row:first-child { border-top: var(--stroke) solid var(--rule); }
+.lx-rank .n { font: 400 104px/1 var(--font-display); color: var(--muted); letter-spacing: -0.03em; }
+.lx-rank .w { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 104px; letter-spacing: -0.045em; line-height: 1; text-transform: uppercase; }
+.lx-rank .bar { position: relative; height: 100%; display: flex; align-items: flex-end; gap: 14px; }
+.lx-rank .bar i { display: block; height: 100%; width: calc(var(--v) * 100%); max-width: calc(100% - 90px); background: currentColor; transform-origin: left; }
+.lx-rank .row.hl .bar i { background: var(--accent); }
+.lx-rank .bar span { font: 600 16px var(--font-body); color: var(--muted); padding-bottom: 8px; }
+
+/* --- Process / steps --- */
+.lx-steps { position: absolute; left: 64px; right: 64px; bottom: 64px; }
+.lx-steps .cols { display: grid; grid-template-columns: 340px 1fr 520px; padding-bottom: 12px; border-bottom: var(--stroke) solid var(--rule); }
+.lx-steps .row { display: grid; grid-template-columns: 340px 1fr 520px; align-items: center; min-height: 128px; border-bottom: var(--stroke) solid var(--rule); }
+.lx-steps .n { font: 400 116px/1 var(--font-display); color: var(--muted); }
+.lx-steps .w { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 116px; letter-spacing: -0.045em; line-height: 1; text-transform: uppercase; }
+.lx-steps p { font: 500 19px/1.4 var(--font-body); max-width: 440px; }
+
+/* --- Big statement / testimonial --- */
+.lx-quote { position: absolute; left: 404px; right: 120px; top: 290px; font-family: var(--font-display); font-weight: var(--display-weight); font-size: 74px; letter-spacing: -0.03em; line-height: 1.02; text-transform: uppercase; }
+.lx-quote .dim { color: var(--muted); }
+.lx-quote-by { position: absolute; left: 64px; right: 64px; bottom: 90px; display: grid; grid-template-columns: 340px 1fr; font-family: var(--font-display); font-size: 58px; letter-spacing: -0.03em; text-transform: uppercase; color: var(--muted); }
+
+/* --- Table of contents (tiny two-column list) --- */
+.lx-toc { display: grid; grid-template-columns: 70px 1fr; row-gap: 2px; font: 600 17px/1.3 var(--font-body); }
+
+/* --- Reveal animations (subtle, per brand) --- */
+.slide .lx-reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); transition-delay: calc(var(--d, 0) * .1s); }
+.slide.visible .lx-reveal { opacity: 1; transform: none; }
+.slide .lx-rank .bar i { transform: scaleX(0); transition: transform 1s cubic-bezier(.16,1,.3,1); transition-delay: calc(.3s + var(--d, 0) * .12s); }
+.slide.visible .lx-rank .bar i { transform: none; }
+@media (prefers-reduced-motion: reduce) { .slide .lx-reveal, .slide .lx-rank .bar i { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+
+/* ===========================================
+   PHOTO BACKGROUNDS — make real photos sit quietly behind content.
+   <div class="ph-bg is-blur is-dim"><img src="..." alt=""></div> as the first child of a .slide.
+   Combine modifiers: is-blur · is-dim · is-fade-left · is-fade-bottom · is-duotone · is-sepia · is-mono · is-kenburns
+   Put text on .glass for a frosted panel over busy photos.
+   =========================================== */
+.ph-bg { position: absolute; inset: 0; overflow: hidden; z-index: -1; background: var(--ink); }  /* slides are stacking contexts, so -1 sits behind all content */
+.ph-bg img { position: absolute; inset: -40px; width: calc(100% + 80px); height: calc(100% + 80px); object-fit: cover; max-width: none; max-height: none; }
+.ph-bg.is-blur img { filter: blur(14px) saturate(.9); }
+.ph-bg.is-dim::after { content: ''; position: absolute; inset: 0; background: color-mix(in srgb, var(--paper) 62%, transparent); }
+html.dark .ph-bg.is-dim::after, .bg-ink .ph-bg.is-dim::after { background: color-mix(in srgb, var(--paper) 70%, transparent); }
+.ph-bg.is-fade-left::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, var(--paper) 0%, var(--paper) 30%, color-mix(in srgb, var(--paper) 40%, transparent) 62%, transparent 100%); }
+.ph-bg.is-fade-bottom::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, var(--paper) 0%, var(--paper) 18%, transparent 70%); }
+.ph-bg.is-mono img { filter: grayscale(1) contrast(1.05); }
+.ph-bg.is-sepia img { filter: sepia(.75) saturate(.8) contrast(.95) brightness(.95); }
+.ph-bg.is-duotone img { filter: grayscale(1) contrast(1.1); mix-blend-mode: multiply; opacity: .9; }
+.ph-bg.is-duotone { background: var(--accent); }
+.ph-bg.is-duotone::before { content: ''; position: absolute; inset: 0; background: var(--paper); mix-blend-mode: screen; opacity: .35; z-index: 1; }
+.ph-bg.is-kenburns img { animation: ph-kb 22s ease-in-out infinite alternate; }
+@keyframes ph-kb { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.12) translate(-2%, -1.5%); } }
+.glass { background: color-mix(in srgb, var(--paper) 55%, transparent); backdrop-filter: blur(18px) saturate(1.1); -webkit-backdrop-filter: blur(18px); border: 1px solid color-mix(in srgb, var(--paper) 60%, transparent); border-radius: var(--radius); }
+
+/* --- Photo shapes (masks) --- */
+.ph { display: block; object-fit: cover; }
+.ph-arch { border-radius: 999px 999px var(--radius) var(--radius); }
+.ph-circle { border-radius: 50%; aspect-ratio: 1; }
+.ph-pill { border-radius: 999px; }
+.ph-blob { border-radius: 58% 42% 46% 54% / 48% 56% 44% 52%; }
+.ph-frame { border: 10px solid var(--paper); outline: 1px solid var(--rule); outline-offset: 8px; }
+
+/* --- Organic shapes (Slate signature) --- */
+.shape-blob { position: absolute; background: var(--c, var(--panel)); border-radius: 62% 38% 47% 53% / 44% 52% 48% 56%; }
+.shape-blob.b2 { border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%; }
+.shape-blob.morph { animation: blob-morph 14s ease-in-out infinite alternate; }
+@keyframes blob-morph { 50% { border-radius: 45% 55% 38% 62% / 58% 40% 60% 42%; } 100% { border-radius: 55% 45% 60% 40% / 40% 62% 38% 60%; } }
+
+/* --- Paper texture + frames (Heritage signature) --- */
+.tex-paper { background-color: var(--paper);
+  background-image:
+    radial-gradient(1200px 500px at 15% 10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%),
+    radial-gradient(900px 700px at 90% 85%, color-mix(in srgb, var(--ink) 8%, transparent), transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3  0 0 0 0 .22  0 0 0 0 .14  0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.frame-double { position: absolute; inset: 36px; border: 2px solid var(--ink); outline: 1px solid var(--ink); outline-offset: -10px; pointer-events: none; opacity: .75; }
+.rule-orn { display: flex; align-items: center; gap: 18px; color: var(--muted); }
+.rule-orn::before, .rule-orn::after { content: ''; flex: 1; height: 0; border-top: 3px double currentColor; }
+.cap-title { font-family: var(--font-display); font-weight: var(--display-weight); text-transform: uppercase; letter-spacing: var(--display-tracking); line-height: 1.05; }
+.num-badge { display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; border: 1.5px solid var(--accent); color: var(--accent); font-family: var(--font-display); font-size: 22px; }
+.card-soft { background: color-mix(in srgb, var(--panel) 75%, transparent); border: 1px solid var(--rule); border-radius: var(--radius); padding: 28px 30px; }
+@media (prefers-reduced-motion: reduce) { .ph-bg.is-kenburns img, .shape-blob.morph { animation: none !important; } }
+
+:root { --stage-bg: #cfcac2; } html.dark { --stage-bg: #101112; }
+.slide { font-family: var(--font-body); background: var(--paper); color: var(--ink); }
+.deck-controls { font: 600 12px var(--font-body); letter-spacing: .14em; color: #8a857e; }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); transition-delay: calc(var(--d, 0) * .12s); }
+.slide.visible .reveal { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+</style></head><body>
+<div class="deck-viewport"><main class="deck-stage" id="deckStage">
+<!-- 1 COVER -->
+<section class="slide tex-paper active">
+  <div class="frame-double"></div>
+  <h1 class="reveal" style="--d:1;position:absolute;left:0;right:0;top:92px;text-align:center;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:84px">Life in Singapore</h1>
+  <p class="reveal" style="--d:2;position:absolute;left:0;right:0;top:200px;text-align:center;font:500 34px var(--font-display);letter-spacing:.08em;color:var(--muted)">STUDY · CULTURE · COMMUNITY</p>
+  <div class="reveal" style="--d:3;position:absolute;left:150px;right:150px;top:270px;height:520px;border-radius:6px;overflow:hidden;box-shadow:0 0 0 1px var(--rule)">
+    <div class="ph-bg is-sepia" style="z-index:0"><img src="img/hive-aerial-dusk.jpg" alt="The Hive, NTU, at dusk" style="object-position:50% 40%"></div>
+  </div>
+  <div class="reveal" style="--d:4;position:absolute;left:220px;right:220px;top:820px;display:flex;justify-content:space-between;color:var(--muted)"><i data-icon="study" data-size="62px" style="color:var(--muted)"></i><i data-icon="hawker" data-size="62px" style="color:var(--muted)"></i><i data-icon="kopi" data-size="62px" style="color:var(--muted)"></i><i data-icon="mrt" data-size="62px" style="color:var(--muted)"></i><i data-icon="hive" data-size="62px" style="color:var(--muted)"></i><i data-icon="hdb" data-size="62px" style="color:var(--muted)"></i><i data-icon="mbs" data-size="62px" style="color:var(--muted)"></i><i data-icon="supertree" data-size="62px" style="color:var(--muted)"></i><i data-icon="durian" data-size="62px" style="color:var(--muted)"></i></div>
+  <div class="rule-orn reveal" style="--d:5;position:absolute;left:150px;right:150px;bottom:70px;font:500 20px var(--font-display);letter-spacing:.06em"><span>MSBT · NANYANG TECHNOLOGICAL UNIVERSITY · 2026</span></div>
+</section><!-- 2 CONTENTS -->
+<section class="slide tex-paper">
+  <h2 class="reveal" style="--d:1;position:absolute;left:120px;top:110px;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:58px">Contents</h2>
+  <p class="reveal" style="--d:2;position:absolute;left:120px;top:190px;width:640px;font-size:24px;line-height:1.5;color:var(--muted)">One year at NTU, told in five chapters.</p>
+  <div class="reveal" style="--d:2;position:absolute;left:120px;top:300px;width:640px;height:620px;border-radius:var(--radius);overflow:hidden"><div class="ph-bg is-sepia" style="z-index:0"><img src="img/wcy-plaza-atrium.jpg" alt="" style="object-position:30% 50%"></div></div>
+  <div class="card-soft reveal" style="--d:3;position:absolute;left:860px;right:120px;top:150px;height:130px;display:grid;grid-template-columns:90px 1fr;align-items:center"><span class="num-badge">01</span><div><h3 style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:30px">Arrival</h3><p style="margin-top:6px;font-size:21px;color:var(--muted)">First week, first kopi, first MRT ride</p></div></div><div class="card-soft reveal" style="--d:4;position:absolute;left:860px;right:120px;top:310px;height:130px;display:grid;grid-template-columns:90px 1fr;align-items:center"><span class="num-badge">02</span><div><h3 style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:30px">The Programme</h3><p style="margin-top:6px;font-size:21px;color:var(--muted)">What MSBT actually teaches</p></div></div><div class="card-soft reveal" style="--d:5;position:absolute;left:860px;right:120px;top:470px;height:130px;display:grid;grid-template-columns:90px 1fr;align-items:center"><span class="num-badge">03</span><div><h3 style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:30px">Campus</h3><p style="margin-top:6px;font-size:21px;color:var(--muted)">The Hive, NBS and late nights</p></div></div><div class="card-soft reveal" style="--d:6;position:absolute;left:860px;right:120px;top:630px;height:130px;display:grid;grid-template-columns:90px 1fr;align-items:center"><span class="num-badge">04</span><div><h3 style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:30px">The City</h3><p style="margin-top:6px;font-size:21px;color:var(--muted)">Hawker centres, HDBs and Marina Bay</p></div></div><div class="card-soft reveal" style="--d:7;position:absolute;left:860px;right:120px;top:790px;height:130px;display:grid;grid-template-columns:90px 1fr;align-items:center"><span class="num-badge">05</span><div><h3 style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:30px">What's Next</h3><p style="margin-top:6px;font-size:21px;color:var(--muted)">Lessons I am taking home</p></div></div>
+</section><!-- 3 INTRODUCTION (dark) -->
+<section class="slide tone-dark">
+  <h2 class="reveal" style="--d:1;position:absolute;right:120px;top:120px;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:64px;text-align:right">Introduction</h2>
+  <img class="ph reveal" style="--d:2;position:absolute;left:120px;top:150px;width:760px;height:500px;border-radius:var(--radius);filter:sepia(.5)" src="img/wcy-plaza-facade.jpg" alt="">
+  <p class="reveal" style="--d:3;position:absolute;left:980px;right:120px;top:260px;font-size:27px;line-height:1.6">Singapore is small enough to cross in an hour, and dense enough to fill a year. This is what studying blockchain here looked like up close.</p>
+  <div class="reveal" style="--d:4;position:absolute;left:120px;top:740px;width:760px"><h3 style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:26px;border-bottom:1px solid var(--rule);padding-bottom:12px">Who I am</h3><p style="margin-top:16px;font-size:22px;line-height:1.55;color:var(--muted)">A graduate student in the MSBT programme at NTU.</p></div><div class="reveal" style="--d:5;position:absolute;left:1020px;top:740px;width:760px"><h3 style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:26px;border-bottom:1px solid var(--rule);padding-bottom:12px">What I do</h3><p style="margin-top:16px;font-size:22px;line-height:1.55;color:var(--muted)">Research on tokenized money, regulation and real-world adoption.</p></div>
+</section><!-- 4 IMPACT: stats over sepia photo -->
+<section class="slide tex-paper">
+  <h2 class="reveal" style="--d:1;position:absolute;left:120px;top:150px;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:64px;line-height:1.15">Measurable<br>moments</h2>
+  <p class="reveal" style="--d:2;position:absolute;left:120px;top:360px;width:520px;font-size:24px;line-height:1.55;color:var(--muted)">A year in numbers: illustrative, replace with your own.</p>
+  <div class="reveal" style="--d:2;position:absolute;left:760px;right:0;top:0;bottom:0;overflow:hidden;border-radius:300px 0 0 300px"><div class="ph-bg is-sepia" style="z-index:0"><img src="img/hive-aerial-dusk.jpg" alt=""></div></div>
+  <div class="reveal" style="--d:3;position:absolute;left:880px;top:220px;width:250px;height:250px;border-radius:50%;background:color-mix(in srgb,var(--paper) 88%,transparent);border:2px solid var(--accent);display:grid;place-content:center;text-align:center"><b style="font:600 64px var(--font-display);color:var(--ink)">365</b><span style="font-size:19px;color:var(--muted);margin-top:4px">days</span></div><div class="reveal" style="--d:4;position:absolute;left:1240px;top:140px;width:300px;height:300px;border-radius:50%;background:color-mix(in srgb,var(--paper) 88%,transparent);border:2px solid var(--accent);display:grid;place-content:center;text-align:center"><b style="font:600 78px var(--font-display);color:var(--ink)">1,200</b><span style="font-size:19px;color:var(--muted);margin-top:4px">kopi (est.)</span></div><div class="reveal" style="--d:5;position:absolute;left:1150px;top:520px;width:330px;height:330px;border-radius:50%;background:color-mix(in srgb,var(--paper) 88%,transparent);border:2px solid var(--accent);display:grid;place-content:center;text-align:center"><b style="font:600 84px var(--font-display);color:var(--ink)">48</b><span style="font-size:19px;color:var(--muted);margin-top:4px">MRT rides / month</span></div><div class="reveal" style="--d:6;position:absolute;left:860px;top:600px;width:230px;height:230px;border-radius:50%;background:color-mix(in srgb,var(--paper) 88%,transparent);border:2px solid var(--accent);display:grid;place-content:center;text-align:center"><b style="font:600 60px var(--font-display);color:var(--ink)">12</b><span style="font-size:19px;color:var(--muted);margin-top:4px">countries in class</span></div>
+  <div class="rule-orn reveal" style="--d:6;position:absolute;left:120px;width:520px;bottom:120px;font:500 18px var(--font-display);letter-spacing:.06em"><span>ANNO MMXXVI</span></div>
+</section><!-- 5 ROADMAP -->
+<section class="slide tex-paper">
+  <h2 class="reveal" style="--d:1;position:absolute;left:120px;top:110px;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:58px">The roadmap</h2>
+  <p class="reveal" style="--d:2;position:absolute;left:120px;top:190px;width:900px;font-size:24px;color:var(--muted)">Four phases, each with its own lessons.</p>
+  <div class="reveal" style="--d:3;position:absolute;left:120px;top:330px;width:390px"><p style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:22px;color:var(--accent)">Phase 01</p><div style="margin-top:18px;height:340px;border-radius:var(--radius);overflow:hidden;position:relative"><div class="ph-bg is-sepia" style="z-index:0"><img src="img/hive-aerial-dusk.jpg" alt="" style="object-position:40% 50%"></div></div><h3 style="margin-top:24px;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:28px">Settle in</h3><p style="margin-top:10px;font-size:21px;line-height:1.5;color:var(--muted)">Housing, matric card, EZ-Link.</p></div><div class="reveal" style="--d:4;position:absolute;left:550px;top:330px;width:390px"><p style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:22px;color:var(--accent)">Phase 02</p><div style="margin-top:18px;height:340px;border-radius:var(--radius);overflow:hidden;position:relative"><div class="ph-bg is-sepia" style="z-index:0"><img src="img/wcy-plaza-atrium.jpg" alt="" style="object-position:50% 50%"></div></div><h3 style="margin-top:24px;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:28px">Study</h3><p style="margin-top:10px;font-size:21px;line-height:1.5;color:var(--muted)">Modules, The Hive, group work.</p></div><div class="reveal" style="--d:5;position:absolute;left:980px;top:330px;width:390px"><p style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:22px;color:var(--accent)">Phase 03</p><div style="margin-top:18px;height:340px;border-radius:var(--radius);overflow:hidden;position:relative"><div class="ph-bg is-sepia" style="z-index:0"><img src="img/wcy-plaza-facade.jpg" alt="" style="object-position:70% 50%"></div></div><h3 style="margin-top:24px;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:28px">Explore</h3><p style="margin-top:10px;font-size:21px;line-height:1.5;color:var(--muted)">Hawkers, MRT lines, weekends.</p></div><div class="reveal" style="--d:6;position:absolute;left:1410px;top:330px;width:390px"><p style="font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:22px;color:var(--accent)">Phase 04</p><div style="margin-top:18px;height:340px;border-radius:var(--radius);overflow:hidden;position:relative"><div class="ph-bg is-sepia" style="z-index:0"><img src="img/hive-aerial-dusk.jpg" alt="" style="object-position:80% 30%"></div></div><h3 style="margin-top:24px;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:28px">Reflect</h3><p style="margin-top:10px;font-size:21px;line-height:1.5;color:var(--muted)">What Singapore taught me.</p></div>
+</section><!-- 6 THANK YOU (dark) -->
+<section class="slide tone-dark">
+  <div class="ph-bg is-sepia is-blur is-dim"><img src="img/wcy-plaza-atrium.jpg" alt=""></div>
+  <div class="frame-double" style="border-color:var(--ink);outline-color:var(--ink)"></div>
+  <div style="position:absolute;inset:0;display:grid;place-content:center;text-align:center">
+    <h2 class="reveal" style="--d:1;font-family:var(--font-display);font-weight:var(--display-weight);text-transform:uppercase;letter-spacing:var(--display-tracking);line-height:1.1;font-size:110px">Thank you</h2>
+    <p class="reveal" style="--d:2;margin-top:24px;font:italic 400 34px var(--font-body);color:var(--muted)">Questions are welcome.</p>
+  </div>
+</section>
+</main></div>
+<div class="deck-controls" id="counter">1 / 6</div>
+<script>/* ===========================================
+   FSC ICONS + CHARACTERS
+   Line icons on a 48×48 grid (stroke = currentColor, 2.2px).
+   Class "a"  = accent fill part, class "as" = accent stroke part.
+   Characters use a 120×160 grid and fill-based drawing.
+   Usage in a deck: <i data-icon="bus"></i> or <i data-icon="alice"></i>
+   Label lookup: FSC_ICONS[name].label
+   =========================================== */
+window.FSC_ICONS = (function () {
+    const I = (label, group, body, vb = '0 0 48 48') => ({ label, group, body, vb });
+    const C = (label, body) => ({ label, group: 'character', body, vb: '0 0 120 160', character: true });
+
+    /* Shared character parts */
+    const shoulders = (cls = 'body') => `<path class="${cls}" d="M18 160v-20c0-20 18-32 42-32s42 12 42 32v20z"/>`;
+    const head = '<circle class="skin" cx="60" cy="64" r="28"/>';
+    const eyes = '<circle class="ink" cx="50" cy="66" r="3"/><circle class="ink" cx="70" cy="66" r="3"/>';
+    const smile = '<path class="line" d="M52 78q8 6 16 0"/>';
+
+    return {
+        /* ---------- Finance & institutions ---------- */
+        bank: I('Bank', 'finance', '<path d="M6 18 24 7l18 11z"/><path d="M11 22v13M19 22v13M29 22v13M37 22v13M8 35h32M6 40h36"/><circle class="a" cx="24" cy="14" r="2.4"/>'),
+        coin: I('Coin', 'finance', '<circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="11.5"/><path class="a" d="m24 16 6 8-6 8-6-8z"/>'),
+        wallet: I('Wallet', 'finance', '<rect x="6" y="13" width="36" height="27" rx="3"/><path d="M10 13 31 6l3 7"/><path d="M42 22H31a5 5 0 0 0 0 10h11"/><circle class="a" cx="31" cy="27" r="2"/>'),
+        card: I('Bank card', 'finance', '<rect x="5" y="11" width="38" height="26" rx="3"/><path d="M5 18h38M25 31h12"/><rect class="a" x="10" y="24" width="8" height="6" rx="1"/>'),
+        vault: I('Vault', 'finance', '<rect x="7" y="6" width="34" height="34" rx="3"/><circle cx="24" cy="23" r="9"/><path d="M24 14v4M24 28v4M15 23h4M29 23h4M12 40v3M36 40v3"/><circle class="a" cx="24" cy="23" r="2.6"/>'),
+        key: I('Private key', 'finance', '<circle cx="15" cy="24" r="7.5"/><path d="M22.5 24H42M36 24v6M41 24v5"/><circle class="a" cx="15" cy="24" r="2.4"/>'),
+        lock: I('Lock', 'finance', '<rect x="10" y="21" width="28" height="21" rx="3"/><path d="M16 21v-6a8 8 0 0 1 16 0v6M24 33v4"/><circle class="a" cx="24" cy="31" r="2.6"/>'),
+        shield: I('Security', 'finance', '<path d="M24 5 39 11v12c0 10-7 17-15 20-8-3-15-10-15-20V11z"/><path class="as" d="m17 24 5 5 9-10"/>'),
+        exchange: I('Exchange', 'finance', '<path d="M8 17h30M31 10l7 7-7 7M40 31H10M17 24l-7 7 7 7"/>'),
+        growth: I('Growth', 'finance', '<path d="M7 7v34h34"/><path class="as" d="m12 33 9-10 7 6 12-14M34 15h6v6"/>'),
+        contract: I('Smart contract', 'finance', '<path d="M12 5h17l9 9v29H12z"/><path d="M29 5v9h9M17 21h14M17 27h14M17 33h7"/><circle class="a" cx="32" cy="36" r="3.6"/>'),
+        qr: I('QR payment', 'finance', '<rect x="7" y="7" width="13" height="13"/><rect x="28" y="7" width="13" height="13"/><rect x="7" y="28" width="13" height="13"/><path d="M28 28h5v5h-5zM36 36h5v5h-5zM36 28h5M28 41h3"/><rect class="a" x="11" y="11" width="5" height="5"/>'),
+        globe: I('Cross-border', 'finance', '<circle cx="24" cy="24" r="17"/><ellipse cx="24" cy="24" rx="7" ry="17"/><path d="M7 24h34M10 15h28M10 33h28"/>'),
+        block: I('Block / token', 'finance', '<path d="M24 6 40 15v18L24 42 8 33V15z"/><path d="M8 15l16 9 16-9M24 24v18"/><path class="a" d="M24 6 40 15 24 24 8 15z" opacity=".9"/>'),
+        kyc: I('KYC / identity', 'finance', '<rect x="6" y="10" width="36" height="28" rx="3"/><circle cx="17" cy="22" r="4"/><path d="M11 32c1-4.5 11-4.5 12 0M27 20h10M27 26h10M27 32h6"/><circle class="a" cx="37" cy="32" r="2"/>'),
+        regulator: I('Regulator', 'finance', '<path d="M24 6v34M14 40h20M10 12h28"/><path d="M10 12 5 24h10zM38 12l-5 12h10z"/><path class="a" d="M5 24a5 3 0 0 0 10 0zM33 24a5 3 0 0 0 10 0z"/><circle cx="24" cy="8" r="2"/>'),
+
+        /* ---------- Law ---------- */
+        gavel: I('Gavel', 'law', '<path d="M17 8l11 11M11 14l11 11M14 11l11 11"/><rect x="13" y="6" width="8" height="18" rx="2" transform="rotate(-45 17 15)"/><path d="M23 21l14 14"/><path d="M6 42h18M9 42v-4h12v4"/><path class="as" d="M30 40h12"/>'),
+        court: I('Court', 'law', '<path d="M5 17 24 6l19 11z"/><path d="M9 21v15M17 21v15M31 21v15M39 21v15M6 17h36M6 40h36M4 44h40"/><circle class="a" cx="24" cy="12.5" r="2.4"/>'),
+        justice: I('Scales of justice', 'law', '<path d="M24 6v34M16 42h16M10 12h28"/><path d="M10 12 4 26M10 12l6 14M38 12l-6 14M38 12l6 14"/><path d="M3 26a7 4 0 0 0 14 0zM31 26a7 4 0 0 0 14 0z"/><circle class="a" cx="24" cy="8" r="2.6"/>'),
+        statute: I('Statute book', 'law', '<path d="M10 6h24a4 4 0 0 1 4 4v32H14a4 4 0 0 1-4-4z"/><path d="M10 38a4 4 0 0 1 4-4h24"/><path class="as" d="M27 13c-1.5-2-6-2-6 1s6 2 6 5-4.5 3-6 1M21 16c-2 1-2 3 0 4"/>'),
+        section: I('Section §', 'law', '<path d="M30 10c-2-4-12-4-12 2s12 4 12 11-10 7-12 3M18 18c-4 2-4 7 1 9M30 26c4 2 4 7-1 9-3 1-9 1-11-3"/>'),
+        quill: I('Quill / signature', 'law', '<path d="M40 6C26 8 16 18 13 32l3 3c14-3 24-13 26-27z"/><path d="M13 32l-4 10M20 28l12-12"/><path class="as" d="M6 42c4-3 7 1 10-1s4-4 7-2 4 2 6 1"/>'),
+        seal: I('Seal / stamp', 'law', '<path d="M18 6h12v8a6 6 0 0 1-6 6 6 6 0 0 1-6-6z"/><path d="M14 20h20l3 8H11z"/><rect x="9" y="28" width="30" height="5" rx="1"/><path class="as" d="M10 40h28"/>'),
+        contractsign: I('Signed contract', 'law', '<path d="M10 4h18l8 8v32H10z"/><path d="M28 4v8h8M15 16h14M15 21h16M15 26h12"/><path class="as" d="M15 36c3-4 5 1 8-1s3-3 5-1 3 1 4 0"/>'),
+        handcuffs: I('Handcuffs', 'law', '<circle cx="13" cy="30" r="8"/><circle cx="35" cy="30" r="8"/><path d="M13 22v-5M35 22v-5M13 17h22"/><path class="as" d="M19 14l2 3-2 3M29 14l-2 3 2 3"/>'),
+        fingerprint: I('Fingerprint', 'law', '<path d="M12 18a13 13 0 0 1 24 0M10 26c0-8 6-14 14-14s14 6 14 14v3M16 40c-2-4-2-9-2-13a10 10 0 0 1 20 0v4M22 42c-2-5-3-10-3-15a5 5 0 0 1 10 0c0 5 1 9 3 13"/><path class="as" d="M24 27c0 6 1 11 4 16"/>'),
+        evidence: I('Evidence', 'law', '<circle cx="20" cy="20" r="12"/><path d="M29 29l13 13"/><path d="M14 20h12M20 14v12"/><circle class="a" cx="20" cy="20" r="2.4"/>'),
+        briefcase: I('Briefcase', 'law', '<rect x="5" y="14" width="38" height="26" rx="3"/><path d="M17 14v-4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M5 25h38"/><rect class="a" x="21" y="22" width="6" height="6" rx="1"/>'),
+        lawbooks: I('Law library', 'law', '<rect x="6" y="10" width="8" height="32" rx="1"/><rect x="16" y="6" width="8" height="36" rx="1"/><path d="M27 12l7-2 8 30-7 2z"/><path d="M6 16h8M6 36h8M16 12h8M16 36h8"/><path class="as" d="M4 44h40"/>'),
+        copyright: I('Copyright / IP', 'law', '<circle cx="24" cy="24" r="17"/><path d="M30 18a8 8 0 1 0 0 12"/><circle class="a" cx="38" cy="10" r="3"/>'),
+        privacy: I('Privacy / data', 'law', '<path d="M4 24s7-12 20-12 20 12 20 12-7 12-20 12S4 24 4 24z"/><circle cx="24" cy="24" r="6"/><path class="as" d="M8 40 40 8"/>'),
+        compliance: I('Compliance', 'law', '<rect x="9" y="6" width="30" height="36" rx="3"/><path d="M17 6v-2h14v2M15 18l3 3 5-6M27 18h8M15 30l3 3 5-6M27 30h8"/><circle class="a" cx="36" cy="38" r="3"/>'),
+
+        /* ---------- Life in Singapore ---------- */
+        hawker: I('Hawker food', 'life', '<path d="M6 25h36c0 9.5-8 16-18 16S6 34.5 6 25z"/><path d="M28 21 40 7M32 22 44 10M15 18c-2-3 2-5 0-8M21 18c-2-3 2-5 0-8"/><path class="a" d="M12 25c2-4.5 7-6.5 12-6.5S34 20.5 36 25z"/>'),
+        kopi: I('Kopi', 'life', '<path d="M10 18h24v12a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z"/><path d="M34 21h3a5 5 0 0 1 0 10h-3M6 43h32M18 13c-2-2 2-4 0-7M26 13c-2-2 2-4 0-7"/><path class="as" d="M13 22h18"/>'),
+        crab: I('Chilli crab', 'life', '<ellipse class="a" cx="24" cy="28" rx="12" ry="8"/><ellipse cx="24" cy="28" rx="12" ry="8"/><path d="m13 25-6-6 3-6M35 25l6-6-3-6M14 33l-5 4M34 33l5 4M17 35l-3 5M31 35l3 5M21 20v-3M27 20v-3"/>'),
+        durian: I('Durian', 'life', '<path d="m24 8 4 5 6-2v6l6 3-4 5 4 5-6 3v6l-6-2-4 5-4-5-6 2v-6l-6-3 4-5-4-5 6-3v-6l6 2z"/><path d="M24 8V3"/><circle class="a" cx="24" cy="25" r="3"/>'),
+        bus: I('Bus', 'life', '<rect x="9" y="5" width="30" height="34" rx="4"/><path d="M13 10h22v8H13zM13 23h22v7H13z"/><circle cx="16" cy="41" r="3"/><circle cx="32" cy="41" r="3"/><path class="a" d="M9 32.5h30v2.5H9z"/>'),
+        mrt: I('MRT', 'life', '<path d="M12 6h24a4 4 0 0 1 4 4v22a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6V10a4 4 0 0 1 4-4z"/><path d="M12 12h24v10H12zM14 38l-4 6M34 38l4 6M12 42h24"/><circle class="a" cx="15" cy="30" r="2.2"/><circle class="a" cx="33" cy="30" r="2.2"/>'),
+        hdb: I('HDB flat', 'life', '<path d="M10 42V8h16v34M26 42V18h12v24M5 42h38M14 13h3M20 13h3M14 19h3M20 19h3M14 25h3M14 31h3M20 31h3M14 37h3M20 37h3M30 23h4M30 29h4M30 35h4"/><rect class="a" x="19.5" y="23.5" width="4" height="4"/>'),
+        mbs: I('Marina Bay', 'life', '<path d="M11 42V17h6v25M21 42V17h6v25M31 42V17h6v25M4 42h40M6 44h36" /><path class="as" d="M5 14c6-3 32-3 38 0"/>'),
+        supertree: I('Gardens by the Bay', 'life', '<path d="M24 42V22M20 42h8M9 9l15 13 15-13M17 9l7 13 7-13"/><path class="as" d="M8 9h32"/>'),
+        study: I('Study / NTU life', 'life', '<path d="M4 18 24 9l20 9-20 9z"/><path d="M12 22v9c0 3 6 6 12 6s12-3 12-6v-9M40 20v12"/><circle class="a" cx="40" cy="34" r="2.4"/>'),
+        laptop: I('Laptop', 'life', '<rect x="10" y="11" width="28" height="20" rx="1.5"/><path d="M4 36h40l-3 4H7z"/><path class="as" d="M15 18h10M15 23h16"/>'),
+        rain: I('Rain', 'life', '<path d="M6 24a18 18 0 0 1 36 0z"/><path d="M24 24v14a4 4 0 0 1-8 0M10 32l-2 4M38 32l-2 4M31 35l-2 4"/><path class="a" d="M24 6a18 18 0 0 1 18 18H30C30 14 27 8 24 6z" opacity=".9"/>'),
+        sun: I('Heat', 'life', '<circle class="a" cx="24" cy="24" r="8"/><circle cx="24" cy="24" r="8"/><path d="M24 5v6M24 37v6M5 24h6M37 24h6M10.5 10.5l4 4M33.5 33.5l4 4M37.5 10.5l-4 4M14.5 33.5l-4 4"/>'),
+        transit: I('Transit card', 'life', '<rect x="5" y="12" width="30" height="22" rx="3"/><path d="M10 28h10M38 18c3 3 3 9 0 12M42 14.5c5 5 5 14 0 19"/><rect class="a" x="10" y="17" width="7" height="5" rx="1"/>'),
+        phone: I('Phone apps', 'life', '<rect x="14" y="5" width="20" height="38" rx="3"/><path d="M21 9h6"/><rect class="a" x="18" y="14" width="5" height="5" rx="1"/><path d="M26 14h4v5h-4zM18 22h5v5h-5zM26 22h4v5h-4z"/>'),
+        hive: I('The Hive (NTU)', 'life', '<path d="M20 7h7v35h-7zM23.5 7v35"/><path d="M6 16c0-2 12-2 12 0v5c0 2-12 2-12 0zM6.5 24c0-2 11-2 11 0v5c0 2-11 2-11 0zM7.5 32c0-2 9-2 9 0v5c0 2-9 2-9 0zM29 10c0-5 13-5 13 0v6c0 2-13 2-13 0zM29 20c0-2 13-2 13 0v6c0 2-13 2-13 0zM30 30c0-2 11-2 11 0v6c0 2-11 2-11 0z"/><path class="as" d="M7 13c2-3 4-3 5-1 1-3 4-3 6 0"/>'),
+        plane: I('Travel / Changi', 'life', '<path d="M21 6c0-2 6-2 6 0v12l15 8v4l-15-4v9l5 4v3l-8-2-8 2v-3l5-4v-9L6 30v-4l15-8z"/><path class="as" d="M21 18h6"/>'),
+
+        /* ---------- Characters (Alice & Bob convention) ---------- */
+        alice: C('Alice', `<path class="ink" d="M30 98V62a30 30 0 0 1 60 0v36H78V66H42v32z"/>${shoulders()}${head}<path class="ink" d="M32 60c4-16 16-24 28-24s24 8 28 24c-10-2-22-8-28-16-6 8-18 14-28 16z"/>${eyes}${smile}<circle class="accent" cx="60" cy="122" r="5"/>`),
+        bob: C('Bob', `${shoulders()}${head}<path class="ink" d="M33 58a27 27 0 0 1 54 0c-7-7-15-10-27-10s-20 3-27 10z"/><circle class="line" cx="50" cy="66" r="8"/><circle class="line" cx="70" cy="66" r="8"/><path class="line" d="M58 66h4"/><circle class="ink" cx="50" cy="66" r="2.5"/><circle class="ink" cx="70" cy="66" r="2.5"/>${smile}<path class="accent" d="M50 112h20l-10 12z"/>`),
+        eve: C('Eve', `<path class="ink" d="M22 160V100c0-40 17-64 38-64s38 24 38 64v60z"/>${shoulders('body ink-body')}${head}<rect class="ink" x="40" y="60" width="17" height="10" rx="3"/><rect class="ink" x="63" y="60" width="17" height="10" rx="3"/><path class="line" d="M57 64h6M54 80h12"/><path class="accent" d="M48 30a14 14 0 0 1 24 0l-12 6z"/>`),
+        trent: C('Trent (bank)', `${shoulders()}${head}<path class="line" d="M33 62c0-12 4-20 9-24M87 62c0-12-4-20-9-24"/>${eyes}${smile}<path class="line" d="M44 110l16 8 16-8"/><path class="accent" d="M60 118l-6 9 6 22 6-22z"/>`),
+        mallory: C('Mallory', `${shoulders()}${head}<path class="ink" d="M30 52h60l-6-12H36z"/><path class="ink" d="M44 40l4-12h24l4 12z"/>${eyes}<path class="line" d="M52 80q8-5 16 0M44 58l12 4M76 58l-12 4"/><circle class="accent" cx="60" cy="126" r="5"/>`)
+    };
+})();
+
+/* ===========================================
+   FSC — FRONTEND SLIDES COMPONENT LIBRARY (behavior)
+   Usage: <div class="fsc" data-fsc="chain" ...></div>
+   - Mounts every [data-fsc] element on load.
+   - Plays a component when its .slide becomes .visible
+     (or when scrolled into view if it is not inside a slide).
+   - API: FSC.play(el), FSC.update(el, data), FSC.mountAll(root)
+   Data for charts lives in a child
+   <script type="application/json"> so it can be swapped for real data.
+   =========================================== */
+(function () {
+    const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const R = {};
+    let uid = 0;                // unique ids for SVG defs
+    const bez = (p0, p1, p2, p3, t) => { const u = 1 - t; return u * u * u * p0 + 3 * u * u * t * p1 + 3 * u * t * t * p2 + t * t * t * p3; };
+    const rnd = (seed) => () => { seed = (seed * 1103515245 + 12345) >>> 0; return ((seed >>> 16) & 32767) / 32767; };          // registry: name -> { mount(el), play(el)? , total(el)? }
+    const timers = new WeakMap();
+
+    /* ---------- helpers ---------- */
+    const h = (tag, attrs = {}, html = '') => {
+        const e = document.createElement(tag);
+        for (const k in attrs) e.setAttribute(k, attrs[k]);
+        if (html) e.innerHTML = html;
+        return e;
+    };
+    const SVGNS = 'http://www.w3.org/2000/svg';
+    const svgEl = (tag, attrs = {}) => {
+        const e = document.createElementNS(SVGNS, tag);
+        for (const k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
+    };
+    const readJSON = (el) => {
+        const s = el.querySelector('script[type="application/json"]');
+        try { return s ? JSON.parse(s.textContent) : null; } catch (e) { console.warn('FSC: bad JSON in', el); return null; }
+    };
+    // Deterministic pseudo-hash so demos look stable between renders
+    const fakeHash = (seed, len = 4) => {
+        let x = (seed * 2654435761) >>> 0, out = '';
+        for (let i = 0; i < len * 2; i++) { x = (x * 1103515245 + 12345) >>> 0; out += '0123456789abcdef'[(x >>> 16) & 15]; }
+        return '0x' + out.slice(0, len) + '…' + out.slice(len);
+    };
+    const fmt = (v, unit = '') => (Math.abs(v) >= 1000 ? v.toLocaleString('en-US') : +v.toFixed(2)) + unit;
+    const niceMax = (v) => { const p = Math.pow(10, Math.floor(Math.log10(v))); return Math.ceil(v / p * 1.1) * p; };
+
+    /* ---------- core ---------- */
+    function mount(el) {
+        const c = R[el.dataset.fsc];
+        if (!c) return console.warn('FSC: unknown component', el.dataset.fsc);
+        if (el._fscSource === undefined) el._fscSource = el.innerHTML;   // keep authored content for re-mounts
+        el.innerHTML = el._fscSource;
+        el.classList.add(c.inline ? 'fsc-inline' : 'fsc', 'fsc-' + (c.cls || el.dataset.fsc));
+        el.classList.remove('is-playing', 'is-done');
+        c.mount(el);
+        el._fscMounted = true;
+        if (REDUCED) finish(el);
+    }
+    function finish(el) { el.classList.remove('is-playing'); el.classList.add('is-done'); const c = R[el.dataset.fsc]; c.final && c.final(el); }
+    function play(el) {
+        if (!el._fscMounted) mount(el);
+        if (REDUCED) return finish(el);
+        (timers.get(el) || []).forEach(clearTimeout);
+        timers.set(el, []);
+        el.classList.remove('is-playing', 'is-done');
+        void el.offsetWidth;                       // restart CSS animations
+        el.classList.add('is-playing');
+        const c = R[el.dataset.fsc];
+        c.play && c.play(el, (fn, ms) => timers.get(el).push(setTimeout(fn, ms)));
+    }
+    function update(el, data) {
+        const s = el._fscSource !== undefined ? h('div', {}, el._fscSource) : el;
+        let js = s.querySelector('script[type="application/json"]');
+        if (!js) { js = h('script', { type: 'application/json' }); s.appendChild(js); }
+        js.textContent = JSON.stringify(data);
+        el._fscSource = s.innerHTML;
+        mount(el); play(el);
+    }
+    function mountAll(root = document) {
+        // Shorthands: <i data-icon="bus"> and <span data-fx="underline"> become components
+        root.querySelectorAll('[data-icon]:not([data-fsc])').forEach((e) => { e.dataset.fsc = 'icon'; });
+        root.querySelectorAll('[data-fx]:not([data-fsc])').forEach((e) => { e.dataset.fsc = 'fx'; });
+        root.querySelectorAll('[data-fsc]').forEach(mount);
+    }
+
+    /* Auto-play: on slide visibility, or on scroll-into-view outside decks */
+    function wire(root = document) {
+        mountAll(root);
+        root.querySelectorAll('.slide').forEach((slide) => {
+            const run = () => slide.classList.contains('visible') && slide.querySelectorAll('[data-fsc]').forEach(play);
+            new MutationObserver((m) => m.some((r) => r.oldValue && !r.oldValue.includes('visible')) && run())
+                .observe(slide, { attributes: true, attributeFilter: ['class'], attributeOldValue: true });
+            run();
+        });
+        const loose = [...root.querySelectorAll('[data-fsc]')].filter((e) => !e.closest('.slide'));
+        if (loose.length) {
+            const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { play(e.target); io.unobserve(e.target); } }), { threshold: 0.4 });
+            loose.forEach((e) => io.observe(e));
+        }
+    }
+
+    /* ===========================================
+       COMPONENTS
+       =========================================== */
+
+    /* --- CHAIN APPEND ---
+       data-count="4" data-start="1024"  (last block is accent)
+       Optional children <b>labels</b> are ignored; use data-labels="Genesis|…" to name blocks. */
+    R.chain = {
+        mount(el) {
+            const n = +(el.dataset.count || 4), start = +(el.dataset.start || 1024);
+            const labels = (el.dataset.labels || '').split('|').filter(Boolean);
+            const row = h('div', { class: 'row' });
+            for (let i = 0; i < n; i++) {
+                if (i) row.appendChild(h('div', { class: 'lnk', style: `--i:${i}` }));
+                const b = h('div', { class: 'blk' + (i === n - 1 ? ' accent' : ''), style: `--i:${i}` },
+                    `<b>${labels[i] || '#' + (start + i)}</b><div><span class="k">prev</span> ${i ? fakeHash(start + i - 1) : '0x0000…0000'}</div><div><span class="k">hash</span> ${fakeHash(start + i)}</div>`);
+                row.appendChild(b);
+            }
+            el.innerHTML = ''; el.appendChild(row);
+        }
+    };
+
+    /* --- TRANSACTION LIFECYCLE ---
+       data-steps="Sign:Wallet signs tx|Mempool:Waits for inclusion|…"  (Label:caption) */
+    R.tx = {
+        mount(el) {
+            const steps = (el.dataset.steps || 'Sign:Wallet signs the tx|Broadcast:Enters the mempool|Validate:Validator checks it|Include:Packed into a block|Final:Irreversible').split('|').map((s) => s.split(':'));
+            const n = steps.length, step = 0.75;
+            el.style.setProperty('--n', n); el.style.setProperty('--step', step + 's'); el.style.setProperty('--dur', (n - 1) * step + 's');
+            el.innerHTML = `<div class="track"><div class="fill"></div><div class="dot"></div></div>
+                <div class="stations">${steps.map(([t, c], i) => `<div class="st" style="--i:${i}"><i></i><b>${t}</b>${c ? `<span>${c}</span>` : ''}</div>`).join('')}</div>`;
+        }
+    };
+
+    /* --- NETWORK GOSSIP ---
+       data-nodes="14" data-caption="Block propagation" ; origin node is accent. */
+    R.gossip = {
+        mount(el) {
+            const n = Math.min(+(el.dataset.nodes || 14), 20), W = 880, H = 440;
+            // golden-angle spiral layout, stretched to the box: deterministic and evenly spread
+            const pts = Array.from({ length: n }, (_, i) => {
+                const r = Math.sqrt((i + 0.5) / n), a = i * 2.399963;
+                return [W / 2 + Math.cos(a) * r * (W / 2 - 40), H / 2 + Math.sin(a) * r * (H / 2 - 30)];
+            });
+            const d2 = (a, b) => (pts[a][0] - pts[b][0]) ** 2 + (pts[a][1] - pts[b][1]) ** 2;
+            const edges = new Set();
+            pts.forEach((_, i) => pts.map((_, j) => j).filter((j) => j !== i).sort((a, b) => d2(i, a) - d2(i, b)).slice(0, 3)
+                .forEach((j) => edges.add(i < j ? i + '-' + j : j + '-' + i)));
+            const adj = pts.map(() => []);
+            [...edges].forEach((e) => { const [a, b] = e.split('-').map(Number); adj[a].push(b); adj[b].push(a); });
+            const origin = +(el.dataset.origin || n - 1), hop = pts.map(() => Infinity); hop[origin] = 0;
+            const q = [origin];
+            while (q.length) { const u = q.shift(); adj[u].forEach((v) => { if (hop[v] === Infinity) { hop[v] = hop[u] + 1; q.push(v); } }); }
+            const maxHop = Math.max(...hop.filter(isFinite));
+            const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid meet' });
+            [...edges].forEach((e) => {
+                const [a, b] = e.split('-').map(Number);
+                const attrs = { x1: pts[a][0], y1: pts[a][1], x2: pts[b][0], y2: pts[b][1] };
+                svg.appendChild(svgEl('line', attrs));
+                // "hot" overlay drawn from the earlier-reached node outward
+                const [s, t] = hop[a] <= hop[b] ? [a, b] : [b, a];
+                if (hop[t] === hop[s] + 1) svg.appendChild(svgEl('line', { class: 'hot', pathLength: 1, x1: pts[s][0], y1: pts[s][1], x2: pts[t][0], y2: pts[t][1], style: `--d:${hop[s]}` }));
+            });
+            pts.forEach(([x, y], i) => {
+                svg.appendChild(svgEl('circle', { class: 'ring' + (i === origin ? ' origin-ring' : ''), cx: x, cy: y, r: 13, style: `--d:${hop[i]}` }));
+                svg.appendChild(svgEl('circle', { class: 'node' + (i === origin ? ' origin' : ''), cx: x, cy: y, r: 13, style: `--d:${hop[i]}` }));
+            });
+            el.innerHTML = '';
+            el.appendChild(svg);
+            el.appendChild(h('div', { class: 'cap' }, `<span>${el.dataset.caption || 'Block propagation'}</span><span><b>${n}</b> nodes · <b>${maxHop}</b> hops</span>`));
+        }
+    };
+
+    /* --- MERKLE TREE ---
+       data-leaves="Tx1|Tx2|…" (power of two: 4 or 8). Root is accent. */
+    R.merkle = {
+        mount(el) {
+            const leaves = (el.dataset.leaves || 'Tx1|Tx2|Tx3|Tx4|Tx5|Tx6|Tx7|Tx8').split('|');
+            const levels = [leaves];
+            while (levels[levels.length - 1].length > 1) {
+                const prev = levels[levels.length - 1], next = [];
+                for (let i = 0; i < prev.length; i += 2) next.push(prev.length === 2 ? 'Root' : 'H' + (levels.length) + '·' + (i / 2 + 1));
+                levels.push(next);
+            }
+            const W = 900, H = 500, L = levels.length, bw = Math.min(96, W / leaves.length - 16), bh = 54;
+            const y = (l) => H - 40 - l * ((H - 80) / (L - 1)) - bh / 2;
+            const x = (l, i) => (W / levels[l].length) * (i + 0.5);
+            const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid meet' });
+            let seed = 7;
+            for (let l = 1; l < L; l++) levels[l].forEach((_, i) => [2 * i, 2 * i + 1].forEach((c) => {
+                svg.appendChild(svgEl('path', { pathLength: 1, d: `M${x(l - 1, c)} ${y(l - 1)} V${(y(l - 1) + y(l) + bh) / 2} H${x(l, i)} V${y(l) + bh}`, style: `--l:${l}` }));
+            }));
+            levels.forEach((lv, l) => lv.forEach((name, i) => {
+                const w = l === L - 1 ? 200 : bw, g = svgEl('g', { class: 'n' + (l === L - 1 ? ' root' : ''), style: `--l:${l}` });
+                g.appendChild(svgEl('rect', { x: x(l, i) - w / 2, y: y(l), width: w, height: bh }));
+                const t = svgEl('text', { x: x(l, i), y: y(l) + (l === 0 ? bh / 2 : 19) }); t.textContent = name; g.appendChild(t);
+                if (l > 0) { const hh = svgEl('text', { class: 'h', x: x(l, i), y: y(l) + 38 }); hh.textContent = fakeHash(seed++, 3); g.appendChild(hh); }
+                svg.appendChild(g);
+            }));
+            el.innerHTML = ''; el.appendChild(svg);
+        }
+    };
+
+    /* --- HASH REVEAL (text effect) ---
+       data-text="Trustless." data-size="120px" ; shows a fake digest under the word
+       unless data-digest="off". */
+    R.hash = {
+        mount(el) {
+            const text = el.dataset.text || el.textContent.trim() || 'Trustless.';
+            el.dataset.text = text;
+            if (el.dataset.size) el.style.setProperty('--size', el.dataset.size);
+            el.innerHTML = `<div class="word">${text}</div>` + (el.dataset.digest === 'off' ? '' : `<div class="digest mono">sha256 → <b>${fakeHash(text.length * 97, 10)}</b></div>`);
+        },
+        play(el, later) {
+            const word = el.querySelector('.word'), text = el.dataset.text, hex = '0123456789abcdef', dur = 1300, t0 = performance.now();
+            const tick = (t) => {
+                const p = (t - t0) / dur;
+                if (p >= 1 || !el.classList.contains('is-playing')) { word.textContent = text; return; }
+                word.innerHTML = [...text].map((ch, i) => (ch === ' ' || p > (i + 1) / text.length * 0.85 + 0.15) ? ch
+                    : `<span class="sc">${hex[(Math.random() * 16) | 0]}</span>`).join('');
+                requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        },
+        final(el) { const w = el.querySelector('.word'); if (w) w.textContent = el.dataset.text; }
+    };
+
+    /* --- TERMINAL ---
+       Children: <p data-cmd>command</p> lines are typed; other <p> are output.
+       Add class="hl" to ONE output line for the accent. data-title="zsh — sepolia" */
+    R.term = {
+        cls: 'term',
+        mount(el) {
+            const lines = [...el.querySelectorAll('p')].map((p) => p.outerHTML).join('');
+            el.innerHTML = `<div class="bar"><i></i><i></i><i></i><span>${el.dataset.title || 'terminal'}</span></div><div class="body">${lines}</div>`;
+            el.querySelectorAll('.body p').forEach((p) => { p.dataset.full = p.textContent; });
+        },
+        play(el, later) {
+            const ps = [...el.querySelectorAll('.body p')];
+            ps.forEach((p) => { p.textContent = ''; p.style.visibility = 'hidden'; });
+            const caret = h('span', { class: 'caret' });
+            let t = 300;
+            ps.forEach((p) => {
+                const full = p.dataset.full;
+                if (p.hasAttribute('data-cmd')) {
+                    later(() => { p.style.visibility = 'visible'; p.appendChild(caret); }, t);
+                    for (let i = 1; i <= full.length; i++) later(() => { p.textContent = full.slice(0, i); p.appendChild(caret); }, t += 32);
+                    t += 350;
+                } else {
+                    later(() => { p.style.visibility = 'visible'; p.textContent = full; p.appendChild(caret); }, t += 140);
+                }
+            });
+        },
+        final(el) { el.querySelectorAll('.body p').forEach((p) => { p.style.visibility = 'visible'; p.textContent = p.dataset.full; }); }
+    };
+    R.terminal = R.term;
+
+    /* --- SPECTRUM ---
+       data-left="Centralized" data-right="Decentralized"
+       Children: <i data-pos="0.25">Tokenized deposits</i> ; add data-hl to ONE item. */
+    R.spec = {
+        cls: 'spec',
+        mount(el) {
+            const items = [...el.querySelectorAll('i[data-pos]')].map((i) => ({ p: +i.dataset.pos, t: i.innerHTML, hl: i.hasAttribute('data-hl') })).sort((a, b) => a.p - b.p);
+            el.innerHTML = `<div class="lane"><div class="axis"></div>${items.map((it, k) =>
+                `<div class="mk ${k % 2 ? 'down' : 'up'}${it.hl ? ' hl' : ''}" style="--p:${it.p};--i:${k}"><div class="stem"></div><i></i><span>${it.t}</span></div>`).join('')}</div>
+                <div class="ends"><span>← ${el.dataset.left || 'Centralized'}</span><span>${el.dataset.right || 'Decentralized'} →</span></div>`;
+        }
+    };
+    R.spectrum = R.spec;
+
+    /* --- CHARTS (shared frame) ---
+       JSON: { "labels": [...], "series": [{ "name": "...", "values": [...], "highlight": true }],
+               "unit": "%", "highlight": "LabelName" (bar/doughnut) } */
+    function frame(el, W, H, pad) {
+        const svg = svgEl('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid meet' });
+        const json = el.querySelector('script[type="application/json"]');
+        el.innerHTML = ''; if (json) el.appendChild(json); el.appendChild(svg);
+        return svg;
+    }
+    function gridY(svg, max, unit, x0, x1, y0, y1, ticks = 4) {
+        const g = svgEl('g', { class: 'grid' }), ax = svgEl('g', { class: 'axis-l' });
+        for (let i = 0; i <= ticks; i++) {
+            const y = y1 - (y1 - y0) * i / ticks;
+            g.appendChild(svgEl('line', { x1: x0, x2: x1, y1: y, y2: y }));
+            const t = svgEl('text', { x: x0 - 14, y }); t.textContent = fmt(max * i / ticks, unit); ax.appendChild(t);
+        }
+        svg.append(g, ax);
+    }
+
+    R.line = {
+        cls: 'chart',
+        mount(el) {
+            const d = readJSON(el) || { labels: ['2021', '2022', '2023', '2024', '2025', '2026'], unit: ' bn', series: [
+                { name: 'Stablecoins', values: [5, 140, 125, 160, 230, 290], highlight: true },
+                { name: 'Tokenized deposits', values: [0, 1, 4, 12, 30, 62] }] };
+            const W = 900, H = 500, x0 = 90, x1 = W - 30, y0 = 30, y1 = H - 60;
+            const svg = frame(el, W, H);
+            const max = niceMax(Math.max(...d.series.flatMap((s) => s.values)));
+            gridY(svg, max, d.unit || '', x0, x1, y0, y1);
+            const X = (i) => x0 + (x1 - x0) * i / (d.labels.length - 1), Y = (v) => y1 - (y1 - y0) * v / max;
+            const axb = svgEl('g', { class: 'axis-b' });
+            d.labels.forEach((l, i) => { const t = svgEl('text', { x: X(i), y: y1 + 34 }); t.textContent = l; axb.appendChild(t); });
+            svg.appendChild(axb);
+            d.series.forEach((s) => {
+                const pts = s.values.map((v, i) => `${X(i)},${Y(v)}`);
+                if (s.highlight) svg.appendChild(svgEl('path', { class: 'area', d: `M${X(0)},${y1} L${pts.join(' L')} L${X(s.values.length - 1)},${y1} Z` }));
+                svg.appendChild(svgEl('path', { class: 'ln' + (s.highlight ? ' hl' : ''), pathLength: 1, d: 'M' + pts.join(' L') }));
+                const lx = X(s.values.length - 1), ly = Y(s.values[s.values.length - 1]);
+                if (s.highlight) svg.appendChild(svgEl('circle', { class: 'pt', cx: lx, cy: ly, r: 7 }));
+                const t = svgEl('text', { class: 'val' + (s.highlight ? ' hl' : ''), x: lx - 10, y: ly - 18, 'text-anchor': 'end' });
+                t.textContent = `${s.name} · ${fmt(s.values[s.values.length - 1], d.unit || '')}`; t.style.textAnchor = 'end';
+                svg.appendChild(t);
+            });
+        }
+    };
+
+    R.bar = {
+        cls: 'chart',
+        mount(el) {
+            const d = readJSON(el) || { labels: ['Bitcoin', 'Ethereum', 'Polygon', 'Solana', 'Avalanche'], unit: '', highlight: 'Solana',
+                series: [{ name: 'TPS (observed)', values: [7, 15, 190, 1050, 120] }] };
+            const vals = d.series[0].values, W = 900, H = 500, x0 = 90, x1 = W - 20, y0 = 40, y1 = H - 60;
+            const svg = frame(el, W, H);
+            const max = niceMax(Math.max(...vals));
+            gridY(svg, max, d.unit || '', x0, x1, y0, y1);
+            const slot = (x1 - x0) / vals.length, bw = Math.min(110, slot * 0.58);
+            const axb = svgEl('g', { class: 'axis-b' });
+            vals.forEach((v, i) => {
+                const cx = x0 + slot * (i + 0.5), top = y1 - (y1 - y0) * v / max, hl = d.labels[i] === d.highlight;
+                svg.appendChild(svgEl('rect', { class: 'bar' + (hl ? ' hl' : ''), x: cx - bw / 2, y: top, width: bw, height: y1 - top, style: `--i:${i}` }));
+                const t = svgEl('text', { class: 'val' + (hl ? ' hl' : ''), x: cx, y: top - 14, style: `--i:${i}` }); t.textContent = fmt(v, d.unit || ''); svg.appendChild(t);
+                const l = svgEl('text', { x: cx, y: y1 + 34 }); l.textContent = d.labels[i]; axb.appendChild(l);
+            });
+            svg.appendChild(axb);
+        }
+    };
+
+    R.doughnut = {
+        cls: 'chart',
+        mount(el) {
+            const d = readJSON(el) || { labels: ['Community', 'Ecosystem fund', 'Team', 'Investors', 'Treasury'], unit: '%', highlight: 'Community',
+                center: '1B', centerLabel: 'TOTAL SUPPLY', series: [{ values: [38, 22, 18, 14, 8] }] };
+            const vals = d.series[0].values, total = vals.reduce((a, b) => a + b, 0);
+            const W = 900, H = 500, cx = 250, cy = 250, r = 170;
+            const svg = frame(el, W, H);
+            // ink shades for non-highlighted slices; highlight gets the accent
+            const shades = ['var(--ink)', 'var(--muted)', 'color-mix(in srgb, var(--muted) 55%, var(--paper))', 'color-mix(in srgb, var(--muted) 30%, var(--paper))', 'var(--rule)'];
+            let acc = 0, k = 0;
+            const g = svgEl('g', { transform: `rotate(-90 ${cx} ${cy})` });
+            const leg = svgEl('g', { class: 'legend' });
+            vals.forEach((v, i) => {
+                const pct = v / total * 100, hl = d.labels[i] === d.highlight, col = hl ? 'var(--accent)' : shades[k++ % shades.length];
+                g.appendChild(svgEl('circle', { class: 'seg', cx, cy, r, pathLength: 100, stroke: col, 'stroke-dashoffset': -acc, style: `--v:${Math.max(pct - 0.6, 0.1)};--i:${i}` }));
+                acc += pct;
+                const ly = 110 + i * 62;
+                leg.appendChild(svgEl('rect', { x: 540, y: ly - 10, width: 20, height: 20, fill: col }));
+                const t = svgEl('text', { x: 576, y: ly }); t.textContent = d.labels[i]; leg.appendChild(t);
+                const tv = svgEl('text', { class: 'val' + (hl ? ' hl' : ''), x: 870, y: ly, 'text-anchor': 'end', style: `--i:${i}` });
+                tv.textContent = fmt(v, d.unit || ''); tv.style.textAnchor = 'end'; tv.style.dominantBaseline = 'central'; leg.appendChild(tv);
+            });
+            svg.append(g, leg);
+            const c1 = svgEl('text', { class: 'center-big', x: cx, y: cy - 8 }); c1.textContent = d.center || fmt(total, d.unit || '');
+            const c2 = svgEl('text', { class: 'center-small', x: cx, y: cy + 44 }); c2.textContent = d.centerLabel || '';
+            svg.append(c1, c2);
+        }
+    };
+
+
+    /* ===========================================
+       ICONS, CHARACTERS, SCENES (needs icons.js)
+       =========================================== */
+    const ICONS = () => window.FSC_ICONS || {};
+    // Returns an <svg> string for an icon or character. Line icons draw in; characters rise in.
+    function iconSVG(name, extra = '') {
+        const ic = ICONS()[name];
+        if (!ic) return `<svg class="fsc-ico-svg" viewBox="0 0 48 48"><text x="4" y="28" font-size="10">${name}?</text></svg>`;
+        return `<svg class="fsc-ico-svg ${ic.character ? 'char-svg' : 'line-ico'} ${extra}" viewBox="${ic.vb}" aria-label="${ic.label}" role="img">${ic.body}</svg>`;
+    }
+    // Mark every stroke of a line icon for draw-in, using its real length (pathLength is unreliable on rect/circle)
+    function prepDraw(scope) {
+        scope.querySelectorAll('svg.line-ico').forEach((svg) => svg.querySelectorAll('path,rect,circle,ellipse').forEach((n) => {
+            if (n.classList.contains('a')) return;
+            let len = 0; try { len = n.getTotalLength(); } catch (e) {}
+            n.classList.add('dr'); n.style.setProperty('--len', Math.ceil(len || 200) + 1);
+        }));
+    }
+
+    /* --- ICON (inline) ---  <i data-icon="bank" data-size="96px"></i> */
+    R.icon = {
+        inline: true,
+        mount(el) {
+            if (el.dataset.size) el.style.setProperty('--s', el.dataset.size);
+            el.innerHTML = iconSVG(el.dataset.icon);
+            prepDraw(el);
+        }
+    };
+
+    /* --- ICON SET (grid with labels) ---
+       data-icons="bank|coin|wallet" data-cols="5" data-size="72px" data-labels="off"
+       Works for characters too: data-icons="alice|bob|eve|trent" */
+    R.iconset = {
+        mount(el) {
+            const names = (el.dataset.icons || 'bank|coin|wallet|vault|contract').split('|');
+            if (el.dataset.size) el.style.setProperty('--s', el.dataset.size);
+            el.style.setProperty('--cols', el.dataset.cols || Math.min(names.length, 5));
+            el.innerHTML = `<div class="set">${names.map((n, i) => `<figure style="--i:${i}">${iconSVG(n)}${el.dataset.labels === 'off' ? '' : `<figcaption>${(ICONS()[n] || {}).label || n}</figcaption>`}</figure>`).join('')}</div>`;
+            prepDraw(el);
+        }
+    };
+
+    /* --- ACTORS (Alice & Bob scene) ---
+       data-left="alice" data-right="bob" data-middle="trent|eve|mallory|none"
+       data-item="coin" (any icon) data-note="5 tDEP" data-caption="Alice pays Bob through her bank"
+       data-eve-note="Eve sees only ciphertext"
+       Middle = trent: item routes through Trent (trusted third party / bank).
+       Middle = eve or mallory: item goes direct; they watch from below. */
+    R.actors = {
+        mount(el) {
+            const L = el.dataset.left || 'alice', Rt = el.dataset.right || 'bob', M = el.dataset.middle || 'none';
+            const via = M === 'trent', spy = M === 'eve' || M === 'mallory';
+            const W = 1400, H = 600, cw = 180, ch = 240, top = 90, ly = 250;
+            const xa = 340, xb = 1060, xm = 700;
+            el.style.setProperty('--xa', xa + 'px'); el.style.setProperty('--xb', xb + 'px'); el.style.setProperty('--xm', xm + 'px');
+            el.style.setProperty('--yl', ly + 'px'); el.style.setProperty('--ym', '70px');
+            el.style.setProperty('--tdur', via ? '3.4s' : '2.4s');
+            const person = (n, x, y, i, cls = '', k = 1) => `<g class="actor ${cls}" style="--i:${i}"><svg class="char-svg" x="${x}" y="${y}" width="${cw * k}" height="${ch * k}" viewBox="0 0 120 160">${(ICONS()[n] || {}).body || ''}</svg>
+                <text class="name" x="${x + cw * k / 2}" y="${y + ch * k + 38}">${(ICONS()[n] || { label: n }).label}</text></g>`;
+            const chip = `<g class="item ${via ? 'via' : ''}"><circle r="46" class="chip"/><svg x="-28" y="-28" width="56" height="56" viewBox="0 0 48 48" class="fsc-ico-svg line-ico chip-ico">${(ICONS()[el.dataset.item || 'coin'] || {}).body || ''}</svg>${el.dataset.note ? `<text class="note" y="-66">${el.dataset.note}</text>` : ''}</g>`;
+            let lines = '', mid = '';
+            if (via) {
+                lines = `<path class="route" pathLength="1" d="M${70 + cw + 10} ${ly} H${xm - cw / 2 - 20}"/><path class="route r2" pathLength="1" d="M${xm + cw / 2 + 20} ${ly} H${W - 70 - cw - 10}"/>`;
+                mid = person(M, xm - cw / 2, top, 1) + `<path class="tick" pathLength="1" d="M${xm + 60} ${top + 20} l10 10 20-22"/>`;
+            } else {
+                lines = `<path class="route" pathLength="1" d="M${70 + cw + 10} ${ly} H${W - 70 - cw - 10}"/>`;
+                if (spy) mid = `<path class="tap" pathLength="1" d="M${xm} ${ly + 8} V${340}"/>` + person(M, xm - cw * 0.4, 310, 1, 'spy', 0.8) +
+                    `<text class="eve-note" x="${xm + cw * 0.5 + 10}" y="${430}">${el.dataset.eveNote || (M === 'eve' ? 'Eve is listening…' : 'Mallory tampers…')}</text>`;
+            }
+            el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">${lines}${person(L, 70, top, 0)}${mid}${person(Rt, W - 70 - cw, top, 2, 'receiver')}
+                <circle class="arrive" cx="${xb + 40}" cy="${ly}" r="30"/>${chip}</svg>${el.dataset.caption ? `<p class="cap">${el.dataset.caption}</p>` : ''}`;
+            prepDraw(el);
+        }
+    };
+
+    /* ===========================================
+       TEXT EFFECTS: <span data-fx="underline">word</span>
+       Hand-drawn (Rough Notation): underline | circle | highlight | strike (data-to="new") | box | bracket | crossed
+       Others: type | words
+       | cycle (data-words="a|b|c", stops on last) | scramble | count (data-to, data-dec, data-prefix, data-suffix)
+       Effects use the accent: one per slide.
+       =========================================== */
+    /* Hand-drawn effects use Rough Notation (vendor/rough-notation.js, MIT).
+       Its positions are measured in screen pixels, so we divide by the stage scale. */
+    const RN_TYPES = { underline: 'underline', circle: 'circle', highlight: 'highlight', strike: 'strike-through', box: 'box', bracket: 'bracket', crossed: 'crossed-off' };
+    function accentColor(el, alpha) {
+        const c = getComputedStyle(el).getPropertyValue('--accent').trim() || '#2445ff';
+        if (alpha == null || !/^#[0-9a-f]{6}$/i.test(c)) return c;
+        const n = parseInt(c.slice(1), 16);
+        return `rgba(${n >> 16}, ${(n >> 8) & 255}, ${n & 255}, ${alpha})`;
+    }
+    function roughAnnotate(el, animate) {
+        if (el._rn) { el._rn.remove(); el._rn = null; }
+        if (!window.RoughNotation) return;
+        const kind = el.dataset.fx, t = el.querySelector('.fx-t'), fs = parseFloat(getComputedStyle(el).fontSize) || 40;
+        const opts = {
+            type: RN_TYPES[kind], animate, animationDuration: kind === 'highlight' ? 900 : 800, iterations: 2,
+            color: kind === 'highlight' ? accentColor(el, 0.42) : accentColor(el),
+            strokeWidth: Math.max(2, fs * 0.055), padding: kind === 'circle' ? fs * 0.18 : kind === 'box' ? fs * 0.1 : 2, multiline: kind === 'highlight' || kind === 'underline'
+        };
+        if (kind === 'bracket') opts.brackets = (el.dataset.brackets || 'left,right').split(',');
+        const ann = RoughNotation.annotate(t, opts);
+        ann.svgRect = (svg, r) => {   // undo the stage/frame transform scale
+            const s = svg.getBoundingClientRect(), k = s.width / 100 || 1;
+            return { x: ((r.x || r.left) - (s.x || s.left)) / k, y: ((r.y || r.top) - (s.y || s.top)) / k, w: r.width / k, h: r.height / k };
+        };
+        el._rn = ann; ann.show();
+    }
+
+    R.fx = {
+        inline: true,
+        mount(el) {
+            const kind = el.dataset.fx, text = el.dataset.text || el.textContent;
+            el.dataset.text = text; el.classList.add('fx-' + kind);
+            if (kind === 'strike') el.innerHTML = `<span class="fx-old"><span class="fx-t">${text}</span></span>${el.dataset.to ? ` <span class="fx-to">${el.dataset.to}</span>` : ''}`;
+            else if (kind === 'words') el.innerHTML = (/\s/.test(text.trim()) ? text.trim().split(/\s+/) : [...text.trim()]).map((w, i) => `<span class="fx-w" style="--i:${i}">${w}</span>`).join(/\s/.test(text.trim()) ? ' ' : '');
+            else if (kind === 'cycle') { const ws = (el.dataset.words || text).split('|'); el.dataset.words = ws.join('|'); el.innerHTML = `<span class="fx-c">${ws[0]}</span>`; }
+            else if (kind === 'count') el.textContent = (el.dataset.prefix || '') + '0' + (el.dataset.suffix || '');
+            else el.innerHTML = `<span class="fx-t">${text}</span>`;
+        },
+        play(el, later) {
+            const kind = el.dataset.fx, text = el.dataset.text, t = el.querySelector('.fx-t');
+            if (RN_TYPES[kind]) { if (el._rn) { el._rn.remove(); el._rn = null; } later(() => roughAnnotate(el, true), 300); return; }
+            if (kind === 'type') {
+                t.textContent = ''; const caret = h('span', { class: 'caret' }); t.after(caret);
+                [...text].forEach((_, i) => later(() => { t.textContent = text.slice(0, i + 1); }, 200 + i * 45));
+                later(() => caret.remove(), 200 + text.length * 45 + 1200);
+            } else if (kind === 'scramble') {
+                const hex = '0123456789abcdef', t0 = performance.now(), dur = 1100;
+                const tick = (now) => { const p = (now - t0) / dur; if (p >= 1) { t.textContent = text; return; }
+                    t.innerHTML = [...text].map((c, i) => c === ' ' || p > (i + 1) / text.length * .85 + .15 ? c : `<span class="sc">${hex[(Math.random() * 16) | 0]}</span>`).join('');
+                    requestAnimationFrame(tick); };
+                requestAnimationFrame(tick);
+            } else if (kind === 'cycle') {
+                const ws = el.dataset.words.split('|'), c = el.querySelector('.fx-c');
+                ws.forEach((w, i) => i && later(() => { c.classList.remove('in'); void c.offsetWidth; c.textContent = w; c.classList.add('in'); if (i === ws.length - 1) c.classList.add('last'); }, 400 + i * 1100));
+            } else if (kind === 'count') {
+                const to = parseFloat(el.dataset.to || text), dec = +(el.dataset.dec || 0), t0 = performance.now(), dur = 1400;
+                const f = (v) => (el.dataset.prefix || '') + v.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + (el.dataset.suffix || '');
+                const tick = (now) => { const p = Math.min((now - t0) / dur, 1); el.textContent = f(to * (1 - Math.pow(1 - p, 4))); if (p < 1) requestAnimationFrame(tick); };
+                requestAnimationFrame(tick);
+            }
+        },
+        final(el) {
+            const k = el.dataset.fx;
+            if (RN_TYPES[k]) roughAnnotate(el, false);
+            if (k === 'type' || k === 'scramble') el.querySelector('.fx-t').textContent = el.dataset.text;
+            if (k === 'cycle') { const ws = el.dataset.words.split('|'); const c = el.querySelector('.fx-c'); c.textContent = ws[ws.length - 1]; c.classList.add('last'); }
+            if (k === 'count') { const dec = +(el.dataset.dec || 0); el.textContent = (el.dataset.prefix || '') + parseFloat(el.dataset.to).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + (el.dataset.suffix || ''); }
+        }
+    };
+
+    /* ===========================================
+       CANDLESTICK CHART
+       JSON: { "ohlc": [[open, high, low, close], …], "labels": ["Mon", …] (optional, shown sparsely),
+               "volume": [ … ] (optional), "ma": 7 (moving-average period, optional),
+               "unit": "$", "highlight": 23 (candle index, or "last"), "note": "ETF news" (label on highlight),
+               "source": "Illustrative" }
+       Up candles hollow, down candles filled (works in print and for colorblind viewers);
+       the highlighted candle is the accent.
+       =========================================== */
+    R.candle = {
+        cls: 'chart',
+        mount(el) {
+            let d = readJSON(el);
+            if (!d) {   // illustrative random walk
+                let p = 62000, x = 11; const ohlc = [], vol = [];
+                for (let i = 0; i < 36; i++) {
+                    x = (x * 1103515245 + 12345) >>> 0; const r1 = ((x >>> 16) & 1023) / 1023;
+                    x = (x * 1103515245 + 12345) >>> 0; const r2 = ((x >>> 16) & 1023) / 1023;
+                    const drift = i < 14 ? -0.004 : i < 22 ? 0.002 : 0.009;
+                    const o = p, c = o * (1 + drift + (r1 - 0.5) * 0.04), hi = Math.max(o, c) * (1 + r2 * 0.012), lo = Math.min(o, c) * (1 - (1 - r2) * 0.012);
+                    ohlc.push([o, hi, lo, c].map((v) => Math.round(v))); vol.push(Math.round(400 + r2 * 900 + (i === 23 ? 1400 : 0))); p = c;
+                }
+                d = { ohlc, volume: vol, ma: 7, unit: '$', highlight: 23, note: 'News breaks', source: 'Illustrative data' };
+            }
+            const W = 1000, H = 520, x0 = 10, x1 = W - 110, y0 = 30, y1 = d.volume ? 360 : 460, v0 = 384, v1 = 460;
+            const svg = frame(el, W, H), n = d.ohlc.length;
+            const hiV = Math.max(...d.ohlc.map((c) => c[1])), loV = Math.min(...d.ohlc.map((c) => c[2])), padV = (hiV - loV) * 0.08;
+            const top = hiV + padV, bot = loV - padV, Y = (v) => y1 - (y1 - y0) * (v - bot) / (top - bot);
+            const slot = (x1 - x0) / n, bw = Math.max(4, slot * 0.62), X = (i) => x0 + slot * (i + 0.5);
+            const hl = d.highlight === 'last' ? n - 1 : d.highlight;
+            // grid + right axis
+            const g = svgEl('g', { class: 'grid' }), ax = svgEl('g', { class: 'axis-l' });
+            for (let i = 0; i <= 4; i++) {
+                const v = bot + (top - bot) * i / 4, y = Y(v);
+                g.appendChild(svgEl('line', { x1: x0, x2: x1, y1: y, y2: y }));
+                const t = svgEl('text', { x: W - 8, y }); t.textContent = (d.unit === '$' ? '$' : '') + Math.round(v).toLocaleString('en-US') + (d.unit && d.unit !== '$' ? d.unit : ''); ax.appendChild(t);
+            }
+            svg.append(g, ax);
+            const maxVol = d.volume ? Math.max(...d.volume) : 1;
+            d.ohlc.forEach(([o, hi, lo, c], i) => {
+                const up = c >= o, cls = 'cd ' + (up ? 'up' : 'down') + (i === hl ? ' hl' : '');
+                const grp = svgEl('g', { class: cls, style: `--i:${i}` });
+                grp.appendChild(svgEl('line', { class: 'wick', x1: X(i), x2: X(i), y1: Y(hi), y2: Y(lo) }));
+                const yt = Y(Math.max(o, c)), yb = Y(Math.min(o, c));
+                grp.appendChild(svgEl('rect', { class: 'body', x: X(i) - bw / 2, y: yt, width: bw, height: Math.max(2, yb - yt) }));
+                svg.appendChild(grp);
+                if (d.volume) svg.appendChild(svgEl('rect', { class: 'vol' + (i === hl ? ' hl' : ''), x: X(i) - bw / 2, y: v1 - (v1 - v0) * d.volume[i] / maxVol, width: bw, height: (v1 - v0) * d.volume[i] / maxVol, style: `--i:${i}` }));
+            });
+            if (d.ma) {
+                const pts = d.ohlc.map((_, i) => i < d.ma - 1 ? null : d.ohlc.slice(i - d.ma + 1, i + 1).reduce((a, c) => a + c[3], 0) / d.ma)
+                    .map((v, i) => v == null ? null : `${X(i)},${Y(v)}`).filter(Boolean);
+                svg.appendChild(svgEl('path', { class: 'ma', pathLength: 1, d: 'M' + pts.join(' L'), style: `--n:${n}` }));
+            }
+            // last price tag
+            const last = d.ohlc[n - 1][3], ty = Y(last), tag = svgEl('g', { class: 'tag', style: `--n:${n}` });
+            tag.appendChild(svgEl('rect', { x: x1 + 4, y: ty - 15, width: 104, height: 30 }));
+            const tt = svgEl('text', { x: x1 + 56, y: ty }); tt.textContent = (d.unit === '$' ? '$' : '') + last.toLocaleString('en-US'); tag.appendChild(tt);
+            svg.appendChild(tag);
+            if (hl != null && d.note) {
+                const nt = svgEl('g', { class: 'cnote', style: `--n:${n}` }), ny = Y(d.ohlc[hl][1]) - 20;
+                nt.appendChild(svgEl('line', { x1: X(hl), x2: X(hl), y1: ny, y2: ny - 26 }));
+                const t = svgEl('text', { x: X(hl), y: ny - 36 }); t.textContent = d.note; nt.appendChild(t);
+                svg.appendChild(nt);
+            }
+            if (d.labels) {
+                const axb = svgEl('g', { class: 'axis-b' }), step = Math.ceil(n / 6);
+                d.labels.forEach((l, i) => { if (i % step) return; const t = svgEl('text', { x: X(i), y: H - 22 }); t.textContent = l; axb.appendChild(t); });
+                svg.appendChild(axb);
+            }
+            if (d.source) { const s = svgEl('text', { class: 'src', x: x0, y: H - 4 }); s.textContent = d.source; svg.appendChild(s); }
+        }
+    };
+
+
+    /* ===========================================
+       CHAIN LOOP (continuous)
+       New blocks are mined on the right (accent), link to the previous block,
+       and the whole chain glides left forever while the slide is visible.
+       data-start="1024" data-speed="1.3" (seconds per block) data-mode="bg" (faint, no accent, slower)
+       Ambient motion: max one per slide (see BRAND.md).
+       =========================================== */
+    R.chainloop = {
+        mount(el) {
+            el.classList.toggle('bg', el.dataset.mode === 'bg');
+            el.innerHTML = '<div class="track"></div>';
+            const BW = +(el.dataset.block || 220), LW = 64, slot = BW + LW;
+            el._cl = { BW, LW, slot, next: +(el.dataset.start || 1024), shift: 0 };
+            el.style.setProperty('--bw', BW + 'px'); el.style.setProperty('--lw', LW + 'px');
+            const visible = Math.ceil((el.offsetWidth || 1600) / slot) + 1;
+            for (let k = 0; k < visible - 1; k++) R.chainloop.add(el, false);
+        },
+        add(el, live) {
+            const st = el._cl, track = el.querySelector('.track'), idx = st.next - (+(el.dataset.start || 1024)), x = idx * st.slot, n = st.next++;
+            if (idx > 0) {
+                const ln = h('div', { class: 'lnk' + (live ? ' live' : ''), style: `left:${x - st.LW}px` });
+                track.appendChild(ln);
+            }
+            track.querySelectorAll('.blk.accent').forEach((b) => b.classList.remove('accent'));
+            const b = h('div', { class: 'blk' + (live ? ' live accent' : ''), style: `left:${x}px`, 'data-idx': idx },
+                `<b>#${n}</b><div><span class="k">prev</span> ${idx ? fakeHash(n - 1) : '0x0000…0000'}</div><div><span class="k">hash</span> <span class="hv">${live ? 'mining…' : fakeHash(n)}</span></div>`);
+            track.appendChild(b);
+            if (live) setTimeout(() => { const hv = b.querySelector('.hv'); if (hv) hv.textContent = fakeHash(n); }, 350);
+            return idx;
+        },
+        play(el, later) {
+            if (!el._cl) R.chainloop.mount(el);
+            const st = el._cl, track = el.querySelector('.track'), speed = +(el.dataset.speed || (el.classList.contains('bg') ? 2 : 1.3)) * 1000;
+            const slide = el.closest('.slide');
+            const step = () => {
+                if (!el.isConnected || !el.classList.contains('is-playing') || (slide && !slide.classList.contains('visible'))) return;
+                R.chainloop.add(el, true);
+                // keep the newest block about one slot from the right edge
+                const lastIdx = st.next - 1 - (+(el.dataset.start || 1024));
+                const target = Math.max(0, (lastIdx + 1) * st.slot - el.offsetWidth + st.slot * 0.6);
+                later(() => { track.style.transform = `translateX(${-target}px)`; }, speed * 0.35);
+                // drop blocks that scrolled off the left edge
+                later(() => track.querySelectorAll('.blk, .lnk').forEach((n) => { if (parseFloat(n.style.left) < target - st.slot * 1.5) n.remove(); }), speed * 0.95);
+                later(step, speed);
+            };
+            later(step, 300);
+        }
+    };
+
+    /* ===========================================
+       MAPS (need geo.js): sgmap · sgdots · mrt · flight
+       Real outlines from Natural Earth (public domain). Places use real lat/lon.
+       =========================================== */
+    const GEO = () => window.FSC_GEO || { sg: [], region: [] };
+    // Fit lon/lat into a W×H box (equirectangular, corrected for latitude)
+    function projector(box, W, H, pad) {
+        const [x0, x1, y0, y1] = box, k = Math.cos(((y0 + y1) / 2) * Math.PI / 180);
+        const s = Math.min((W - 2 * pad) / ((x1 - x0) * k), (H - 2 * pad) / (y1 - y0));
+        const ox = (W - (x1 - x0) * k * s) / 2, oy = (H - (y1 - y0) * s) / 2;
+        const f = (lon, lat) => [ox + (lon - x0) * k * s, oy + (y1 - lat) * s];
+        f.kmPerPx = 111.32 / s; return f;
+    }
+    // Smooth closed outline (Catmull-Rom → Bézier)
+    function smoothPath(pts) {
+        const n = pts.length, P = (i) => pts[(i + n) % n]; let d = `M${P(0)[0].toFixed(1)} ${P(0)[1].toFixed(1)}`;
+        for (let i = 0; i < n; i++) {
+            const p0 = P(i - 1), p1 = P(i), p2 = P(i + 1), p3 = P(i + 2);
+            d += `C${(p1[0] + (p2[0] - p0[0]) / 6).toFixed(1)} ${(p1[1] + (p2[1] - p0[1]) / 6).toFixed(1)} ${(p2[0] - (p3[0] - p1[0]) / 6).toFixed(1)} ${(p2[1] - (p3[1] - p1[1]) / 6).toFixed(1)} ${p2[0].toFixed(1)} ${p2[1].toFixed(1)}`;
+        }
+        return d + 'Z';
+    }
+    const SG_BOX = [103.6, 104.05, 1.22, 1.48];
+    const SG_PLACES = [
+        { name: 'NTU', lat: 1.3483, lon: 103.6831, note: 'Home base', side: 'top' },
+        { name: 'Jurong East', lat: 1.3331, lon: 103.7423, side: 'bottom' },
+        { name: 'Orchard', lat: 1.3048, lon: 103.8318, side: 'right' },
+        { name: 'Chinatown', lat: 1.2836, lon: 103.8443, side: 'left' },
+        { name: 'Marina Bay', lat: 1.2834, lon: 103.8607, side: 'bottom' },
+        { name: 'Changi Airport', lat: 1.3644, lon: 103.9915, side: 'top' }];
+    const haversine = (a, b) => { const r = (d) => d * Math.PI / 180, dl = r(b.lat - a.lat), dn = r(b.lon - a.lon);
+        const h = Math.sin(dl / 2) ** 2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dn / 2) ** 2; return 12742 * Math.asin(Math.sqrt(h)); };
+    function moveAlong(path, dot, dur, later, delay, done) {
+        const L = path.getTotalLength();
+        later(() => { const t0 = performance.now(); dot.style.opacity = 1;
+            const tick = (now) => { const p = Math.min((now - t0) / dur, 1), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2, pt = path.getPointAtLength(e * L);
+                const pt2 = path.getPointAtLength(Math.min(L, e * L + 1)); dot.setAttribute('transform', `translate(${pt.x} ${pt.y}) rotate(${Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * 180 / Math.PI})`);
+                if (p < 1) requestAnimationFrame(tick); else done && done(); };
+            requestAnimationFrame(tick); }, delay);
+    }
+
+    /* --- SGMAP: island outline + pins + route ---
+       JSON: { "places": [{ "name", "lat", "lon", "note"?, "side"?: "left|right|top|bottom" }], "route": true, "title"?: "My week" } */
+    R.sgmap = {
+        cls: 'map',
+        mount(el) {
+            const d = Object.assign({ places: SG_PLACES, route: true }, readJSON(el) || {});
+            const W = 1200, H = 700, pr = projector(SG_BOX, W, H, 40);
+            const svg = frame(el, W, H);
+            const g = svgEl('g', { class: 'grat' });
+            for (let lon = 103.6; lon <= 104.05; lon += 0.05) { const [x] = pr(lon, 1.3); g.appendChild(svgEl('line', { x1: x, x2: x, y1: 0, y2: H })); }
+            for (let lat = 1.2; lat <= 1.5; lat += 0.05) { const [, y] = pr(103.8, lat); g.appendChild(svgEl('line', { x1: 0, x2: W, y1: y, y2: y })); }
+            svg.appendChild(g);
+            svg.appendChild(svgEl('path', { class: 'island', pathLength: 1, d: smoothPath(GEO().sg.map(([x, y]) => pr(x, y))) }));
+            const pts = d.places.map((p) => pr(p.lon, p.lat));
+            if (d.route && pts.length > 1) {
+                let path = `M${pts[0][0]} ${pts[0][1]}`;
+                for (let i = 1; i < pts.length; i++) { const [ax, ay] = pts[i - 1], [bx, by] = pts[i], mx = (ax + bx) / 2, my = (ay + by) / 2 - Math.hypot(bx - ax, by - ay) * 0.18; path += `Q${mx.toFixed(1)} ${my.toFixed(1)} ${bx} ${by}`; }
+                svg.appendChild(svgEl('path', { class: 'route', pathLength: 1, d: path }));
+                const dot = svgEl('g', { class: 'traveller' }); dot.appendChild(svgEl('circle', { r: 9 })); svg.appendChild(dot);
+            }
+            d.places.forEach((p, i) => {
+                const [x, y] = pts[i], side = p.side || 'right', g2 = svgEl('g', { class: 'pin' + (i === 0 ? ' home' : ''), style: `--i:${i}`, transform: `translate(${x} ${y})` });
+                g2.appendChild(svgEl('circle', { class: 'ring', r: 16 })); g2.appendChild(svgEl('circle', { class: 'core', r: 7 }));
+                const off = { right: [22, 8, 'start'], left: [-22, 8, 'end'], top: [0, p.note ? -50 : -28, 'middle'], bottom: [0, 42, 'middle'] }[side];
+                const t = svgEl('text', { class: 'pname', x: off[0], y: off[1], 'text-anchor': off[2] }); t.textContent = p.name; g2.appendChild(t);
+                if (p.note) { const n = svgEl('text', { class: 'pnote', x: off[0], y: off[1] + 22, 'text-anchor': off[2] }); n.textContent = p.note; g2.appendChild(n); }
+                svg.appendChild(g2);
+            });
+            // scale bar + north arrow
+            const km = 5, px = km / pr.kmPerPx / Math.cos(1.35 * Math.PI / 180);
+            const sb = svgEl('g', { class: 'scale', transform: `translate(${W - 60 - px} ${H - 40})` });
+            sb.appendChild(svgEl('path', { d: `M0 0V-8M0 0H${px.toFixed(1)}V-8` })); const st = svgEl('text', { x: px / 2, y: -14, 'text-anchor': 'middle' }); st.textContent = `${km} km`; sb.appendChild(st); svg.appendChild(sb);
+            const na = svgEl('g', { class: 'scale', transform: `translate(${W - 60} 60)` }); na.appendChild(svgEl('path', { d: 'M0 -26L9 6L0 0L-9 6Z', class: 'north' })); const nt = svgEl('text', { y: 30, 'text-anchor': 'middle' }); nt.textContent = 'N'; na.appendChild(nt); svg.appendChild(na);
+            if (d.title) { const tt = svgEl('text', { class: 'mtitle', x: 40, y: 56 }); tt.textContent = d.title; svg.appendChild(tt); }
+        },
+        play(el, later) {
+            const route = el.querySelector('.route'), dot = el.querySelector('.traveller');
+            if (route && dot) { dot.style.opacity = 0; moveAlong(route, dot, 3200, later, 2400); }
+        },
+        final(el) { const dot = el.querySelector('.traveller'); if (dot) dot.style.opacity = 0; }
+    };
+
+    /* --- SGDOTS: dot-matrix island, rippling out from home ---
+       JSON: { "home": { "lat", "lon" }, "places": [{ "name", "lat", "lon" }], "spacing": 13, "caption": "..." } */
+    R.sgdots = {
+        cls: 'map',
+        mount(el) {
+            const d = Object.assign({ home: SG_PLACES[0], places: SG_PLACES.slice(0, 1).concat(SG_PLACES.slice(4)), spacing: 13 }, readJSON(el) || {});
+            const W = 1200, H = 700, pr = projector(SG_BOX, W, H, 40), poly = GEO().sg.map(([x, y]) => pr(x, y));
+            const inside = (x, y) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const [xi, yi] = poly[i], [xj, yj] = poly[j]; if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c; } return c; };
+            const svg = frame(el, W, H), [hx, hy] = pr(d.home.lon, d.home.lat), sp = d.spacing;
+            let maxD = 0; const dots = [];
+            for (let y = sp / 2; y < H; y += sp) for (let x = sp / 2 + ((y / sp) % 2 ? sp / 2 : 0); x < W; x += sp) if (inside(x, y)) { const dd = Math.hypot(x - hx, y - hy); maxD = Math.max(maxD, dd); dots.push([x, y, dd]); }
+            const g = svgEl('g', { class: 'dots' });
+            dots.forEach(([x, y, dd]) => g.appendChild(svgEl('circle', { cx: x.toFixed(1), cy: y.toFixed(1), r: 3.4, style: `--t:${(dd / maxD).toFixed(3)}` })));
+            svg.appendChild(g);
+            d.places.forEach((p, i) => {
+                const [x, y] = pr(p.lon, p.lat), dd = Math.hypot(x - hx, y - hy), gg = svgEl('g', { class: 'hot' + (i === 0 ? ' home' : ''), transform: `translate(${x} ${y})`, style: `--t:${(dd / maxD).toFixed(3)}` });
+                gg.appendChild(svgEl('circle', { class: 'pulse', r: 10 })); gg.appendChild(svgEl('circle', { class: 'core', r: 8 }));
+                const t = svgEl('text', { x: 0, y: -24, 'text-anchor': 'middle' }); t.textContent = p.name; gg.appendChild(t); svg.appendChild(gg);
+            });
+            if (d.caption) { const c = svgEl('text', { class: 'mtitle', x: 40, y: H - 36 }); c.textContent = d.caption; svg.appendChild(c); }
+        }
+    };
+
+    /* --- MRT: schematic line journey with a moving train ---
+       JSON: { "line": "East–West Line", "color"?: "#009645", "caption"?: "NTU → City Hall · about 55 min",
+               "stations": [{ "name", "code"?, "note"? }] } */
+    R.mrt = {
+        cls: 'map',
+        mount(el) {
+            const d = Object.assign({ line: 'East–West Line', caption: 'Pioneer → City Hall', stations: [
+                { name: 'Pioneer', code: 'EW28', note: 'Bus from NTU' }, { name: 'Boon Lay', code: 'EW27' }, { name: 'Jurong East', code: 'EW24', note: 'Change for NS' },
+                { name: 'Clementi', code: 'EW23' }, { name: 'Buona Vista', code: 'EW21' }, { name: 'Outram Park', code: 'EW16' }, { name: 'Raffles Place', code: 'EW14' }, { name: 'City Hall', code: 'EW13' }] }, readJSON(el) || {});
+            const W = 1600, H = 420, x0 = 90, x1 = W - 90, y = 230, n = d.stations.length, X = (i) => x0 + (x1 - x0) * i / (n - 1);
+            const svg = frame(el, W, H);
+            if (d.color) el.style.setProperty('--line', d.color);
+            const head = svgEl('g', { class: 'mrt-head' });
+            head.appendChild(svgEl('rect', { x: x0 - 10, y: 40, width: 18, height: 18, rx: 4, class: 'chip' }));
+            const ht = svgEl('text', { x: x0 + 20, y: 55 }); ht.textContent = d.line; head.appendChild(ht);
+            const cp = svgEl('text', { x: x1 + 10, y: 55, 'text-anchor': 'end', class: 'cap' }); cp.textContent = d.caption || ''; head.appendChild(cp); svg.appendChild(head);
+            svg.appendChild(svgEl('path', { class: 'track', d: `M${x0} ${y}H${x1}` }));
+            const run = svgEl('path', { class: 'run', d: `M${x0} ${y}H${x1}`, pathLength: 1 }); svg.appendChild(run);
+            d.stations.forEach((s, i) => {
+                const g = svgEl('g', { class: 'stn', style: `--i:${i};--n:${n}`, transform: `translate(${X(i)} ${y})` });
+                g.appendChild(svgEl('circle', { r: 15 }));
+                const up = i % 2 === 0, nm = svgEl('text', { class: 'sname', y: up ? -42 : 58, 'text-anchor': 'middle' }); nm.textContent = s.name; g.appendChild(nm);
+                if (s.code) { const c = svgEl('text', { class: 'scode', y: up ? -72 : 84, 'text-anchor': 'middle' }); c.textContent = s.code; g.appendChild(c); }
+                if (s.note) { const no = svgEl('text', { class: 'snote', y: up ? 58 : -42, 'text-anchor': 'middle' }); no.textContent = s.note; g.appendChild(no); }
+                svg.appendChild(g);
+            });
+            const train = svgEl('g', { class: 'train' }); train.appendChild(svgEl('rect', { x: -26, y: -11, width: 52, height: 22, rx: 11 })); svg.appendChild(train);
+            el._mrt = { X, y, n }; el.style.setProperty('--mrt-dur', ((n - 1) * 0.78) + 's');
+        },
+        play(el, later) {
+            const { X, y, n } = el._mrt, train = el.querySelector('.train'), stns = el.querySelectorAll('.stn'), seg = 520, stop = 260;
+            stns.forEach((s) => s.classList.remove('passed')); train.setAttribute('transform', `translate(${X(0)} ${y})`); stns[0].classList.add('passed');
+            let t = 900;
+            for (let i = 1; i < n; i++) {
+                const a = X(i - 1), b = X(i), start = t;
+                later(() => { const t0 = performance.now(); const tick = (now) => { const p = Math.min((now - t0) / seg, 1), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+                    train.setAttribute('transform', `translate(${a + (b - a) * e} ${y})`); if (p < 1) requestAnimationFrame(tick); else stns[i].classList.add('passed'); }; requestAnimationFrame(tick); }, start);
+                t += seg + stop;
+            }
+        },
+        final(el) { const { X, y, n } = el._mrt; el.querySelector('.train').setAttribute('transform', `translate(${X(n - 1)} ${y})`); el.querySelectorAll('.stn').forEach((s) => s.classList.add('passed')); }
+    };
+
+    /* --- FLIGHT: arc from home to Singapore over a real SE-Asia map, distance counts up ---
+       JSON: { "from": { "name", "lat", "lon" }, "to": { "name", "lat", "lon" }, "caption"?: "..." }
+       Default origin is an example (Taipei): always set "from" to the presenter's real home. */
+    R.flight = {
+        cls: 'map',
+        mount(el) {
+            const d = Object.assign({ from: { name: 'Taipei', lat: 25.03, lon: 121.56 }, to: { name: 'Singapore', lat: 1.29, lon: 103.85 } }, readJSON(el) || {});
+            const lons = [d.from.lon, d.to.lon], lats = [d.from.lat, d.to.lat];
+            const box = [Math.min(...lons) - 9, Math.max(...lons) + 9, Math.min(...lats) - 7, Math.max(...lats) + 6];
+            const W = 1200, H = 760, pr = projector(box, W, H, 0), svg = frame(el, W, H);
+            const g = svgEl('g', { class: 'grat' });
+            for (let lon = Math.ceil(box[0] / 5) * 5; lon <= box[1]; lon += 5) { const [x] = pr(lon, 0); g.appendChild(svgEl('line', { x1: x, x2: x, y1: 0, y2: H })); }
+            for (let lat = Math.ceil(box[2] / 5) * 5; lat <= box[3]; lat += 5) { const [, yy] = pr(0, lat); g.appendChild(svgEl('line', { x1: 0, x2: W, y1: yy, y2: yy })); }
+            svg.appendChild(g);
+            const land = svgEl('g', { class: 'land' });
+            GEO().region.forEach((poly) => land.appendChild(svgEl('path', { d: 'M' + poly.map(([x, y]) => pr(x, y).map((v) => v.toFixed(1)).join(' ')).join('L') + 'Z' })));
+            svg.appendChild(land);
+            const A = pr(d.from.lon, d.from.lat), B = pr(d.to.lon, d.to.lat), mx = (A[0] + B[0]) / 2, my = (A[1] + B[1]) / 2, len = Math.hypot(B[0] - A[0], B[1] - A[1]);
+            const nx = -(B[1] - A[1]) / len, ny = (B[0] - A[0]) / len, bend = len * 0.28 * (nx > 0 ? 1 : -1);
+            const arc = svgEl('path', { class: 'arc', pathLength: 1, d: `M${A[0]} ${A[1]}Q${mx + nx * bend} ${my + ny * bend} ${B[0]} ${B[1]}` }); svg.appendChild(arc);
+            [[A, d.from, 'from'], [B, d.to, 'to']].forEach(([p, info, cls]) => { const gg = svgEl('g', { class: 'end ' + cls, transform: `translate(${p[0]} ${p[1]})` });
+                gg.appendChild(svgEl('circle', { class: 'ring', r: 16 })); gg.appendChild(svgEl('circle', { class: 'core', r: 8 }));
+                const t = svgEl('text', { x: 24, y: 8 }); t.textContent = info.name; gg.appendChild(t); svg.appendChild(gg); });
+            const plane = svgEl('g', { class: 'plane' }); plane.appendChild(svgEl('path', { d: 'M18 0L-6 -4L-14 -16L-18 -16L-12 -3L-20 -2L-24 -8L-27 -8L-24 0L-27 8L-24 8L-20 2L-12 3L-18 16L-14 16L-6 4Z' })); svg.appendChild(plane);
+            const km = Math.round(haversine(d.from, d.to));
+            const box2 = svgEl('g', { class: 'dist', transform: `translate(40 ${H - 50})` });
+            const big = svgEl('text', { class: 'km' }); big.textContent = '0 km'; box2.appendChild(big);
+            const cap = svgEl('text', { class: 'kcap', y: -86 }); cap.textContent = d.caption || `${d.from.name} → ${d.to.name}`; box2.appendChild(cap); svg.appendChild(box2);
+            el._km = km;
+        },
+        play(el, later) {
+            const arc = el.querySelector('.arc'), plane = el.querySelector('.plane'), big = el.querySelector('.km'), km = el._km;
+            plane.style.opacity = 0; moveAlong(arc, plane, 2600, later, 900);
+            later(() => { const t0 = performance.now(); const tick = (now) => { const p = Math.min((now - t0) / 2600, 1); big.textContent = Math.round(km * (1 - Math.pow(1 - p, 3))).toLocaleString('en-US') + ' km'; if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick); }, 900);
+        },
+        final(el) { el.querySelector('.km').textContent = el._km.toLocaleString('en-US') + ' km'; el.querySelector('.plane').style.opacity = 0; }
+    };
+
+    /* ===========================================
+       LAW: contract (clauses → signature → seal) · scales (two sides weighed)
+       =========================================== */
+    /* --- CONTRACT ---
+       data-title="Token Purchase Agreement" data-party="Alice & Bob" data-seal="EXECUTED" data-hl="2" (clause to highlight, 1-based)
+       Children: <li>clause text</li> … */
+    R.contract = {
+        mount(el) {
+            const items = [...el.querySelectorAll('li')].map((li) => li.innerHTML);
+            const clauses = items.length ? items : ['The Issuer mints tokens 1:1 against deposits held.', 'Tokens are transferable only between verified wallets.', 'Redemption settles within one business day.', 'This agreement is governed by the laws of Singapore.'];
+            const hl = +(el.dataset.hl || 2);
+            const sig = 'M8 46c10-30 18-38 22-30s-10 34-4 30 14-36 22-32-6 28 2 26 10-18 16-18 2 14 8 12 12-10 18-8';
+            el.innerHTML = `<div class="paper"><div class="ctop"><span class="mono">${el.dataset.ref || 'AGREEMENT No. 0x7e1c'}</span><span class="mono">${el.dataset.date || '14 Oct 2026'}</span></div>
+                <h4>${el.dataset.title || 'Token Purchase Agreement'}</h4><p class="parties">${el.dataset.party || 'between Alice and Bob'}</p>
+                <ol>${clauses.map((c, i) => `<li class="${i + 1 === hl ? 'hl' : ''}" style="--i:${i}"><span class="cn">§ ${i + 1}</span><span>${c}</span></li>`).join('')}</ol>
+                <div class="sign"><svg viewBox="0 0 200 60" class="sig"><path pathLength="1" d="${sig}"/></svg><span class="sline">${el.dataset.signer || 'Signed: Alice'}</span></div>
+                <div class="seal"><svg viewBox="0 0 120 120"><defs><path id="sealc${++uid}" d="M60 60m-44 0a44 44 0 1 1 88 0a44 44 0 1 1-88 0"/></defs>
+                <circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="34"/><text><textPath href="#sealc${uid}" textLength="268" lengthAdjust="spacing">${el.dataset.seal || 'EXECUTED'} · ${el.dataset.seal || 'EXECUTED'} · </textPath></text>
+                <path class="tick" d="M46 60l10 10 18-22"/></svg></div></div>`;
+        }
+    };
+
+    /* --- SCALES ---
+       JSON: { "left": { "label": "Innovation", "items": ["Faster settlement", "…"], "weight": 3 },
+               "right": { "label": "Protection", "items": ["…"], "weight": 2 }, "caption"?: "…" }
+       The beam tips toward the heavier side (weight defaults to item count). */
+    R.scales = {
+        mount(el) {
+            const d = Object.assign({ left: { label: 'Innovation', items: ['Instant settlement', 'Programmable money', 'Open access'] }, right: { label: 'Protection', items: ['Investor safeguards', 'AML / KYC'] } }, readJSON(el) || {});
+            const wl = d.left.weight ?? d.left.items.length, wr = d.right.weight ?? d.right.items.length;
+            el.style.setProperty('--tilt', Math.max(-12, Math.min(12, (wr - wl) * 5)) + 'deg');
+            const side = (s, cls) => `<div class="pan-wrap ${cls}"><div class="chain"></div><div class="pan"><div class="chips">${s.items.map((t, i) => `<span style="--i:${i}">${t}</span>`).join('')}</div></div><div class="plabel">${s.label}</div></div>`;
+            el.innerHTML = `<div class="stage"><div class="post"></div><div class="base"></div><div class="beam">${side(d.left, 'l')}${side(d.right, 'r')}<i class="pivot"></i></div></div>${d.caption ? `<p class="cap">${d.caption}</p>` : ''}`;
+        }
+    };
+
+    /* ===========================================
+       BOTANICALS: fine-line botanical illustrations (not florals-cute: ink, thin lines)
+       data-name="laurel | olive | eucalyptus | fern | wildflower | orchid"  data-flip="x" (mirror)
+       Draw-in: stems first, then leaves grow along them.
+       =========================================== */
+    function leafPath(len, w) { return `M0 0C${len * .3} ${-w} ${len * .7} ${-w} ${len} 0C${len * .7} ${w} ${len * .3} ${w} 0 0Z`; }
+    function botanicalSVG(name) {
+        const r = rnd(name.length * 131 + 7); let out = '', k = 0;
+        const leaf = (x, y, ang, len, w, extra = '') => `<g class="lf" style="--k:${k++}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(1)})"><path class="blade${extra}" d="${leafPath(len, w)}"/><path class="rib" d="M${len * .08} 0L${len * .85} 0"/></g>`;
+        const stem = (p0, p1, p2, p3) => `<path class="stem" pathLength="1" d="M${p0}C${p1} ${p2} ${p3}"/>`;
+        const along = (P, t) => [bez(P[0][0], P[1][0], P[2][0], P[3][0], t), bez(P[0][1], P[1][1], P[2][1], P[3][1], t)];
+        const tang = (P, t) => { const a = along(P, t), b = along(P, Math.min(1, t + .01)); return Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI; };
+        const branch = (P, n, len, w, spread, opts = {}) => {
+            out += stem(...P.map((p) => p.join(' ')));
+            for (let i = 1; i <= n; i++) {
+                const t = (opts.from ?? .08) + (1 - (opts.from ?? .08)) * i / (n + 1), [x, y] = along(P, t), a = tang(P, t), sc = opts.taper ? 1 - t * .45 : 1;
+                out += leaf(x, y, a - spread, len * sc * (.85 + r() * .3), w * sc);
+                if (opts.pairs || i % 2) out += leaf(x, y, a + spread, len * sc * (.85 + r() * .3), w * sc);
+            }
+            if (opts.tip !== false) { const [x, y] = along(P, 1); out += leaf(x, y, tang(P, .99), len * .8, w * .8); }
+        };
+        if (name === 'laurel') {   // wreath: two mirrored arcs of paired leaves
+            const arc = (dir) => { const P = [[200, 380], [200 + dir * 150, 360], [200 + dir * 170, 140], [200 + dir * 60, 40]]; branch(P, 11, 46, 13, 38, { pairs: true, taper: true }); };
+            arc(-1); arc(1);
+            out += `<path class="stem" pathLength="1" d="M170 382c10 12 50 12 60 0M185 384l-14 22M215 384l14 22"/>`;
+            return { vb: '0 0 400 420', out };
+        }
+        if (name === 'olive') {
+            const P = [[30, 370], [140, 300], [230, 170], [370, 60]]; branch(P, 14, 74, 9, 32, { taper: true });
+            [[.35, 1], [.52, -1], [.7, 1]].forEach(([t, s2]) => { const [x, y] = along(P, t), a = tang(P, t) + 90 * s2;
+                const ox = x + Math.cos(a * Math.PI / 180) * 22, oy = y + Math.sin(a * Math.PI / 180) * 22;
+                out += `<g class="lf" style="--k:${k++}"><path class="stem thin" d="M${x.toFixed(1)} ${y.toFixed(1)}L${ox.toFixed(1)} ${oy.toFixed(1)}"/><ellipse class="fruit" cx="${ox.toFixed(1)}" cy="${oy.toFixed(1)}" rx="9" ry="12" transform="rotate(${a.toFixed(0)} ${ox.toFixed(1)} ${oy.toFixed(1)})"/></g>`; });
+            return { vb: '0 0 400 420', out };
+        }
+        if (name === 'eucalyptus') {
+            const P = [[60, 20], [120, 140], [90, 260], [190, 400]];
+            out += stem(...P.map((p) => p.join(' ')));
+            for (let i = 0; i < 11; i++) { const t = .06 + i * .085, [x, y] = along(P, t), a = tang(P, t) + (i % 2 ? 70 : -70), sz = 30 + r() * 8;
+                out += `<g class="lf" style="--k:${k++}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${a.toFixed(1)})"><path class="blade" d="M0 0C${sz * .2} ${-sz * .8} ${sz * 1.2} ${-sz * .8} ${sz * 1.2} 0S${sz * .2} ${sz * .8} 0 0Z"/><path class="rib" d="M2 0L${sz * 1.05} 0"/></g>`; }
+            return { vb: '0 0 300 420', out };
+        }
+        if (name === 'fern') {
+            const P = [[40, 400], [90, 260], [180, 120], [330, 40]]; out += stem(...P.map((p) => p.join(' ')));
+            for (let i = 0; i < 24; i++) { const t = .05 + i * .038, [x, y] = along(P, t), a = tang(P, t), L = 70 * (1 - t * .8);
+                [-1, 1].forEach((sd) => { const ang = a + sd * 62; out += `<g class="lf" style="--k:${k++}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(1)})"><path class="blade" d="M0 0C${L * .2} ${-L * .16} ${L * .8} ${-L * .1} ${L} 0C${L * .8} ${L * .1} ${L * .2} ${L * .16} 0 0Z"/></g>`; });
+            }
+            return { vb: '0 0 400 420', out };
+        }
+        if (name === 'wildflower') {
+            const stems = [[[120, 410], [118, 300], [100, 200], [80, 90]], [[150, 410], [160, 320], [200, 220], [230, 130]], [[135, 410], [140, 330], [150, 260], [160, 190]]];
+            stems.forEach((P, si) => { out += stem(...P.map((p) => p.join(' ')));
+                const [x, y] = P[3];
+                for (let i = 0; i < 9; i++) { const a = -90 + (i - 4) * 18, L = 26 + r() * 10, ex = x + Math.cos(a * Math.PI / 180) * L, ey = y + Math.sin(a * Math.PI / 180) * L * .7;
+                    out += `<g class="lf" style="--k:${k++}"><path class="stem thin" d="M${x} ${y}L${ex.toFixed(1)} ${ey.toFixed(1)}"/><circle class="bud" cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="${si === 2 ? 5 : 3.5}"/></g>`; }
+                out += leaf(P[1][0], P[1][1], si % 2 ? -40 : -140, 60, 8);
+            });
+            [[100, 410, -100], [170, 410, -75], [140, 410, -88]].forEach(([x, y, a]) => out += `<g class="lf" style="--k:${k++}" transform="translate(${x} ${y}) rotate(${a})"><path class="blade" d="${leafPath(150, 5)}"/></g>`);
+            return { vb: '0 0 320 420', out };
+        }
+        // orchid: Vanda Miss Joaquim spray (Singapore's national flower), drawn as fine line art
+        const P = [[60, 410], [80, 280], [140, 170], [260, 70]]; out += stem(...P.map((p) => p.join(' ')));
+        [[.45, 1], [.7, .85], [.95, .7]].forEach(([t, sc]) => { const [x, y] = along(P, t), s3 = 46 * sc;
+            let f = `<g class="lf flower" style="--k:${k++}" transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(tang(P, t) - 60).toFixed(1)})">`;
+            [0, 72, 144, 216, 288].forEach((a) => f += `<path class="blade" transform="rotate(${a})" d="M0 0C${s3 * .25} ${-s3 * .35} ${s3 * .85} ${-s3 * .35} ${s3} 0C${s3 * .85} ${s3 * .35} ${s3 * .25} ${s3 * .35} 0 0Z"/>`);
+            f += `<path class="blade lip" transform="rotate(108)" d="M0 0C${s3 * .4} ${-s3 * .6} ${s3 * 1.25} ${-s3 * .7} ${s3 * 1.1} 0C${s3 * 1.25} ${s3 * .7} ${s3 * .4} ${s3 * .6} 0 0Z"/><circle class="bud" r="5"/></g>`;
+            out += f; });
+        [[.12, -150], [.22, -30]].forEach(([t, a]) => { const [x, y] = along(P, t); out += leaf(x, y, a, 120, 14); });
+        return { vb: '0 0 340 420', out };
+    }
+    R.botanical = {
+        mount(el) {
+            const name = el.dataset.name || 'olive', { vb, out } = botanicalSVG(name);
+            el.classList.toggle('flip', el.dataset.flip === 'x');
+            el.innerHTML = `<svg viewBox="${vb}" preserveAspectRatio="xMidYMid meet" aria-hidden="true">${out}</svg>`;
+        }
+    };
+
+    window.FSC = { play, update, mount, mountAll, wire, registry: R, iconSVG };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => wire());
+    else wire();
+})();
+</script>
+<script>
+const stage = document.getElementById('deckStage'), slides = [...document.querySelectorAll('.slide')]; let cur = 0;
+const fit = () => { const f = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = `translate(${(innerWidth - 1920 * f) / 2}px, ${(innerHeight - 1080 * f) / 2}px) scale(${f})`; };
+fit(); addEventListener('resize', fit);
+const show = (i) => { cur = Math.max(0, Math.min(i, slides.length - 1)); slides.forEach((s, k) => { s.classList.toggle('active', k === cur); s.classList.toggle('visible', k === cur); }); document.getElementById('counter').textContent = `${cur + 1} / ${slides.length}`; };
+addEventListener('keydown', (e) => { if (['ArrowRight', 'ArrowDown', ' ', 'PageDown'].includes(e.key)) show(cur + 1); if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) show(cur - 1); if (e.key === 'd' || e.key === 'D') document.documentElement.classList.toggle('dark'); });
+let sx = 0; addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
+addEventListener('touchend', (e) => { const dx = e.changedTouches[0].clientX - sx; show(cur + (Math.abs(dx) > 40 ? (dx < 0 ? 1 : -1) : (sx > innerWidth / 2 ? 1 : -1))); });
+addEventListener('click', (e) => { if (e.pointerType !== 'touch') show(cur + (e.clientX > innerWidth / 2 ? 1 : -1)); });
+const q = new URLSearchParams(location.search); if (q.get('mode') === 'dark') document.documentElement.classList.add('dark'); show(+(q.get('s') || 1) - 1);
+</script></body></html>
