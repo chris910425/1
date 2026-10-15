@@ -25,6 +25,10 @@ The user works conversationally: they share thoughts, you suggest ideas, you go 
 
 The user views work on a phone and on the Claude desktop app on a PC. Always share drafts and decks in a way that opens on both: publish them as a private Artifact link (and update the same link for new versions), in addition to sending the file.
 
+## Public sharing (GitHub Pages)
+
+Pushing to `main` publishes every deck to GitHub Pages via `.github/workflows/pages.yml` (built by `tools/build_site.py`). Links look like `https://chris910425.github.io/<repo-name>/decks/<deck-name>/`; the home page lists all decks and the studio previews. Anything published is **public**: notes.md, drafts, `inspiration/` and `assets/` are excluded on purpose. Keep a deck's images inside its own folder, and only use photos the user has the right to share publicly. When a deck is merged to `main`, give the user its Pages link alongside the private Artifact link.
+
 ## Language
 
 Decks may be in Traditional Chinese (繁體中文). Copy the user's wording exactly; never convert to Simplified. Add a matching Traditional Chinese web font (e.g. Noto Sans TC / Noto Serif TC), relax tight letter-spacing and uppercase styles for Chinese text, and use full-width punctuation. Ask whether terminology should follow Taiwan or Hong Kong usage.
