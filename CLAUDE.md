@@ -7,6 +7,7 @@ This repo is the user's personal slide-making workspace. The user is an MSBT (bl
 - `.claude/skills/frontend-slides/`: the slide-making skill, customized:
   - `brand/BRAND.md` + `brand/tokens.css`: the user's design system (themes **Ledger**, **Editorial**, **Terminal**, **Index**, **Slate**, **Heritage**, each light + dark). Every deck uses it by default.
   - `components/`: the reusable animated component library (see `components/README.md`). Preview page: `components/gallery.html` (rebuild with `python3 .claude/skills/frontend-slides/components/build.py`).
+- `.claude/skills/design-taste-frontend/`: the community "Taste Skill" v2 (MIT, from github.com/Leonxlnx/taste-skill @ f624f37), an anti-generic art-direction skill for web pages. Use it as a **design advisor** (its laws of type, space, colour and imagery, its direction/palette library, and its critique rubric in `references/critique.md`), not as the deck builder. Where its house rules ban things the user's brand deliberately uses (tracked uppercase labels, glass, monospace labels, hand-drawn highlights, botanicals, icons), **the user's brand and choices win**.
 - `decks/`: one folder per deck: `decks/<deck-name>/`.
 - `assets/photos/`: photos the user shared (NTU buildings); see its README.
 - `inspiration/`: templates and styles the user liked. When the user shares an image or link they like, save the image file (or the link) here and add a row to `inspiration/README.md` describing what they liked. Check this folder when choosing a look for a new deck.
