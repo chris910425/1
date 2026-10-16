@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Microsoft JhengHei, Arial">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#F3F2EE"/>
+  <g id="header" data-pptx-bounds="72 56 1000 120">
+    <text x="72" y="80" font-size="18" fill="#6B6D73">02　日常</text>
+    <text x="72" y="150" font-size="54" font-weight="bold" fill="#121316">一天的節奏</text>
+  </g>
+  <g id="st-class" data-pptx-bounds="72 270 262 250">
+    <text x="72" y="330" font-family="Arial" font-size="56" font-weight="bold" fill="#121316">08:30</text>
+    <line x1="72" y1="366" x2="334" y2="366" stroke="#121316" stroke-width="2"/>
+    <circle cx="81" cy="366" r="9" fill="#121316"/>
+    <text x="72" y="430" font-size="28" font-weight="bold" fill="#121316">上課</text>
+    <text x="72" y="474" font-size="20" fill="#6B6D73">課堂與實驗課，<tspan x="72" dy="32">一天從這裡開始。</tspan></text>
+  </g>
+  <g id="st-lunch" data-pptx-bounds="364 270 262 250">
+    <text x="364" y="330" font-family="Arial" font-size="56" font-weight="bold" fill="#2445FF">12:30</text>
+    <line x1="364" y1="366" x2="626" y2="366" stroke="#2445FF" stroke-width="2"/>
+    <circle cx="373" cy="366" r="9" fill="#2445FF"/>
+    <text x="364" y="430" font-size="28" font-weight="bold" fill="#121316">小販中心午餐</text>
+    <text x="364" y="474" font-size="20" fill="#6B6D73">選擇多到，<tspan x="364" dy="32">每天都難決定。</tspan></text>
+  </g>
+  <g id="st-team" data-pptx-bounds="656 270 262 250">
+    <text x="656" y="330" font-family="Arial" font-size="56" font-weight="bold" fill="#121316">15:00</text>
+    <line x1="656" y1="366" x2="918" y2="366" stroke="#121316" stroke-width="2"/>
+    <circle cx="665" cy="366" r="9" fill="#121316"/>
+    <text x="656" y="430" font-size="28" font-weight="bold" fill="#121316">小組專題</text>
+    <text x="656" y="474" font-size="20" fill="#6B6D73">跟隊友對進度，<tspan x="656" dy="32">咖啡是必需品。</tspan></text>
+  </g>
+  <g id="st-night" data-pptx-bounds="948 270 262 250">
+    <text x="948" y="330" font-family="Arial" font-size="56" font-weight="bold" fill="#121316">21:00</text>
+    <line x1="948" y1="366" x2="1210" y2="366" stroke="#121316" stroke-width="2"/>
+    <circle cx="957" cy="366" r="9" fill="#121316"/>
+    <text x="948" y="430" font-size="28" font-weight="bold" fill="#121316">圖書館</text>
+    <text x="948" y="474" font-size="20" fill="#6B6D73">趕作業與讀書，<tspan x="948" dy="32">偶爾去吃宵夜。</tspan></text>
+  </g>
+  <g id="note" data-pptx-bounds="72 590 1136 40" font-size="18" fill="#6B6D73">
+    <text x="72" y="620">※ 時間與內容為示意，正式版會換成真實的一天。</text>
+  </g>
+  <g id="footer" data-pptx-bounds="72 658 1136 36" font-size="16" fill="#6B6D73">
+    <text x="72" y="680">新加坡留學日常</text>
+    <text x="1208" y="680" text-anchor="end" font-family="Arial">2 / 5</text>
+  </g>
+</svg>

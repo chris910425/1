@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="cover" font-family="Microsoft JhengHei, Arial">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#F3F2EE"/>
+  <g id="kicker" data-pptx-bounds="72 98 740 40" font-size="18" fill="#6B6D73">
+    <text x="72" y="122">南洋理工大學　MSBT 碩士生日誌</text>
+  </g>
+  <g id="title" data-pptx-bounds="72 200 740 250" font-size="96" font-weight="bold" fill="#121316">
+    <text x="72" y="300">新加坡</text>
+    <text x="72" y="410">留學日常</text>
+  </g>
+  <g id="subtitle" data-pptx-bounds="72 462 740 46" font-size="26" fill="#121316">
+    <text x="72" y="494">一位區塊鏈碩士生的課堂、生活與小發現</text>
+  </g>
+  <g id="field" data-pptx-bounds="840 0 440 720">
+    <rect x="840" y="0" width="440" height="720" fill="#2445FF"/>
+    <text x="880" y="122" font-size="18" fill="#FFFFFF" fill-opacity="0.8">區塊鏈　×　新加坡</text>
+    <text x="880" y="640" font-family="Arial" font-size="120" font-weight="bold" fill="#FFFFFF">MSBT</text>
+  </g>
+  <g id="draft-note" data-pptx-bounds="72 650 740 40" font-size="16" fill="#6B6D73">
+    <text x="72" y="676">測試稿　內容為示意，之後會換成真實內容</text>
+  </g>
+</svg>
