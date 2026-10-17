@@ -36,9 +36,9 @@
 .ms-neon { background: radial-gradient(120% 90% at 50% 40%, #1c1530, #07060c 70%); }
 .ms-neon .tube { position: absolute; inset: 14cqh 12cqw; border: .45cqw solid #7ff5ff; border-radius: 3cqw; box-shadow: 0 0 1.2cqw #39e6ff, 0 0 4cqw #19b8ff, inset 0 0 2cqw #19b8ff; animation: ms-buzz 4s infinite; }
 .ms-neon .ms-center b { font: 400 11cqw/1 'Tilt Neon', var(--font-display, sans-serif); color: #fff0fb; letter-spacing: .02em;
-  text-shadow: 0 0 .4cqw #fff, 0 0 1.4cqw #ff4fd8, 0 0 3cqw #ff2fbf, 0 0 6cqw #c3009b; animation: ms-flicker 5s infinite; }
+  --glow: 0 0 .4cqw #fff, 0 0 1.4cqw #ff4fd8, 0 0 3cqw #ff2fbf, 0 0 6cqw #c3009b; text-shadow: var(--glow); animation: ms-flicker 5s infinite; }
 .ms-neon .ms-center i { display: block; margin-top: 2cqh; font: 400 2.4cqw/1 'Tilt Neon', sans-serif; font-style: normal; color: #c9fbff; letter-spacing: .3em; text-shadow: 0 0 1cqw #39e6ff; }
-@keyframes ms-flicker { 0%,18%,22%,25%,53%,57%,100% { opacity: 1; } 20%,24%,55% { opacity: .35; text-shadow: none; } }
+@keyframes ms-flicker { 0%,18%,22%,25%,53%,57%,100% { opacity: 1; text-shadow: var(--glow); } 19%,21%,23.5%,54%,56% { opacity: .3; text-shadow: 0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent; } }
 @keyframes ms-buzz { 0%,100% { opacity: 1; } 48% { opacity: .92; } 50% { opacity: .55; } 52% { opacity: 1; } }
 
 /* 6 glassmorphism */

@@ -71,12 +71,22 @@
             };
             el._msRaf = requestAnimationFrame(tick);
         },
-        final(el) { const s = S[el.dataset.style]; if (s && s.frame) { el._ms.t = s.still || 3; s.frame(el, el._ms.t, 0.016); } }
+        final(el) { const s = S[el.dataset.style]; if (s && s.frame) { el._ms.t = s.still || 3; s.frame(el, el._ms.t, 0.016); } },
+        /* Recorder hook (tools/record-motion): freeze the style at time t seconds.
+           Call with increasing t (one call per video frame) so JS styles step in order. */
+        seek(el, t, dt = 1 / 30) {
+            cancelAnimationFrame(el._msRaf);
+            el.getAnimations({ subtree: true }).forEach((a) => { a.pause(); a.currentTime = t * 1000; });
+            const s = S[el.dataset.style];
+            if (s && s.frame) { el._ms.t = t; s.frame(el, t, dt); }
+        },
+        // Seconds after which the style repeats exactly (a seamless video loop), if known
+        loopOf: (name) => (S[name] && S[name].loop) || 0
     };
 
     /* 1. PARTICLES: dots fly in to form the words, hold, burst, repeat */
     S.particles = {
-        text: 'BLOCK 1024', sub: '',
+        text: 'BLOCK 1024', sub: '', loop: 7,
         build(el, o) {
             const { c, ctx } = canvas(el);
             el._p = { c, ctx, pts: [] };
@@ -133,7 +143,7 @@
 
     /* 4. NEON GLOW: flickering tube sign */
     S.neon = {
-        text: 'Open Late', sub: 'SINGAPORE',
+        text: 'Open Late', sub: 'SINGAPORE', loop: 20,       // flicker 5s × buzz 4s
         build(el, o) { el.innerHTML = `<div class="tube"></div><div class="ms-center"><div><b>${esc(o.text)}</b><i>${esc(o.sub)}</i></div></div>`; }
     };
 
@@ -175,7 +185,7 @@
 
     /* 7. KINETIC TYPE: lines rise in, hold, leave (data-text "Build|Ship|Repeat.") */
     S.kinetic = {
-        text: 'Build.|Ship.|Repeat.', sub: '',
+        text: 'Build.|Ship.|Repeat.', sub: '', loop: 5,
         build(el, o) { el.innerHTML = `<div class="lines">${o.text.split('|').map((w, i) => `<span class="ln"><span style="--i:${i}">${esc(w)}</span></span>`).join('')}</div><div class="bar"></div>`; }
     };
 
@@ -341,7 +351,7 @@
 
     /* 18. BLUEPRINT: a technical drawing that draws itself */
     S.blueprint = {
-        text: 'BLOCK  #1024', sub: 'SCALE 1:20',
+        text: 'BLOCK  #1024', sub: 'SCALE 1:20', loop: 7,
         build(el, o) {
             el.innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">
               <path class="d" style="--i:0" d="M520 300 L820 200 L1120 300 L820 400 Z"/>
@@ -375,7 +385,7 @@
 
     /* 20. NEO-BRUTALISM: thick borders, hard shadows, pieces dropping in */
     S.brutal = {
-        text: 'SHIP IT.', sub: '98% FASTER',
+        text: 'SHIP IT.', sub: '98% FASTER', loop: 6,
         build(el, o) {
             el.innerHTML = `<div class="k count" style="--i:6">20</div><div class="k head" style="--i:0"><b>${esc(o.text)}</b><span></span><span></span></div><div class="k fast" style="--i:1">${esc(o.sub).replace(' ', '<br>')}</div><div class="k star" style="--i:2">★</div><div class="k btn" style="--i:3">CLICK ME</div><div class="k badge" style="--i:4">NEW!</div>`;
         }

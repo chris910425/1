@@ -148,6 +148,8 @@ The element fills its box; text scales with the box. `data-text` sets the main w
 | `deco` | Gold sunburst, stepped frame | own | editable shapes + animation |
 | `brutal` | Neo-brutalist cards dropping in | own | editable shapes + animation |
 
+**PowerPoint:** record a style as a looping MP4 and drop it on a slide with `tools/record-motion/` (see its README): `node tools/record-motion/record.js --style neon --text "…"`, then `python3 tools/record-motion/to_pptx.py clips/neon.mp4 --append deck.pptx`.
+
 Rules: these are loud on purpose. Use at most one per deck, on a title, section or closing slide, never behind body text. Fonts are listed at the top of `motion.css`; add the ones you use to the deck `<head>`.
 
 ## Rules for using components in decks

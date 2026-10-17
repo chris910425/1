@@ -589,9 +589,9 @@ html[data-theme="slate"] .tone-mid { --paper: #cbc2b4; --panel: #b8ae9f; }
 .ms-neon { background: radial-gradient(120% 90% at 50% 40%, #1c1530, #07060c 70%); }
 .ms-neon .tube { position: absolute; inset: 14cqh 12cqw; border: .45cqw solid #7ff5ff; border-radius: 3cqw; box-shadow: 0 0 1.2cqw #39e6ff, 0 0 4cqw #19b8ff, inset 0 0 2cqw #19b8ff; animation: ms-buzz 4s infinite; }
 .ms-neon .ms-center b { font: 400 11cqw/1 'Tilt Neon', var(--font-display, sans-serif); color: #fff0fb; letter-spacing: .02em;
-  text-shadow: 0 0 .4cqw #fff, 0 0 1.4cqw #ff4fd8, 0 0 3cqw #ff2fbf, 0 0 6cqw #c3009b; animation: ms-flicker 5s infinite; }
+  --glow: 0 0 .4cqw #fff, 0 0 1.4cqw #ff4fd8, 0 0 3cqw #ff2fbf, 0 0 6cqw #c3009b; text-shadow: var(--glow); animation: ms-flicker 5s infinite; }
 .ms-neon .ms-center i { display: block; margin-top: 2cqh; font: 400 2.4cqw/1 'Tilt Neon', sans-serif; font-style: normal; color: #c9fbff; letter-spacing: .3em; text-shadow: 0 0 1cqw #39e6ff; }
-@keyframes ms-flicker { 0%,18%,22%,25%,53%,57%,100% { opacity: 1; } 20%,24%,55% { opacity: .35; text-shadow: none; } }
+@keyframes ms-flicker { 0%,18%,22%,25%,53%,57%,100% { opacity: 1; text-shadow: var(--glow); } 19%,21%,23.5%,54%,56% { opacity: .3; text-shadow: 0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent, 0 0 0 transparent; } }
 @keyframes ms-buzz { 0%,100% { opacity: 1; } 48% { opacity: .92; } 50% { opacity: .55; } 52% { opacity: 1; } }
 
 /* 6 glassmorphism */
@@ -1902,12 +1902,22 @@ html[data-theme="slate"] .tone-mid { --paper: #cbc2b4; --panel: #b8ae9f; }
             };
             el._msRaf = requestAnimationFrame(tick);
         },
-        final(el) { const s = S[el.dataset.style]; if (s && s.frame) { el._ms.t = s.still || 3; s.frame(el, el._ms.t, 0.016); } }
+        final(el) { const s = S[el.dataset.style]; if (s && s.frame) { el._ms.t = s.still || 3; s.frame(el, el._ms.t, 0.016); } },
+        /* Recorder hook (tools/record-motion): freeze the style at time t seconds.
+           Call with increasing t (one call per video frame) so JS styles step in order. */
+        seek(el, t, dt = 1 / 30) {
+            cancelAnimationFrame(el._msRaf);
+            el.getAnimations({ subtree: true }).forEach((a) => { a.pause(); a.currentTime = t * 1000; });
+            const s = S[el.dataset.style];
+            if (s && s.frame) { el._ms.t = t; s.frame(el, t, dt); }
+        },
+        // Seconds after which the style repeats exactly (a seamless video loop), if known
+        loopOf: (name) => (S[name] && S[name].loop) || 0
     };
 
     /* 1. PARTICLES: dots fly in to form the words, hold, burst, repeat */
     S.particles = {
-        text: 'BLOCK 1024', sub: '',
+        text: 'BLOCK 1024', sub: '', loop: 7,
         build(el, o) {
             const { c, ctx } = canvas(el);
             el._p = { c, ctx, pts: [] };
@@ -1964,7 +1974,7 @@ html[data-theme="slate"] .tone-mid { --paper: #cbc2b4; --panel: #b8ae9f; }
 
     /* 4. NEON GLOW: flickering tube sign */
     S.neon = {
-        text: 'Open Late', sub: 'SINGAPORE',
+        text: 'Open Late', sub: 'SINGAPORE', loop: 20,       // flicker 5s × buzz 4s
         build(el, o) { el.innerHTML = `<div class="tube"></div><div class="ms-center"><div><b>${esc(o.text)}</b><i>${esc(o.sub)}</i></div></div>`; }
     };
 
@@ -2006,7 +2016,7 @@ html[data-theme="slate"] .tone-mid { --paper: #cbc2b4; --panel: #b8ae9f; }
 
     /* 7. KINETIC TYPE: lines rise in, hold, leave (data-text "Build|Ship|Repeat.") */
     S.kinetic = {
-        text: 'Build.|Ship.|Repeat.', sub: '',
+        text: 'Build.|Ship.|Repeat.', sub: '', loop: 5,
         build(el, o) { el.innerHTML = `<div class="lines">${o.text.split('|').map((w, i) => `<span class="ln"><span style="--i:${i}">${esc(w)}</span></span>`).join('')}</div><div class="bar"></div>`; }
     };
 
@@ -2172,7 +2182,7 @@ html[data-theme="slate"] .tone-mid { --paper: #cbc2b4; --panel: #b8ae9f; }
 
     /* 18. BLUEPRINT: a technical drawing that draws itself */
     S.blueprint = {
-        text: 'BLOCK  #1024', sub: 'SCALE 1:20',
+        text: 'BLOCK  #1024', sub: 'SCALE 1:20', loop: 7,
         build(el, o) {
             el.innerHTML = `<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet">
               <path class="d" style="--i:0" d="M520 300 L820 200 L1120 300 L820 400 Z"/>
@@ -2206,7 +2216,7 @@ html[data-theme="slate"] .tone-mid { --paper: #cbc2b4; --panel: #b8ae9f; }
 
     /* 20. NEO-BRUTALISM: thick borders, hard shadows, pieces dropping in */
     S.brutal = {
-        text: 'SHIP IT.', sub: '98% FASTER',
+        text: 'SHIP IT.', sub: '98% FASTER', loop: 6,
         build(el, o) {
             el.innerHTML = `<div class="k count" style="--i:6">20</div><div class="k head" style="--i:0"><b>${esc(o.text)}</b><span></span><span></span></div><div class="k fast" style="--i:1">${esc(o.sub).replace(' ', '<br>')}</div><div class="k star" style="--i:2">★</div><div class="k btn" style="--i:3">CLICK ME</div><div class="k badge" style="--i:4">NEW!</div>`;
         }

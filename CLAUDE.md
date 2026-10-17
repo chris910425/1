@@ -47,4 +47,5 @@ If the user wants a new component, icon, effect or brand tweak, add it to the li
 
 - `.claude/skills/ppt-master/` (MIT, github.com/hugohe3/ppt-master @ 8070d3d): builds **editable PowerPoint (.pptx)**. Python deps live in a venv, not the repo: `python3 -m venv /tmp/pptvenv && /tmp/pptvenv/bin/pip install -r .claude/skills/ppt-master/requirements.txt`, then run the skill's scripts with that python. Apply the user's brand (`brand/BRAND.md` colours, fonts) to its output. For 繁體中文 decks pick a font the audience's PC has (Microsoft JhengHei / Noto TC) or embed it.
 - `.claude/skills/impeccable/` (Apache-2.0, github.com/pbakaus/impeccable @ 6af45ac, v4.6.0): design critique/polish commands for **web UI**. For slides use it only as a critique vocabulary (hierarchy, typography, colour, layout), not as a builder.
+- Motion styles in PowerPoint decks: record them with `tools/record-motion/` (looping MP4, autoplay + loop slide). Clips go in `clips/` or the deck's folder.
 - Deck routing: HTML deck -> `frontend-slides`; PowerPoint -> `ppt-master`. Taste Skill and Impeccable advise on both. The user's brand wins any conflict.
