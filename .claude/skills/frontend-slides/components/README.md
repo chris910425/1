@@ -115,6 +115,41 @@ Keep backgrounds away from the main text block (or behind empty space) so text c
 
 Place them absolutely in a slide corner, partly off the edge, behind the content, e.g. `<div data-fsc="botanical" data-name="olive" style="position:absolute;right:-40px;bottom:-30px;width:420px;height:460px"></div>`. Use one or two per slide at most, in the theme's ink color. Laurel and olive suit law and academia; the orchid suits Singapore topics.
 
+## Motion styles (motion.css + motion.js)
+
+20 animated looks for title, section and closing slides. Preview: `motion.html` (rebuild with `build.py`). Load `motion.css` and `motion.js` **after** `library.css` / `library.js`.
+
+```html
+<div data-fsc="motion" data-style="neon" data-text="Open Late" data-sub="SINGAPORE" style="position:absolute;inset:0"></div>
+```
+
+The element fills its box; text scales with the box. `data-text` sets the main words (`kinetic` and `flap` take several messages split by `|`), `data-sub` the small line. Loops pause off-screen and when the slide is hidden; reduced-motion shows a still frame.
+
+| style | Look | Colours | PowerPoint route |
+|---|---|---|---|
+| `particles` | Dots form the words, hold, burst | theme | video clip |
+| `liquid` | Gooey blobs merge around a word | theme accent | video clip |
+| `holo` | Iridescent card tilting, sheen | own | video clip |
+| `neon` | Flickering neon sign | own | video clip |
+| `wireframe` | Rotating 3D wire shape, grid floor | theme | video clip |
+| `glass` | Frosted panes over drifting colour | own + accent | pre-blurred image |
+| `kinetic` | Lines rise in, hold, leave | theme | editable shapes + animation |
+| `iso` | Isometric blocks drop into a stack | theme | editable shapes + animation |
+| `clay` | Squishy bouncing clay shapes | own | editable shapes + animation |
+| `ascii` | Spinning donut of characters | theme | video clip |
+| `mesh` | Drifting gradient mesh | own + accent | video clip |
+| `comic` | POW burst, speech bubble, halftone | own | editable shapes + animation |
+| `flap` | Split-flap departure board | own | video clip |
+| `vhs` | RGB split, scanlines, timecode | own | video clip |
+| `halftone` | Dot screen with moving light | theme | video clip |
+| `bauhaus` | Primary geometry turning on a grid | own | editable shapes + animation |
+| `pixel` | 8-bit scene, jumping hero, coin | own | video clip |
+| `blueprint` | Technical drawing drawing itself | own | editable shapes + animation |
+| `deco` | Gold sunburst, stepped frame | own | editable shapes + animation |
+| `brutal` | Neo-brutalist cards dropping in | own | editable shapes + animation |
+
+Rules: these are loud on purpose. Use at most one per deck, on a title, section or closing slide, never behind body text. Fonts are listed at the top of `motion.css`; add the ones you use to the deck `<head>`.
+
 ## Rules for using components in decks
 
 - **Earn the slot.** Use a component only when it explains something better than text: a process, a system, a structure, a comparison, or data. Most decks need 2–5 components, not one per slide.

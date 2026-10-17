@@ -1,4 +1,4 @@
-"""Build components/gallery.html: inline the brand tokens and the library
+"""Build components/gallery.html and motion.html: inline the brand tokens and the library
 into a single self-contained file. Run after editing library.css/js:
 
     python3 .claude/skills/frontend-slides/components/build.py
@@ -19,6 +19,7 @@ def inline(src: str) -> str:
     return re.sub(r"<!-- BUILD:INLINE (\S+) -->\n\s*<(?:link|script)[^\n]*\n", lambda m: repl(m) + "\n", src)
 
 
-src = (HERE / "gallery.src.html").read_text()
-(HERE / "gallery.html").write_text(inline(src))
-print("wrote", HERE / "gallery.html")
+for name in ("gallery", "motion"):
+    src = (HERE / f"{name}.src.html").read_text()
+    (HERE / f"{name}.html").write_text(inline(src))
+    print("wrote", HERE / f"{name}.html")

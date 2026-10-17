@@ -29,6 +29,7 @@ for p in sorted((ROOT / "decks").iterdir()):
 
 studio = OUT / "studio"; studio.mkdir()
 extras = [("Component library", SKILL / "components/gallery.html", "gallery.html"),
+          ("Motion styles", SKILL / "components/motion.html", "motion.html"),
           ("Font pairings", SKILL / "brand/fonts.html", "fonts.html")]
 for t in sorted((SKILL / "brand/themes").glob("*.html")):
     extras.append((f"Theme · {t.stem.title()}", t, f"theme-{t.stem}.html"))
