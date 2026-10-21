@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="ending" font-family="Segoe UI, Microsoft JhengHei">
+  <defs>
+    <filter id="px2" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px2k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px3" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px3k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px4" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px4k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px5" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px5k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px6" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px6k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px7" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px7k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px12" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px12k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+  </defs>
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#0B0E2E"/>
+  <g id="sky" data-pptx-role="decoration" data-pptx-bounds="40 60 600 160"><rect x="522" y="145" width="8" height="8" fill="#3A4290"/><rect x="584" y="140" width="4" height="4" fill="#FFD84A"/><rect x="517" y="118" width="4" height="4" fill="#6FE0EE"/><rect x="102" y="156" width="4" height="4" fill="#6FE0EE"/><rect x="221" y="159" width="8" height="8" fill="#3A4290"/><rect x="120" y="84" width="4" height="4" fill="#6FE0EE"/><rect x="90" y="179" width="4" height="4" fill="#FFD84A"/><rect x="511" y="155" width="8" height="8" fill="#FF9EC7"/><rect x="361" y="143" width="4" height="4" fill="#FFD84A"/><rect x="528" y="163" width="4" height="4" fill="#6FE0EE"/></g>
+  <g id="thanks" data-pptx-bounds="40 230 640 260">
+    <text x="40" y="400" font-family="Cubic 11, Microsoft JhengHei" font-size="168" fill="#6FE0EE" stroke="#6FE0EE" stroke-width="7" filter="url(#px7)">謝謝</text>
+    <text x="44" y="460" font-family="Consolas, Microsoft JhengHei" font-size="20" font-weight="bold" fill="#FFD84A">GAME SAVED ▸ BLOCK #1033</text>
+  </g>
+  <g id="dialog" data-pptx-bounds="700 220 530 330">
+    <rect x="710" y="230" width="520" height="320" fill="#6FE0EE"/>
+    <rect x="700" y="220" width="520" height="320" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3"/>
+    <rect x="701.5" y="221.5" width="517" height="33" fill="#1B1FA8"/>
+    <text x="714" y="244" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#FFFFFF">■ QUESTIONS.EXE</text><rect x="1194" y="229" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2"/><rect x="1170" y="229" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2"/><rect x="1146" y="229" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2"/>
+    <rect x="700" y="254" width="520" height="3" fill="#0A0A0A"/>
+    <text x="740" y="320" font-size="34" font-weight="bold" fill="#0A0A0A">還有問題嗎？</text>
+    <text x="740" y="368" font-size="24" fill="#55575E">歡迎現在提問，或課後找我聊。</text>
+    <rect x="756" y="450" width="140" height="52" fill="#0A0A0A"/><rect x="750" y="444" width="140" height="52" fill="#6FE0EE" stroke="#0A0A0A" stroke-width="3"/><text x="820" y="479" text-anchor="middle" font-size="22" font-weight="bold" fill="#0A0A0A">是</text>
+    <rect x="926" y="450" width="140" height="52" fill="#0A0A0A"/><rect x="920" y="444" width="140" height="52" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3"/><text x="990" y="479" text-anchor="middle" font-size="22" font-weight="bold" fill="#0A0A0A">否</text>
+  </g>
+  <g id="footer" data-pptx-bounds="0 684 1280 36" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#9AA0C8">
+    <rect x="0" y="684" width="1280" height="3" fill="#2A2F6E"/><text x="40" y="708">區塊鏈的交易旅程</text><text x="1240" y="708" text-anchor="end">10 / 10</text>
+  </g>
+</svg>

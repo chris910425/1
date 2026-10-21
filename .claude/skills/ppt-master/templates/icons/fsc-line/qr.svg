@@ -1,0 +1,8 @@
+<!--
+label: QR payment
+group: finance
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="7" y="7" width="13" height="13"/><rect x="28" y="7" width="13" height="13"/><rect x="7" y="28" width="13" height="13"/><path d="M28 28h5v5h-5zM36 36h5v5h-5zM36 28h5M28 41h3"/><rect fill="currentColor" stroke="none" x="11" y="11" width="5" height="5"/>
+</svg>

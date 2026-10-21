@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Segoe UI, Microsoft JhengHei">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="0 0 1280 75">
+    <text x="40" y="50" font-family="Segoe UI Black, Noto Sans TC Black" font-size="30" fill="#0A0A0A">圖示 ICONS · FSC-LINE (49)</text>
+    <rect x="1066" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1078" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1084" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1096" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1102" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1114" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1120" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1132" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1138" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1150" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1156" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1168" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1174" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1186" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1192" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1204" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1210" y="30" width="12" height="12" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2"/><rect x="1222" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1228" y="30" width="12" height="12" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2"/><text x="1044" y="47" font-size="14" font-weight="bold" fill="#6B6B6B" text-anchor="end" letter-spacing="1.1">KIT</text>
+    <rect x="0" y="72" width="1280" height="3" fill="#0A0A0A"/>
+  </g>
+  <g id="icons" data-pptx-bounds="20 90 1240 620">
+    <use data-icon="fsc-line/bank" x="62" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="86" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">bank</text>
+    <use data-icon="fsc-line/block" x="186" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="210" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">block</text>
+    <use data-icon="fsc-line/briefcase" x="310" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="334" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">briefcase</text>
+    <use data-icon="fsc-line/bus" x="434" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="458" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">bus</text>
+    <use data-icon="fsc-line/card" x="558" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="582" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">card</text>
+    <use data-icon="fsc-line/coin" x="682" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="706" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">coin</text>
+    <use data-icon="fsc-line/compliance" x="806" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="830" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">compliance</text>
+    <use data-icon="fsc-line/contract" x="930" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="954" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">contract</text>
+    <use data-icon="fsc-line/contractsign" x="1054" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="1078" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">contractsign</text>
+    <use data-icon="fsc-line/copyright" x="1178" y="100" width="48" height="48" fill="#0A0A0A"/>
+    <text x="1202" y="174" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">copyright</text>
+    <use data-icon="fsc-line/court" x="62" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="86" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">court</text>
+    <use data-icon="fsc-line/crab" x="186" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="210" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">crab</text>
+    <use data-icon="fsc-line/durian" x="310" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="334" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">durian</text>
+    <use data-icon="fsc-line/evidence" x="434" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="458" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">evidence</text>
+    <use data-icon="fsc-line/exchange" x="558" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="582" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">exchange</text>
+    <use data-icon="fsc-line/fingerprint" x="682" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="706" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">fingerprint</text>
+    <use data-icon="fsc-line/gavel" x="806" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="830" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">gavel</text>
+    <use data-icon="fsc-line/globe" x="930" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="954" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">globe</text>
+    <use data-icon="fsc-line/growth" x="1054" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="1078" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">growth</text>
+    <use data-icon="fsc-line/handcuffs" x="1178" y="222" width="48" height="48" fill="#0A0A0A"/>
+    <text x="1202" y="296" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">handcuffs</text>
+    <use data-icon="fsc-line/hawker" x="62" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="86" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">hawker</text>
+    <use data-icon="fsc-line/hdb" x="186" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="210" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">hdb</text>
+    <use data-icon="fsc-line/hive" x="310" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="334" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">hive</text>
+    <use data-icon="fsc-line/justice" x="434" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="458" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">justice</text>
+    <use data-icon="fsc-line/key" x="558" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="582" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">key</text>
+    <use data-icon="fsc-line/kopi" x="682" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="706" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">kopi</text>
+    <use data-icon="fsc-line/kyc" x="806" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="830" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">kyc</text>
+    <use data-icon="fsc-line/laptop" x="930" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="954" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">laptop</text>
+    <use data-icon="fsc-line/lawbooks" x="1054" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="1078" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">lawbooks</text>
+    <use data-icon="fsc-line/lock" x="1178" y="344" width="48" height="48" fill="#0A0A0A"/>
+    <text x="1202" y="418" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">lock</text>
+    <use data-icon="fsc-line/mbs" x="62" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="86" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">mbs</text>
+    <use data-icon="fsc-line/mrt" x="186" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="210" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">mrt</text>
+    <use data-icon="fsc-line/phone" x="310" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="334" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">phone</text>
+    <use data-icon="fsc-line/plane" x="434" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="458" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">plane</text>
+    <use data-icon="fsc-line/privacy" x="558" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="582" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">privacy</text>
+    <use data-icon="fsc-line/qr" x="682" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="706" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">qr</text>
+    <use data-icon="fsc-line/quill" x="806" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="830" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">quill</text>
+    <use data-icon="fsc-line/rain" x="930" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="954" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">rain</text>
+    <use data-icon="fsc-line/regulator" x="1054" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="1078" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">regulator</text>
+    <use data-icon="fsc-line/seal" x="1178" y="466" width="48" height="48" fill="#0A0A0A"/>
+    <text x="1202" y="540" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">seal</text>
+    <use data-icon="fsc-line/section" x="62" y="588" width="48" height="48" fill="#0A0A0A"/>
+    <text x="86" y="662" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">section</text>
+    <use data-icon="fsc-line/shield" x="186" y="588" width="48" height="48" fill="#0A0A0A"/>
+    <text x="210" y="662" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">shield</text>
+    <use data-icon="fsc-line/statute" x="310" y="588" width="48" height="48" fill="#0A0A0A"/>
+    <text x="334" y="662" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">statute</text>
+    <use data-icon="fsc-line/study" x="434" y="588" width="48" height="48" fill="#0A0A0A"/>
+    <text x="458" y="662" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">study</text>
+    <use data-icon="fsc-line/sun" x="558" y="588" width="48" height="48" fill="#0A0A0A"/>
+    <text x="582" y="662" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">sun</text>
+    <use data-icon="fsc-line/supertree" x="682" y="588" width="48" height="48" fill="#0A0A0A"/>
+    <text x="706" y="662" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">supertree</text>
+    <use data-icon="fsc-line/transit" x="806" y="588" width="48" height="48" fill="#0A0A0A"/>
+    <text x="830" y="662" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">transit</text>
+    <use data-icon="fsc-line/vault" x="930" y="588" width="48" height="48" fill="#0A0A0A"/>
+    <text x="954" y="662" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">vault</text>
+    <use data-icon="fsc-line/wallet" x="1054" y="588" width="48" height="48" fill="#0A0A0A"/>
+    <text x="1078" y="662" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="12" fill="#6B6B6B">wallet</text>
+  </g>
+</svg>

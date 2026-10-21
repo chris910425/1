@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="ending" font-family="Microsoft JhengHei, Arial">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#F3F2EE" />
+  <g id="header" data-pptx-bounds="72 56 1000 120">
+    <text x="72" y="80" font-size="18" fill="#6B6D73">05　下一站</text>
+    <text x="72" y="150" font-size="54" font-weight="bold" fill="#121316">給學弟妹的三個建議</text>
+  </g>
+  <g id="tip-1" data-pptx-bounds="72 210 1136 120">
+    <line x1="96" y1="262" x2="96" y2="330" stroke="#009645" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="96" cy="262" r="16" fill="#FFFFFF" stroke="#009645" stroke-width="6"/>
+    <text x="150" y="274" font-size="36" font-weight="bold" fill="#121316">冷氣外套隨身帶</text>
+    <text x="150" y="312" font-size="22" fill="#6B6D73">室內外溫差，比想像中大。</text>
+  </g>
+  <g id="tip-2" data-pptx-bounds="72 330 1136 120">
+    <line x1="96" y1="330" x2="96" y2="450" stroke="#009645" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="96" cy="382" r="16" fill="#FFFFFF" stroke="#009645" stroke-width="6"/>
+    <text x="150" y="394" font-size="36" font-weight="bold" fill="#121316">每週留一天給自己</text>
+    <text x="150" y="432" font-size="22" fill="#6B6D73">別讓專題吞掉所有週末。</text>
+  </g>
+  <g id="tip-3" data-pptx-bounds="72 450 1136 120">
+    <line x1="96" y1="450" x2="96" y2="502" stroke="#009645" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="96" cy="502" r="16" fill="#FFFFFF" stroke="#009645" stroke-width="6"/>
+    <text x="150" y="514" font-size="36" font-weight="bold" fill="#121316">多跟不同國家的同學吃飯</text>
+    <text x="150" y="552" font-size="22" fill="#6B6D73">最好的課外學習，常在飯桌上。</text>
+  </g>
+  <g id="closing" data-pptx-bounds="72 590 1136 74" font-size="40" font-weight="bold">
+    <text x="72" y="640" fill="#2445FF">謝謝聆聽</text>
+    <text x="1208" y="640" text-anchor="end" font-family="Arial" fill="#121316">Q&amp;A</text>
+  </g>
+</svg>

@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="cover" font-family="Segoe UI, Microsoft JhengHei">
+  <defs>
+    <filter id="px2" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px2k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px3" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px3k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px4" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px4k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px5" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px5k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px6" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px6k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px7" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px7k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px12" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px12k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <pattern id="bgGrid" data-pptx-pattern="smGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#0B0E2E" /><path d="M0 0H8M0 0V8" stroke="#1A2058" />
+    </pattern>
+  </defs>
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#0B0E2E" />
+  <rect id="grid" data-pptx-role="decoration" x="0" y="0" width="1280" height="720" fill="url(#bgGrid)" />
+  <g id="sky" data-pptx-role="decoration" data-pptx-bounds="560 30 160 80"><rect x="630" y="81" width="6" height="6" fill="#FFD84A" /><rect x="685" y="74" width="4" height="4" fill="#6FE0EE" /><rect x="654" y="43" width="4" height="4" fill="#FF9EC7" /><rect x="591" y="67" width="4" height="4" fill="#6FE0EE" /><rect x="610" y="45" width="8" height="8" fill="#6FE0EE" /><rect x="685" y="76" width="8" height="8" fill="#6FE0EE" /></g>
+  <g id="kicker" data-pptx-bounds="40 40 600 40"><rect x="40" y="44" width="214" height="30" fill="#6FE0EE" /><text x="50" y="62" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#0B0E2E">MSBT 6001 ‧ 區塊鏈技術</text></g>
+  <g id="title" data-pptx-bounds="40 130 680 300" fill="#6FE0EE" stroke="#6FE0EE" stroke-width="5" font-family="Cubic 11, Microsoft JhengHei" font-size="120">
+    <text x="40" y="250" filter="url(#px5)">區塊鏈的</text>
+    <text x="40" y="390" filter="url(#px5)">交易旅程</text>
+  </g>
+  <g id="subtitle" data-pptx-bounds="40 440 680 50" font-size="26" fill="#C9D0F2">
+    <text x="40" y="474">從一個簽名到最終確認：一筆交易如何寫進帳本</text>
+  </g>
+  <g id="loading" data-pptx-bounds="40 530 680 70">
+    <text x="40" y="548" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#6FE0EE">LOADING BLOCK #1024 ……… 72%</text>
+    <rect x="40" y="560" width="344" height="32" fill="#FFFFFF" stroke="#6FE0EE" stroke-width="3" /><rect x="46" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="70" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="94" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="118" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="142" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="166" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="190" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="214" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="238" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="262" y="566" width="20" height="20" fill="#6FE0EE" /><rect x="286" y="566" width="20" height="20" fill="#1E2466" /><rect x="310" y="566" width="20" height="20" fill="#1E2466" /><rect x="334" y="566" width="20" height="20" fill="#1E2466" /><rect x="358" y="566" width="20" height="20" fill="#1E2466" />
+  </g>
+  <g id="info" data-pptx-bounds="0 628 1280 92" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#C9D0F2">
+    <rect x="0" y="628" width="1280" height="3" fill="#6FE0EE" /><rect x="426" y="628" width="3" height="92" fill="#6FE0EE" /><rect x="852" y="628" width="3" height="92" fill="#6FE0EE" />
+    <text x="40" y="660" fill="#FFD84A" font-weight="bold">PRESENTER</text><text x="40" y="690" font-family="Segoe UI, Microsoft JhengHei" font-size="20">王小明　MSBT 2026</text>
+    <text x="466" y="660" fill="#FFD84A" font-weight="bold">DATE</text><text x="466" y="690" font-family="Segoe UI, Microsoft JhengHei" font-size="20">2026 年 10 月 21 日</text>
+    <text x="892" y="660" fill="#FFD84A" font-weight="bold">COURSE</text><text x="892" y="690" font-family="Segoe UI, Microsoft JhengHei" font-size="20">分散式帳本技術</text>
+  </g>
+  <g id="miner" data-pptx-bounds="770 110 460 410">
+    <rect x="780" y="120" width="450" height="400" fill="#6FE0EE" />
+    <rect x="770" y="110" width="450" height="400" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3" />
+    <rect x="771.5" y="111.5" width="447" height="33" fill="#1B1FA8" />
+    <text x="784" y="134" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#FFFFFF">■ MINER.EXE</text><rect x="1194" y="119" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2" /><rect x="1170" y="119" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2" /><rect x="1146" y="119" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2" />
+    <rect x="770" y="144" width="450" height="3" fill="#0A0A0A" />
+    <rect x="796" y="172" width="8" height="8" fill="#6FE0EE" /><text x="818" y="186" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#0A0A0A">收集交易　312 筆</text>
+    <rect x="796" y="216" width="8" height="8" fill="#6FE0EE" /><text x="818" y="230" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#0A0A0A">計算 nonce　試算中</text>
+    <rect x="796" y="260" width="8" height="8" fill="#6FE0EE" /><text x="818" y="274" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#55575E">hash 0000a3f9…e71c</text>
+    <rect x="796" y="304" width="8" height="8" fill="#6FE0EE" /><text x="818" y="318" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#0A0A0A">符合難度　✔</text>
+    <rect x="796" y="348" width="8" height="8" fill="#6FE0EE" /><text x="818" y="362" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#0A0A0A">廣播區塊 #1024</text>
+    <rect x="796" y="392" width="8" height="8" fill="#F2F2EF" /><text x="818" y="406" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#55575E">獎勵 3.125 BTC</text>
+    <rect x="796" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="822" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="848" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="874" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="900" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="926" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="952" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="978" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="1004" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="1030" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="1056" y="452" width="20" height="20" fill="#6FE0EE" />
+    <rect x="1082" y="452" width="20" height="20" fill="#F2F2EF" />
+    <rect x="1108" y="452" width="20" height="20" fill="#F2F2EF" />
+    <rect x="1134" y="452" width="20" height="20" fill="#F2F2EF" />
+    <rect x="1160" y="452" width="20" height="20" fill="#F2F2EF" />
+  </g>
+</svg>

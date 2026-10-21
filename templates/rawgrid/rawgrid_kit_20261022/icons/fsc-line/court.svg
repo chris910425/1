@@ -1,0 +1,8 @@
+<!--
+label: Court
+group: law
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M5 17 24 6l19 11z"/><path d="M9 21v15M17 21v15M31 21v15M39 21v15M6 17h36M6 40h36M4 44h40"/><circle fill="currentColor" stroke="none" cx="24" cy="12.5" r="2.4"/>
+</svg>

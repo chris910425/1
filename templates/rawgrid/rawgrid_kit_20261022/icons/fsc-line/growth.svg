@@ -1,0 +1,8 @@
+<!--
+label: Growth
+group: finance
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M7 7v34h34"/><path  d="m12 33 9-10 7 6 12-14M34 15h6v6"/>
+</svg>

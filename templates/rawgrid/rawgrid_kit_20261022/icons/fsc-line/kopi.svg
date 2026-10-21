@@ -1,0 +1,8 @@
+<!--
+label: Kopi
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10 18h24v12a10 10 0 0 1-10 10h-4a10 10 0 0 1-10-10z"/><path d="M34 21h3a5 5 0 0 1 0 10h-3M6 43h32M18 13c-2-2 2-4 0-7M26 13c-2-2 2-4 0-7"/><path  d="M13 22h18"/>
+</svg>

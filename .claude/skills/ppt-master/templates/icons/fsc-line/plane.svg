@@ -1,0 +1,8 @@
+<!--
+label: Travel / Changi
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21 6c0-2 6-2 6 0v12l15 8v4l-15-4v9l5 4v3l-8-2-8 2v-3l5-4v-9L6 30v-4l15-8z"/><path  d="M21 18h6"/>
+</svg>

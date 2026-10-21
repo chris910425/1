@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Segoe UI, Microsoft JhengHei">
+  <defs>
+    <filter id="px2" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px2k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px3" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px3k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px4" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px4k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px5" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px5k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px6" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px6k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px7" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px7k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px12" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px12k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+  </defs>
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="0 0 1280 87">
+    <text x="40" y="60" font-family="Cubic 11, Microsoft JhengHei" font-size="48" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2" filter="url(#px2)">中心化 vs 去中心化</text>
+    <rect x="1118" y="28" width="122" height="30" fill="#0A0A0A"/><text x="1128" y="46" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#FFFFFF">BLOCK #1031</text>
+    <rect x="0" y="84" width="1280" height="3" fill="#0A0A0A"/>
+  </g>
+  <g id="win-central" data-pptx-bounds="40 120 570 530">
+    <rect x="50" y="130" width="560" height="520" fill="#0A0A0A"/>
+    <rect x="40" y="120" width="560" height="520" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3"/>
+    <rect x="41.5" y="121.5" width="557" height="33" fill="#5A5C66"/>
+    <text x="54" y="144" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#FFFFFF">■ CENTRAL.EXE</text><rect x="574" y="129" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2"/><rect x="550" y="129" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2"/><rect x="526" y="129" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2"/>
+    <rect x="40" y="154" width="560" height="3" fill="#0A0A0A"/>
+    <rect x="64" y="216" width="26" height="26" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3"/><text x="70" y="236" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#0A0A0A">✔</text>
+    <text x="110" y="240" font-size="32" font-weight="bold" fill="#0A0A0A">一個管理者</text>
+    <text x="110" y="282" font-size="24" fill="#55575E">銀行說了算，帳本只有一份。</text>
+    <rect x="64" y="346" width="26" height="26" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3"/><text x="70" y="366" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#0A0A0A">✔</text>
+    <text x="110" y="370" font-size="32" font-weight="bold" fill="#0A0A0A">快</text>
+    <text x="110" y="412" font-size="24" fill="#55575E">不需要大家同意，馬上入帳。</text>
+    <rect x="64" y="476" width="26" height="26" fill="#FF9EC7" stroke="#0A0A0A" stroke-width="3"/><text x="70" y="496" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#0A0A0A">✖</text>
+    <text x="110" y="500" font-size="32" font-weight="bold" fill="#0A0A0A">單點風險</text>
+    <text x="110" y="542" font-size="24" fill="#55575E">伺服器出事，全部停擺。</text>
+  </g>
+  <g id="win-decentral" data-pptx-bounds="680 120 570 530">
+    <rect x="690" y="130" width="560" height="520" fill="#6FE0EE"/>
+    <rect x="680" y="120" width="560" height="520" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3"/>
+    <rect x="681.5" y="121.5" width="557" height="33" fill="#1B1FA8"/>
+    <text x="694" y="144" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#FFFFFF">■ DECENTRAL.EXE</text><rect x="1214" y="129" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2"/><rect x="1190" y="129" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2"/><rect x="1166" y="129" width="18" height="16" fill="#F2F2EF" stroke="#0A0A0A" stroke-width="2"/>
+    <rect x="680" y="154" width="560" height="3" fill="#0A0A0A"/>
+    <rect x="704" y="216" width="26" height="26" fill="#6FE0EE" stroke="#0A0A0A" stroke-width="3"/><text x="710" y="236" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#0A0A0A">✔</text>
+    <text x="750" y="240" font-size="32" font-weight="bold" fill="#0A0A0A">大家一起記</text>
+    <text x="750" y="282" font-size="24" fill="#55575E">每個節點都有一份帳本。</text>
+    <rect x="704" y="346" width="26" height="26" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3"/><text x="710" y="366" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#0A0A0A">✖</text>
+    <text x="750" y="370" font-size="32" font-weight="bold" fill="#0A0A0A">慢一點</text>
+    <text x="750" y="412" font-size="24" fill="#55575E">需要共識，等幾個區塊。</text>
+    <rect x="704" y="476" width="26" height="26" fill="#6FE0EE" stroke="#0A0A0A" stroke-width="3"/><text x="710" y="496" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#0A0A0A">✔</text>
+    <text x="750" y="500" font-size="32" font-weight="bold" fill="#0A0A0A">難以竄改</text>
+    <text x="750" y="542" font-size="24" fill="#55575E">要改帳得同時騙過多數節點。</text>
+  </g>
+  <g id="footer" data-pptx-bounds="0 684 1280 36" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#55575E">
+    <rect x="0" y="684" width="1280" height="3" fill="#0A0A0A"/><text x="40" y="708">區塊鏈的交易旅程</text><text x="1240" y="708" text-anchor="end">08 / 10</text>
+  </g>
+</svg>

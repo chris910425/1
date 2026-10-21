@@ -1,0 +1,6 @@
+{
+  "name": "record-motion",
+  "private": true,
+  "description": "Record a motion style from the component library as a looping MP4 for PowerPoint",
+  "dependencies": { "playwright": "1.56.1" }
+}

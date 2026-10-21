@@ -1,0 +1,8 @@
+<!--
+label: Chilli crab
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse fill="currentColor" stroke="none" cx="24" cy="28" rx="12" ry="8"/><ellipse cx="24" cy="28" rx="12" ry="8"/><path d="m13 25-6-6 3-6M35 25l6-6-3-6M14 33l-5 4M34 33l5 4M17 35l-3 5M31 35l3 5M21 20v-3M27 20v-3"/>
+</svg>

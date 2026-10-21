@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="section" font-family="Microsoft JhengHei, Arial">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#0B0C10"/>
+  <g id="kicker" data-pptx-bounds="72 56 600 40" font-size="18" fill="#8A8F9C">
+    <text x="72" y="80">03　適應</text>
+  </g>
+  <g id="statement" data-pptx-bounds="72 240 1100 220" font-size="72" font-weight="bold" fill="#ECEEF3">
+    <text x="72" y="320">天氣一年都是夏天，</text>
+    <text x="72" y="420"><tspan fill="#5A72FF">冷氣</tspan>才分季節。</text>
+  </g>
+  <g id="source" data-pptx-bounds="72 485 1000 40" font-size="18" fill="#8A8F9C">
+    <text x="72" y="510">第一個學期的觀察（示意）</text>
+  </g>
+  <g id="footer" data-pptx-bounds="72 658 1136 36" font-size="16" fill="#8A8F9C">
+    <text x="72" y="680">新加坡留學日常</text>
+    <text x="1208" y="680" text-anchor="end" font-family="Arial">3 / 5</text>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<!--
+label: Eve
+group: character
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 160" data-icon-style="preserve-color">
+  <path fill="#0A0A0A" d="M22 160V100c0-40 17-64 38-64s38 24 38 64v60z"/><path fill="#0A0A0A" d="M18 160v-20c0-20 18-32 42-32s42 12 42 32v20z"/><circle fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3" stroke-linejoin="round" cx="60" cy="64" r="28"/><rect fill="#0A0A0A" x="40" y="60" width="17" height="10" rx="3"/><rect fill="#0A0A0A" x="63" y="60" width="17" height="10" rx="3"/><path fill="none" stroke="#0A0A0A" stroke-width="3" stroke-linecap="round" d="M57 64h6M54 80h12"/><path fill="#F2D4CF" d="M48 30a14 14 0 0 1 24 0l-12 6z"/>
+</svg>

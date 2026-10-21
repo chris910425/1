@@ -1,0 +1,8 @@
+<!--
+label: Hawker food
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 25h36c0 9.5-8 16-18 16S6 34.5 6 25z"/><path d="M28 21 40 7M32 22 44 10M15 18c-2-3 2-5 0-8M21 18c-2-3 2-5 0-8"/><path fill="currentColor" stroke="none" d="M12 25c2-4.5 7-6.5 12-6.5S34 20.5 36 25z"/>
+</svg>

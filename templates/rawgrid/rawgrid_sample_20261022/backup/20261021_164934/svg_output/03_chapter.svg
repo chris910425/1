@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="section" font-family="Segoe UI, Microsoft JhengHei">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#E5EDD6" />
+  <g id="tree" data-pptx-bounds="660 90 600 540" data-pptx-role="decoration" fill="none" stroke="#C9D6B4" stroke-width="2">
+    <path d="M706.2 558.0 V509.3 H742.5 V460.7" /><path d="M778.8 558.0 V509.3 H742.5 V460.7" /><path d="M851.2 558.0 V509.3 H887.5 V460.7" /><path d="M923.8 558.0 V509.3 H887.5 V460.7" /><path d="M996.2 558.0 V509.3 H1032.5 V460.7" /><path d="M1068.8 558.0 V509.3 H1032.5 V460.7" /><path d="M1141.2 558.0 V509.3 H1177.5 V460.7" /><path d="M1213.8 558.0 V509.3 H1177.5 V460.7" /><path d="M742.5 408.7 V360.0 H815.0 V311.3" /><path d="M887.5 408.7 V360.0 H815.0 V311.3" /><path d="M1032.5 408.7 V360.0 H1105.0 V311.3" /><path d="M1177.5 408.7 V360.0 H1105.0 V311.3" /><path d="M815.0 259.3 V210.7 H960.0 V162.0" /><path d="M1105.0 259.3 V210.7 H960.0 V162.0" /><rect x="679.0" y="558.0" width="54.5" height="52" /><rect x="751.5" y="558.0" width="54.5" height="52" /><rect x="824.0" y="558.0" width="54.5" height="52" /><rect x="896.5" y="558.0" width="54.5" height="52" /><rect x="969.0" y="558.0" width="54.5" height="52" /><rect x="1041.5" y="558.0" width="54.5" height="52" /><rect x="1114.0" y="558.0" width="54.5" height="52" /><rect x="1186.5" y="558.0" width="54.5" height="52" /><rect x="715.2" y="408.7" width="54.5" height="52" /><rect x="860.2" y="408.7" width="54.5" height="52" /><rect x="1005.2" y="408.7" width="54.5" height="52" /><rect x="1150.2" y="408.7" width="54.5" height="52" /><rect x="787.8" y="259.3" width="54.5" height="52" /><rect x="1077.8" y="259.3" width="54.5" height="52" /><rect x="865.0" y="110.0" width="190.0" height="52" />
+  </g>
+  <g id="chapter" data-pptx-bounds="40 120 600 520">
+    <text x="28" y="330" font-family="Segoe UI Black, Noto Sans TC Black" font-size="260" fill="#C9D6B4">01</text>
+    <rect x="44" y="380" width="157" height="30" fill="#0A0A0A" /><text x="58" y="398" font-size="14" font-weight="bold" fill="#FFFFFF" letter-spacing="1.1">CHAPTER 01 / 05</text>
+    <text x="40" y="500" font-family="Segoe UI Black, Noto Sans TC Black" font-size="80" fill="#0A0A0A">交易是什麼</text>
+    <text x="44" y="560" font-size="24" fill="#333333">先弄懂一筆交易裡到底裝了什麼。</text>
+  </g>
+</svg>

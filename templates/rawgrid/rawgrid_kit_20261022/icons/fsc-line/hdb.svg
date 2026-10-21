@@ -1,0 +1,8 @@
+<!--
+label: HDB flat
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10 42V8h16v34M26 42V18h12v24M5 42h38M14 13h3M20 13h3M14 19h3M20 19h3M14 25h3M14 31h3M20 31h3M14 37h3M20 37h3M30 23h4M30 29h4M30 35h4"/><rect fill="currentColor" stroke="none" x="19.5" y="23.5" width="4" height="4"/>
+</svg>

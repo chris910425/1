@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Segoe UI, Microsoft JhengHei">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="0 0 1280 75">
+    <text x="40" y="50" font-family="Segoe UI Black, Noto Sans TC Black" font-size="30" fill="#0A0A0A">工具箱：圖示</text>
+    <rect x="994" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1006" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1012" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1024" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1030" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1042" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1048" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1060" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1066" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1078" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1084" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1096" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1102" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1114" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1120" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1132" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1138" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1150" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1156" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1168" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1174" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1186" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1192" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1204" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1210" y="30" width="12" height="12" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2"/><rect x="1222" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1228" y="30" width="12" height="12" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2"/><text x="972" y="47" font-size="14" font-weight="bold" fill="#6B6B6B" text-anchor="end" letter-spacing="1.1">ICONS</text>
+    <rect x="0" y="72" width="1280" height="3" fill="#0A0A0A"/>
+  </g>
+  <g id="ic-wallet" data-pptx-bounds="0 75 213 322">
+    <rect x="0" y="75" width="213" height="322" fill="#FFFFFF"/>
+    <rect x="210" y="75" width="3" height="322" fill="#0A0A0A"/>
+    <rect x="0" y="394" width="213" height="3" fill="#0A0A0A"/>
+    <use data-icon="fsc-line/wallet" x="58" y="145" width="96" height="96" fill="#0A0A0A"/>
+    <text x="106" y="315" font-size="22" fill="#0A0A0A" font-weight="bold" text-anchor="middle">錢包</text>
+    <text x="106" y="347" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-line/wallet</text>
+  </g>
+  <g id="ic-key" data-pptx-bounds="213 75 213 322">
+    <rect x="213" y="75" width="213" height="322" fill="#F2D4CF"/>
+    <rect x="423" y="75" width="3" height="322" fill="#0A0A0A"/>
+    <rect x="213" y="394" width="213" height="3" fill="#0A0A0A"/>
+    <use data-icon="fsc-line/key" x="271" y="145" width="96" height="96" fill="#0A0A0A"/>
+    <text x="319" y="315" font-size="22" fill="#0A0A0A" font-weight="bold" text-anchor="middle">私鑰</text>
+    <text x="319" y="347" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-line/key</text>
+  </g>
+  <g id="ic-block" data-pptx-bounds="426 75 213 322">
+    <rect x="426" y="75" width="213" height="322" fill="#FFFFFF"/>
+    <rect x="636" y="75" width="3" height="322" fill="#0A0A0A"/>
+    <rect x="426" y="394" width="213" height="3" fill="#0A0A0A"/>
+    <use data-icon="fsc-line/block" x="484" y="145" width="96" height="96" fill="#0A0A0A"/>
+    <text x="532" y="315" font-size="22" fill="#0A0A0A" font-weight="bold" text-anchor="middle">區塊</text>
+    <text x="532" y="347" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-line/block</text>
+  </g>
+  <g id="ic-contract" data-pptx-bounds="639 75 213 322">
+    <rect x="639" y="75" width="213" height="322" fill="#FFFFFF"/>
+    <rect x="849" y="75" width="3" height="322" fill="#0A0A0A"/>
+    <rect x="639" y="394" width="213" height="3" fill="#0A0A0A"/>
+    <use data-icon="fsc-line/contract" x="697" y="145" width="96" height="96" fill="#0A0A0A"/>
+    <text x="745" y="315" font-size="22" fill="#0A0A0A" font-weight="bold" text-anchor="middle">合約</text>
+    <text x="745" y="347" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-line/contract</text>
+  </g>
+  <g id="ic-exchange" data-pptx-bounds="0 397 213 322">
+    <rect x="0" y="397" width="213" height="322" fill="#FFFFFF"/>
+    <rect x="210" y="397" width="3" height="322" fill="#0A0A0A"/>
+    <use data-icon="fsc-line/exchange" x="58" y="467" width="96" height="96" fill="#0A0A0A"/>
+    <text x="106" y="637" font-size="22" fill="#0A0A0A" font-weight="bold" text-anchor="middle">交易所</text>
+    <text x="106" y="669" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-line/exchange</text>
+  </g>
+  <g id="ic-shield" data-pptx-bounds="213 397 213 322">
+    <rect x="213" y="397" width="213" height="322" fill="#FFFFFF"/>
+    <rect x="423" y="397" width="3" height="322" fill="#0A0A0A"/>
+    <use data-icon="fsc-line/shield" x="271" y="467" width="96" height="96" fill="#0A0A0A"/>
+    <text x="319" y="637" font-size="22" fill="#0A0A0A" font-weight="bold" text-anchor="middle">安全</text>
+    <text x="319" y="669" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-line/shield</text>
+  </g>
+  <g id="ic-gavel" data-pptx-bounds="426 397 213 322">
+    <rect x="426" y="397" width="213" height="322" fill="#FFFFFF"/>
+    <rect x="636" y="397" width="3" height="322" fill="#0A0A0A"/>
+    <use data-icon="fsc-line/gavel" x="484" y="467" width="96" height="96" fill="#0A0A0A"/>
+    <text x="532" y="637" font-size="22" fill="#0A0A0A" font-weight="bold" text-anchor="middle">監理</text>
+    <text x="532" y="669" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-line/gavel</text>
+  </g>
+  <g id="ic-mrt" data-pptx-bounds="639 397 213 322">
+    <rect x="639" y="397" width="213" height="322" fill="#FFFFFF"/>
+    <rect x="849" y="397" width="3" height="322" fill="#0A0A0A"/>
+    <use data-icon="fsc-line/mrt" x="697" y="467" width="96" height="96" fill="#0A0A0A"/>
+    <text x="745" y="637" font-size="22" fill="#0A0A0A" font-weight="bold" text-anchor="middle">通勤</text>
+    <text x="745" y="669" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-line/mrt</text>
+  </g>
+  <g id="people" data-pptx-bounds="855 75 425 645">
+    <rect x="855" y="75" width="425" height="645" fill="#E5EDD6"/>
+    <use data-icon="fsc-char/alice" x="890" y="150" width="150" height="200" fill="#0A0A0A"/>
+    <use data-icon="fsc-char/bob" x="1080" y="150" width="150" height="200" fill="#0A0A0A"/>
+    <text x="965" y="400" font-size="26" fill="#0A0A0A" font-weight="bold" text-anchor="middle">Alice</text>
+    <text x="1155" y="400" font-size="26" fill="#0A0A0A" font-weight="bold" text-anchor="middle">Bob</text>
+    <text x="890" y="480" font-size="20" fill="#333333">密碼學課本的老朋友：<tspan x="890" dy="31">Alice 傳訊息給 Bob，</tspan><tspan x="890" dy="31">Eve 在偷聽。</tspan></text>
+    <text x="890" y="650" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-char/alice · bob · eve · trent · mallory</text>
+  </g>
+</svg>

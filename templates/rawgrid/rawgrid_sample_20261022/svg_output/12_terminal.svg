@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Segoe UI, Microsoft JhengHei">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="0 0 1280 75">
+    <text x="40" y="50" font-family="Segoe UI Black, Noto Sans TC Black" font-size="30" fill="#0A0A0A">一筆交易長什麼樣</text>
+    <rect x="994" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1006" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1012" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1024" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1030" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1042" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1048" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1060" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1066" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1078" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1084" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1096" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1102" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1114" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1120" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1132" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1138" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1150" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1156" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1168" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1174" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1186" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1192" y="30" width="12" height="12" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2"/><rect x="1204" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1210" y="30" width="12" height="12" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2"/><rect x="1222" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1228" y="30" width="12" height="12" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2"/>
+    <rect x="0" y="72" width="1280" height="3" fill="#0A0A0A"/>
+  </g>
+  <g id="pt-1" data-pptx-bounds="0 75 600 215">
+    <rect x="0" y="287" width="600" height="3" fill="#0A0A0A"/>
+    <text x="40" y="167" font-size="30" font-weight="bold" fill="#0A0A0A">→ 誰付錢</text>
+    <text x="76" y="215" font-size="20" fill="#333333">from：發送方地址，由私鑰簽名證明。</text>
+  </g>
+  <g id="pt-2" data-pptx-bounds="0 290 600 215">
+    <rect x="0" y="502" width="600" height="3" fill="#0A0A0A"/>
+    <text x="40" y="382" font-size="30" font-weight="bold" fill="#0A0A0A">→ 付給誰</text>
+    <text x="76" y="430" font-size="20" fill="#333333">to：接收方，可以是人也可以是合約。</text>
+  </g>
+  <g id="pt-3" data-pptx-bounds="0 505 600 215">
+    <text x="40" y="597" font-size="30" font-weight="bold" fill="#0A0A0A">→ 付多少</text>
+    <text x="76" y="645" font-size="20" fill="#333333">value 與 gas：金額，加上手續費。</text>
+  </g>
+  <g id="term" data-pptx-bounds="600 75 680 645">
+    <rect x="600" y="72" width="3" height="648" fill="#0A0A0A"/>
+    <rect x="646" y="116" width="580" height="520" fill="#0A0A0A"/><rect x="640" y="110" width="580" height="520" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="3"/><rect x="641.5" y="111.5" width="577" height="34" fill="#FFFFFF"/><rect x="640" y="145" width="580" height="3" fill="#0A0A0A"/><text x="656" y="134" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1.1">TERMINAL</text><rect x="1190" y="121" width="14" height="14" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2"/><rect x="1168" y="121" width="14" height="14" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2"/><rect x="1146" y="121" width="14" height="14" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="2"/><text x="664" y="186" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#FFFFFF" xml:space="preserve">$ cast tx 0x8f3a…c21e</text><text x="664" y="220" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#BDBDBD" xml:space="preserve">from      0x71C7…976F</text><text x="664" y="254" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#BDBDBD" xml:space="preserve">to        0xA0b8…eB48</text><text x="664" y="288" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#F2D4CF" xml:space="preserve">value     0.5 ETH</text><text x="664" y="322" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#BDBDBD" xml:space="preserve">gasUsed   21000</text><text x="664" y="356" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#BDBDBD" xml:space="preserve">nonce     42</text><text x="664" y="390" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#F2D4CF" xml:space="preserve">status    ✔ success</text><text x="664" y="424" font-family="Consolas, Microsoft JhengHei" font-size="20" fill="#FFFFFF" xml:space="preserve">$ _</text>
+  </g>
+</svg>

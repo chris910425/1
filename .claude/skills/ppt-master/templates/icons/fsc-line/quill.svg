@@ -1,0 +1,8 @@
+<!--
+label: Quill / signature
+group: law
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M40 6C26 8 16 18 13 32l3 3c14-3 24-13 26-27z"/><path d="M13 32l-4 10M20 28l12-12"/><path  d="M6 42c4-3 7 1 10-1s4-4 7-2 4 2 6 1"/>
+</svg>

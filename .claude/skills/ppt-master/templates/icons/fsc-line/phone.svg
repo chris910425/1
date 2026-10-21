@@ -1,0 +1,8 @@
+<!--
+label: Phone apps
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="14" y="5" width="20" height="38" rx="3"/><path d="M21 9h6"/><rect fill="currentColor" stroke="none" x="18" y="14" width="5" height="5" rx="1"/><path d="M26 14h4v5h-4zM18 22h5v5h-5zM26 22h4v5h-4z"/>
+</svg>

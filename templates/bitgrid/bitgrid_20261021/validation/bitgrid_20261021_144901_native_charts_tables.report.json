@@ -1,0 +1,283 @@
+{
+  "schema": "ppt-master.pptx-postflight-report.v1",
+  "status": "passed-with-warnings",
+  "output": {
+    "path": "/home/user/1/templates/bitgrid/bitgrid_20261021/exports/bitgrid_20261021_144901_native_charts_tables.pptx",
+    "bytes": 49029
+  },
+  "source": {
+    "svg_slide_count": 10,
+    "layout_definition_count": 0,
+    "fingerprint": {
+      "algorithm": "sha256",
+      "digest": "35b5a625a2a41a1f9a0324aa697c7120200fe9c97a14fbcb035aa4d8a1be2622",
+      "file_count": 10,
+      "files": [
+        {
+          "file": "01_cover.svg",
+          "sha256": "0607cfc88713308b6a94a8ad1bd252cedf4a789458ba827b468fabb1f89852a1"
+        },
+        {
+          "file": "02_agenda.svg",
+          "sha256": "426ad3b4c92e7e8b1eaf96cc8f735bf4cd9d0edfba7fcfa6a77781747b4a1494"
+        },
+        {
+          "file": "03_section.svg",
+          "sha256": "b4225789ac6f249591a9873ea53435e646190a89e50624a66c631feed5f2bfb6"
+        },
+        {
+          "file": "04_terminal.svg",
+          "sha256": "9c3aa690f90483c1ab4984d60f0023adcf03e30a1efe36fa1afbb0d00cf8aad3"
+        },
+        {
+          "file": "05_process.svg",
+          "sha256": "034780264a7b8db1351d7c648d6aa07dd255df78003fd0ba50808fd2973ac990"
+        },
+        {
+          "file": "06_chart.svg",
+          "sha256": "07d67c28d71fb81d5147aa6d4d8a0ded181b721cae11a69fedbeafacf333d1fd"
+        },
+        {
+          "file": "07_numbers.svg",
+          "sha256": "bb0690537f8f7aad160f99fd9a6153dc480efe35fa14f4bffdedc26af38a1ee3"
+        },
+        {
+          "file": "08_compare.svg",
+          "sha256": "f7dcec4ba8d21eae58c4a5cee1a4a36f0c2154f6e8cc7daa8c1bc8159a1bca69"
+        },
+        {
+          "file": "09_timeline.svg",
+          "sha256": "57885fa9fc07a5e3c68080f081eaf450defe533e5281d11b2e1f37f1e6a0bd67"
+        },
+        {
+          "file": "10_closing.svg",
+          "sha256": "4773ec53dd9cd534cfd6a00044e54509a945838add532390cdd186c87f5b8aab"
+        }
+      ]
+    },
+    "authoring_roundtrip": null
+  },
+  "package": {
+    "zip_integrity": "passed",
+    "corrupt_member": null,
+    "slides": 10,
+    "notes": 0,
+    "masters": 1,
+    "layouts": 1
+  },
+  "checks": {
+    "zip_integrity": "passed",
+    "slide_count": "passed",
+    "internal_relationships": "enforced-at-build",
+    "structured_package": "not-applicable",
+    "transitions": "enforced-at-build",
+    "animations": "enforced-at-build",
+    "project_svg_contract": "enforced-at-build",
+    "compatibility_normalization": "not-applicable",
+    "authoring_roundtrip": "not-applicable",
+    "quality_gate": "passed",
+    "quality_warnings": "warning",
+    "template_tokens": "passed",
+    "external_images": "passed",
+    "font_portability": "warning"
+  },
+  "quality": {
+    "status": "loaded",
+    "path": "templates/bitgrid/bitgrid_20261021/validation/svg_quality_report.json",
+    "schema": "ppt-master.svg-quality-report.v1",
+    "stage": "final",
+    "source_match": "passed",
+    "source_fingerprint": {
+      "algorithm": "sha256",
+      "digest": "35b5a625a2a41a1f9a0324aa697c7120200fe9c97a14fbcb035aa4d8a1be2622",
+      "file_count": 10,
+      "files": [
+        {
+          "file": "01_cover.svg",
+          "sha256": "0607cfc88713308b6a94a8ad1bd252cedf4a789458ba827b468fabb1f89852a1"
+        },
+        {
+          "file": "02_agenda.svg",
+          "sha256": "426ad3b4c92e7e8b1eaf96cc8f735bf4cd9d0edfba7fcfa6a77781747b4a1494"
+        },
+        {
+          "file": "03_section.svg",
+          "sha256": "b4225789ac6f249591a9873ea53435e646190a89e50624a66c631feed5f2bfb6"
+        },
+        {
+          "file": "04_terminal.svg",
+          "sha256": "9c3aa690f90483c1ab4984d60f0023adcf03e30a1efe36fa1afbb0d00cf8aad3"
+        },
+        {
+          "file": "05_process.svg",
+          "sha256": "034780264a7b8db1351d7c648d6aa07dd255df78003fd0ba50808fd2973ac990"
+        },
+        {
+          "file": "06_chart.svg",
+          "sha256": "07d67c28d71fb81d5147aa6d4d8a0ded181b721cae11a69fedbeafacf333d1fd"
+        },
+        {
+          "file": "07_numbers.svg",
+          "sha256": "bb0690537f8f7aad160f99fd9a6153dc480efe35fa14f4bffdedc26af38a1ee3"
+        },
+        {
+          "file": "08_compare.svg",
+          "sha256": "f7dcec4ba8d21eae58c4a5cee1a4a36f0c2154f6e8cc7daa8c1bc8159a1bca69"
+        },
+        {
+          "file": "09_timeline.svg",
+          "sha256": "57885fa9fc07a5e3c68080f081eaf450defe533e5281d11b2e1f37f1e6a0bd67"
+        },
+        {
+          "file": "10_closing.svg",
+          "sha256": "4773ec53dd9cd534cfd6a00044e54509a945838add532390cdd186c87f5b8aab"
+        }
+      ]
+    },
+    "summary": {
+      "total": 10,
+      "passed": 0,
+      "warnings": 10,
+      "errors": 0
+    },
+    "categories": {
+      "blocking": {
+        "count": 0,
+        "issues": []
+      },
+      "introduced": {
+        "count": 15,
+        "issues": [
+          {
+            "file": "01_cover.svg",
+            "message": "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (15 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): title:fill None -> '#6FE0EE'; title:font-family None -> 'Cubic 11, Microsoft JhengHei'; title:font-size None -> '120' (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
+          },
+          {
+            "file": "01_cover.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          },
+          {
+            "file": "01_cover.svg",
+            "message": "<text> (x=40, y=390; text='交易旅程') exceeds <g id=\"title\"> data-pptx-bounds on the vertical axis: content (40.0, 288.0)-(548.8, 432.0), container (40.0, 130.0)-(1240.0, 420.0), overflow horizontal 0.0%, vertical 4.1% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text"
+          },
+          {
+            "file": "02_agenda.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          },
+          {
+            "file": "03_section.svg",
+            "message": "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (1 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): rect[24]:fill '#0A0A0A' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
+          },
+          {
+            "file": "03_section.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          },
+          {
+            "file": "04_terminal.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          },
+          {
+            "file": "05_process.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          },
+          {
+            "file": "06_chart.svg",
+            "message": "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (8 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): p06-node-mix:stroke None -> '#0A0A0A'; p06-node-mix:stroke-width None -> '3'; path[18]:stroke '#0A0A0A' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
+          },
+          {
+            "file": "06_chart.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          },
+          {
+            "file": "07_numbers.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          },
+          {
+            "file": "08_compare.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          },
+          {
+            "file": "09_timeline.svg",
+            "message": "Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (3 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): note:fill None -> '#0A0A0A'; rect[45]:fill '#0A0A0A' -> None; text[46]:fill '#0A0A0A' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)"
+          },
+          {
+            "file": "09_timeline.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          },
+          {
+            "file": "10_closing.svg",
+            "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei"
+          }
+        ]
+      },
+      "inherited": {
+        "count": 0,
+        "issues": []
+      },
+      "source-import": {
+        "count": 0,
+        "summary": {
+          "warning_count": 0,
+          "by_code": {}
+        }
+      }
+    }
+  },
+  "resources": {
+    "unresolved_template_tokens": [],
+    "fonts": {
+      "stacks": [
+        "Consolas, Microsoft JhengHei",
+        "Cubic 11, Microsoft JhengHei",
+        "Segoe UI, Microsoft JhengHei"
+      ],
+      "generic_only_stacks": [],
+      "unsafe_exported_faces": [
+        {
+          "stack": "Cubic 11, Microsoft JhengHei",
+          "role": "latin",
+          "typeface": "Cubic 11"
+        }
+      ]
+    },
+    "images": {
+      "data_uri": 0,
+      "local": 0,
+      "external": 0,
+      "external_references": []
+    }
+  },
+  "export_policy": {
+    "project_svg_contract": "strict",
+    "dangerous_normalization_count": 0
+  },
+  "deck_motion": {
+    "transition": {
+      "effect": "fade",
+      "effect_options": {},
+      "duration": 0.4,
+      "auto_advance": null,
+      "sound": null
+    },
+    "animation": {
+      "effect": "none",
+      "effect_request": null,
+      "duration": 0.4,
+      "stagger": 0.5,
+      "trigger": "after-previous"
+    },
+    "cli_overrides": {
+      "transition": false,
+      "transition_duration": false,
+      "auto_advance": false,
+      "transition_sound": false,
+      "animation": false,
+      "animation_duration": false,
+      "animation_stagger": false,
+      "animation_trigger": false
+    },
+    "narration_timings": false
+  },
+  "backup_path": "/home/user/1/templates/bitgrid/bitgrid_20261021/backup/20261021_144901/svg_output",
+  "conversion_trace_path": null
+}

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Segoe UI, Microsoft JhengHei">
+  <defs>
+    <filter id="px2" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px2k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px3" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px3k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px4" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px4k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px5" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px5k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px6" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px6k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px7" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px7k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px12" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px12k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+  </defs>
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF" />
+  <g id="header" data-pptx-bounds="0 0 1280 87">
+    <text x="40" y="60" font-family="Cubic 11, Microsoft JhengHei" font-size="48" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2" filter="url(#px2)">一條鏈，四個時刻</text>
+    <rect x="1118" y="28" width="122" height="30" fill="#0A0A0A" /><text x="1128" y="46" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#FFFFFF">BLOCK #1032</text>
+    <rect x="0" y="84" width="1280" height="3" fill="#0A0A0A" />
+  </g>
+  <g id="blk-1" data-pptx-bounds="40 140 300 350">
+    <rect x="48" y="158" width="220" height="220" fill="#0A0A0A" />
+    <rect x="40" y="150" width="220" height="220" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3" />
+    <text x="60" y="188" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#55575E">BLOCK #1021</text>
+    <text x="60" y="300" font-family="Cubic 11, Microsoft JhengHei" font-size="72" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="3">2009</text>
+    <rect x="268" y="252" width="82" height="16" fill="#0A0A0A" />
+    <text x="40" y="430" font-size="26" font-weight="bold" fill="#0A0A0A">比特幣創世區塊</text>
+    <text x="40" y="470" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#55575E">prev = 0x0000</text>
+  </g>
+  <g id="blk-2" data-pptx-bounds="350 140 300 350">
+    <rect x="358" y="158" width="220" height="220" fill="#0A0A0A" />
+    <rect x="350" y="150" width="220" height="220" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3" />
+    <text x="370" y="188" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#55575E">BLOCK #1022</text>
+    <text x="370" y="300" font-family="Cubic 11, Microsoft JhengHei" font-size="72" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="3">2015</text>
+    <rect x="578" y="252" width="82" height="16" fill="#0A0A0A" />
+    <text x="350" y="430" font-size="26" font-weight="bold" fill="#0A0A0A">以太坊與智能合約</text>
+    <text x="350" y="470" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#55575E">prev = #1021</text>
+  </g>
+  <g id="blk-3" data-pptx-bounds="660 140 300 350">
+    <rect x="668" y="158" width="220" height="220" fill="#0A0A0A" />
+    <rect x="660" y="150" width="220" height="220" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3" />
+    <text x="680" y="188" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#55575E">BLOCK #1023</text>
+    <text x="680" y="300" font-family="Cubic 11, Microsoft JhengHei" font-size="72" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="3">2022</text>
+    <rect x="888" y="252" width="82" height="16" fill="#0A0A0A" />
+    <text x="660" y="430" font-size="26" font-weight="bold" fill="#0A0A0A">以太坊轉為權益證明</text>
+    <text x="660" y="470" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#55575E">prev = #1022</text>
+  </g>
+  <g id="blk-4" data-pptx-bounds="970 140 280 350">
+    <rect x="978" y="158" width="220" height="220" fill="#0A0A0A" />
+    <rect x="970" y="150" width="220" height="220" fill="#FFD84A" stroke="#0A0A0A" stroke-width="3" />
+    <text x="990" y="188" font-family="Consolas, Microsoft JhengHei" font-size="18" font-weight="bold" fill="#55575E">BLOCK #1024</text>
+    <text x="990" y="300" font-family="Cubic 11, Microsoft JhengHei" font-size="72" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="3">2026</text>
+    <text x="970" y="430" font-size="26" font-weight="bold" fill="#0A0A0A">你的第一筆交易</text>
+    <text x="970" y="470" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#55575E">prev = #1023</text>
+  </g>
+  <g id="note" data-pptx-bounds="40 540 1200 110" fill="#0A0A0A">
+    <rect x="40" y="560" width="1200" height="3" />
+    <text x="40" y="616" font-size="24">每個區塊都記著<tspan font-weight="bold">前一個區塊的編號</tspan>，所以改一個就得改後面全部。</text>
+  </g>
+  <g id="footer" data-pptx-bounds="0 684 1280 36" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#55575E">
+    <rect x="0" y="684" width="1280" height="3" fill="#0A0A0A" /><text x="40" y="708">區塊鏈的交易旅程</text><text x="1240" y="708" text-anchor="end">09 / 10</text>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<!--
+label: Section §
+group: law
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M30 10c-2-4-12-4-12 2s12 4 12 11-10 7-12 3M18 18c-4 2-4 7 1 9M30 26c4 2 4 7-1 9-3 1-9 1-11-3"/>
+</svg>

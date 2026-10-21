@@ -1,0 +1,8 @@
+<!--
+label: Laptop
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="10" y="11" width="28" height="20" rx="1.5"/><path d="M4 36h40l-3 4H7z"/><path  d="M15 18h10M15 23h16"/>
+</svg>

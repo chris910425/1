@@ -967,6 +967,7 @@ window.FSC_ICONS = (function () {
     }
     function finish(el) { el.classList.remove('is-playing'); el.classList.add('is-done'); const c = R[el.dataset.fsc]; c.final && c.final(el); }
     function play(el) {
+        if (!R[el.dataset.fsc]) return;            // add-on (e.g. motion.js) not loaded yet
         if (!el._fscMounted) mount(el);
         if (REDUCED) return finish(el);
         (timers.get(el) || []).forEach(clearTimeout);

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Segoe UI, Microsoft JhengHei">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="0 0 1280 75">
+    <text x="40" y="50" font-family="Segoe UI Black, Noto Sans TC Black" font-size="30" fill="#0A0A0A">角色 CHARACTERS · FSC-CHAR</text>
+    <rect x="1066" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1078" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1084" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1096" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1102" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1114" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1120" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1132" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1138" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1150" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1156" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1168" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1174" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1186" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1192" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1204" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1210" y="30" width="12" height="12" fill="#D6D6D2" stroke="#0A0A0A" stroke-width="2"/><rect x="1222" y="35.0" width="6" height="2" fill="#0A0A0A"/><rect x="1228" y="30" width="12" height="12" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2"/><text x="1044" y="47" font-size="14" font-weight="bold" fill="#6B6B6B" text-anchor="end" letter-spacing="1.1">KIT</text>
+    <rect x="0" y="72" width="1280" height="3" fill="#0A0A0A"/>
+  </g>
+  <g id="ch-alice" data-pptx-bounds="0 75 256 645">
+    <rect x="0" y="75" width="256" height="645" fill="#FFFFFF"/>
+    <rect x="253" y="72" width="3" height="648" fill="#0A0A0A"/>
+    <use data-icon="fsc-char/alice" x="38" y="170" width="180" height="240" fill="#0A0A0A"/>
+    <text x="128" y="480" font-size="28" fill="#0A0A0A" font-weight="bold" text-anchor="middle">Alice</text>
+    <text x="128" y="520" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-char/alice</text>
+  </g>
+  <g id="ch-bob" data-pptx-bounds="256 75 256 645">
+    <rect x="256" y="75" width="256" height="645" fill="#FFFFFF"/>
+    <rect x="509" y="72" width="3" height="648" fill="#0A0A0A"/>
+    <use data-icon="fsc-char/bob" x="294" y="170" width="180" height="240" fill="#0A0A0A"/>
+    <text x="384" y="480" font-size="28" fill="#0A0A0A" font-weight="bold" text-anchor="middle">Bob</text>
+    <text x="384" y="520" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-char/bob</text>
+  </g>
+  <g id="ch-eve" data-pptx-bounds="512 75 256 645">
+    <rect x="512" y="75" width="256" height="645" fill="#F2D4CF"/>
+    <rect x="765" y="72" width="3" height="648" fill="#0A0A0A"/>
+    <use data-icon="fsc-char/eve" x="550" y="170" width="180" height="240" fill="#0A0A0A"/>
+    <text x="640" y="480" font-size="28" fill="#0A0A0A" font-weight="bold" text-anchor="middle">Eve</text>
+    <text x="640" y="520" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-char/eve</text>
+  </g>
+  <g id="ch-trent" data-pptx-bounds="768 75 256 645">
+    <rect x="768" y="75" width="256" height="645" fill="#FFFFFF"/>
+    <rect x="1021" y="72" width="3" height="648" fill="#0A0A0A"/>
+    <use data-icon="fsc-char/trent" x="806" y="170" width="180" height="240" fill="#0A0A0A"/>
+    <text x="896" y="480" font-size="28" fill="#0A0A0A" font-weight="bold" text-anchor="middle">Trent</text>
+    <text x="896" y="520" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-char/trent</text>
+  </g>
+  <g id="ch-mallory" data-pptx-bounds="1024 75 256 645">
+    <rect x="1024" y="75" width="256" height="645" fill="#FFFFFF"/>
+    <use data-icon="fsc-char/mallory" x="1062" y="170" width="180" height="240" fill="#0A0A0A"/>
+    <text x="1152" y="480" font-size="28" fill="#0A0A0A" font-weight="bold" text-anchor="middle">Mallory</text>
+    <text x="1152" y="520" text-anchor="middle" font-family="Consolas, Microsoft JhengHei" font-size="13" fill="#6B6B6B">fsc-char/mallory</text>
+  </g>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="section" font-family="Segoe UI, Microsoft JhengHei">
+  <defs>
+    <filter id="px2" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px2k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px3" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px3k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px4" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px4k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px5" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px5k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px6" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px6k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px7" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px7k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+    <filter id="px12" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1" /></filter>
+    <filter id="px12k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1" /></filter>
+  </defs>
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFD84A" />
+  <g id="num" data-pptx-bounds="40 40 600 450">
+    <text x="40" y="360" font-family="Cubic 11, Microsoft JhengHei" font-size="288" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="12" filter="url(#px12)">01</text>
+  </g>
+  <g id="chapter" data-pptx-bounds="640 150 600 300">
+    <rect x="640" y="170" width="159" height="30" fill="#0A0A0A" /><text x="650" y="188" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#FFFFFF">CHAPTER 01 / 04</text>
+    <text x="640" y="300" font-family="Cubic 11, Microsoft JhengHei" font-size="72" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="3">交易是什麼</text>
+    <text x="642" y="360" font-size="26" fill="#0A0A0A">先弄懂一筆交易裡<tspan font-weight="bold">到底裝了什麼</tspan>。</text>
+  </g>
+  <g id="progress" data-pptx-bounds="40 530 600 145"><rect x="40" y="560" width="276" height="72" fill="#FFFFFF" stroke="#0A0A0A" stroke-width="3" /><rect x="46" y="566" width="60" height="60" fill="#0A0A0A" /><rect x="114" y="566" width="60" height="60" fill="#F2F2EF" /><rect x="182" y="566" width="60" height="60" fill="#F2F2EF" /><rect x="250" y="566" width="60" height="60" fill="#F2F2EF" />
+    <text x="40" y="660" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#0A0A0A">PROGRESS 1 / 4</text>
+  </g>
+    <g id="footer" data-pptx-bounds="0 684 1280 36" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#0A0A0A">
+    <rect x="0" y="684" width="1280" height="3" /><text x="40" y="708">區塊鏈的交易旅程</text><text x="1240" y="708" text-anchor="end">03 / 10</text>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<!--
+label: Marina Bay
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M11 42V17h6v25M21 42V17h6v25M31 42V17h6v25M4 42h40M6 44h36" /><path  d="M5 14c6-3 32-3 38 0"/>
+</svg>
