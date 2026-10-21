@@ -1,0 +1,251 @@
+
+=== 2026-10-21T14:47:01.499Z NOTE id=e4e6063af14b ===
+Project initialized: profile=quick; path=/home/user/1/templates/bitgrid/bitgrid_20261021
+
+=== 2026-10-21T14:48:41.423Z PYTHON run=64e015c06aee ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_quality_checker.py", "templates/bitgrid/bitgrid_20261021", "--quick-generate", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [WARN] 01_cover.svg - Passed (with warnings)
+     [WARN] Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (15 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): title:fill None -> '#6FE0EE'; title:font-family None -> 'Cubic 11, Microsoft JhengHei'; title:font-size None -> '120' (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei
+     [WARN] <text> (x=40, y=390; text='交易旅程') exceeds <g id="title"> data-pptx-bounds on the vertical axis: content (40.0, 288.0)-(548.8, 432.0), container (40.0, 130.0)-(1240.0, 420.0), overflow horizontal 0.0%, vertical 4.1% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+  [ERROR] 02_agenda.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <g id="side"> data-pptx-bounds overlaps <g id="item-01"> data-pptx-bounds by 3.0px x 180.0px; keep ordinary direct-root module zones disjoint beyond the 1px tolerance
+     [ERROR] <g id="side"> data-pptx-bounds overlaps <g id="item-02"> data-pptx-bounds by 3.0px x 180.0px; keep ordinary direct-root module zones disjoint beyond the 1px tolerance
+     [ERROR] <g id="side"> data-pptx-bounds overlaps <g id="item-03"> data-pptx-bounds by 3.0px x 180.0px; keep ordinary direct-root module zones disjoint beyond the 1px tolerance
+     [ERROR] <g id="side"> data-pptx-bounds overlaps <g id="item-04"> data-pptx-bounds by 3.0px x 180.0px; keep ordinary direct-root module zones disjoint beyond the 1px tolerance
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei
+  [ERROR] 03_section.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <text> (x=40, y=360; text='01') exceeds <g id="num"> data-pptx-bounds on the vertical axis: content (40.0, 105.0)-(389.8, 465.0), container (40.0, 60.0)-(640.0, 420.0), overflow horizontal 0.0%, vertical 12.5% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [ERROR] <text> (x=40, y=660; text='PROGRESS 1 / 4') exceeds <g id="progress"> data-pptx-bounds on the vertical axis: content (40.0, 646.4)-(178.0, 665.6), container (40.0, 530.0)-(640.0, 630.0), overflow horizontal 0.0%, vertical 35.6% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+     [WARN] Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (1 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): rect[24]:fill '#0A0A0A' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei
+  [WARN] 04_terminal.svg - Passed (with warnings)
+     viewBox: 0 0 1280 720
+  [ERROR] 06_chart.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] Canonical SVG-first native marker p06-node-mix: SVG-authoritative native-object marker requires data-pptx-fallback-sha256; --native-charts-and-tables stopped because the embedded JSON is not bound to the visible SVG
+     [WARN] Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (8 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): p06-node-mix:stroke None -> '#0A0A0A'; p06-node-mix:stroke-width None -> '3'; path[18]:stroke '#0A0A0A' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei
+     [WARN] data-pptx-replace-with marker p06-node-mix: SVG-authoritative marker has no data-pptx-fallback-sha256 baseline; the shape-based SVG fallback remains available, but --native-charts-and-tables will fail
+  [WARN] 07_numbers.svg - Passed (with warnings)
+  [ERROR] 09_timeline.svg - Failed
+     viewBox: 0 0 1280 720
+     [ERROR] <g id="blk-1"> data-pptx-bounds overlaps <g id="note"> data-pptx-bounds by 300.0px x 50.0px; keep ordinary direct-root module zones disjoint beyond the 1px tolerance
+     [ERROR] <g id="blk-2"> data-pptx-bounds overlaps <g id="note"> data-pptx-bounds by 300.0px x 50.0px; keep ordinary direct-root module zones disjoint beyond the 1px tolerance
+     [ERROR] <g id="blk-3"> data-pptx-bounds overlaps <g id="note"> data-pptx-bounds by 300.0px x 50.0px; keep ordinary direct-root module zones disjoint beyond the 1px tolerance
+     [ERROR] <g id="blk-4"> data-pptx-bounds overlaps <g id="note"> data-pptx-bounds by 270.0px x 50.0px; keep ordinary direct-root module zones disjoint beyond the 1px tolerance
+     [WARN] Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (3 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): note:fill None -> '#0A0A0A'; rect[45]:fill '#0A0A0A' -> None; text[46]:fill '#0A0A0A' -> None (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei
+  [WARN] 10_closing.svg - Passed (with warnings)
+     viewBox: 0 0 1280 720
+  [SUMMARY] Check Summary
+  Total files: 10
+    [OK] Fully passed: 0 (0%)
+    [WARN] With warnings: 6 (60%)
+    [ERROR] With errors: 4 (40%)
+  Provenance categories:
+    blocking: 11         hard findings; gate also requires exit 0
+    introduced: 16       advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 10 | text: 151 | images: 0 | icons: 0
+    Geometry: SVG elements 462 | native presets 0 | page-frame elements 35 | marker uses 0
+  [REPORT] JSON quality report exported: templates/bitgrid/bitgrid_20261021/validation/svg_quality_report.json
+=== 2026-10-21T14:48:42.770Z END run=64e015c06aee elapsed_ms=1347 output_lines=76 retained=50 omitted=26 ===
+
+=== 2026-10-21T14:48:52.705Z PYTHON run=334786233c1c ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/stamp_native_fallbacks.py", "templates/bitgrid/bitgrid_20261021/svg_output", "--write"]
+=== 2026-10-21T14:48:52.729Z END run=334786233c1c elapsed_ms=23 output_lines=11 retained=0 omitted=11 ===
+
+=== 2026-10-21T14:48:52.896Z PYTHON run=1316cb965f56 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_quality_checker.py", "templates/bitgrid/bitgrid_20261021", "--quick-generate", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [WARN] 01_cover.svg - Passed (with warnings)
+     [WARN] Noncanonical compact authoring: Authoring SVG contains noncanonical or redundant inherited style declarations (15 change(s)); examples (group:attr None -> value hoists the shared value onto that group; child:attr value -> None drops the copy the child now inherits): title:fill None -> '#6FE0EE'; title:font-family None -> 'Cubic 11, Microsoft JhengHei'; title:font-size None -> '120' (advisory; normalize with `python3 scripts/compact_svg_styles.py <svg_output> --inplace`, re-stamp pages that carry Chart/Table fallbacks, and rerun the final gate, or leave the explicit form)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11): Cubic 11, Microsoft JhengHei
+     [WARN] <text> (x=40, y=390; text='交易旅程') exceeds <g id="title"> data-pptx-bounds on the vertical axis: content (40.0, 288.0)-(548.8, 432.0), container (40.0, 130.0)-(1240.0, 420.0), overflow horizontal 0.0%, vertical 4.1% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+  [SUMMARY] Check Summary
+  Total files: 10
+    [OK] Fully passed: 0 (0%)
+    [WARN] With warnings: 10 (100%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 15       advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 10 | text: 151 | images: 0 | icons: 0
+    Geometry: SVG elements 462 | native presets 0 | page-frame elements 35 | marker uses 0
+  [REPORT] JSON quality report exported: templates/bitgrid/bitgrid_20261021/validation/svg_quality_report.json
+=== 2026-10-21T14:48:54.076Z END run=1316cb965f56 elapsed_ms=1179 output_lines=62 retained=18 omitted=44 ===
+
+=== 2026-10-21T14:49:00.573Z PYTHON run=64445aaf9af3 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_to_pptx.py", "templates/bitgrid/bitgrid_20261021", "--quick-generate", "--no-notes", "--native-charts-and-tables"]
+stderr:
+  Warning: --native-charts-and-tables replaces shape-based SVG fallbacks with PowerPoint Chart/Table objects. The native objects may normalize styling or omit SVG details that are not represented by marker metadata; use the default shape-based export when exact fallback artwork is required.
+stdout:
+  [Done] Saved: templates/bitgrid/bitgrid_20261021/exports/bitgrid_20261021_144901_native_charts_tables.pptx
+    [POSTFLIGHT] status=passed-with-warnings quality_gate=passed slides=10 warning_categories=2
+    [POSTFLIGHT][WARNING] quality_introduced_warnings=15
+    [POSTFLIGHT][WARNING] unsafe_exported_font_faces=1
+    [PPTX] templates/bitgrid/bitgrid_20261021/exports/bitgrid_20261021_144901_native_charts_tables.pptx
+    [REPORT] templates/bitgrid/bitgrid_20261021/validation/bitgrid_20261021_144901_native_charts_tables.report.json
+=== 2026-10-21T14:49:02.075Z END run=64445aaf9af3 elapsed_ms=1501 output_lines=47 retained=7 omitted=40 ===
+
+=== 2026-10-21T14:50:32.813Z PYTHON run=be2cd5850968 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/stamp_native_fallbacks.py", "templates/bitgrid/bitgrid_20261021/svg_output", "--write"]
+=== 2026-10-21T14:50:32.841Z END run=be2cd5850968 elapsed_ms=27 output_lines=11 retained=0 omitted=11 ===
+
+=== 2026-10-21T14:50:33.067Z PYTHON run=9e5c2d5d3c82 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/compact_svg_styles.py", "templates/bitgrid/bitgrid_20261021/svg_output", "--inplace"]
+=== 2026-10-21T14:50:33.092Z END run=9e5c2d5d3c82 elapsed_ms=24 output_lines=1 retained=0 omitted=1 ===
+
+=== 2026-10-21T14:50:33.635Z PYTHON run=feaa2606e8ea ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/stamp_native_fallbacks.py", "templates/bitgrid/bitgrid_20261021/svg_output", "--write"]
+=== 2026-10-21T14:50:33.664Z END run=feaa2606e8ea elapsed_ms=28 output_lines=11 retained=0 omitted=11 ===
+
+=== 2026-10-21T14:50:33.886Z PYTHON run=08fde1c595b0 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_quality_checker.py", "templates/bitgrid/bitgrid_20261021", "--quick-generate", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [WARN] 01_cover.svg - Passed (with warnings)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei
+     [WARN] <text> (x=40, y=390; text='交易旅程') exceeds <g id="title"> data-pptx-bounds on the vertical axis: content (40.0, 288.0)-(548.8, 432.0), container (40.0, 130.0)-(720.0, 430.0), overflow horizontal 0.0%, vertical 0.7% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+  [WARN] 02_agenda.svg - Passed (with warnings)
+  [SUMMARY] Check Summary
+  Total files: 10
+    [OK] Fully passed: 0 (0%)
+    [WARN] With warnings: 10 (100%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 11       advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 10 | text: 158 | images: 0 | icons: 0
+    Geometry: SVG elements 476 | native presets 0 | page-frame elements 27 | marker uses 0
+  [REPORT] JSON quality report exported: templates/bitgrid/bitgrid_20261021/validation/svg_quality_report.json
+=== 2026-10-21T14:50:35.304Z END run=08fde1c595b0 elapsed_ms=1418 output_lines=58 retained=18 omitted=40 ===
+
+=== 2026-10-21T14:50:41.828Z PYTHON run=f50a6b0ee3f7 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_to_pptx.py", "templates/bitgrid/bitgrid_20261021", "--quick-generate", "--no-notes", "--native-charts-and-tables"]
+stderr:
+  Warning: --native-charts-and-tables replaces shape-based SVG fallbacks with PowerPoint Chart/Table objects. The native objects may normalize styling or omit SVG details that are not represented by marker metadata; use the default shape-based export when exact fallback artwork is required.
+stdout:
+  [Done] Saved: templates/bitgrid/bitgrid_20261021/exports/bitgrid_20261021_145042_native_charts_tables.pptx
+    [POSTFLIGHT] status=passed-with-warnings quality_gate=passed slides=10 warning_categories=2
+    [POSTFLIGHT][WARNING] quality_introduced_warnings=11
+    [POSTFLIGHT][WARNING] unsafe_exported_font_faces=2
+    [PPTX] templates/bitgrid/bitgrid_20261021/exports/bitgrid_20261021_145042_native_charts_tables.pptx
+    [REPORT] templates/bitgrid/bitgrid_20261021/validation/bitgrid_20261021_145042_native_charts_tables.report.json
+=== 2026-10-21T14:50:43.474Z END run=f50a6b0ee3f7 elapsed_ms=1646 output_lines=47 retained=7 omitted=40 ===
+
+=== 2026-10-21T14:51:30.368Z PYTHON run=a08bab66613f ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/compact_svg_styles.py", "templates/bitgrid/bitgrid_20261021/svg_output", "--inplace"]
+=== 2026-10-21T14:51:30.383Z END run=a08bab66613f elapsed_ms=15 output_lines=1 retained=0 omitted=1 ===
+
+=== 2026-10-21T14:51:30.717Z PYTHON run=28b004681347 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/stamp_native_fallbacks.py", "templates/bitgrid/bitgrid_20261021/svg_output", "--write"]
+=== 2026-10-21T14:51:30.742Z END run=28b004681347 elapsed_ms=25 output_lines=11 retained=0 omitted=11 ===
+
+=== 2026-10-21T14:51:30.898Z PYTHON run=6a827bcb1b22 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_quality_checker.py", "templates/bitgrid/bitgrid_20261021", "--quick-generate", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [WARN] 01_cover.svg - Passed (with warnings)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei
+     [WARN] <text> (x=40, y=390; text='交易旅程') exceeds <g id="title"> data-pptx-bounds on the vertical axis: content (40.0, 288.0)-(548.8, 432.0), container (40.0, 130.0)-(720.0, 430.0), overflow horizontal 0.0%, vertical 0.7% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+  [WARN] 02_agenda.svg - Passed (with warnings)
+  [SUMMARY] Check Summary
+  Total files: 10
+    [OK] Fully passed: 0 (0%)
+    [WARN] With warnings: 10 (100%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 11       advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 10 | text: 158 | images: 0 | icons: 0
+    Geometry: SVG elements 484 | native presets 0 | page-frame elements 27 | marker uses 0
+  [REPORT] JSON quality report exported: templates/bitgrid/bitgrid_20261021/validation/svg_quality_report.json
+=== 2026-10-21T14:51:32.061Z END run=6a827bcb1b22 elapsed_ms=1163 output_lines=58 retained=18 omitted=40 ===
+
+=== 2026-10-21T14:51:32.246Z PYTHON run=de470ad7a1bd ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_to_pptx.py", "templates/bitgrid/bitgrid_20261021", "--quick-generate", "--no-notes", "--native-charts-and-tables"]
+stderr:
+  Warning: --native-charts-and-tables replaces shape-based SVG fallbacks with PowerPoint Chart/Table objects. The native objects may normalize styling or omit SVG details that are not represented by marker metadata; use the default shape-based export when exact fallback artwork is required.
+stdout:
+  [Done] Saved: templates/bitgrid/bitgrid_20261021/exports/bitgrid_20261021_145133_native_charts_tables.pptx
+    [POSTFLIGHT] status=passed-with-warnings quality_gate=passed slides=10 warning_categories=2
+    [POSTFLIGHT][WARNING] quality_introduced_warnings=11
+    [POSTFLIGHT][WARNING] unsafe_exported_font_faces=2
+    [PPTX] templates/bitgrid/bitgrid_20261021/exports/bitgrid_20261021_145133_native_charts_tables.pptx
+    [REPORT] templates/bitgrid/bitgrid_20261021/validation/bitgrid_20261021_145133_native_charts_tables.report.json
+=== 2026-10-21T14:51:34.022Z END run=de470ad7a1bd elapsed_ms=1775 output_lines=47 retained=7 omitted=40 ===
+
+=== 2026-10-21T14:52:08.120Z PYTHON run=27ee1b14dd57 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/compact_svg_styles.py", "templates/bitgrid/bitgrid_20261021/svg_output", "--inplace"]
+=== 2026-10-21T14:52:08.137Z END run=27ee1b14dd57 elapsed_ms=17 output_lines=1 retained=0 omitted=1 ===
+
+=== 2026-10-21T14:52:08.460Z PYTHON run=3bb0709f046d ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/stamp_native_fallbacks.py", "templates/bitgrid/bitgrid_20261021/svg_output", "--write"]
+=== 2026-10-21T14:52:08.504Z END run=3bb0709f046d elapsed_ms=44 output_lines=11 retained=0 omitted=11 ===
+
+=== 2026-10-21T14:52:08.647Z PYTHON run=aa7ec03042fc ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_quality_checker.py", "templates/bitgrid/bitgrid_20261021", "--quick-generate", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [WARN] 01_cover.svg - Passed (with warnings)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei
+     [WARN] <text> (x=40, y=390; text='交易旅程') exceeds <g id="title"> data-pptx-bounds on the vertical axis: content (40.0, 288.0)-(548.8, 432.0), container (40.0, 130.0)-(720.0, 430.0), overflow horizontal 0.0%, vertical 0.7% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text
+  [WARN] 02_agenda.svg - Passed (with warnings)
+  [SUMMARY] Check Summary
+  Total files: 10
+    [OK] Fully passed: 0 (0%)
+    [WARN] With warnings: 10 (100%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 11       advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 10 | text: 158 | images: 0 | icons: 0
+    Geometry: SVG elements 484 | native presets 0 | page-frame elements 27 | marker uses 0
+  [REPORT] JSON quality report exported: templates/bitgrid/bitgrid_20261021/validation/svg_quality_report.json
+=== 2026-10-21T14:52:09.862Z END run=aa7ec03042fc elapsed_ms=1215 output_lines=58 retained=18 omitted=40 ===
+
+=== 2026-10-21T14:52:10.052Z PYTHON run=6be2fd82b120 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_to_pptx.py", "templates/bitgrid/bitgrid_20261021", "--quick-generate", "--no-notes", "--native-charts-and-tables"]
+stderr:
+  Warning: --native-charts-and-tables replaces shape-based SVG fallbacks with PowerPoint Chart/Table objects. The native objects may normalize styling or omit SVG details that are not represented by marker metadata; use the default shape-based export when exact fallback artwork is required.
+stdout:
+  [Done] Saved: templates/bitgrid/bitgrid_20261021/exports/bitgrid_20261021_145210_native_charts_tables.pptx
+    [POSTFLIGHT] status=passed-with-warnings quality_gate=passed slides=10 warning_categories=2
+    [POSTFLIGHT][WARNING] quality_introduced_warnings=11
+    [POSTFLIGHT][WARNING] unsafe_exported_font_faces=2
+    [PPTX] templates/bitgrid/bitgrid_20261021/exports/bitgrid_20261021_145210_native_charts_tables.pptx
+    [REPORT] templates/bitgrid/bitgrid_20261021/validation/bitgrid_20261021_145210_native_charts_tables.report.json
+=== 2026-10-21T14:52:11.663Z END run=6be2fd82b120 elapsed_ms=1611 output_lines=47 retained=7 omitted=40 ===

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="toc" font-family="Segoe UI, Microsoft JhengHei">
+  <defs>
+    <filter id="px2" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px2k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="2" dy="2" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px3" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px3k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="3" dy="3" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px4" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px4k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="4" dy="4" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px5" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px5k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="5" dy="5" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px6" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px6k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="6" dy="6" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px7" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px7k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="7" dy="7" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+    <filter id="px12" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#FFD84A" flood-opacity="1"/></filter>
+    <filter id="px12k" x="-10%" y="-10%" width="130%" height="140%"><feDropShadow dx="12" dy="12" stdDeviation="0" flood-color="#0A0A0A" flood-opacity="1"/></filter>
+  </defs>
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="side" data-pptx-bounds="0 0 563 720">
+    <rect x="0" y="0" width="560" height="720" fill="#6FE0EE"/><rect x="560" y="0" width="3" height="720" fill="#0A0A0A"/>
+    <rect x="40" y="40" width="122" height="30" fill="#0A0A0A"/><text x="50" y="58" font-family="Consolas, Microsoft JhengHei" font-size="16" font-weight="bold" fill="#FFFFFF">BLOCK #1025</text>
+    <text x="40" y="330" font-family="Cubic 11, Microsoft JhengHei" font-size="132" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="6" filter="url(#px6)">目錄</text>
+    <text x="44" y="400" font-size="24" font-weight="bold" fill="#0A0A0A">4 個章節　約 15 分鐘</text>
+    <text x="44" y="640" font-family="Consolas, Microsoft JhengHei" font-size="16" fill="#0A0A0A">區塊鏈的交易旅程　02 / 10</text>
+  </g>
+  <g id="item-01" data-pptx-bounds="563 0 717 180">
+    <rect x="563" y="0" width="717" height="180" fill="#FFD84A"/><rect x="560" y="177" width="720" height="3" fill="#0A0A0A"/>
+    <rect x="612" y="87" width="6" height="6" fill="#0A0A0A"/><rect x="618" y="87" width="6" height="6" fill="#0A0A0A"/><rect x="624" y="87" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="87" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="87" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="87" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="75" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="81" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="93" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="99" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="81" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="93" width="6" height="6" fill="#0A0A0A"/><rect x="648" y="87" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="75" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="99" width="6" height="6" fill="#0A0A0A"/>
+    <text x="680" y="82" font-family="Consolas, Microsoft JhengHei" font-size="20" font-weight="bold" fill="#55575E">CH.01</text>
+    <text x="680" y="128" font-family="Cubic 11, Microsoft JhengHei" font-size="48" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2">交易是什麼</text>
+  </g>
+  <g id="item-02" data-pptx-bounds="563 180 717 180">
+    <rect x="563" y="180" width="717" height="180" fill="#FFFFFF"/><rect x="560" y="357" width="720" height="3" fill="#0A0A0A"/>
+    <rect x="612" y="267" width="6" height="6" fill="#0A0A0A"/><rect x="618" y="267" width="6" height="6" fill="#0A0A0A"/><rect x="624" y="267" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="267" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="267" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="267" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="255" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="261" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="273" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="279" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="261" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="273" width="6" height="6" fill="#0A0A0A"/><rect x="648" y="267" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="255" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="279" width="6" height="6" fill="#0A0A0A"/>
+    <text x="680" y="262" font-family="Consolas, Microsoft JhengHei" font-size="20" font-weight="bold" fill="#55575E">CH.02</text>
+    <text x="680" y="308" font-family="Cubic 11, Microsoft JhengHei" font-size="48" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2">從簽名到廣播</text>
+  </g>
+  <g id="item-03" data-pptx-bounds="563 360 717 180">
+    <rect x="563" y="360" width="717" height="180" fill="#FFFFFF"/><rect x="560" y="537" width="720" height="3" fill="#0A0A0A"/>
+    <rect x="612" y="447" width="6" height="6" fill="#0A0A0A"/><rect x="618" y="447" width="6" height="6" fill="#0A0A0A"/><rect x="624" y="447" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="447" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="447" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="447" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="435" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="441" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="453" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="459" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="441" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="453" width="6" height="6" fill="#0A0A0A"/><rect x="648" y="447" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="435" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="459" width="6" height="6" fill="#0A0A0A"/>
+    <text x="680" y="442" font-family="Consolas, Microsoft JhengHei" font-size="20" font-weight="bold" fill="#55575E">CH.03</text>
+    <text x="680" y="488" font-family="Cubic 11, Microsoft JhengHei" font-size="48" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2">礦工與驗證者</text>
+  </g>
+  <g id="item-04" data-pptx-bounds="563 540 717 180">
+    <rect x="563" y="540" width="717" height="180" fill="#FFFFFF"/>
+    <rect x="612" y="627" width="6" height="6" fill="#0A0A0A"/><rect x="618" y="627" width="6" height="6" fill="#0A0A0A"/><rect x="624" y="627" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="627" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="627" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="627" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="615" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="621" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="633" width="6" height="6" fill="#0A0A0A"/><rect x="636" y="639" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="621" width="6" height="6" fill="#0A0A0A"/><rect x="642" y="633" width="6" height="6" fill="#0A0A0A"/><rect x="648" y="627" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="615" width="6" height="6" fill="#0A0A0A"/><rect x="630" y="639" width="6" height="6" fill="#0A0A0A"/>
+    <text x="680" y="622" font-family="Consolas, Microsoft JhengHei" font-size="20" font-weight="bold" fill="#55575E">CH.04</text>
+    <text x="680" y="668" font-family="Cubic 11, Microsoft JhengHei" font-size="48" fill="#0A0A0A" stroke="#0A0A0A" stroke-width="2">最終確認與安全</text>
+  </g>
+</svg>

@@ -1,0 +1,808 @@
+{
+  "schema": "ppt-master.svg-quality-report.v1",
+  "stage": "final",
+  "target": "/home/user/1/templates/bitgrid/bitgrid_20261021",
+  "source_fingerprint": {
+    "algorithm": "sha256",
+    "digest": "8929955191ec073be32b2b145005c226cbaa48cbe880cdfca2f9affb600c915c",
+    "file_count": 10,
+    "files": [
+      {
+        "file": "01_cover.svg",
+        "sha256": "291ec79c42e84e2807e261a61f853edc761a944d7bf7f6a4df5dd179cda49717"
+      },
+      {
+        "file": "02_agenda.svg",
+        "sha256": "37ccbabebc6d7fa6c236cfdac5f16563ca2d2d83ececed763be7fa288accfe43"
+      },
+      {
+        "file": "03_section.svg",
+        "sha256": "8f9650c9d881ce6f7da691cb24677387a7965997d7fc519c8c3774036ad6f193"
+      },
+      {
+        "file": "04_terminal.svg",
+        "sha256": "ca3474af7c500f07a91f1d544d5f80fca3f927ce201f8a0d2ccebfe6d58d6d66"
+      },
+      {
+        "file": "05_process.svg",
+        "sha256": "fd194725935eb934a1fcc9ff1ecbfc2695934b5992648d7028082fb5f4959fc2"
+      },
+      {
+        "file": "06_chart.svg",
+        "sha256": "515bd380ee20c802b925d9aee4a39982639d80a5ef3bc063b371458cec210651"
+      },
+      {
+        "file": "07_numbers.svg",
+        "sha256": "4717b6b6b152fa13b68d67785dc2cbbccb004b83231f5ee3d038de687f052779"
+      },
+      {
+        "file": "08_compare.svg",
+        "sha256": "f44e2cfa7972998705e94e387b29718f5be4be804546e447bb205acd40132dee"
+      },
+      {
+        "file": "09_timeline.svg",
+        "sha256": "f932e188a5af508afb9ee88ca00ae14d0b739ecca3ce097bedaf2753bc9c36e1"
+      },
+      {
+        "file": "10_closing.svg",
+        "sha256": "0bd2adcd627b653e18d9a96489cf85df3d30b1676936a99e596d008c6dc2262d"
+      }
+    ]
+  },
+  "summary": {
+    "total": 10,
+    "passed": 0,
+    "warnings": 10,
+    "errors": 0
+  },
+  "issue_types": {},
+  "categories": {
+    "blocking": {
+      "count": 0,
+      "issues": []
+    },
+    "introduced": {
+      "count": 11,
+      "issues": [
+        {
+          "file": "01_cover.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        },
+        {
+          "file": "01_cover.svg",
+          "message": "<text> (x=40, y=390; text='交易旅程') exceeds <g id=\"title\"> data-pptx-bounds on the vertical axis: content (40.0, 288.0)-(548.8, 432.0), container (40.0, 130.0)-(720.0, 430.0), overflow horizontal 0.0%, vertical 0.7% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text"
+        },
+        {
+          "file": "02_agenda.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        },
+        {
+          "file": "03_section.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        },
+        {
+          "file": "04_terminal.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        },
+        {
+          "file": "05_process.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        },
+        {
+          "file": "06_chart.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        },
+        {
+          "file": "07_numbers.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        },
+        {
+          "file": "08_compare.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        },
+        {
+          "file": "09_timeline.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        },
+        {
+          "file": "10_closing.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+        }
+      ]
+    },
+    "inherited": {
+      "count": 0,
+      "issues": []
+    },
+    "source-import": {
+      "count": 0,
+      "summary": {
+        "warning_count": 0,
+        "by_code": {}
+      }
+    }
+  },
+  "drift": {
+    "colors": {},
+    "fonts": {},
+    "sizes": {}
+  },
+  "carrier_receipt": {
+    "scope": "informational-not-a-quota",
+    "pages": 10,
+    "totals": {
+      "text_elements": 158,
+      "image_placements": 0,
+      "icons": 0,
+      "svg_geometry_elements": 484,
+      "preset_shapes": 0,
+      "page_frame_elements": 27,
+      "marker_uses": 0,
+      "inline_emphasis_runs": 18,
+      "gradient_uses": 0,
+      "filter_uses": 15,
+      "text_effects": 32
+    },
+    "pages_with": {
+      "images": 0,
+      "icons": 0,
+      "presets": 0,
+      "charts": 1,
+      "tables": 0,
+      "formulas": 0,
+      "inline_emphasis_runs": 3,
+      "gradient_uses": 0,
+      "filter_uses": 10,
+      "text_effects": 10
+    },
+    "relationship_pages": null,
+    "geometry_elements": {
+      "circle": 0,
+      "ellipse": 0,
+      "line": 0,
+      "path": 3,
+      "polygon": 0,
+      "polyline": 0,
+      "rect": 481
+    },
+    "preset_names": {},
+    "native_objects": {
+      "chart": 1,
+      "formula_block": 0,
+      "formula_inline": 0,
+      "other": 0,
+      "table": 0
+    },
+    "image_page_max_frame_share_range": []
+  },
+  "project_issues": {
+    "template": [],
+    "animation": [],
+    "illustration": [],
+    "communication_trace": [],
+    "pptx_structure": []
+  },
+  "files": [
+    {
+      "file": "01_cover.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/01_cover.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei",
+        "<text> (x=40, y=390; text='交易旅程') exceeds <g id=\"title\"> data-pptx-bounds on the vertical axis: content (40.0, 288.0)-(548.8, 432.0), container (40.0, 130.0)-(720.0, 430.0), overflow horizontal 0.0%, vertical 0.7% (error above 5%); expand the root module bounds into available non-overlapping space; otherwise reflow the text"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 18,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 2,
+            "text_effects": 2
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 55,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 8,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 18,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "291ec79c42e84e2807e261a61f853edc761a944d7bf7f6a4df5dd179cda49717"
+    },
+    {
+      "file": "02_agenda.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/02_agenda.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 12,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 1,
+            "text_effects": 5
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 71,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 12,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "37ccbabebc6d7fa6c236cfdac5f16563ca2d2d83ececed763be7fa288accfe43"
+    },
+    {
+      "file": "03_section.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/03_section.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 7,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 1,
+            "gradient_uses": 0,
+            "filter_uses": 1,
+            "text_effects": 2
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 8,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 7,
+        "tspan_elements": 1
+      },
+      "passed": true,
+      "source_sha256": "8f9650c9d881ce6f7da691cb24677387a7965997d7fc519c8c3774036ad6f193"
+    },
+    {
+      "file": "04_terminal.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/04_terminal.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 19,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 16,
+            "gradient_uses": 0,
+            "filter_uses": 1,
+            "text_effects": 1
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 17,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 19,
+        "tspan_elements": 16
+      },
+      "passed": true,
+      "source_sha256": "ca3474af7c500f07a91f1d544d5f80fca3f927ce201f8a0d2ccebfe6d58d6d66"
+    },
+    {
+      "file": "05_process.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/05_process.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 18,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 1,
+            "text_effects": 5
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 94,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 18,
+        "tspan_elements": 4
+      },
+      "passed": true,
+      "source_sha256": "fd194725935eb934a1fcc9ff1ecbfc2695934b5992648d7028082fb5f4959fc2"
+    },
+    {
+      "file": "06_chart.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/06_chart.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 13,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 1,
+            "text_effects": 5
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 78,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 3
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 1,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 13,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "515bd380ee20c802b925d9aee4a39982639d80a5ef3bc063b371458cec210651"
+    },
+    {
+      "file": "07_numbers.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/07_numbers.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 17,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 5,
+            "text_effects": 5
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 95,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 17,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "4717b6b6b152fa13b68d67785dc2cbbccb004b83231f5ee3d038de687f052779"
+    },
+    {
+      "file": "08_compare.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/08_compare.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 24,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 1,
+            "text_effects": 1
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 24,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 24,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "f44e2cfa7972998705e94e387b29718f5be4be804546e447bb205acd40132dee"
+    },
+    {
+      "file": "09_timeline.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/09_timeline.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 21,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 1,
+            "gradient_uses": 0,
+            "filter_uses": 1,
+            "text_effects": 5
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 16,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 21,
+        "tspan_elements": 1
+      },
+      "passed": true,
+      "source_sha256": "f932e188a5af508afb9ee88ca00ae14d0b739ecca3ce097bedaf2753bc9c36e1"
+    },
+    {
+      "file": "10_closing.svg",
+      "path": "templates/bitgrid/bitgrid_20261021/svg_output/10_closing.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Cubic 11, ea=Cubic 11): Cubic 11, Microsoft JhengHei"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 9,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 1,
+            "text_effects": 1
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 23,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 11,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Cubic 11, Microsoft JhengHei",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 9,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "0bd2adcd627b653e18d9a96489cf85df3d30b1676936a99e596d008c6dc2262d"
+    }
+  ]
+}

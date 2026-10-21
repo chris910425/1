@@ -60,6 +60,7 @@ INHERITABLE_ATTRS = [
 EA_FONTS = {
     'PingFang SC', 'PingFang TC', 'PingFang HK',
     'Microsoft YaHei', 'Microsoft JhengHei',
+    'Cubic 11',  # local patch (Slide Studio): 繁體 pixel font used by the Bitgrid template
     'SimSun', 'SimHei', 'FangSong', 'KaiTi', 'STKaiti',
     'STHeiti', 'STSong', 'STFangsong', 'STXihei', 'STZhongsong',
     'Hiragino Sans', 'Hiragino Sans GB', 'Hiragino Mincho ProN',
