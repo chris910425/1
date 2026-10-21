@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Segoe UI, Microsoft JhengHei">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="claim" data-pptx-bounds="0 0 640 720">
+    <rect x="40" y="210" width="60" height="4" fill="#0A0A0A"/>
+    <text x="116" y="216" font-size="14" font-weight="bold" fill="#0A0A0A" letter-spacing="1.1">WHY IT MATTERS</text>
+    <text x="40" y="310" font-family="Segoe UI Black, Noto Sans TC Black" font-size="60" fill="#0A0A0A">沒有銀行，</text>
+    <text x="40" y="390" font-family="Segoe UI Black, Noto Sans TC Black" font-size="60" fill="#0A0A0A">誰來記帳？</text>
+    <text x="40" y="460" font-size="22" fill="#333333">區塊鏈讓上千台電腦一起記同一本帳，<tspan x="40" dy="34">沒有人能偷偷改掉其中一筆。</tspan></text>
+    <rect x="640" y="0" width="3" height="720" fill="#0A0A0A"/>
+  </g>
+  <g id="stat-1" data-pptx-bounds="643 0 637 360">
+    <text x="690" y="190" font-family="Segoe UI Black, Noto Sans TC Black" font-size="110" fill="#0A0A0A" letter-spacing="-2.2">1,000+</text>
+    <text x="694" y="250" font-size="16" font-weight="bold" fill="#0A0A0A" letter-spacing="1.2">NODES</text>
+    <text x="694" y="284" font-size="20" fill="#333333">同時保存同一本帳（示意）</text>
+    <rect x="640" y="357" width="640" height="3" fill="#0A0A0A"/>
+  </g>
+  <g id="stat-2" data-pptx-bounds="643 360 637 360">
+    <rect x="643" y="360" width="637" height="360" fill="#E5EDD6"/>
+    <text x="690" y="560" font-family="Segoe UI Black, Noto Sans TC Black" font-size="110" fill="#0A0A0A" letter-spacing="-2.2">0</text>
+    <text x="694" y="620" font-size="16" font-weight="bold" fill="#0A0A0A" letter-spacing="1.2">MIDDLEMEN</text>
+    <text x="694" y="654" font-size="20" fill="#333333">需要信任的中間人</text>
+  </g>
+</svg>

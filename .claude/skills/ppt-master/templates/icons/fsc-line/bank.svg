@@ -1,0 +1,8 @@
+<!--
+label: Bank
+group: finance
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6 18 24 7l18 11z"/><path d="M11 22v13M19 22v13M29 22v13M37 22v13M8 35h32M6 40h36"/><circle fill="currentColor" stroke="none" cx="24" cy="14" r="2.4"/>
+</svg>

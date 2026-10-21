@@ -1,0 +1,8 @@
+<!--
+label: Study / NTU life
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M4 18 24 9l20 9-20 9z"/><path d="M12 22v9c0 3 6 6 12 6s12-3 12-6v-9M40 20v12"/><circle fill="currentColor" stroke="none" cx="40" cy="34" r="2.4"/>
+</svg>

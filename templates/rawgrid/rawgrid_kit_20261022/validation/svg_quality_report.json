@@ -1,0 +1,798 @@
+{
+  "schema": "ppt-master.svg-quality-report.v1",
+  "stage": "final",
+  "target": "/home/user/1/templates/rawgrid/rawgrid_kit_20261022",
+  "source_fingerprint": {
+    "algorithm": "sha256",
+    "digest": "f87deebd703de7cd01b81633129996382271273a6bb2e175be46bfc6de7aa278",
+    "file_count": 10,
+    "files": [
+      {
+        "file": "01_chain.svg",
+        "sha256": "2c1c2d3620d99e6d10659689925e64032f67ff054e9781835566cb5f73bb80e6"
+      },
+      {
+        "file": "02_merkle.svg",
+        "sha256": "c2a13674136294305b99f1477398a8e70ce8b2fc3ba7b881996c7972f4ef239e"
+      },
+      {
+        "file": "03_net_0.svg",
+        "sha256": "71bf9e94f63a60a0da4615c2b9d61856cd10c5589968e4666c98dbfe8c1a73f5"
+      },
+      {
+        "file": "04_net_1.svg",
+        "sha256": "d5ede793f2ff5435026457b3edb41a67577e84649089f8f690cc5ea28889bd15"
+      },
+      {
+        "file": "05_net_2.svg",
+        "sha256": "4a3de5662e45544fa825455ce4b426cba971515c5b7fe86e55c4dc88dd204bae"
+      },
+      {
+        "file": "06_steps.svg",
+        "sha256": "9a8b163fbde73d843b9c67f3d17d4ca4c9976ec261a82efa9f30fb998d0161e2"
+      },
+      {
+        "file": "07_doughnut.svg",
+        "sha256": "f3e76efb81fd38e2b41e3fbd07a1b8ca083d13b1bf00f423b3155aaa3ac1cb79"
+      },
+      {
+        "file": "08_text_fx.svg",
+        "sha256": "9d996ce9f5ba120c2672529160c7093f506042f190351d37e7718cdc2a21ef87"
+      },
+      {
+        "file": "09_icons.svg",
+        "sha256": "179974b645a8db643b7eae8e973902b5571b00783e09707b2cf9a6afbaccab65"
+      },
+      {
+        "file": "10_people.svg",
+        "sha256": "ced4b387ecae848bf704d83a8d67f5c1f88c0fc0129b499c4446abef7d46cf62"
+      }
+    ]
+  },
+  "summary": {
+    "total": 10,
+    "passed": 0,
+    "warnings": 10,
+    "errors": 0
+  },
+  "issue_types": {},
+  "categories": {
+    "blocking": {
+      "count": 0,
+      "issues": []
+    },
+    "introduced": {
+      "count": 10,
+      "issues": [
+        {
+          "file": "01_chain.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        },
+        {
+          "file": "02_merkle.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        },
+        {
+          "file": "03_net_0.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        },
+        {
+          "file": "04_net_1.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        },
+        {
+          "file": "05_net_2.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        },
+        {
+          "file": "06_steps.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        },
+        {
+          "file": "07_doughnut.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        },
+        {
+          "file": "08_text_fx.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        },
+        {
+          "file": "09_icons.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        },
+        {
+          "file": "10_people.svg",
+          "message": "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+        }
+      ]
+    },
+    "inherited": {
+      "count": 0,
+      "issues": []
+    },
+    "source-import": {
+      "count": 0,
+      "summary": {
+        "warning_count": 0,
+        "by_code": {}
+      }
+    }
+  },
+  "drift": {
+    "colors": {},
+    "fonts": {},
+    "sizes": {}
+  },
+  "carrier_receipt": {
+    "scope": "informational-not-a-quota",
+    "pages": 10,
+    "totals": {
+      "text_elements": 185,
+      "image_placements": 0,
+      "icons": 54,
+      "svg_geometry_elements": 665,
+      "preset_shapes": 0,
+      "page_frame_elements": 10,
+      "marker_uses": 0,
+      "inline_emphasis_runs": 1,
+      "gradient_uses": 0,
+      "filter_uses": 0,
+      "text_effects": 0
+    },
+    "pages_with": {
+      "images": 0,
+      "icons": 2,
+      "presets": 0,
+      "charts": 1,
+      "tables": 0,
+      "formulas": 0,
+      "inline_emphasis_runs": 1,
+      "gradient_uses": 0,
+      "filter_uses": 0,
+      "text_effects": 0
+    },
+    "relationship_pages": null,
+    "geometry_elements": {
+      "circle": 132,
+      "ellipse": 0,
+      "line": 153,
+      "path": 33,
+      "polygon": 1,
+      "polyline": 0,
+      "rect": 346
+    },
+    "preset_names": {},
+    "native_objects": {
+      "chart": 1,
+      "formula_block": 0,
+      "formula_inline": 0,
+      "other": 0,
+      "table": 0
+    },
+    "image_page_max_frame_share_range": []
+  },
+  "project_issues": {
+    "template": [],
+    "animation": [],
+    "illustration": [],
+    "communication_trace": [],
+    "pptx_structure": []
+  },
+  "files": [
+    {
+      "file": "01_chain.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/01_chain.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 25,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 82,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 25,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "2c1c2d3620d99e6d10659689925e64032f67ff054e9781835566cb5f73bb80e6"
+    },
+    {
+      "file": "02_merkle.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/02_merkle.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 26,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 54,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 20
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 26,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "c2a13674136294305b99f1477398a8e70ce8b2fc3ba7b881996c7972f4ef239e"
+    },
+    {
+      "file": "03_net_0.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/03_net_0.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 6,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 22,
+              "circle": 44,
+              "ellipse": 0,
+              "line": 51,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 6,
+        "tspan_elements": 3
+      },
+      "passed": true,
+      "source_sha256": "71bf9e94f63a60a0da4615c2b9d61856cd10c5589968e4666c98dbfe8c1a73f5"
+    },
+    {
+      "file": "04_net_1.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/04_net_1.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 6,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 22,
+              "circle": 44,
+              "ellipse": 0,
+              "line": 51,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 6,
+        "tspan_elements": 3
+      },
+      "passed": true,
+      "source_sha256": "d5ede793f2ff5435026457b3edb41a67577e84649089f8f690cc5ea28889bd15"
+    },
+    {
+      "file": "05_net_2.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/05_net_2.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 6,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 22,
+              "circle": 44,
+              "ellipse": 0,
+              "line": 51,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 6,
+        "tspan_elements": 3
+      },
+      "passed": true,
+      "source_sha256": "4a3de5662e45544fa825455ce4b426cba971515c5b7fe86e55c4dc88dd204bae"
+    },
+    {
+      "file": "06_steps.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/06_steps.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 23,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 37,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 23,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "9a8b163fbde73d843b9c67f3d17d4ca4c9976ec261a82efa9f30fb998d0161e2"
+    },
+    {
+      "file": "07_doughnut.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/07_doughnut.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 11,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 34,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 3
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 1,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 11,
+        "tspan_elements": 1
+      },
+      "passed": true,
+      "source_sha256": "f3e76efb81fd38e2b41e3fbd07a1b8ca083d13b1bf00f423b3155aaa3ac1cb79"
+    },
+    {
+      "file": "08_text_fx.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/08_text_fx.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 19,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 0,
+          "effects": {
+            "inline_emphasis_runs": 1,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 22,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 1,
+              "path": 10
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 19,
+        "tspan_elements": 1
+      },
+      "passed": true,
+      "source_sha256": "9d996ce9f5ba120c2672529160c7093f506042f190351d37e7718cdc2a21ef87"
+    },
+    {
+      "file": "09_icons.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/09_icons.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 51,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 49,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 21,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 51,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "179974b645a8db643b7eae8e973902b5571b00783e09707b2cf9a6afbaccab65"
+    },
+    {
+      "file": "10_people.svg",
+      "path": "templates/rawgrid/rawgrid_kit_20261022/svg_output/10_people.svg",
+      "exists": true,
+      "errors": [],
+      "warnings": [
+        "Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black"
+      ],
+      "info": {
+        "viewbox": "0 0 1280 720",
+        "carrier_receipt": {
+          "text_elements": 12,
+          "images": {
+            "placements": 0,
+            "files": [],
+            "max_frame_share": 0.0
+          },
+          "icons": 5,
+          "effects": {
+            "inline_emphasis_runs": 0,
+            "gradient_uses": 0,
+            "filter_uses": 0,
+            "text_effects": 0
+          },
+          "geometry": {
+            "svg_elements": {
+              "rect": 30,
+              "circle": 0,
+              "ellipse": 0,
+              "line": 0,
+              "polyline": 0,
+              "polygon": 0,
+              "path": 0
+            },
+            "preset_shapes": 0,
+            "preset_names": {},
+            "page_frame_elements": 1,
+            "marker_uses": {
+              "start": 0,
+              "mid": 0,
+              "end": 0
+            }
+          },
+          "native_objects": {
+            "chart": 0,
+            "table": 0,
+            "formula_block": 0,
+            "formula_inline": 0,
+            "other": 0
+          }
+        },
+        "fonts": [
+          "Consolas, Microsoft JhengHei",
+          "Segoe UI Black, Noto Sans TC Black",
+          "Segoe UI, Microsoft JhengHei"
+        ],
+        "text_elements": 12,
+        "tspan_elements": 0
+      },
+      "passed": true,
+      "source_sha256": "ced4b387ecae848bf704d83a8d67f5c1f88c0fc0129b499c4446abef7d46cf62"
+    }
+  ]
+}

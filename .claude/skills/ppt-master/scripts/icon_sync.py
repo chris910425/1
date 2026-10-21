@@ -41,7 +41,7 @@ _STYLISTIC_LIBRARIES = {
     "tabler-filled",
     "tabler-outline",
 }
-_SYNC_LIBRARIES = _STYLISTIC_LIBRARIES | {"simple-icons"}
+_SYNC_LIBRARIES = _STYLISTIC_LIBRARIES | {"simple-icons", "fsc-line", "fsc-char"}  # local patch (Slide Studio): our library icons
 _GLOBAL_ICONS_DIR = Path(__file__).resolve().parent.parent / "templates" / "icons"
 
 

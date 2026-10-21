@@ -1,0 +1,8 @@
+<!--
+label: Fingerprint
+group: law
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 18a13 13 0 0 1 24 0M10 26c0-8 6-14 14-14s14 6 14 14v3M16 40c-2-4-2-9-2-13a10 10 0 0 1 20 0v4M22 42c-2-5-3-10-3-15a5 5 0 0 1 10 0c0 5 1 9 3 13"/><path  d="M24 27c0 6 1 11 4 16"/>
+</svg>

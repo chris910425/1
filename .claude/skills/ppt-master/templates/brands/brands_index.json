@@ -59,6 +59,10 @@
     "summary": "PwC-style professional-services identity — warm orange-to-rose spectrum on black for assurance, tax, and advisory decks",
     "primary_color": "#DB4E18"
   },
+  "raw-grid": {
+    "summary": "Raw Grid — neobrutalist grid identity for 繁體中文 blockchain coursework; black 3px lines as layout, two pastel fills, heavy uppercase type",
+    "primary_color": "#0A0A0A"
+  },
   "tencent": {
     "summary": "Tencent-style internet and cloud identity — measured blue on light neutrals for platform, cloud, and ecosystem decks",
     "primary_color": "#3458B0"

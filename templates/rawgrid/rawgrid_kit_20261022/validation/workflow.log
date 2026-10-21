@@ -1,0 +1,71 @@
+
+=== 2026-10-21T16:51:02.724Z NOTE id=dab0693fcc95 ===
+Project initialized: profile=quick; path=/home/user/1/templates/rawgrid/rawgrid_kit_20261022
+
+=== 2026-10-21T16:51:02.958Z PYTHON run=1eca2f825185 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/icon_sync.py", "templates/rawgrid/rawgrid_kit_20261022", "fsc-line/bank", "fsc-line/block", "fsc-line/briefcase", "fsc-line/bus", "fsc-line/card", "fsc-line/coin", "fsc-line/compliance", "fsc-line/contract", "fsc-line/contractsign", "fsc-line/copyright", "fsc-line/court", "fsc-line/crab", "fsc-line/durian", "fsc-line/evidence", "fsc-line/exchange", "fsc-line/fingerprint", "fsc-line/gavel", "fsc-line/globe", "fsc-line/growth", "fsc-line/handcuffs", "fsc-line/hawker", "fsc-line/hdb", "fsc-line/hive", "fsc-line/justice", "fsc-line/key", "fsc-line/kopi", "fsc-line/kyc", "fsc-line/laptop", "fsc-line/lawbooks", "fsc-line/lock", "fsc-line/mbs", "fsc-line/mrt", "fsc-line/phone", "fsc-line/plane", "fsc-line/privacy", "fsc-line/qr", "fsc-line/quill", "fsc-line/rain", "fsc-line/regulator", "fsc-line/seal", "fsc-line/section", "fsc-line/shield", "fsc-line/statute", "fsc-line/study", "fsc-line/sun", "fsc-line/supertree", "fsc-line/transit", "fsc-line/vault", "fsc-line/wallet", "fsc-char/alice", "fsc-char/bob", "fsc-char/eve", "fsc-char/trent", "fsc-char/mallory"]
+stderr:
+  [OK] 54 icon(s) in templates/rawgrid/rawgrid_kit_20261022/icons:
+       + fsc-line/bank
+       + fsc-line/block
+       + fsc-line/briefcase
+       + fsc-line/bus
+       + fsc-line/card
+       + fsc-line/coin
+       + fsc-line/compliance
+       + fsc-line/contract
+stderr-tail:
+       + fsc-char/bob
+       + fsc-char/eve
+       + fsc-char/trent
+       + fsc-char/mallory
+=== 2026-10-21T16:51:02.969Z END run=1eca2f825185 elapsed_ms=10 output_lines=55 retained=13 omitted=42 ===
+
+=== 2026-10-21T16:51:03.106Z PYTHON run=dd94738e0b7a ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/compact_svg_styles.py", "templates/rawgrid/rawgrid_kit_20261022/svg_output", "--inplace"]
+=== 2026-10-21T16:51:03.118Z END run=dd94738e0b7a elapsed_ms=12 output_lines=1 retained=0 omitted=1 ===
+
+=== 2026-10-21T16:51:03.520Z PYTHON run=e71ae0cc700a ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/stamp_native_fallbacks.py", "templates/rawgrid/rawgrid_kit_20261022/svg_output", "--write"]
+=== 2026-10-21T16:51:03.552Z END run=e71ae0cc700a elapsed_ms=32 output_lines=11 retained=0 omitted=11 ===
+
+=== 2026-10-21T16:51:03.677Z PYTHON run=6a5aab61b9b3 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_quality_checker.py", "templates/rawgrid/rawgrid_kit_20261022", "--quick-generate", "--canonical-authoring", "--stage", "final", "--json"]
+stdout:
+  [WARN] 01_chain.svg - Passed (with warnings)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black
+  [WARN] 02_merkle.svg - Passed (with warnings)
+     [WARN] Font stack exports non-PPT-safe typeface(s) to PPTX (latin=Segoe UI Black, ea=Noto Sans TC Black): Segoe UI Black, Noto Sans TC Black
+  [SUMMARY] Check Summary
+  Total files: 10
+    [OK] Fully passed: 0 (0%)
+    [WARN] With warnings: 10 (100%)
+    [ERROR] With errors: 0 (0%)
+  Provenance categories:
+    blocking: 0          hard findings; gate also requires exit 0
+    introduced: 10       advisory; new or changed
+    inherited: 0         informational; prototype-identical
+    source-import: 0     informational; source-conversion loss
+  [CARRIERS] Actual-use receipt (informational; not a quota)
+    Pages: 10 | text: 185 | images: 0 | icons: 54
+    Geometry: SVG elements 665 | native presets 0 | page-frame elements 10 | marker uses 0
+  [REPORT] JSON quality report exported: templates/rawgrid/rawgrid_kit_20261022/validation/svg_quality_report.json
+=== 2026-10-21T16:51:04.879Z END run=6a5aab61b9b3 elapsed_ms=1201 output_lines=57 retained=18 omitted=39 ===
+
+=== 2026-10-21T16:51:10.670Z PYTHON run=40b62d670a41 ===
+cwd: /home/user/1
+argv: ["/tmp/claude-0/-home-user-1/e09301c7-c808-5587-a938-1d67c0781eb2/scratchpad/pptvenv/bin/python", ".claude/skills/ppt-master/scripts/svg_to_pptx.py", "templates/rawgrid/rawgrid_kit_20261022", "--quick-generate", "--no-notes", "--native-charts-and-tables", "-t", "morph"]
+stderr:
+  Warning: --native-charts-and-tables replaces shape-based SVG fallbacks with PowerPoint Chart/Table objects. The native objects may normalize styling or omit SVG details that are not represented by marker metadata; use the default shape-based export when exact fallback artwork is required.
+stdout:
+  [Done] Saved: templates/rawgrid/rawgrid_kit_20261022/exports/rawgrid_kit_20261021_165111_native_charts_tables.pptx
+    [POSTFLIGHT] status=passed-with-warnings quality_gate=passed slides=10 warning_categories=2
+    [POSTFLIGHT][WARNING] quality_introduced_warnings=10
+    [POSTFLIGHT][WARNING] unsafe_exported_font_faces=2
+    [PPTX] templates/rawgrid/rawgrid_kit_20261022/exports/rawgrid_kit_20261021_165111_native_charts_tables.pptx
+    [REPORT] templates/rawgrid/rawgrid_kit_20261022/validation/rawgrid_kit_20261021_165111_native_charts_tables.report.json
+=== 2026-10-21T16:51:12.446Z END run=40b62d670a41 elapsed_ms=1776 output_lines=52 retained=7 omitted=45 ===

@@ -1,0 +1,8 @@
+<!--
+label: Bus
+group: life
+source: Slide Studio component library
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="9" y="5" width="30" height="34" rx="4"/><path d="M13 10h22v8H13zM13 23h22v7H13z"/><circle cx="16" cy="41" r="3"/><circle cx="32" cy="41" r="3"/><path fill="currentColor" stroke="none" d="M9 32.5h30v2.5H9z"/>
+</svg>
