@@ -15,3 +15,4 @@ Top three problems (most visible first), each with slide number and the fix:
 2. Slide 10: empty band above 謝謝; acceptable as a rest, could hold a pixel block motif.
 3. Pixel-title outline is not drawn by LibreOffice previews; check thickness in real PowerPoint.
 ```
+- 2026-10-22: user finds Cubic 11 ugly. Showed 8 title-font options (templates/bitgrid/font-options/), waiting for the pick. Next: library elements (chain, Merkle tree, gossip network, icons) for PowerPoint.
