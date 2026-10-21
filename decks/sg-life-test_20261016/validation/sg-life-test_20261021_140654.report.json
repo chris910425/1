@@ -1,0 +1,175 @@
+{
+  "schema": "ppt-master.pptx-postflight-report.v1",
+  "status": "passed",
+  "output": {
+    "path": "/home/user/1/decks/sg-life-test_20261016/exports/sg-life-test_20261021_140654.pptx",
+    "bytes": 22885
+  },
+  "source": {
+    "svg_slide_count": 5,
+    "layout_definition_count": 0,
+    "fingerprint": {
+      "algorithm": "sha256",
+      "digest": "4448428fe127c12fafa7192388071ffcf4070af53ab33ced61616b4310b7f166",
+      "file_count": 5,
+      "files": [
+        {
+          "file": "01_cover.svg",
+          "sha256": "ee4c002812520162635dd7841a53ade553612e8018fb7d00380e55e0c27621d9"
+        },
+        {
+          "file": "02_day.svg",
+          "sha256": "982100aeaa1a7e1bda2fedd4f24bba09f1c9dbc847264f0580a96a262024bbc6"
+        },
+        {
+          "file": "03_quote.svg",
+          "sha256": "e66a1bde335b8e7f959077867a855893666ccc489b27c9a04a521e845f33dac5"
+        },
+        {
+          "file": "04_compare.svg",
+          "sha256": "47901400e0c67539a5643a1c034152ff972959c03ea5dc178b28e4254684b1f0"
+        },
+        {
+          "file": "05_advice.svg",
+          "sha256": "aae7d22f778359dff92a4869134f1432a5c371f8dc46bc623b44ab0df88cf02b"
+        }
+      ]
+    },
+    "authoring_roundtrip": null
+  },
+  "package": {
+    "zip_integrity": "passed",
+    "corrupt_member": null,
+    "slides": 5,
+    "notes": 0,
+    "masters": 1,
+    "layouts": 1
+  },
+  "checks": {
+    "zip_integrity": "passed",
+    "slide_count": "passed",
+    "internal_relationships": "enforced-at-build",
+    "structured_package": "not-applicable",
+    "transitions": "enforced-at-build",
+    "animations": "enforced-at-build",
+    "project_svg_contract": "enforced-at-build",
+    "compatibility_normalization": "not-applicable",
+    "authoring_roundtrip": "not-applicable",
+    "quality_gate": "passed",
+    "quality_warnings": "passed",
+    "template_tokens": "passed",
+    "external_images": "passed",
+    "font_portability": "passed"
+  },
+  "quality": {
+    "status": "loaded",
+    "path": "validation/svg_quality_report.json",
+    "schema": "ppt-master.svg-quality-report.v1",
+    "stage": "final",
+    "source_match": "passed",
+    "source_fingerprint": {
+      "algorithm": "sha256",
+      "digest": "4448428fe127c12fafa7192388071ffcf4070af53ab33ced61616b4310b7f166",
+      "file_count": 5,
+      "files": [
+        {
+          "file": "01_cover.svg",
+          "sha256": "ee4c002812520162635dd7841a53ade553612e8018fb7d00380e55e0c27621d9"
+        },
+        {
+          "file": "02_day.svg",
+          "sha256": "982100aeaa1a7e1bda2fedd4f24bba09f1c9dbc847264f0580a96a262024bbc6"
+        },
+        {
+          "file": "03_quote.svg",
+          "sha256": "e66a1bde335b8e7f959077867a855893666ccc489b27c9a04a521e845f33dac5"
+        },
+        {
+          "file": "04_compare.svg",
+          "sha256": "47901400e0c67539a5643a1c034152ff972959c03ea5dc178b28e4254684b1f0"
+        },
+        {
+          "file": "05_advice.svg",
+          "sha256": "aae7d22f778359dff92a4869134f1432a5c371f8dc46bc623b44ab0df88cf02b"
+        }
+      ]
+    },
+    "summary": {
+      "total": 5,
+      "passed": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    "categories": {
+      "blocking": {
+        "count": 0,
+        "issues": []
+      },
+      "introduced": {
+        "count": 0,
+        "issues": []
+      },
+      "inherited": {
+        "count": 0,
+        "issues": []
+      },
+      "source-import": {
+        "count": 0,
+        "summary": {
+          "warning_count": 0,
+          "by_code": {}
+        }
+      }
+    }
+  },
+  "resources": {
+    "unresolved_template_tokens": [],
+    "fonts": {
+      "stacks": [
+        "Arial",
+        "Microsoft JhengHei, Arial"
+      ],
+      "generic_only_stacks": [],
+      "unsafe_exported_faces": []
+    },
+    "images": {
+      "data_uri": 0,
+      "local": 0,
+      "external": 0,
+      "external_references": []
+    }
+  },
+  "export_policy": {
+    "project_svg_contract": "strict",
+    "dangerous_normalization_count": 0
+  },
+  "deck_motion": {
+    "transition": {
+      "effect": "fade",
+      "effect_options": {},
+      "duration": 0.4,
+      "auto_advance": null,
+      "sound": null
+    },
+    "animation": {
+      "effect": "none",
+      "effect_request": null,
+      "duration": 0.4,
+      "stagger": 0.5,
+      "trigger": "after-previous"
+    },
+    "cli_overrides": {
+      "transition": false,
+      "transition_duration": false,
+      "auto_advance": false,
+      "transition_sound": false,
+      "animation": false,
+      "animation_duration": false,
+      "animation_stagger": false,
+      "animation_trigger": false
+    },
+    "narration_timings": false
+  },
+  "backup_path": "/home/user/1/decks/sg-life-test_20261016/backup/20261021_140654/svg_output",
+  "conversion_trace_path": null
+}

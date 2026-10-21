@@ -22,3 +22,14 @@ Top three problems (most visible first), each with slide number and the fix:
 2. Slide 2: the timeline sits in one band (y 270–520) with a hole below it and a stray note line. Enlarge times and labels, let the band take the middle of the slide, move the note to the footer.
 3. Deck: no idea from the subject. Candidate: the MRT line as the device (slide 2 becomes stations on a line in MRT colours; slide 5's tips become "next stops"), or the library's block chain linking the sections.
 ```
+
+```
+ROUND 2 (2026-10-21) after fixes
+Seen in one second: cover = the title; slide 2 = a green MRT line with four stops
+Idea (one sentence): a student's year in Singapore told as an MRT ride (the East-West line green links cover, day and tips)
+Layout words: 1=cover-split 2=line 3=statement 4=compare 5=line-vertical
+Scores: design 7.5 · clarity 8 · idea 7.5 · content 5 → overall 7.4
+Caps applied: placeholder wording (content ≤ 5): lifts once real content goes in
+Changes: title 96→128px and MSBT 120→64px; slide 2 timeline is now an MRT line (bigger times 64px, labels 32/22px, note moved to footer); slide 5 tips are "next stops" on a vertical line (01/02/03 and hairlines removed); cover gets a three-stop line (課堂 / 生活 / 小發現).
+Remaining: slide 4 does not carry the MRT idea yet and its blue panel is a large accent area; content is placeholder.
+```

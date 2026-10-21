@@ -4,16 +4,16 @@
   "target": "/home/user/1/decks/sg-life-test_20261016",
   "source_fingerprint": {
     "algorithm": "sha256",
-    "digest": "ec1a16a3b82ddb3a55bf18a4c39966ee5d2f2b5c086cd790d2c1ca0d2f43d7b6",
+    "digest": "4448428fe127c12fafa7192388071ffcf4070af53ab33ced61616b4310b7f166",
     "file_count": 5,
     "files": [
       {
         "file": "01_cover.svg",
-        "sha256": "dcc4a7b3c9455013b6ab447ef50d23e49d9530c6ff19e29cd2d39695dc771af9"
+        "sha256": "ee4c002812520162635dd7841a53ade553612e8018fb7d00380e55e0c27621d9"
       },
       {
         "file": "02_day.svg",
-        "sha256": "fe57832847ccdf1e98e81505f191c00002d08a069609ccabe43daaf410b1a1df"
+        "sha256": "982100aeaa1a7e1bda2fedd4f24bba09f1c9dbc847264f0580a96a262024bbc6"
       },
       {
         "file": "03_quote.svg",
@@ -25,7 +25,7 @@
       },
       {
         "file": "05_advice.svg",
-        "sha256": "a45232166b28ea8738b286ea8414245d299b299142f12bbb24313936a05cbb5d"
+        "sha256": "aae7d22f778359dff92a4869134f1432a5c371f8dc46bc623b44ab0df88cf02b"
       }
     ]
   },
@@ -66,10 +66,10 @@
     "scope": "informational-not-a-quota",
     "pages": 5,
     "totals": {
-      "text_elements": 56,
+      "text_elements": 55,
       "image_placements": 0,
       "icons": 0,
-      "svg_geometry_elements": 27,
+      "svg_geometry_elements": 34,
       "preset_shapes": 0,
       "page_frame_elements": 5,
       "marker_uses": 0,
@@ -92,9 +92,9 @@
     },
     "relationship_pages": null,
     "geometry_elements": {
-      "circle": 4,
+      "circle": 10,
       "ellipse": 0,
-      "line": 9,
+      "line": 10,
       "path": 0,
       "polygon": 0,
       "polyline": 0,
@@ -120,14 +120,14 @@
   "files": [
     {
       "file": "01_cover.svg",
-      "path": "decks/sg-life-test_20261016/svg_output/01_cover.svg",
+      "path": "svg_output/01_cover.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 7,
+          "text_elements": 10,
           "images": {
             "placements": 0,
             "files": [],
@@ -143,9 +143,9 @@
           "geometry": {
             "svg_elements": {
               "rect": 2,
-              "circle": 0,
+              "circle": 3,
               "ellipse": 0,
-              "line": 0,
+              "line": 1,
               "polyline": 0,
               "polygon": 0,
               "path": 0
@@ -171,22 +171,22 @@
           "Arial",
           "Microsoft JhengHei, Arial"
         ],
-        "text_elements": 7,
+        "text_elements": 10,
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "dcc4a7b3c9455013b6ab447ef50d23e49d9530c6ff19e29cd2d39695dc771af9"
+      "source_sha256": "ee4c002812520162635dd7841a53ade553612e8018fb7d00380e55e0c27621d9"
     },
     {
       "file": "02_day.svg",
-      "path": "decks/sg-life-test_20261016/svg_output/02_day.svg",
+      "path": "svg_output/02_day.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 17,
+          "text_elements": 16,
           "images": {
             "placements": 0,
             "files": [],
@@ -230,15 +230,15 @@
           "Arial",
           "Microsoft JhengHei, Arial"
         ],
-        "text_elements": 17,
+        "text_elements": 16,
         "tspan_elements": 4
       },
       "passed": true,
-      "source_sha256": "fe57832847ccdf1e98e81505f191c00002d08a069609ccabe43daaf410b1a1df"
+      "source_sha256": "982100aeaa1a7e1bda2fedd4f24bba09f1c9dbc847264f0580a96a262024bbc6"
     },
     {
       "file": "03_quote.svg",
-      "path": "decks/sg-life-test_20261016/svg_output/03_quote.svg",
+      "path": "svg_output/03_quote.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -297,7 +297,7 @@
     },
     {
       "file": "04_compare.svg",
-      "path": "decks/sg-life-test_20261016/svg_output/04_compare.svg",
+      "path": "svg_output/04_compare.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
@@ -356,14 +356,14 @@
     },
     {
       "file": "05_advice.svg",
-      "path": "decks/sg-life-test_20261016/svg_output/05_advice.svg",
+      "path": "svg_output/05_advice.svg",
       "exists": true,
       "errors": [],
       "warnings": [],
       "info": {
         "viewbox": "0 0 1280 720",
         "carrier_receipt": {
-          "text_elements": 13,
+          "text_elements": 10,
           "images": {
             "placements": 0,
             "files": [],
@@ -379,7 +379,7 @@
           "geometry": {
             "svg_elements": {
               "rect": 1,
-              "circle": 0,
+              "circle": 3,
               "ellipse": 0,
               "line": 3,
               "polyline": 0,
@@ -407,11 +407,11 @@
           "Arial",
           "Microsoft JhengHei, Arial"
         ],
-        "text_elements": 13,
+        "text_elements": 10,
         "tspan_elements": 0
       },
       "passed": true,
-      "source_sha256": "a45232166b28ea8738b286ea8414245d299b299142f12bbb24313936a05cbb5d"
+      "source_sha256": "aae7d22f778359dff92a4869134f1432a5c371f8dc46bc623b44ab0df88cf02b"
     }
   ]
 }
