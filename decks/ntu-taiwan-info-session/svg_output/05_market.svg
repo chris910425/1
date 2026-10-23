@@ -1,50 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Noto Sans TC">
   <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
   <g id="header" data-pptx-bounds="0 0 1280 92">
-    <text x="48" y="62" font-family="Noto Sans TC" font-weight="900" font-size="30" fill="#0A1138">該不該選這個系</text>
-    <text x="1070" y="62" font-family="Noto Sans TC" font-weight="700" font-size="13" fill="#6B6B6B" text-anchor="end" letter-spacing="1.2">JOB MARKET</text>
+    <text x="48" y="62" font-weight="900" font-size="30" fill="#0A1138">該不該選這個系</text>
+    <text x="1070" y="62" font-weight="700" font-size="13" fill="#6B6B6B" text-anchor="end" letter-spacing="1.2">JOB MARKET</text>
     <rect x="1094" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1112" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1130" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1148" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1166" y="46" width="12" height="12" fill="#0A1138" stroke="#0A1138" stroke-width="2"/><rect x="1184" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1202" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1220" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/>
     <rect x="48" y="90" width="1184" height="3" fill="#0A1138"/>
   </g>
-  <g id="claim" data-pptx-bounds="48 128 700 90">
-    <text x="48" y="182" font-family="Noto Sans TC" font-weight="900" font-size="40" fill="#0A1138">工程的缺最多，合規的缺最沒人補</text><rect x="48" y="202" width="96" height="5" fill="#D21540"/>
+  <g id="claim" data-pptx-bounds="48 110 700 98">
+    <text x="48" y="182" font-weight="900" font-size="40" fill="#0A1138">工程的缺最多，合規的缺最沒人補</text><rect x="48" y="202" width="96" height="5" fill="#D21540"/>
   </g>
-  <g id="bars" data-pptx-bounds="48 210 620 320">
-    <text x="48" y="228" font-family="Noto Sans TC" font-weight="700" font-size="24" fill="#0A1138">合規・法務・風控</text>
-    <text x="48" y="272" font-family="Noto Sans TC" font-weight="400" font-size="17" fill="#6B6B6B">職缺</text>
-    <rect x="110" y="254" width="440" height="26" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="113" y="257" width="108" height="20" fill="#D21540"/>
-    <text x="566" y="274" font-family="Noto Sans TC" font-weight="900" font-size="26" fill="#D21540">7.5%</text>
-    <text x="48" y="322" font-family="Noto Sans TC" font-weight="400" font-size="17" fill="#6B6B6B">應徵</text>
-    <rect x="110" y="304" width="440" height="26" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="113" y="307" width="33" height="20" fill="#93A0C9"/>
-    <text x="566" y="324" font-family="Noto Sans TC" font-weight="900" font-size="26" fill="#5A6AA8">2.3%</text>
-    <text x="48" y="398" font-family="Noto Sans TC" font-weight="700" font-size="24" fill="#0A1138">工程</text>
-    <text x="48" y="442" font-family="Noto Sans TC" font-weight="400" font-size="17" fill="#6B6B6B">職缺</text>
-    <rect x="110" y="424" width="440" height="26" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="113" y="427" width="393" height="20" fill="#0A1138"/>
-    <text x="566" y="444" font-family="Noto Sans TC" font-weight="900" font-size="26" fill="#0A1138">27.2%</text>
-    <text x="48" y="492" font-family="Noto Sans TC" font-weight="400" font-size="17" fill="#6B6B6B">應徵</text>
-    <rect x="110" y="474" width="440" height="26" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="113" y="477" width="324" height="20" fill="#93A0C9"/>
-    <text x="566" y="494" font-family="Noto Sans TC" font-weight="900" font-size="26" fill="#5A6AA8">22.4%</text>
+  <g id="bars" data-pptx-bounds="48 212 696 336">
+    <text x="48" y="240" font-weight="700" font-size="24" fill="#0A1138">合規・法務・風控</text>
+    <text x="48" y="284" font-weight="400" font-size="17" fill="#6B6B6B">職缺</text>
+    <rect x="110" y="266" width="440" height="26" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="113" y="269" width="108" height="20" fill="#D21540"/>
+    <text x="566" y="286" font-weight="900" font-size="26" fill="#D21540">7.5%</text>
+    <text x="48" y="334" font-weight="400" font-size="17" fill="#6B6B6B">應徵</text>
+    <rect x="110" y="316" width="440" height="26" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="113" y="319" width="33" height="20" fill="#93A0C9"/>
+    <text x="566" y="336" font-weight="900" font-size="26" fill="#5A6AA8">2.3%</text>
+    <text x="48" y="410" font-weight="700" font-size="24" fill="#0A1138">工程</text>
+    <text x="48" y="454" font-weight="400" font-size="17" fill="#6B6B6B">職缺</text>
+    <rect x="110" y="436" width="440" height="26" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="113" y="439" width="393" height="20" fill="#0A1138"/>
+    <text x="566" y="456" font-weight="900" font-size="26" fill="#0A1138">27.2%</text>
+    <text x="48" y="504" font-weight="400" font-size="17" fill="#6B6B6B">應徵</text>
+    <rect x="110" y="486" width="440" height="26" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="113" y="489" width="324" height="20" fill="#93A0C9"/>
+    <text x="566" y="506" font-weight="900" font-size="26" fill="#5A6AA8">22.4%</text>
   </g>
   <g id="ratio" data-pptx-bounds="48 556 696 48">
     <rect x="48" y="556" width="696" height="48" fill="#CBE0EC"/>
-    <text x="72" y="586" font-family="Noto Sans TC" font-weight="700" font-size="21" fill="#0A1138">合規：職缺是應徵的 3.3 倍　|　工程：1.2 倍</text>
+    <text x="72" y="586" font-weight="700" font-size="21" fill="#0A1138">合規：職缺是應徵的 3.3 倍　|　工程：1.2 倍</text>
   </g>
-  <g id="facts" data-pptx-bounds="772 128 460 470">
+  <g id="divider" data-pptx-bounds="756 92 4 628">
     <rect x="756" y="92" width="3" height="628" fill="#0A1138"/>
-    <text x="796" y="214" font-family="Noto Sans TC" font-weight="900" font-size="26" fill="#0A1138">新加坡 134 個職缺</text>
-    <text x="796" y="250" font-family="Noto Sans TC" font-weight="400" font-size="19" fill="#6B6B6B">美國（533）以外最多</text>
+  </g>
+  <g id="facts" data-pptx-bounds="772 110 460 488">
+    <text x="796" y="214" font-weight="900" font-size="26" fill="#0A1138">新加坡 134 個職缺</text>
+    <text x="796" y="250" font-weight="400" font-size="19" fill="#6B6B6B">美國（533）以外最多</text>
     <rect x="796" y="300" width="436" height="2" fill="#C7CEE4"/>
-    <text x="796" y="364" font-family="Noto Sans TC" font-weight="900" font-size="26" fill="#0A1138">60 個職缺要中文</text>
-    <text x="796" y="400" font-family="Noto Sans TC" font-weight="400" font-size="19" fill="#6B6B6B">集中在香港、新加坡、台灣</text>
+    <text x="796" y="364" font-weight="900" font-size="26" fill="#0A1138">60 個職缺要中文</text>
+    <text x="796" y="400" font-weight="400" font-size="19" fill="#6B6B6B">集中在香港、新加坡、台灣</text>
     <rect x="796" y="450" width="436" height="2" fill="#C7CEE4"/>
-    <text x="796" y="514" font-family="Noto Sans TC" font-weight="900" font-size="26" fill="#0A1138">台灣也在走同一條路</text>
-    <text x="796" y="550" font-family="Noto Sans TC" font-weight="400" font-size="19" fill="#6B6B6B">虛擬資產服務法已三讀，VASP 改許可制</text>
+    <text x="796" y="514" font-weight="900" font-size="26" fill="#0A1138">台灣也在走同一條路</text>
+    <text x="796" y="550" font-weight="400" font-size="19" fill="#6B6B6B">虛擬資產服務法已三讀，VASP 改許可制</text>
   </g>
   <g id="token" data-pptx-bounds="772 600 460 60">
-    <text x="796" y="622" font-family="Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138">傳統金融正在把資產搬上鏈</text>
-    <text x="796" y="652" font-family="Noto Sans TC" font-weight="400" font-size="19" fill="#6B6B6B">Tokenization — 這個缺口只會更大</text>
+    <text x="796" y="622" font-weight="700" font-size="22" fill="#0A1138">傳統金融正在把資產搬上鏈</text>
+    <text x="796" y="652" font-weight="400" font-size="19" fill="#6B6B6B">Tokenization — 這個缺口只會更大</text>
   </g>
   <g id="source" data-pptx-bounds="48 676 696 30">
-    <text x="48" y="694" font-family="Noto Sans TC" font-weight="400" font-size="15" fill="#6B6B6B">資料：MoleDAO, Web3 Hiring Market Report Q3 2026</text>
+    <text x="48" y="694" font-weight="400" font-size="15" fill="#6B6B6B">資料：MoleDAO, Web3 Hiring Market Report Q3 2026</text>
   </g>
 </svg>

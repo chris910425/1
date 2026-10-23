@@ -1,24 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Noto Sans TC">
   <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
   <g id="header" data-pptx-bounds="0 0 1280 92">
-    <text x="48" y="62" font-family="Noto Sans TC" font-weight="900" font-size="30" fill="#0A1138">個人簡介</text>
-    <text x="1070" y="62" font-family="Noto Sans TC" font-weight="700" font-size="13" fill="#6B6B6B" text-anchor="end" letter-spacing="1.2">ABOUT ME</text>
+    <text x="48" y="62" font-weight="900" font-size="30" fill="#0A1138">個人簡介</text>
+    <text x="1070" y="62" font-weight="700" font-size="13" fill="#6B6B6B" text-anchor="end" letter-spacing="1.2">ABOUT ME</text>
     <rect x="1094" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1112" y="46" width="12" height="12" fill="#0A1138" stroke="#0A1138" stroke-width="2"/><rect x="1130" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1148" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1166" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1184" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1202" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1220" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/>
     <rect x="48" y="90" width="1184" height="3" fill="#0A1138"/>
   </g>
   <g id="name" data-pptx-bounds="48 130 640 160">
-    <text x="48" y="232" font-family="Noto Sans TC" font-weight="900" font-size="84" fill="#0A1138">張鈞威</text>
+    <text x="48" y="232" font-weight="900" font-size="84" fill="#0A1138">張鈞威</text>
     <rect x="48" y="262" width="96" height="5" fill="#D21540"/>
   </g>
   <g id="rows" data-pptx-bounds="48 310 640 300">
-    <text x="48" y="352" font-family="Noto Sans TC" font-weight="700" font-size="26" fill="#0A1138">→　東吳大學 哲學系</text>
-    <text x="48" y="414" font-family="Noto Sans TC" font-weight="700" font-size="26" fill="#0A1138">→　沒有程式背景</text>
-    <text x="48" y="476" font-family="Noto Sans TC" font-weight="700" font-size="26" fill="#0A1138">→　NTU MSBT 2026 入學</text>
-    <text x="48" y="538" font-family="Noto Sans TC" font-weight="700" font-size="26" fill="#6B6B6B">→　（目前在做什麼）</text>
+    <text x="48" y="352" font-weight="700" font-size="26" fill="#0A1138">→　東吳大學 哲學系</text>
+    <text x="48" y="414" font-weight="700" font-size="26" fill="#0A1138">→　沒有程式背景</text>
+    <text x="48" y="476" font-weight="700" font-size="26" fill="#0A1138">→　NTU MSBT 2026 入學</text>
+    <text x="48" y="538" font-weight="700" font-size="26" fill="#6B6B6B">→　（目前在做什麼）</text>
   </g>
   <g id="portrait" data-pptx-bounds="740 130 492 490">
     <rect x="746" y="136" width="486" height="484" fill="#0A1138"/><rect x="740" y="130" width="486" height="484" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/>
-    <text x="983" y="360" font-family="Noto Sans TC" font-weight="400" font-size="24" fill="#93A0C9" text-anchor="middle">（個人照片）</text>
-    <text x="983" y="398" font-family="Noto Sans TC" font-weight="400" font-size="18" fill="#93A0C9" text-anchor="middle">待提供</text>
+    <text x="983" y="360" font-weight="400" font-size="24" fill="#93A0C9" text-anchor="middle">（個人照片）</text>
+    <text x="983" y="398" font-weight="400" font-size="18" fill="#93A0C9" text-anchor="middle">待提供</text>
   </g>
 </svg>

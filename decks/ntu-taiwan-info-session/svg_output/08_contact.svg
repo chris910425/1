@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="closing" font-family="Noto Sans TC">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Noto Sans TC">
   <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
   <g id="photo" data-pptx-bounds="640 0 640 720" data-pptx-role="background">
     <image href="../images/hive-cover.jpg" x="640" y="0" width="640" height="720" preserveAspectRatio="xMidYMid slice"/>
@@ -7,18 +7,18 @@
     <rect x="0" y="0" width="640" height="720" fill="#FFFFFF"/>
     <rect x="640" y="0" width="3" height="720" fill="#0A1138"/>
     <image href="../images/ntu-cctf-lockup-navy.png" x="48" y="60" width="300" height="49" preserveAspectRatio="xMinYMid meet"/>
-    <text x="48" y="268" font-family="Noto Sans TC" font-weight="900" font-size="68" fill="#0A1138">謝謝聆聽</text>
+    <text x="48" y="268" font-weight="900" font-size="68" fill="#0A1138">謝謝聆聽</text>
     <rect x="48" y="306" width="96" height="5" fill="#D21540"/>
-    <text x="48" y="356" font-family="Noto Sans TC" font-weight="700" font-size="24" fill="#0A1138">張鈞威 ・ NTU MSBT</text>
+    <text x="48" y="356" font-weight="700" font-size="24" fill="#0A1138">張鈞威 ・ NTU MSBT</text>
     <rect x="48" y="410" width="544" height="2" fill="#C7CEE4"/>
-    <text x="48" y="444" font-family="Noto Sans TC" font-weight="700" font-size="13" fill="#6B6B6B" letter-spacing="1.2">EMAIL</text>
-    <text x="200" y="448" font-family="Noto Sans TC" font-weight="700" font-size="21" fill="#0A1138">（待填）</text>
+    <text x="48" y="444" font-weight="700" font-size="13" fill="#6B6B6B" letter-spacing="1.2">EMAIL</text>
+    <text x="200" y="448" font-weight="700" font-size="21" fill="#0A1138">（待填）</text>
     <rect x="48" y="482" width="544" height="2" fill="#C7CEE4"/>
-    <text x="48" y="516" font-family="Noto Sans TC" font-weight="700" font-size="13" fill="#6B6B6B" letter-spacing="1.2">LINKEDIN</text>
-    <text x="200" y="520" font-family="Noto Sans TC" font-weight="700" font-size="21" fill="#0A1138">（待填）</text>
+    <text x="48" y="516" font-weight="700" font-size="13" fill="#6B6B6B" letter-spacing="1.2">LINKEDIN</text>
+    <text x="200" y="520" font-weight="700" font-size="21" fill="#0A1138">（待填）</text>
     <rect x="48" y="554" width="544" height="2" fill="#C7CEE4"/>
-    <text x="48" y="588" font-family="Noto Sans TC" font-weight="700" font-size="13" fill="#6B6B6B" letter-spacing="1.2">INSTAGRAM</text>
-    <text x="200" y="592" font-family="Noto Sans TC" font-weight="700" font-size="21" fill="#0A1138">（待填）</text>
-    <text x="48" y="668" font-family="Noto Sans TC" font-weight="400" font-size="20" fill="#6B6B6B">有問題歡迎現在提問，或會後找我。</text>
+    <text x="48" y="588" font-weight="700" font-size="13" fill="#6B6B6B" letter-spacing="1.2">INSTAGRAM</text>
+    <text x="200" y="592" font-weight="700" font-size="21" fill="#0A1138">（待填）</text>
+    <text x="48" y="668" font-weight="400" font-size="20" fill="#6B6B6B">有問題歡迎現在提問，或會後找我。</text>
   </g>
 </svg>

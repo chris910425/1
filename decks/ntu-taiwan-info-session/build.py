@@ -113,19 +113,20 @@ for i, (nm, v) in enumerate(SPEND):
 
 S["04_cost"] = page("content",
     header("生活開銷", 4, right="COST OF LIVING") +
-    g("claim", "48 128 660 90", claim(MARGIN, 182, "房租就吃掉三分之二")) +
-    g("doughnut-wrap", "160 232 340 316", doughnut("spend", CX, CY, SPEND)) +
-    g("centre", "230 360 200 80",
+    g("claim", "48 110 660 98", claim(MARGIN, 182, "房租就吃掉三分之二")) +
+    g("doughnut", "160 212 340 356",
+      doughnut(CX, CY, SPEND),
       ttl(CX, CY + 6, "S$1,850", 50, anchor="middle"),
       txt(CX, CY + 44, "每月支出", 20, fill=MUTED, anchor="middle")) +
-    g("legend", "723 92 557 628", vline(720, 92, 628), *legend) +
-    g("fx", "160 582 440 70",
+    g("divider", "720 92 4 628", vline(720, 92, 628)) +
+    g("legend", "756 205 484 356", *legend) +
+    g("fx", "160 574 440 84",
       txt(CX, 596, "1 SGD ≈ 25.5 TWD", 19, fill=MUTED, anchor="middle", family=MONO),
       txt(CX, 634, "≈ NT$47,175", 30, weight=900, anchor="middle")) +
-    g("takeaway", "740 590 492 70",
-      cell(748, 590, 484, 70, PALE),
-      txt(772, 624, "宿舍不一定抽得到，先找房子", 24, weight=700)) +
-    g("note", "740 676 492 30",
+    g("takeaway", "748 578 484 72",
+      cell(748, 582, 484, 70, PALE),
+      txt(772, 626, "宿舍不一定抽得到，先找房子", 24, weight=700)) +
+    g("note", "748 672 484 32",
       txt(1232, 694, "不含學費、機票與保險", 15, fill=MUTED, anchor="end")))
 
 
@@ -143,7 +144,7 @@ SCALE = 30.0  # bars are drawn against 0–30%
 
 bars = []
 for i, (nm, post, appl, col) in enumerate(GAPS):
-    y = 228 + i * 170
+    y = 240 + i * 170
     bars += [txt(MARGIN, y, nm, 24, weight=700),
              txt(MARGIN, y + 44, "職缺", 17, fill=MUTED),
              hbar(110, y + 26, 440, post / SCALE, col),
@@ -154,13 +155,13 @@ for i, (nm, post, appl, col) in enumerate(GAPS):
 
 S["05_market"] = page("content",
     header("該不該選這個系", 5, right="JOB MARKET") +
-    g("claim", "48 128 700 90", claim(MARGIN, 182, "工程的缺最多，合規的缺最沒人補", 40)) +
-    g("bars", "48 210 620 320", *bars) +
+    g("claim", "48 110 700 98", claim(MARGIN, 182, "工程的缺最多，合規的缺最沒人補", 40)) +
+    g("bars", "48 212 696 336", *bars) +
     g("ratio", "48 556 696 48",
       cell(MARGIN, 556, 696, 48, PALE),
       txt(72, 586, "合規：職缺是應徵的 3.3 倍　|　工程：1.2 倍", 21, weight=700)) +
-    g("facts", "772 128 460 470",
-      vline(756, 92, 628),
+    g("divider", "756 92 4 628", vline(756, 92, 628)) +
+    g("facts", "772 110 460 488",
       *[s for i, (t, sub) in enumerate(FACTS) for s in (
           hline(796, 150 + i * 150, 436, col=NAVY_5, t=2) if i else "",
           ttl(796, 214 + i * 150, t, 26),
@@ -190,28 +191,28 @@ cols = []
 for i, (ttl_, kick, fill, items, hot) in enumerate(COLS):
     x = MARGIN + i * 396
     w = 380
-    cols += [cell(x, 206, w, 310, fill),
-             cell(x, 206, w, 310, "none", stroke=NAVY),
-             ttl(x + 24, 252, ttl_, 24),
-             hline(x + 24, 270, 48, col=NAVY_4, t=4)]
+    cols += [cell(x, 214, w, 300, fill),
+             cell(x, 214, w, 300, "none", stroke=NAVY),
+             ttl(x + 24, 258, ttl_, 24),
+             hline(x + 24, 276, 48, col=NAVY_4, t=4)]
     for j, it in enumerate(items):
-        iy = 310 + j * 29
+        iy = 316 + j * 29
         on = j in hot
         cols += [txt(x + 24, iy, ("● " if on else "・ ") + it, 18,
                      fill=RED if on else NAVY, weight=700 if on else 400)]
 
 S["06_courses"] = page("content",
     header("該不該選這個系", 6, right="COURSES") +
-    g("claim", "48 128 900 90", claim(MARGIN, 182, "必修打底，選修決定你變成什麼人")) +
-    g("columns", "48 206 1184 310", *cols) +
-    g("pick", "48 536 760 64",
+    g("claim", "48 110 900 98", claim(MARGIN, 182, "必修打底，選修決定你變成什麼人")) +
+    g("columns", "48 212 1184 306", *cols) +
+    g("pick", "48 528 760 76",
       txt(MARGIN, 560, "● 我自己會選的兩門", 19, fill=RED, weight=700),
       txt(MARGIN, 592, "市場最缺合規人才，所以我往法律和金融的課走。", 21, weight=700)) +
-    g("time", "48 626 760 70",
+    g("time", "48 616 760 80",
       hline(MARGIN, 626, 760, col=NAVY_5, t=2),
       ttl(MARGIN, 684, "18:30 – 21:45", 34),
       txt(300, 684, "課大多排在晚上，白天可以去實習。", 20, fill=MUTED)) +
-    g("qr", "1000 530 232 170",
+    g("qr", "1000 524 232 176",
       card(1046, 530, 130, 130, fill=PAPER, shadow=0),
       img("../images/qr-course-content.png", 1052, 536, 118, 118, "xMidYMid meet"),
       txt(1111, 686, "掃這裡看完整課程大綱", 17, fill=MUTED, anchor="middle")))
@@ -220,9 +221,9 @@ S["06_courses"] = page("content",
 # =============================================================================
 # 07  結語
 # =============================================================================
-S["07_closing"] = page("statement",
+S["07_closing"] = page("section",
     g("mark", "0 0 1280 92", hline(MARGIN, 90, 1280 - 2 * MARGIN), label(MARGIN, 62, "結語", 20, fill=MUTED)) +
-    g("statement", "48 150 1000 380",
+    g("statement", "48 110 1000 380",
       txt(MARGIN, 212, "有人說新加坡很無聊。", 26, fill=MUTED),
       ttl(MARGIN, 318, "它不是拿來玩的地方，", 60),
       ttl(MARGIN, 398, "是拿來工作的地方。", 60),
@@ -237,7 +238,7 @@ S["07_closing"] = page("statement",
 # 08  聯絡資訊
 # =============================================================================
 CONTACT = [("EMAIL", "（待填）"), ("LINKEDIN", "（待填）"), ("INSTAGRAM", "（待填）")]
-S["08_contact"] = page("closing",
+S["08_contact"] = page("content",
     g("photo", "640 0 640 720", img("../images/hive-cover.jpg", 640, 0, 640, 720), role="background") +
     g("panel", "0 0 640 720",
       cell(0, 0, 640, 720, PAPER), vline(640, 0, 720),

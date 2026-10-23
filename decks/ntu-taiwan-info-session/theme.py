@@ -8,6 +8,7 @@ White stays the page.
 from __future__ import annotations
 
 import json
+import math
 import pathlib
 from xml.sax.saxutils import escape as esc  # noqa: F401  (re-exported)
 
@@ -74,14 +75,15 @@ def img(href, x, y, w, h, fit="xMidYMid slice"):
 # ---- type -------------------------------------------------------------------
 def ttl(x, y, s, size=64, fill=NAVY, anchor=None):
     a = f' text-anchor="{anchor}"' if anchor else ""
-    return (f'<text x="{x}" y="{y}" font-family="{FONT}" font-weight="900" '
+    return (f'<text x="{x}" y="{y}" font-weight="900" '
             f'font-size="{size}" fill="{fill}"{a}>{esc(s)}</text>')
 
 
 def txt(x, y, s, size=20, fill=NAVY, weight=400, anchor=None, family=FONT, track=None):
     a = f' text-anchor="{anchor}"' if anchor else ""
     t = f' letter-spacing="{track}"' if track else ""
-    return (f'<text x="{x}" y="{y}" font-family="{family}" font-weight="{weight}" '
+    fam = "" if family == FONT else f' font-family="{family}"'
+    return (f'<text x="{x}" y="{y}"{fam} font-weight="{weight}" '
             f'font-size="{size}" fill="{fill}"{a}{t}>{esc(s)}</text>')
 
 
@@ -133,26 +135,28 @@ def hbar(x, y, w, frac, fill=NAVY, h=26, track=True):
     return s + cell(x + LINE, y + LINE, round((w - 2 * LINE) * inner), h - 2 * LINE, fill)
 
 
-# ---- doughnut (SVG fallback + PowerPoint native chart) ----------------------
-def doughnut(key, cx, cy, data, r=142, sw=52, colors=None, gap=0.6):
-    """Thin ring in the HTML library's style, plus PPT Master's native-chart marker
-    so --native-charts-and-tables produces an editable PowerPoint chart."""
+# ---- doughnut --------------------------------------------------------------
+def doughnut(cx, cy, data, r=142, sw=52, colors=None, gap=1.6):
+    """Thin ring in the HTML library's style: one arc per slice, a small gap between
+    slices. Drawn as paths so every slice converts to an editable PowerPoint shape."""
     cols = colors or [RED, NAVY, NAVY_2, NAVY_3, NAVY_4, NAVY_5]
     total = sum(v for _, v in data)
-    segs, acc = [], 0.0
+    ro, ri = r + sw / 2, r - sw / 2
+    out, a0 = [], -90.0
     for i, (_, v) in enumerate(data):
-        pct = v / total * 100
-        segs.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{cols[i % len(cols)]}" '
-                    f'stroke-width="{sw}" pathLength="100" '
-                    f'stroke-dasharray="{max(pct - gap, 0.35):.2f} 100" stroke-dashoffset="{-acc:.2f}"/>')
-        acc += pct
-    meta = {"x": cx - r - sw // 2, "y": cy - r - sw // 2, "width": 2 * r + sw, "height": 2 * r + sw,
-            "name": key, "type": "doughnut", "categories": [l for l, _ in data],
-            "series": [{"name": key, "values": [v for _, v in data]}], "show_legend": False,
-            "style": {"colors": [cols[i % len(cols)] for i in range(len(data))]}}
-    return (f'<g id="{key}" data-pptx-replace-with="chart">'
-            f'<metadata type="application/json">{json.dumps(meta, ensure_ascii=False)}</metadata>'
-            f'<g transform="rotate(-90 {cx} {cy})">' + "".join(segs) + "</g></g>")
+        sweep = v / total * 360
+        g0, g1 = a0 + gap / 2, a0 + sweep - gap / 2
+        if g1 <= g0:                       # a sliver too thin for the gap
+            g0, g1 = a0, a0 + max(sweep, 0.35)
+        pt = lambda a, rr: (cx + rr * math.cos(math.radians(a)), cy + rr * math.sin(math.radians(a)))
+        (x0, y0), (x1, y1) = pt(g0, ro), pt(g1, ro)
+        (x2, y2), (x3, y3) = pt(g1, ri), pt(g0, ri)
+        big = 1 if g1 - g0 > 180 else 0
+        out.append(f'<path d="M{x0:.1f} {y0:.1f} A{ro:.0f} {ro:.0f} 0 {big} 1 {x1:.1f} {y1:.1f} '
+                   f'L{x2:.1f} {y2:.1f} A{ri:.0f} {ri:.0f} 0 {big} 0 {x3:.1f} {y3:.1f} Z" '
+                   f'fill="{cols[i % len(cols)]}"/>')
+        a0 += sweep
+    return "".join(out)
 
 
 # ---- Singapore outline ------------------------------------------------------

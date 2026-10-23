@@ -77,6 +77,32 @@
 - 是否加兩頁章節頁
 - 紅色圓環的份量（見上）
 
+## 初版狀態（2026-10-23）
+
+已生成 8 頁 PPTX：`ntu-taiwan-info-session.pptx`
+建檔：`theme.py`（深藍版 Raw Grid）＋ `build.py` → `svg_output/*.svg` → ppt-master → PPTX
+
+做法紀錄：
+- 甜甜圈改用**弧線路徑**而非原生 PowerPoint 圖表。原生圖表放不了中間的總額與自訂圖例列，
+  弧線在 PowerPoint 裡仍是可編輯的圖形，外觀也才跟 HTML 元件庫一致
+- 新加坡輪廓取自 `geo.js`（Natural Earth 公眾領域），NTU 用紅點標在島的西邊，
+  台北→NTU 的虛線弧就是「直飛 4.5 小時」
+- 轉場 Morph；品質檢查 quality_gate=passed
+
+### 還沒填的（全部用可辨識的佔位符）
+| 位置 | 待補 |
+|---|---|
+| 封面、第 1 頁 | 場次日期與地點（現為「2026 年 ・ 台北」） |
+| 第 2 頁 | 個人照片；第四列「（目前在做什麼）」 |
+| 第 8 頁 | Email、LinkedIn、Instagram |
+| 全部 | NTU／CCTF 官方 logo 檔（現用從 CCTF 封面去背的暫代檔） |
+
+### 仍待確認
+- 甜甜圈的紅色份量（房租 64.9% 全紅）
+- 字體是否保留 Segoe UI Black 給英數字（現為全部 Noto Sans TC Black）
+- 第 4 頁結論格文案「宿舍不一定抽得到，先找房子」
+- 第 6 頁「有人說新加坡很無聊」的講法（Claude 建議改成引述）
+
 ## 內容規劃 v4（2026-10-23，使用者刪頁後定版，待補素材即可生成）
 
 素材：`source/msbt-course-content.pdf`（官方課程大綱，21 門課＋專題）
