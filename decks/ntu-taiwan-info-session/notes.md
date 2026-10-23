@@ -57,6 +57,8 @@
 - B：右欄下半大片空白；白色格子的硬陰影在深藍照片上幾乎看不見
 - 建議：以 B 的結構為底，把標題放大、事件格移到左欄標題下方，右欄留給照片呼吸
 
+預覽連結（私人 Artifact，更新時沿用同一個網址）：https://claude.ai/artifact/3iVc7eZkPsdTe61CKZiBPZ
+
 ### 字體與設定的連帶影響（待使用者決定）
 1. **Latin 字體**：Raw Grid 原設定是 Segoe UI Black（英數）＋Noto Sans TC Black（中文）。封面測試稿改成**全部用 Noto Sans TC Black**
    - 理由：這份簡報中英混排很多（NTU、MSBT、CCTF、S$1,850），同一套字重高度一致；且不依賴只有 Windows 有的 Segoe UI
