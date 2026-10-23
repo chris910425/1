@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="content" font-family="Noto Sans TC">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="header" data-pptx-bounds="0 0 1280 92">
+    <text x="48" y="62" font-family="Noto Sans TC" font-weight="900" font-size="30" fill="#0A1138">生活開銷</text>
+    <text x="1070" y="62" font-family="Noto Sans TC" font-weight="700" font-size="13" fill="#6B6B6B" text-anchor="end" letter-spacing="1.2">COST OF LIVING</text>
+    <rect x="1094" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1112" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1130" y="46" width="12" height="12" fill="#0A1138" stroke="#0A1138" stroke-width="2"/><rect x="1148" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1166" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1184" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1202" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1220" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/>
+    <rect x="48" y="90" width="1184" height="3" fill="#0A1138"/>
+  </g>
+  <g id="doughnut" data-pptx-bounds="160 230 340 320">
+    <g transform="rotate(-90 330 388)"><circle cx="330" cy="388" r="142" fill="none" stroke="#D21540" stroke-width="52" pathLength="100" stroke-dasharray="64.26 100" stroke-dashoffset="-0.00"/><circle cx="330" cy="388" r="142" fill="none" stroke="#0A1138" stroke-width="52" pathLength="100" stroke-dasharray="24.77 100" stroke-dashoffset="-64.86"/><circle cx="330" cy="388" r="142" fill="none" stroke="#2B3A77" stroke-width="52" pathLength="100" stroke-dasharray="2.79 100" stroke-dashoffset="-90.23"/><circle cx="330" cy="388" r="142" fill="none" stroke="#5A6AA8" stroke-width="52" pathLength="100" stroke-dasharray="2.74 100" stroke-dashoffset="-93.62"/><circle cx="330" cy="388" r="142" fill="none" stroke="#93A0C9" stroke-width="52" pathLength="100" stroke-dasharray="1.90 100" stroke-dashoffset="-96.96"/><circle cx="330" cy="388" r="142" fill="none" stroke="#C7CEE4" stroke-width="52" pathLength="100" stroke-dasharray="0.35 100" stroke-dashoffset="-99.46"/></g>
+    <text x="330" y="394" font-family="Noto Sans TC" font-weight="900" font-size="50" fill="#0A1138" text-anchor="middle">S$1,850</text>
+    <text x="330" y="432" font-family="Noto Sans TC" font-weight="400" font-size="20" fill="#6B6B6B" text-anchor="middle">每月支出</text>
+  </g>
+  <g id="claim" data-pptx-bounds="48 128 660 90">
+    <text x="48" y="180" font-family="Noto Sans TC" font-weight="900" font-size="44" fill="#0A1138">房租就吃掉三分之二</text>
+    <rect x="48" y="200" width="96" height="5" fill="#D21540"/>
+  </g>
+  <g id="legend" data-pptx-bounds="723 92 557 628">
+    <rect x="720" y="92" width="3" height="628" fill="#0A1138"/>
+    <rect x="760" y="217" width="20" height="20" fill="#D21540"/>
+    <text x="798" y="232" font-family="Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138">房租</text>
+    <text x="1108" y="232" font-family="Consolas, Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138" text-anchor="end">1,200</text>
+    <text x="1232" y="232" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="20" fill="#6B6B6B" text-anchor="end">64.9%</text>
+    <rect x="760" y="279" width="20" height="20" fill="#0A1138"/>
+    <text x="798" y="294" font-family="Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138">食物</text>
+    <text x="1108" y="294" font-family="Consolas, Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138" text-anchor="end">469</text>
+    <text x="1232" y="294" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="20" fill="#6B6B6B" text-anchor="end">25.4%</text>
+    <rect x="760" y="341" width="20" height="20" fill="#2B3A77"/>
+    <text x="798" y="356" font-family="Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138">飲品</text>
+    <text x="1108" y="356" font-family="Consolas, Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138" text-anchor="end">63</text>
+    <text x="1232" y="356" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="20" fill="#6B6B6B" text-anchor="end">3.4%</text>
+    <rect x="760" y="403" width="20" height="20" fill="#5A6AA8"/>
+    <text x="798" y="418" font-family="Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138">交通</text>
+    <text x="1108" y="418" font-family="Consolas, Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138" text-anchor="end">62</text>
+    <text x="1232" y="418" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="20" fill="#6B6B6B" text-anchor="end">3.3%</text>
+    <rect x="760" y="465" width="20" height="20" fill="#93A0C9"/>
+    <text x="798" y="480" font-family="Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138">點心</text>
+    <text x="1108" y="480" font-family="Consolas, Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138" text-anchor="end">46</text>
+    <text x="1232" y="480" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="20" fill="#6B6B6B" text-anchor="end">2.5%</text>
+    <rect x="760" y="527" width="20" height="20" fill="#C7CEE4"/>
+    <text x="798" y="542" font-family="Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138">網路</text>
+    <text x="1108" y="542" font-family="Consolas, Noto Sans TC" font-weight="700" font-size="22" fill="#0A1138" text-anchor="end">10</text>
+    <text x="1232" y="542" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="20" fill="#6B6B6B" text-anchor="end">0.5%</text>
+  </g>
+  <g id="fx" data-pptx-bounds="160 590 440 60">
+    <text x="330" y="600" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="19" fill="#6B6B6B" text-anchor="middle">1 SGD ≈ 25.5 TWD</text>
+    <text x="330" y="636" font-family="Noto Sans TC" font-weight="900" font-size="30" fill="#0A1138" text-anchor="middle">≈ NT$47,175</text>
+  </g>
+  <g id="takeaway" data-pptx-bounds="740 596 492 64">
+    <rect x="740" y="596" width="492" height="64" fill="#CBE0EC" stroke="#0A1138" stroke-width="3"/>
+    <text x="764" y="636" font-family="Noto Sans TC" font-weight="700" font-size="24" fill="#0A1138">先找房子，再想其他的。</text>
+  </g>
+</svg>
