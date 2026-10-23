@@ -2,3 +2,7 @@ _site/
 node_modules/
 # Playwright CLI output (may contain credentials)
 .playwright-cli/
+
+# Python bytecode caches (regenerated whenever a skill script runs)
+__pycache__/
+*.pyc
