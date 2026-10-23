@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="statement" font-family="Noto Sans TC">
+  <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
+  <g id="mark" data-pptx-bounds="0 0 1280 92">
+    <rect x="48" y="90" width="1184" height="3" fill="#0A1138"/>
+    <text x="48" y="62" font-family="Noto Sans TC" font-weight="700" font-size="20" fill="#6B6B6B">結語</text>
+  </g>
+  <g id="statement" data-pptx-bounds="48 150 1000 380">
+    <text x="48" y="212" font-family="Noto Sans TC" font-weight="400" font-size="26" fill="#6B6B6B">有人說新加坡很無聊。</text>
+    <text x="48" y="318" font-family="Noto Sans TC" font-weight="900" font-size="60" fill="#0A1138">它不是拿來玩的地方，</text>
+    <text x="48" y="398" font-family="Noto Sans TC" font-weight="900" font-size="60" fill="#0A1138">是拿來工作的地方。</text>
+    <rect x="48" y="440" width="96" height="5" fill="#D21540"/>
+  </g>
+  <g id="opportunity" data-pptx-bounds="48 500 1184 150">
+    <rect x="48" y="500" width="1184" height="150" fill="#CBE0EC"/>
+    <text x="80" y="566" font-family="Noto Sans TC" font-weight="900" font-size="32" fill="#0A1138">我來這裡買到的，是原本拿不到的機會。</text>
+    <text x="80" y="612" font-family="Noto Sans TC" font-weight="400" font-size="21" fill="#2B3A77">實習、課外活動、認識的人，以及在國際職場工作的機會。</text>
+  </g>
+</svg>
