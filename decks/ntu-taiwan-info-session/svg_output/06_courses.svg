@@ -2,57 +2,54 @@
   <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
   <g id="header" data-pptx-bounds="0 0 1280 92">
     <text x="48" y="62" font-weight="900" font-size="30" fill="#0A1138">該不該選這個系</text>
-    <text x="1070" y="62" font-weight="700" font-size="13" fill="#6B6B6B" text-anchor="end" letter-spacing="1.2">COURSES</text>
     <rect x="1094" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1112" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1130" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1148" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1166" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1184" y="46" width="12" height="12" fill="#0A1138" stroke="#0A1138" stroke-width="2"/><rect x="1202" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1220" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/>
     <rect x="48" y="90" width="1184" height="3" fill="#0A1138"/>
   </g>
-  <g id="claim" data-pptx-bounds="48 110 900 98">
-    <text x="48" y="182" font-weight="900" font-size="44" fill="#0A1138">必修打底，選修決定你變成什麼人</text><rect x="48" y="202" width="96" height="5" fill="#D21540"/>
+  <g id="claim" data-pptx-bounds="48 108 700 96">
+    <text x="48" y="180" font-weight="900" font-size="44" fill="#0A1138">必修打底，選修決定你變成什麼人</text><rect x="48" y="200" width="96" height="5" fill="#D21540"/>
   </g>
-  <g id="columns" data-pptx-bounds="48 212 1184 306">
-    <rect x="48" y="214" width="380" height="300" fill="#FFFFFF"/>
-    <rect x="48" y="214" width="380" height="300" fill="none" stroke="#0A1138" stroke-width="3"/>
-    <text x="72" y="258" font-weight="900" font-size="24" fill="#0A1138">必修 9 門</text>
-    <rect x="72" y="276" width="48" height="4" fill="#93A0C9"/>
-    <text x="72" y="316" font-weight="400" font-size="18" fill="#0A1138">・ 區塊鏈技術 1 &amp; 2</text>
-    <text x="72" y="345" font-weight="400" font-size="18" fill="#0A1138">・ 分散式系統</text>
-    <text x="72" y="374" font-weight="400" font-size="18" fill="#0A1138">・ 密碼學</text>
-    <text x="72" y="403" font-weight="400" font-size="18" fill="#0A1138">・ 軟體工程</text>
-    <text x="72" y="432" font-weight="400" font-size="18" fill="#0A1138">・ 區塊鏈開發 1 &amp; 2</text>
-    <text x="72" y="461" font-weight="400" font-size="18" fill="#0A1138">・ 智能合約安全</text>
-    <text x="72" y="490" font-weight="400" font-size="18" fill="#0A1138">・ 隱私與擴容</text>
-    <rect x="444" y="214" width="380" height="300" fill="#FFFFFF"/>
-    <rect x="444" y="214" width="380" height="300" fill="none" stroke="#0A1138" stroke-width="3"/>
-    <text x="468" y="258" font-weight="900" font-size="24" fill="#0A1138">選修・開發 6 門</text>
-    <rect x="468" y="276" width="48" height="4" fill="#93A0C9"/>
-    <text x="468" y="316" font-weight="400" font-size="18" fill="#0A1138">・ Web 程式基礎</text>
-    <text x="468" y="345" font-weight="400" font-size="18" fill="#0A1138">・ 智能合約方案</text>
-    <text x="468" y="374" font-weight="400" font-size="18" fill="#0A1138">・ dApp 開發</text>
-    <text x="468" y="403" font-weight="400" font-size="18" fill="#0A1138">・ 軟體專案管理</text>
-    <text x="468" y="432" font-weight="400" font-size="18" fill="#0A1138">・ 資訊安全</text>
-    <text x="468" y="461" font-weight="400" font-size="18" fill="#0A1138">・ 賽局理論</text>
-    <rect x="840" y="214" width="380" height="300" fill="#CBE0EC"/>
-    <rect x="840" y="214" width="380" height="300" fill="none" stroke="#0A1138" stroke-width="3"/>
-    <text x="864" y="258" font-weight="900" font-size="24" fill="#0A1138">選修・管理與金融 5 門</text>
-    <rect x="864" y="276" width="48" height="4" fill="#93A0C9"/>
-    <text x="864" y="316" font-weight="400" font-size="18" fill="#0A1138">・ 代幣經濟</text>
-    <text x="864" y="345" font-weight="400" font-size="18" fill="#0A1138">・ FinTech 新趨勢</text>
-    <text x="864" y="374" font-weight="400" font-size="18" fill="#0A1138">・ 區塊鏈商業應用</text>
-    <text x="864" y="403" font-weight="700" font-size="18" fill="#D21540">● 區塊鏈倫理與法律</text>
-    <text x="864" y="432" font-weight="700" font-size="18" fill="#D21540">● 區塊鏈與金融</text>
+  <g id="columns" data-pptx-bounds="48 212 1184 496">
+    <rect x="48" y="220" width="384" height="480" fill="#CBE0EC"/>
+    <rect x="48" y="220" width="384" height="480" fill="none" stroke="#0A1138" stroke-width="3"/>
+    <text x="72" y="266" font-weight="900" font-size="24" fill="#0A1138">必修 9 門</text>
+    <rect x="72" y="284" width="48" height="4" fill="#0A1138"/>
+    <text x="72" y="334" font-weight="400" font-size="20" fill="#0A1138">Introduction to Blockchain</text>
+    <text x="72" y="360" font-weight="400" font-size="20" fill="#0A1138">Technology I &amp; II</text>
+    <text x="72" y="396" font-weight="400" font-size="20" fill="#0A1138">Distributed Systems</text>
+    <text x="72" y="432" font-weight="400" font-size="20" fill="#0A1138">Introduction to Cryptography</text>
+    <text x="72" y="468" font-weight="400" font-size="20" fill="#0A1138">Software Engineering</text>
+    <text x="72" y="504" font-weight="400" font-size="20" fill="#0A1138">Blockchain Development</text>
+    <text x="72" y="530" font-weight="400" font-size="20" fill="#0A1138">Fundamentals I &amp; II</text>
+    <text x="72" y="566" font-weight="400" font-size="20" fill="#0A1138">Blockchain and Smart</text>
+    <text x="72" y="592" font-weight="400" font-size="20" fill="#0A1138">Contract Security</text>
+    <text x="72" y="628" font-weight="400" font-size="20" fill="#0A1138">Blockchain Privacy and</text>
+    <text x="72" y="654" font-weight="400" font-size="20" fill="#0A1138">Scalability</text>
+    <rect x="448" y="220" width="384" height="480" fill="#EDEFF4"/>
+    <rect x="448" y="220" width="384" height="480" fill="none" stroke="#0A1138" stroke-width="3"/>
+    <text x="472" y="266" font-weight="900" font-size="24" fill="#0A1138">選修・開發 6 門</text>
+    <rect x="472" y="284" width="48" height="4" fill="#0A1138"/>
+    <text x="472" y="334" font-weight="400" font-size="20" fill="#0A1138">Web Programming Basics</text>
+    <text x="472" y="370" font-weight="400" font-size="20" fill="#0A1138">Blockchain Solutions and</text>
+    <text x="472" y="396" font-weight="400" font-size="20" fill="#0A1138">Smart Contracts</text>
+    <text x="472" y="432" font-weight="400" font-size="20" fill="#0A1138">Development of</text>
+    <text x="472" y="458" font-weight="400" font-size="20" fill="#0A1138">Decentralized Applications</text>
+    <text x="472" y="494" font-weight="400" font-size="20" fill="#0A1138">Software Project Management</text>
+    <text x="472" y="530" font-weight="400" font-size="20" fill="#0A1138">Introduction to Cyber Security</text>
+    <text x="472" y="566" font-weight="400" font-size="20" fill="#0A1138">Game Theory and Blockchain</text>
+    <rect x="848" y="220" width="384" height="330" fill="#F7E9D9"/>
+    <rect x="848" y="220" width="384" height="330" fill="none" stroke="#0A1138" stroke-width="3"/>
+    <text x="872" y="266" font-weight="900" font-size="24" fill="#0A1138">選修・管理與金融 5 門</text>
+    <rect x="872" y="284" width="48" height="4" fill="#0A1138"/>
+    <text x="872" y="334" font-weight="400" font-size="20" fill="#0A1138">Token Economics</text>
+    <text x="872" y="370" font-weight="400" font-size="20" fill="#0A1138">Emerging Topics in FinTech</text>
+    <text x="872" y="406" font-weight="400" font-size="20" fill="#0A1138">Blockchain Business Applications</text>
+    <text x="872" y="442" font-weight="400" font-size="20" fill="#0A1138">Ethics and Laws in Blockchain</text>
+    <text x="872" y="478" font-weight="400" font-size="20" fill="#0A1138">Blockchain in Finance</text>
   </g>
-  <g id="pick" data-pptx-bounds="48 528 760 76">
-    <text x="48" y="560" font-weight="700" font-size="19" fill="#D21540">● 我自己會選的兩門</text>
-    <text x="48" y="592" font-weight="700" font-size="21" fill="#0A1138">市場最缺合規人才，所以我往法律和金融的課走。</text>
-  </g>
-  <g id="time" data-pptx-bounds="48 616 760 80">
-    <rect x="48" y="626" width="760" height="2" fill="#C7CEE4"/>
-    <text x="48" y="684" font-weight="900" font-size="34" fill="#0A1138">18:30 – 21:45</text>
-    <text x="300" y="684" font-weight="400" font-size="20" fill="#6B6B6B">課大多排在晚上，白天可以去實習。</text>
-  </g>
-  <g id="qr" data-pptx-bounds="1000 524 232 176">
-    <rect x="1046" y="530" width="130" height="130" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/>
-    <image href="../images/qr-course-content.png" x="1052" y="536" width="118" height="118" preserveAspectRatio="xMidYMid meet"/>
-    <text x="1111" y="686" font-weight="400" font-size="17" fill="#6B6B6B" text-anchor="middle">掃這裡看完整課程大綱</text>
+  <g id="qr" data-pptx-bounds="848 568 384 136">
+    <rect x="848" y="572" width="128" height="128" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/>
+    <image href="../images/qr-course-content.png" x="854" y="578" width="116" height="116" preserveAspectRatio="xMidYMid meet"/>
+    <text x="996" y="630" font-weight="700" font-size="20" fill="#0A1138">掃描看完整</text>
+    <text x="996" y="662" font-weight="700" font-size="20" fill="#0A1138">官方課程大綱</text>
   </g>
 </svg>

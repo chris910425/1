@@ -23,6 +23,17 @@ RED = "#D21540"         # the accent: one thing per page
 RED_PALE = "#F7D3DB"    # Raw Grid's pink
 PALE = "#CBE0EC"        # CCTF pale blue, Raw Grid's green
 GREY = "#F5F5F5"
+
+# Categorical chart colours. Validated with the dataviz skill's checker against a
+# light surface: lightness band, CVD separation, normal-vision floor and contrast all
+# pass; teal and brown sit just under the chroma floor, which the legend's direct
+# labels and values cover.
+CAT = ["#D21540", "#2B4BB8", "#0E8276", "#C97B10", "#8148A8", "#6B5344"]
+
+# Light cell fills, strongest first
+FILL_1 = "#CBE0EC"     # CCTF pale blue
+FILL_2 = "#EDEFF4"     # light navy tint
+FILL_3 = "#F7E9D9"     # warm sand
 MUTED = "#6B6B6B"
 LINE = 3
 SHADOW = 6
@@ -114,11 +125,10 @@ def progress_chain(x, y, n, total=TOTAL, size=12, gap=6):
         for i in range(total))
 
 
-def header(title_text, n, right=None, total=TOTAL):
+def header(title_text, n, total=TOTAL):
     w = 18 * total - 6
     return g("header", "0 0 1280 92",
              ttl(MARGIN, 62, title_text, 30),
-             label(1232 - w - 24, 62, right, 13, anchor="end") if right else "",
              progress_chain(1232 - w, 46, n, total),
              hline(MARGIN, 90, 1280 - 2 * MARGIN))
 
@@ -182,3 +192,81 @@ def sg_outline(x, y, w, fill=PALE, stroke=NAVY, t=LINE):
     xy = [(x + (lon - lon0) * k, y + (lat1 - lat) * k) for lon, lat in pts]
     d = "M" + " L".join(f"{px:.1f} {py:.1f}" for px, py in xy) + " Z"
     return f'<path d="{d}" fill="{fill}" stroke="{stroke}" stroke-width="{t}" stroke-linejoin="round"/>', h
+
+
+# ---- regional map + flight arc ---------------------------------------------
+def _clip(pts, box):
+    """Sutherland-Hodgman clip of a polygon to an axis-aligned rectangle, so land that
+    runs past the map panel is cut rather than drawn over the rest of the slide."""
+    x0, y0, x1, y1 = box
+    edges = ((lambda p: p[0] >= x0, lambda a, b: (x0, a[1] + (b[1] - a[1]) * (x0 - a[0]) / (b[0] - a[0]))),
+             (lambda p: p[0] <= x1, lambda a, b: (x1, a[1] + (b[1] - a[1]) * (x1 - a[0]) / (b[0] - a[0]))),
+             (lambda p: p[1] >= y0, lambda a, b: (a[0] + (b[0] - a[0]) * (y0 - a[1]) / (b[1] - a[1]), y0)),
+             (lambda p: p[1] <= y1, lambda a, b: (a[0] + (b[0] - a[0]) * (y1 - a[1]) / (b[1] - a[1]), y1)))
+    for inside, cross in edges:
+        if not pts:
+            return []
+        out, prev = [], pts[-1]
+        for cur in pts:
+            ci, pi = inside(cur), inside(prev)
+            if ci:
+                if not pi:
+                    out.append(cross(prev, cur))
+                out.append(cur)
+            elif pi:
+                out.append(cross(prev, cur))
+            prev = cur
+        pts = out
+    return pts
+
+
+def flight_map(x, y, w, h, frm, to, pad_lon=9, pad_lat=(7, 6)):
+    """Southeast/East Asia land (Natural Earth, public domain) with the route arc.
+    frm/to are (name, lon, lat). Returns (svg, project, A, B)."""
+    lons, lats = [frm[1], to[1]], [frm[2], to[2]]
+    b = [min(lons) - pad_lon, max(lons) + pad_lon, min(lats) - pad_lat[0], max(lats) + pad_lat[1]]
+    k = min(w / (b[1] - b[0]), h / (b[3] - b[2]))
+    ox = x + (w - (b[1] - b[0]) * k) / 2
+    oy = y + (h - (b[3] - b[2]) * k) / 2
+
+    def pr(lon, lat):
+        return ox + (lon - b[0]) * k, oy + (b[3] - lat) * k
+
+    grat = []
+    lon = -((-b[0]) // 5) * 5
+    while lon <= b[1]:
+        gx, _ = pr(lon, 0)
+        grat.append(f'<rect x="{gx:.1f}" y="{y:.0f}" width="1" height="{h:.0f}" fill="#E8EBF2"/>')
+        lon += 5
+    lat = -((-b[2]) // 5) * 5
+    while lat <= b[3]:
+        _, gy = pr(0, lat)
+        grat.append(f'<rect x="{x:.0f}" y="{gy:.1f}" width="{w:.0f}" height="1" fill="#E8EBF2"/>')
+        lat += 5
+
+    land, box = [], (x, y, x + w, y + h)
+    for poly in geo()["region"]:
+        pts = _clip([pr(lo, la) for lo, la in poly], box)
+        if len(pts) < 3:
+            continue
+        xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
+        if max(xs) - min(xs) < 3 and max(ys) - min(ys) < 3:
+            continue                                   # specks too small to read
+        land.append('<path d="M' + "L".join(f"{px:.1f} {py:.1f}" for px, py in pts)
+                    + f'Z" fill="#E6EAF1" stroke="#C7CEE4" stroke-width="1"/>')
+
+    A, B = pr(frm[1], frm[2]), pr(to[1], to[2])
+    mx, my = (A[0] + B[0]) / 2, (A[1] + B[1]) / 2
+    ln = ((B[0] - A[0]) ** 2 + (B[1] - A[1]) ** 2) ** 0.5
+    nx, ny = -(B[1] - A[1]) / ln, (B[0] - A[0]) / ln
+    bend = ln * 0.26 * (1 if nx > 0 else -1)
+    arc = (f'<path d="M{A[0]:.1f} {A[1]:.1f} Q{mx + nx * bend:.1f} {my + ny * bend:.1f} '
+           f'{B[0]:.1f} {B[1]:.1f}" fill="none" stroke="{RED}" stroke-width="3" stroke-linecap="round"/>')
+    return "".join(grat) + "".join(land) + arc, pr, A, B
+
+
+def pin(px, py, name, side="right", col=NAVY):
+    dx, anc = (20, "start") if side == "right" else (-20, "end")
+    return (f'<circle cx="{px:.1f}" cy="{py:.1f}" r="9" fill="{PAPER}"/>'
+            f'<circle cx="{px:.1f}" cy="{py:.1f}" r="6" fill="{col}"/>'
+            + txt(px + dx, py + 8, name, 22, weight=900, anchor=anc))

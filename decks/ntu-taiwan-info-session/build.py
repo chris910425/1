@@ -11,9 +11,9 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from theme import (  # noqa: E402
-    MARGIN, MONO, MUTED, NAVY, NAVY_2, NAVY_3, NAVY_4, NAVY_5, PALE, PAPER, RED, RED_PALE,
-    arrow_item, card, cell, claim, doughnut, esc, g, ghost, hbar, header, hline, img, label,
-    page, para, sg_outline, ttl, txt, vline,
+    CAT, FILL_1, FILL_2, FILL_3, MARGIN, MONO, MUTED, NAVY, NAVY_2, NAVY_3, NAVY_4, NAVY_5,
+    PALE, PAPER, RED, RED_PALE, arrow_item, card, cell, claim, doughnut, esc, flight_map, g,
+    ghost, hbar, header, hline, img, label, page, para, pin, ttl, txt, vline,
 )
 
 OUT = pathlib.Path(__file__).parent / "svg_output"
@@ -50,7 +50,7 @@ S["01_cover"] = page("cover",
 # =============================================================================
 ROWS = ["東吳大學 哲學系", "沒有程式背景", "NTU MSBT 2026 入學", "（目前在做什麼）"]
 S["02_about"] = page("content",
-    header("個人簡介", 2, right="ABOUT ME") +
+    header("個人簡介", 2) +
     g("name", "48 130 640 160",
       ttl(MARGIN, 232, SPEAKER, 84),
       hline(MARGIN, 262, 96, col=RED, t=5)) +
@@ -71,27 +71,22 @@ WHY = [
     ("02", "生活安全、乾淨", ["治安好，公共環境整潔，", "一個人住也放心。"]),
     ("03", "離家 4.5 小時", ["直飛台北，", "想回去隨時可以。"]),
 ]
-island, isl_h = sg_outline(740, 360, 470)
-NTU_PIN = (796, 491)          # NTU sits on the west of the island (103.683E, 1.348N)
+route, _pr, A, B = flight_map(716, 118, 516, 470,
+                              ("台北", 121.56, 25.03), ("新加坡", 103.85, 1.29))
 S["03_why_sg"] = page("content",
-    header("為什麼是新加坡", 3, right="WHY SINGAPORE") +
+    header("為什麼是新加坡", 3) +
     g("reasons", "48 128 640 560",
       *[s for i, (n, t, lines) in enumerate(WHY) for s in (
           hline(MARGIN, 150 + i * 186, 620, col=NAVY_5, t=2) if i else "",
-          ghost(MARGIN, 232 + i * 186, n, 54, fill=NAVY_5),
-          ttl(128, 232 + i * 186, t, 30),
-          para(128, 268 + i * 186, lines, 19),
+          ghost(MARGIN, 249 + i * 186, n, 54, fill=NAVY_5),
+          ttl(132, 232 + i * 186, t, 30),
+          para(132, 268 + i * 186, lines, 19),
       )]) +
-    g("map", "700 120 540 540",
-      vline(700, 92, 628),
-      island,
-      f'<path d="M1246 146 C1150 230, 960 300, {NTU_PIN[0] + 6} {NTU_PIN[1] - 4}" fill="none" '
-      f'stroke="{RED}" stroke-width="3" stroke-dasharray="9 7" stroke-linecap="round"/>',
-      txt(1232, 124, "台北", 22, weight=700, anchor="end"),
-      txt(1232, 156, "直飛 4.5 小時", 21, fill=RED, weight=900, anchor="end"),
-      f'<circle cx="{NTU_PIN[0]}" cy="{NTU_PIN[1]}" r="8" fill="{RED}" stroke="{PAPER}" stroke-width="3"/>',
-      txt(NTU_PIN[0] + 18, NTU_PIN[1] + 6, "NTU", 20, fill=RED, weight=900),
-      label(1210, 360 + isl_h + 36, "新加坡", 17, fill=NAVY_4, anchor="end")))
+    g("map", "700 110 532 480", vline(700, 92, 628), route,
+      pin(*A, "台北", "left"), pin(*B, "新加坡", "right")) +
+    g("duration", "716 596 300 76",
+      label(720, 614, "台北 → 新加坡", 15, fill=MUTED),
+      ttl(716, 666, "4.5 小時", 54)))
 
 
 # =============================================================================
@@ -100,34 +95,31 @@ S["03_why_sg"] = page("content",
 SPEND = [("房租", 1200.00), ("食物", 469.34), ("飲品", 62.65),
          ("交通", 61.71), ("點心", 46.31), ("網路", 10.00)]
 SPEND_TOTAL = sum(v for _, v in SPEND)
-RING = [RED, NAVY, NAVY_2, NAVY_3, NAVY_4, NAVY_5]
-CX, CY = 330, 390
+RING = CAT
+CX, CY = 330, 328
 
 legend = []
 for i, (nm, v) in enumerate(SPEND):
-    y = 234 + i * 62
+    y = 196 + i * 62
     legend += [cell(760, y - 15, 20, 20, RING[i]),
                txt(798, y, nm, 22, weight=700),
                txt(1108, y, f"{v:,.0f}", 22, weight=700, anchor="end", family=MONO),
                txt(1232, y, f"{v / SPEND_TOTAL * 100:.1f}%", 20, fill=MUTED, anchor="end", family=MONO)]
 
 S["04_cost"] = page("content",
-    header("生活開銷", 4, right="COST OF LIVING") +
-    g("claim", "48 110 660 98", claim(MARGIN, 182, "房租就吃掉三分之二")) +
-    g("doughnut", "160 212 340 356",
-      doughnut(CX, CY, SPEND),
+    header("生活開銷", 4) +
+    g("doughnut", "160 150 340 356",
+      doughnut(CX, CY, SPEND, colors=RING),
       ttl(CX, CY + 6, "S$1,850", 50, anchor="middle"),
       txt(CX, CY + 44, "每月支出", 20, fill=MUTED, anchor="middle")) +
     g("divider", "720 92 4 628", vline(720, 92, 628)) +
-    g("legend", "756 205 484 356", *legend) +
-    g("fx", "160 574 440 84",
-      txt(CX, 596, "1 SGD ≈ 25.5 TWD", 19, fill=MUTED, anchor="middle", family=MONO),
-      txt(CX, 634, "≈ NT$47,175", 30, weight=900, anchor="middle")) +
-    g("takeaway", "748 578 484 72",
-      cell(748, 582, 484, 70, PALE),
-      txt(772, 626, "宿舍不一定抽得到，先找房子", 24, weight=700)) +
-    g("note", "748 672 484 32",
-      txt(1232, 694, "不含學費、機票與保險", 15, fill=MUTED, anchor="end")))
+    g("legend", "756 162 484 360", *legend) +
+    g("fx", "160 520 440 84",
+      txt(CX, 540, "1 SGD ≈ 25.5 TWD", 19, fill=MUTED, anchor="middle", family=MONO),
+      txt(CX, 580, "≈ NT$47,175", 34, weight=900, anchor="middle")) +
+    g("takeaway", "748 580 484 76",
+      cell(748, 584, 484, 72, PALE),
+      txt(772, 630, "宿舍不一定抽得到，先找房子", 24, weight=700)))
 
 
 # =============================================================================
@@ -154,7 +146,7 @@ for i, (nm, post, appl, col) in enumerate(GAPS):
              txt(566, y + 96, f"{appl}%", 26, weight=900, fill=NAVY_3)]
 
 S["05_market"] = page("content",
-    header("該不該選這個系", 5, right="JOB MARKET") +
+    header("該不該選這個系", 5) +
     g("claim", "48 110 700 98", claim(MARGIN, 182, "工程的缺最多，合規的缺最沒人補", 40)) +
     g("bars", "48 212 696 336", *bars) +
     g("ratio", "48 556 696 48",
@@ -177,45 +169,42 @@ S["05_market"] = page("content",
 # =============================================================================
 # 06  該不該選這個系（2）能學到什麼
 # =============================================================================
-COLS = [
-    ("必修 9 門", "打底", PAPER,
-     ["區塊鏈技術 1 & 2", "分散式系統", "密碼學", "軟體工程", "區塊鏈開發 1 & 2",
-      "智能合約安全", "隱私與擴容"], []),
-    ("選修・開發 6 門", "ELECTIVE", PAPER,
-     ["Web 程式基礎", "智能合約方案", "dApp 開發", "軟體專案管理", "資訊安全", "賽局理論"], []),
-    ("選修・管理與金融 5 門", "ELECTIVE", PALE,
-     ["代幣經濟", "FinTech 新趨勢", "區塊鏈商業應用", "區塊鏈倫理與法律", "區塊鏈與金融"],
-     [3, 4]),
-]
+# Course names exactly as the official syllabus lists them
+# (source/msbt-course-content.pdf). Lines are wrapped by hand to fit the cell.
+CORE = [["Introduction to Blockchain", "Technology I & II"], ["Distributed Systems"],
+        ["Introduction to Cryptography"], ["Software Engineering"],
+        ["Blockchain Development", "Fundamentals I & II"],
+        ["Blockchain and Smart", "Contract Security"],
+        ["Blockchain Privacy and", "Scalability"]]
+DEV = [["Web Programming Basics"], ["Blockchain Solutions and", "Smart Contracts"],
+       ["Development of", "Decentralized Applications"], ["Software Project Management"],
+       ["Introduction to Cyber Security"], ["Game Theory and Blockchain"]]
+MGMT = [["Token Economics"], ["Emerging Topics in FinTech"], ["Blockchain Business Applications"],
+        ["Ethics and Laws in Blockchain"], ["Blockchain in Finance"]]
+BOXES = [("必修 9 門", CORE, FILL_1, 48, 480),
+         ("選修・開發 6 門", DEV, FILL_2, 448, 480),
+         ("選修・管理與金融 5 門", MGMT, FILL_3, 848, 330)]
+
 cols = []
-for i, (ttl_, kick, fill, items, hot) in enumerate(COLS):
-    x = MARGIN + i * 396
-    w = 380
-    cols += [cell(x, 214, w, 300, fill),
-             cell(x, 214, w, 300, "none", stroke=NAVY),
-             ttl(x + 24, 258, ttl_, 24),
-             hline(x + 24, 276, 48, col=NAVY_4, t=4)]
-    for j, it in enumerate(items):
-        iy = 316 + j * 29
-        on = j in hot
-        cols += [txt(x + 24, iy, ("● " if on else "・ ") + it, 18,
-                     fill=RED if on else NAVY, weight=700 if on else 400)]
+for title_, items, fill, x, h in BOXES:
+    cols += [cell(x, 220, 384, h, fill), cell(x, 220, 384, h, "none", stroke=NAVY),
+             ttl(x + 24, 266, title_, 24), hline(x + 24, 284, 48, col=NAVY, t=4)]
+    iy = 334
+    for lines in items:
+        for ln in lines:
+            cols.append(txt(x + 24, iy, ln, 20))
+            iy += 26
+        iy += 10
 
 S["06_courses"] = page("content",
-    header("該不該選這個系", 6, right="COURSES") +
-    g("claim", "48 110 900 98", claim(MARGIN, 182, "必修打底，選修決定你變成什麼人")) +
-    g("columns", "48 212 1184 306", *cols) +
-    g("pick", "48 528 760 76",
-      txt(MARGIN, 560, "● 我自己會選的兩門", 19, fill=RED, weight=700),
-      txt(MARGIN, 592, "市場最缺合規人才，所以我往法律和金融的課走。", 21, weight=700)) +
-    g("time", "48 616 760 80",
-      hline(MARGIN, 626, 760, col=NAVY_5, t=2),
-      ttl(MARGIN, 684, "18:30 – 21:45", 34),
-      txt(300, 684, "課大多排在晚上，白天可以去實習。", 20, fill=MUTED)) +
-    g("qr", "1000 524 232 176",
-      card(1046, 530, 130, 130, fill=PAPER, shadow=0),
-      img("../images/qr-course-content.png", 1052, 536, 118, 118, "xMidYMid meet"),
-      txt(1111, 686, "掃這裡看完整課程大綱", 17, fill=MUTED, anchor="middle")))
+    header("該不該選這個系", 6) +
+    g("claim", "48 108 700 96", claim(MARGIN, 180, "必修打底，選修決定你變成什麼人")) +
+    g("columns", "48 212 1184 496", *cols) +
+    g("qr", "848 568 384 136",
+      cell(848, 572, 128, 128, PAPER, stroke=NAVY),
+      img("../images/qr-course-content.png", 854, 578, 116, 116, "xMidYMid meet"),
+      txt(996, 630, "掃描看完整", 20, weight=700),
+      txt(996, 662, "官方課程大綱", 20, weight=700)))
 
 
 # =============================================================================
@@ -237,21 +226,22 @@ S["07_closing"] = page("section",
 # =============================================================================
 # 08  聯絡資訊
 # =============================================================================
-CONTACT = [("EMAIL", "（待填）"), ("LINKEDIN", "（待填）"), ("INSTAGRAM", "（待填）")]
+QRS = [("LINKEDIN", "qr-linkedin.png", 48), ("LINE", "qr-line.png", 244)]
 S["08_contact"] = page("content",
-    g("photo", "640 0 640 720", img("../images/hive-cover.jpg", 640, 0, 640, 720), role="background") +
+    g("photo", "640 0 640 720", img("../images/hive-interior.jpg", 640, 0, 640, 720),
+      role="background") +
     g("panel", "0 0 640 720",
       cell(0, 0, 640, 720, PAPER), vline(640, 0, 720),
-      img("../images/ntu-cctf-lockup-navy.png", MARGIN, 60, 300, 49, "xMinYMid meet"),
-      ttl(MARGIN, 268, "謝謝聆聽", 68),
-      hline(MARGIN, 306, 96, col=RED, t=5),
-      txt(MARGIN, 356, f"{SPEAKER} ・ NTU MSBT", 24, weight=700),
-      *[s for i, (k, v) in enumerate(CONTACT) for s in (
-          hline(MARGIN, 410 + i * 72, 544, col=NAVY_5, t=2),
-          label(MARGIN, 444 + i * 72, k, 13),
-          txt(200, 448 + i * 72, v, 21, weight=700),
+      img("../images/ntu-cctf-lockup-navy.png", MARGIN, 56, 300, 49, "xMinYMid meet"),
+      ttl(MARGIN, 232, "謝謝聆聽", 64),
+      hline(MARGIN, 268, 96, col=RED, t=5),
+      txt(MARGIN, 318, f"{SPEAKER} ・ NTU MSBT", 24, weight=700),
+      *[s for name, f, x in QRS for s in (
+          cell(x, 380, 168, 168, PAPER, stroke=NAVY),
+          img(f"../images/{f}", x + 8, 388, 152, 152, "xMidYMid meet"),
+          label(x, 582, name, 15, fill=MUTED),
       )],
-      txt(MARGIN, 668, "有問題歡迎現在提問，或會後找我。", 20, fill=MUTED)))
+      txt(MARGIN, 664, "有問題歡迎現在提問，或會後找我。", 20, fill=MUTED)))
 
 
 # =============================================================================
