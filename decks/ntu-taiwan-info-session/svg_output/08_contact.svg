@@ -6,7 +6,7 @@
   <g id="panel" data-pptx-bounds="0 0 640 720">
     <rect x="0" y="0" width="640" height="720" fill="#FFFFFF"/>
     <rect x="640" y="0" width="3" height="720" fill="#0A1138"/>
-    <image href="../images/ntu-cctf-lockup-navy.png" x="48" y="56" width="300" height="49" preserveAspectRatio="xMinYMid meet"/>
+    <rect x="48" y="48" width="308" height="73.66153846153847" fill="#0A1138"/><image href="../images/ntu-cctf-lockup.png" x="62" y="62" width="280" height="45.66153846153846" preserveAspectRatio="xMidYMid meet"/>
     <text x="48" y="232" font-weight="900" font-size="64" fill="#0A1138">謝謝聆聽</text>
     <rect x="48" y="268" width="96" height="5" fill="#D21540"/>
     <text x="48" y="318" font-weight="700" font-size="24" fill="#0A1138">張鈞威 ・ NTU MSBT</text>

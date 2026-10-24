@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="cover" font-family="Noto Sans TC">
   <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
   <g id="topband" data-pptx-bounds="0 0 1280 95">
-    <image href="../images/ntu-cctf-lockup-navy.png" x="48" y="22" width="320" height="52" preserveAspectRatio="xMidYMid meet"/>
+    <rect x="48" y="10" width="308" height="73.66153846153847" fill="#0A1138"/><image href="../images/ntu-cctf-lockup.png" x="62" y="24" width="280" height="45.66153846153846" preserveAspectRatio="xMidYMid meet"/>
     <text x="1232" y="57" font-weight="700" font-size="19" fill="#0A1138" text-anchor="end">NTU CCTF 台灣招生說明會</text>
     <rect x="0" y="92" width="1280" height="3" fill="#0A1138"/>
   </g>

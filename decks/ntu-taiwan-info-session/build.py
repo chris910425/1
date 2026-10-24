@@ -13,7 +13,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from theme import (  # noqa: E402
     CAT, FILL_1, FILL_2, FILL_3, MARGIN, MONO, MUTED, NAVY, NAVY_2, NAVY_3, NAVY_4, NAVY_5,
     PALE, PAPER, RED, RED_PALE, arrow_item, card, cell, claim, doughnut, esc, flight_map, g,
-    ghost, hbar, header, hline, img, label, page, para, pin, ttl, txt, vline,
+    ghost, hbar, header, hline, img, label, lockup, orchid, page, para, pin, ttl, txt, vline,
 )
 
 OUT = pathlib.Path(__file__).parent / "svg_output"
@@ -29,7 +29,7 @@ WHEN = "2026 年 ・ 台北"          # TODO 場次日期與地點待確認
 # =============================================================================
 S["01_cover"] = page("cover",
     g("topband", "0 0 1280 95",
-      img("../images/ntu-cctf-lockup-navy.png", MARGIN, 22, 320, 52, "xMidYMid meet"),
+      lockup(MARGIN, 10, 280),
       txt(1232, 57, EVENT, 19, weight=700, anchor="end"),
       hline(0, 92, 1280)) +
     g("photo", "0 95 1280 530", img("../images/hive-cover.jpg", 0, 95, 1280, 530), role="background") +
@@ -71,7 +71,7 @@ WHY = [
     ("02", "生活安全、乾淨", ["治安好，公共環境整潔，", "一個人住也放心。"]),
     ("03", "離家 4.5 小時", ["直飛台北，", "想回去隨時可以。"]),
 ]
-route, _pr, A, B = flight_map(716, 118, 516, 470,
+route, _pr, A, B = flight_map(716, 124, 516, 532,
                               ("台北", 121.56, 25.03), ("新加坡", 103.85, 1.29))
 S["03_why_sg"] = page("content",
     header("為什麼是新加坡", 3) +
@@ -82,11 +82,8 @@ S["03_why_sg"] = page("content",
           ttl(132, 232 + i * 186, t, 30),
           para(132, 268 + i * 186, lines, 19),
       )]) +
-    g("map", "700 110 532 480", vline(700, 92, 628), route,
-      pin(*A, "台北", "left"), pin(*B, "新加坡", "right")) +
-    g("duration", "716 596 300 76",
-      label(720, 614, "台北 → 新加坡", 15, fill=MUTED),
-      ttl(716, 666, "4.5 小時", 54)))
+    g("map", "700 110 532 560", vline(700, 92, 628), route,
+      pin(*A, "台北", "left"), pin(*B, "新加坡", "right")))
 
 
 # =============================================================================
@@ -125,102 +122,103 @@ S["04_cost"] = page("content",
 # =============================================================================
 # 05  該不該選這個系（1）產業在缺什麼人
 # =============================================================================
-# MoleDAO, Web3 Hiring Market Report Q3 2026 — share of postings vs share of applications
-GAPS = [("合規・法務・風控", 7.5, 2.3, RED), ("工程", 27.2, 22.4, NAVY)]
+# MoleDAO, Web3 Hiring Market Report Q3 2026 — one sample only (the Moledao
+# platform's Q3 postings and applications). Shares are of ALL postings and ALL
+# applications, so the three shown here are part of a larger set.
+GAPS = [("合規・法務・風控", 7.5, 2.3, RED),
+        ("工程", 27.2, 22.4, CAT[1]),
+        ("行銷・成長", 7.9, 20.8, CAT[3])]
 FACTS = [
-    ("新加坡 134 個職缺", "美國（533）以外最多"),
-    ("60 個職缺要中文", "集中在香港、新加坡、台灣"),
-    ("台灣也在走同一條路", "虛擬資產服務法已三讀，VASP 改許可制"),
+    ("Project Guardian", ["MAS 的資產代幣化計畫，", "40 多家金融機構參與"]),
+    ("穩定幣監管框架", ["MAS 已就修法諮詢：儲備、", "資本、贖回與資訊揭露"]),
+    ("60 個職缺要求中文", ["追蹤的 1,104 個職缺中，", "主要在香港、新加坡、台灣"]),
 ]
-SCALE = 30.0  # bars are drawn against 0–30%
+SCALE = 30.0
 
 bars = []
 for i, (nm, post, appl, col) in enumerate(GAPS):
-    y = 240 + i * 170
-    bars += [txt(MARGIN, y, nm, 24, weight=700),
-             txt(MARGIN, y + 44, "職缺", 17, fill=MUTED),
-             hbar(110, y + 26, 440, post / SCALE, col),
-             txt(566, y + 46, f"{post}%", 26, weight=900, fill=col),
-             txt(MARGIN, y + 94, "應徵", 17, fill=MUTED),
-             hbar(110, y + 76, 440, appl / SCALE, NAVY_4),
-             txt(566, y + 96, f"{appl}%", 26, weight=900, fill=NAVY_3)]
+    y = 246 + i * 146
+    bars += [txt(MARGIN, y, nm, 23, weight=700),
+             txt(MARGIN, y + 42, "職缺", 16, fill=MUTED),
+             hbar(104, y + 24, 430, post / SCALE, col, h=24),
+             txt(548, y + 43, f"{post}%", 23, weight=900, fill=col),
+             txt(MARGIN, y + 84, "應徵", 16, fill=MUTED),
+             hbar(104, y + 66, 430, appl / SCALE, NAVY_4, h=24),
+             txt(548, y + 85, f"{appl}%", 23, weight=900, fill=NAVY_3)]
 
 S["05_market"] = page("content",
     header("該不該選這個系", 5) +
-    g("claim", "48 110 700 98", claim(MARGIN, 182, "工程的缺最多，合規的缺最沒人補", 40)) +
-    g("bars", "48 212 696 336", *bars) +
-    g("ratio", "48 556 696 48",
-      cell(MARGIN, 556, 696, 48, PALE),
-      txt(72, 586, "合規：職缺是應徵的 3.3 倍　|　工程：1.2 倍", 21, weight=700)) +
+    g("claim", "48 108 700 96", claim(MARGIN, 180, "工程的缺最多，合規的缺最沒人補", 40)) +
+    g("axis", "48 206 696 28", txt(MARGIN, 224, "占平台全部職缺／全部應徵的比例", 17, fill=MUTED)) +
+    g("bars", "48 236 696 420", *bars) +
     g("divider", "756 92 4 628", vline(756, 92, 628)) +
-    g("facts", "772 110 460 488",
-      *[s for i, (t, sub) in enumerate(FACTS) for s in (
-          hline(796, 150 + i * 150, 436, col=NAVY_5, t=2) if i else "",
-          ttl(796, 214 + i * 150, t, 26),
-          txt(796, 250 + i * 150, sub, 19, fill=MUTED),
+    g("facts", "772 150 460 470",
+      *[s for i, (t, lines) in enumerate(FACTS) for s in (
+          hline(796, 190 + i * 156, 436, col=NAVY_5, t=2) if i else "",
+          ttl(796, 254 + i * 156, t, 26),
+          para(796, 292 + i * 156, lines, 19),
       )]) +
-    g("token", "772 600 460 60",
-      txt(796, 622, "傳統金融正在把資產搬上鏈", 22, weight=700),
-      txt(796, 652, "Tokenization — 這個缺口只會更大", 19, fill=MUTED)) +
-    g("source", "48 676 696 30",
-      txt(MARGIN, 694, "資料：MoleDAO, Web3 Hiring Market Report Q3 2026", 15, fill=MUTED)))
+    g("source", "48 672 696 32",
+      txt(MARGIN, 692, "資料：MoleDAO, Web3 Hiring Market Report Q3 2026", 15, fill=MUTED)))
 
 
 # =============================================================================
 # 06  該不該選這個系（2）能學到什麼
 # =============================================================================
-# Course names exactly as the official syllabus lists them
+# Course codes and names exactly as the official syllabus lists them
 # (source/msbt-course-content.pdf). Lines are wrapped by hand to fit the cell.
-CORE = [["Introduction to Blockchain", "Technology I & II"], ["Distributed Systems"],
-        ["Introduction to Cryptography"], ["Software Engineering"],
-        ["Blockchain Development", "Fundamentals I & II"],
-        ["Blockchain and Smart", "Contract Security"],
-        ["Blockchain Privacy and", "Scalability"]]
-DEV = [["Web Programming Basics"], ["Blockchain Solutions and", "Smart Contracts"],
-       ["Development of", "Decentralized Applications"], ["Software Project Management"],
-       ["Introduction to Cyber Security"], ["Game Theory and Blockchain"]]
-MGMT = [["Token Economics"], ["Emerging Topics in FinTech"], ["Blockchain Business Applications"],
-        ["Ethics and Laws in Blockchain"], ["Blockchain in Finance"]]
-BOXES = [("必修 9 門", CORE, FILL_1, 48, 480),
-         ("選修・開發 6 門", DEV, FILL_2, 448, 480),
-         ("選修・管理與金融 5 門", MGMT, FILL_3, 848, 330)]
+CORE = [("SC6101–02", ["Introduction to Blockchain", "Technology I & II"]),
+        ("SC6103", ["Distributed Systems"]),
+        ("SC6104", ["Introduction to", "Cryptography"]),
+        ("SC6105", ["Software Engineering"]),
+        ("SC6106–07", ["Blockchain Development", "Fundamentals I & II"]),
+        ("SC6108", ["Blockchain and Smart", "Contract Security"]),
+        ("SC6109", ["Blockchain Privacy and", "Scalability"])]
+DEV = [("SC6111", ["Web Programming Basics"]),
+       ("SC6112", ["Blockchain Solutions and", "Smart Contracts"]),
+       ("SC6113", ["Development of", "Decentralized Applications"]),
+       ("SC6114", ["Software Project", "Management"]),
+       ("SC6115", ["Introduction to", "Cyber Security"]),
+       ("SC6116", ["Game Theory and", "Blockchain"])]
+MGMT = [("SC6121", ["Token Economics"]),
+        ("SC6122", ["Emerging Topics in", "FinTech"]),
+        ("SC6123", ["Blockchain Business", "Applications"]),
+        ("SC6124", ["Ethics and Laws in", "Blockchain"]),
+        ("SC6125", ["Blockchain in Finance"])]
+BOXES = [("必修 9 門", CORE, FILL_1, 48), ("選修・開發 6 門", DEV, FILL_2, 448),
+         ("選修・管理與金融 5 門", MGMT, FILL_3, 848)]
+BOX_Y, BOX_H = 204, 480
 
 cols = []
-for title_, items, fill, x, h in BOXES:
-    cols += [cell(x, 220, 384, h, fill), cell(x, 220, 384, h, "none", stroke=NAVY),
-             ttl(x + 24, 266, title_, 24), hline(x + 24, 284, 48, col=NAVY, t=4)]
-    iy = 334
-    for lines in items:
+for title_, items, fill, x in BOXES:
+    cols += [cell(x, BOX_Y, 384, BOX_H, fill), cell(x, BOX_Y, 384, BOX_H, "none", stroke=NAVY),
+             ttl(x + 24, BOX_Y + 46, title_, 24), hline(x + 24, BOX_Y + 64, 48, col=NAVY, t=4)]
+    iy = BOX_Y + 118
+    for code, lines in items:
+        cols.append(txt(x + 24, iy, code, 15, fill=NAVY_3, weight=700, family=MONO))
         for ln in lines:
-            cols.append(txt(x + 24, iy, ln, 20))
-            iy += 26
+            cols.append(txt(x + 114, iy, ln, 19))
+            iy += 25
         iy += 10
 
 S["06_courses"] = page("content",
     header("該不該選這個系", 6) +
-    g("claim", "48 108 700 96", claim(MARGIN, 180, "必修打底，選修決定你變成什麼人")) +
-    g("columns", "48 212 1184 496", *cols) +
-    g("qr", "848 568 384 136",
-      cell(848, 572, 128, 128, PAPER, stroke=NAVY),
-      img("../images/qr-course-content.png", 854, 578, 116, 116, "xMidYMid meet"),
-      txt(996, 630, "掃描看完整", 20, weight=700),
-      txt(996, 662, "官方課程大綱", 20, weight=700)))
+    g("claim", "48 104 760 92", claim(MARGIN, 168, "必修打底，選修決定你變成什麼人", 40)) +
+    g("columns", "48 200 1184 492", *cols,
+      cell(984, 556, 112, 112, PAPER, stroke=NAVY),
+      img("../images/qr-course-content.png", 989, 561, 102, 102, "xMidYMid meet")))
 
 
 # =============================================================================
 # 07  結語
 # =============================================================================
+# Just the word, with Vanda Miss Joaquim — Singapore's national flower — bleeding
+# off the corner. Everything else on this page is spoken.
 S["07_closing"] = page("section",
-    g("mark", "0 0 1280 92", hline(MARGIN, 90, 1280 - 2 * MARGIN), label(MARGIN, 62, "結語", 20, fill=MUTED)) +
-    g("statement", "48 110 1000 380",
-      txt(MARGIN, 212, "有人說新加坡很無聊。", 26, fill=MUTED),
-      ttl(MARGIN, 318, "它不是拿來玩的地方，", 60),
-      ttl(MARGIN, 398, "是拿來工作的地方。", 60),
-      hline(MARGIN, 440, 96, col=RED, t=5)) +
-    g("opportunity", "48 500 1184 150",
-      cell(MARGIN, 500, 1184, 150, PALE),
-      ttl(80, 566, "我來這裡買到的，是原本拿不到的機會。", 32),
-      txt(80, 612, "實習、課外活動、認識的人，以及在國際職場工作的機會。", 21, fill=NAVY_2)))
+    g("flower", "900 260 380 460", orchid(960, 274, 620), role="decoration") +
+    g("word", "440 330 400 180",
+      ttl(640, 452, "結語", 132, anchor="middle"),
+      hline(586, 500, 108, col=RED, t=6)))
 
 
 # =============================================================================
@@ -232,7 +230,7 @@ S["08_contact"] = page("content",
       role="background") +
     g("panel", "0 0 640 720",
       cell(0, 0, 640, 720, PAPER), vline(640, 0, 720),
-      img("../images/ntu-cctf-lockup-navy.png", MARGIN, 56, 300, 49, "xMinYMid meet"),
+      lockup(MARGIN, 48, 280),
       ttl(MARGIN, 232, "謝謝聆聽", 64),
       hline(MARGIN, 268, 96, col=RED, t=5),
       txt(MARGIN, 318, f"{SPEAKER} ・ NTU MSBT", 24, weight=700),

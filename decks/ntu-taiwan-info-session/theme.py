@@ -265,8 +265,32 @@ def flight_map(x, y, w, h, frm, to, pad_lon=9, pad_lat=(7, 6)):
     return "".join(grat) + "".join(land) + arc, pr, A, B
 
 
+def lockup(x, y, w=280, pad=14):
+    """The official CCTF lockup, kept in its own colours by sitting on a navy block
+    instead of being recoloured (its wordmark is the reversed version)."""
+    h = w * 106 / 650
+    return (cell(x, y, w + 2 * pad, h + 2 * pad, NAVY)
+            + img("../images/ntu-cctf-lockup.png", x + pad, y + pad, w, h, "xMidYMid meet"))
+
+
 def pin(px, py, name, side="right", col=NAVY):
     dx, anc = (20, "start") if side == "right" else (-20, "end")
     return (f'<circle cx="{px:.1f}" cy="{py:.1f}" r="9" fill="{PAPER}"/>'
             f'<circle cx="{px:.1f}" cy="{py:.1f}" r="6" fill="{col}"/>'
             + txt(px + dx, py + 8, name, 22, weight=900, anchor=anc))
+
+
+# ---- orchid -----------------------------------------------------------------
+# Vanda Miss Joaquim, Singapore's national flower, taken from the component
+# library's `botanical` artwork (components/library.js) with the paint that lived
+# in library.css written onto the elements, as PPT Master needs.
+_ORCHID = """<path fill="none" stroke="{STEM}" stroke-width="2" stroke-linecap="round" d="M60 410C80 280 140 170 260 70"></path><g transform="translate(113.1 245.7) rotate(-122.0)"><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(0)" d="M0 0C11.5 -16.1 39.1 -16.1 46 0C39.1 16.1 11.5 16.1 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(72)" d="M0 0C11.5 -16.1 39.1 -16.1 46 0C39.1 16.1 11.5 16.1 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(144)" d="M0 0C11.5 -16.1 39.1 -16.1 46 0C39.1 16.1 11.5 16.1 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(216)" d="M0 0C11.5 -16.1 39.1 -16.1 46 0C39.1 16.1 11.5 16.1 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(288)" d="M0 0C11.5 -16.1 39.1 -16.1 46 0C39.1 16.1 11.5 16.1 0 0Z"></path><path fill="{LIP}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(108)" d="M0 0C18.4 -27.6 57.5 -32.2 50.6 0C57.5 32.2 18.4 27.6 0 0Z"></path><circle fill="{INK}" r="5"></circle></g><g transform="translate(167.7 163.0) rotate(-111.0)"><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(0)" d="M0 0C9.8 -13.7 33.2 -13.7 39.1 0C33.2 13.7 9.8 13.7 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(72)" d="M0 0C9.8 -13.7 33.2 -13.7 39.1 0C33.2 13.7 9.8 13.7 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(144)" d="M0 0C9.8 -13.7 33.2 -13.7 39.1 0C33.2 13.7 9.8 13.7 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(216)" d="M0 0C9.8 -13.7 33.2 -13.7 39.1 0C33.2 13.7 9.8 13.7 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(288)" d="M0 0C9.8 -13.7 33.2 -13.7 39.1 0C33.2 13.7 9.8 13.7 0 0Z"></path><path fill="{LIP}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(108)" d="M0 0C15.64 -23.46 48.9 -27.37 43.0 0C48.9 27.37 15.64 23.46 0 0Z"></path><circle fill="{INK}" r="5"></circle></g><g transform="translate(242.4 85.1) rotate(-101.4)"><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(0)" d="M0 0C8.0 -11.3 27.4 -11.3 32.2 0C27.4 11.3 8.0 11.3 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(72)" d="M0 0C8.0 -11.3 27.4 -11.3 32.2 0C27.4 11.3 8.0 11.3 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(144)" d="M0 0C8.0 -11.3 27.4 -11.3 32.2 0C27.4 11.3 8.0 11.3 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(216)" d="M0 0C8.0 -11.3 27.4 -11.3 32.2 0C27.4 11.3 8.0 11.3 0 0Z"></path><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(288)" d="M0 0C8.0 -11.3 27.4 -11.3 32.2 0C27.4 11.3 8.0 11.3 0 0Z"></path><path fill="{LIP}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" transform="rotate(108)" d="M0 0C12.9 -19.3 40.2 -22.5 35.42 0C40.2 22.5 12.9 19.3 0 0Z"></path><circle fill="{INK}" r="5"></circle></g><g transform="translate(69.0 364.0) rotate(-150.0)"><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" d="M0 0C36 -14 84 -14 120 0C84 14 36 14 0 0Z"></path><path fill="none" stroke="{RIB}" stroke-width="0.8" d="M9.6 0L102 0"></path></g><g transform="translate(79.2 327.0) rotate(-30.0)"><path fill="{PETAL}" stroke="{INK}" stroke-width="1.4" stroke-linejoin="round" d="M0 0C36 -14 84 -14 120 0C84 14 36 14 0 0Z"></path><path fill="none" stroke="{RIB}" stroke-width="0.8" d="M9.6 0L102 0"></path></g>"""
+
+
+def orchid(x, y, h, ink=NAVY_4, petal=PAPER, lip=None, stem=None, rib=None):
+    """Fine line-art orchid spray. Native box is 340x420; h sets the drawn height."""
+    k = h / 420.0
+    body = (_ORCHID.replace("{INK}", ink).replace("{PETAL}", petal)
+            .replace("{LIP}", lip or PALE).replace("{STEM}", stem or ink)
+            .replace("{RIB}", rib or NAVY_5))
+    return f'<g transform="translate({x} {y}) scale({k:.4f})">{body}</g>'
