@@ -5,49 +5,31 @@
     <rect x="1094" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1112" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1130" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1148" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1166" y="46" width="12" height="12" fill="#0A1138" stroke="#0A1138" stroke-width="2"/><rect x="1184" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1202" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1220" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/>
     <rect x="48" y="90" width="1184" height="3" fill="#0A1138"/>
   </g>
-  <g id="claim" data-pptx-bounds="48 108 700 96">
-    <text x="48" y="180" font-weight="900" font-size="40" fill="#0A1138">工程的缺最多，合規的缺最沒人補</text><rect x="48" y="200" width="96" height="5" fill="#D21540"/>
+  <g id="claim" data-pptx-bounds="48 106 700 86">
+    <text x="48" y="172" font-weight="900" font-size="44" fill="#0A1138">合規的缺，沒人去投</text>
   </g>
-  <g id="axis" data-pptx-bounds="48 206 696 28">
-    <text x="48" y="224" font-weight="400" font-size="17" fill="#6B6B6B">占平台全部職缺／全部應徵的比例</text>
+  <g id="legend" data-pptx-bounds="48 194 660 44">
+    <rect x="48" y="204" width="18" height="18" fill="#D21540"/><text x="76" y="218" font-weight="700" font-size="19" fill="#0A1138">職缺</text><rect x="238" y="204" width="18" height="18" fill="#0A1138"/><text x="266" y="218" font-weight="700" font-size="19" fill="#0A1138">應徵</text>
+    <text x="348" y="218" font-weight="400" font-size="16" fill="#6B6B6B">占平台全部職缺／全部應徵的比例</text>
   </g>
-  <g id="bars" data-pptx-bounds="48 236 696 420">
-    <text x="48" y="246" font-weight="700" font-size="23" fill="#0A1138">合規・法務・風控</text>
-    <text x="48" y="288" font-weight="400" font-size="16" fill="#6B6B6B">職缺</text>
-    <rect x="104" y="270" width="430" height="24" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="107" y="273" width="106" height="18" fill="#D21540"/>
-    <text x="548" y="289" font-weight="900" font-size="23" fill="#D21540">7.5%</text>
-    <text x="48" y="330" font-weight="400" font-size="16" fill="#6B6B6B">應徵</text>
-    <rect x="104" y="312" width="430" height="24" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="107" y="315" width="33" height="18" fill="#93A0C9"/>
-    <text x="548" y="331" font-weight="900" font-size="23" fill="#5A6AA8">2.3%</text>
-    <text x="48" y="392" font-weight="700" font-size="23" fill="#0A1138">工程</text>
-    <text x="48" y="434" font-weight="400" font-size="16" fill="#6B6B6B">職缺</text>
-    <rect x="104" y="416" width="430" height="24" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="107" y="419" width="384" height="18" fill="#2B4BB8"/>
-    <text x="548" y="435" font-weight="900" font-size="23" fill="#2B4BB8">27.2%</text>
-    <text x="48" y="476" font-weight="400" font-size="16" fill="#6B6B6B">應徵</text>
-    <rect x="104" y="458" width="430" height="24" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="107" y="461" width="317" height="18" fill="#93A0C9"/>
-    <text x="548" y="477" font-weight="900" font-size="23" fill="#5A6AA8">22.4%</text>
-    <text x="48" y="538" font-weight="700" font-size="23" fill="#0A1138">行銷・成長</text>
-    <text x="48" y="580" font-weight="400" font-size="16" fill="#6B6B6B">職缺</text>
-    <rect x="104" y="562" width="430" height="24" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="107" y="565" width="112" height="18" fill="#C97B10"/>
-    <text x="548" y="581" font-weight="900" font-size="23" fill="#C97B10">7.9%</text>
-    <text x="48" y="622" font-weight="400" font-size="16" fill="#6B6B6B">應徵</text>
-    <rect x="104" y="604" width="430" height="24" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/><rect x="107" y="607" width="294" height="18" fill="#93A0C9"/>
-    <text x="548" y="623" font-weight="900" font-size="23" fill="#5A6AA8">20.8%</text>
+  <g id="chart" data-pptx-bounds="48 242 668 412">
+    <rect x="92" y="594.0" width="608" height="3" fill="#0A1138"/><text x="78" y="600.0" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="15" fill="#6B6B6B" text-anchor="end">0%</text><rect x="92" y="482.0" width="608" height="2" fill="#C7CEE4"/><text x="78" y="488.0" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="15" fill="#6B6B6B" text-anchor="end">10%</text><rect x="92" y="370.0" width="608" height="2" fill="#C7CEE4"/><text x="78" y="376.0" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="15" fill="#6B6B6B" text-anchor="end">20%</text><rect x="92" y="258.0" width="608" height="2" fill="#C7CEE4"/><text x="78" y="264.0" font-family="Consolas, Noto Sans TC" font-weight="400" font-size="15" fill="#6B6B6B" text-anchor="end">30%</text><rect x="143.74666666666664" y="517.0" width="44.586666666666666" height="77.0" fill="#D21540"/><text x="166.03999999999996" y="503.0" font-weight="900" font-size="21" fill="#D21540" text-anchor="middle">7.5%</text><rect x="198.33333333333331" y="570.3866666666667" width="44.586666666666666" height="23.613333333333333" fill="#0A1138"/><text x="220.62666666666664" y="556.3866666666667" font-weight="900" font-size="21" fill="#0A1138" text-anchor="middle">2.3%</text><text x="193.33333333333331" y="628" font-weight="700" font-size="21" fill="#0A1138" text-anchor="middle">合規・法務・風控</text><rect x="346.41333333333336" y="314.74666666666667" width="44.586666666666666" height="279.25333333333333" fill="#D21540"/><text x="368.7066666666667" y="300.74666666666667" font-weight="900" font-size="21" fill="#D21540" text-anchor="middle">27.2%</text><rect x="401.0" y="364.02666666666664" width="44.586666666666666" height="229.97333333333333" fill="#0A1138"/><text x="423.29333333333335" y="350.02666666666664" font-weight="900" font-size="21" fill="#0A1138" text-anchor="middle">22.4%</text><text x="396.0" y="628" font-weight="700" font-size="21" fill="#0A1138" text-anchor="middle">工程</text><rect x="549.0799999999999" y="512.8933333333333" width="44.586666666666666" height="81.10666666666667" fill="#D21540"/><text x="571.3733333333332" y="498.8933333333333" font-weight="900" font-size="21" fill="#D21540" text-anchor="middle">7.9%</text><rect x="603.6666666666666" y="380.4533333333333" width="44.586666666666666" height="213.54666666666668" fill="#0A1138"/><text x="625.9599999999999" y="366.4533333333333" font-weight="900" font-size="21" fill="#0A1138" text-anchor="middle">20.8%</text><text x="598.6666666666666" y="628" font-weight="700" font-size="21" fill="#0A1138" text-anchor="middle">行銷・成長</text>
+  </g>
+  <g id="source" data-pptx-bounds="48 666 696 34">
+    <text x="48" y="690" font-weight="400" font-size="15" fill="#6B6B6B">資料：MoleDAO, Web3 Hiring Market Report Q3 2026</text>
   </g>
   <g id="divider" data-pptx-bounds="756 92 4 628">
     <rect x="756" y="92" width="3" height="628" fill="#0A1138"/>
   </g>
-  <g id="facts" data-pptx-bounds="772 150 460 470">
-    <text x="796" y="254" font-weight="900" font-size="26" fill="#0A1138">Project Guardian</text>
-    <text x="796" y="292" font-weight="400" font-size="19" fill="#6B6B6B">MAS 的資產代幣化計畫，</text><text x="796" y="322" font-weight="400" font-size="19" fill="#6B6B6B">40 多家金融機構參與</text>
-    <rect x="796" y="346" width="436" height="2" fill="#C7CEE4"/>
-    <text x="796" y="410" font-weight="900" font-size="26" fill="#0A1138">穩定幣監管框架</text>
-    <text x="796" y="448" font-weight="400" font-size="19" fill="#6B6B6B">MAS 已就修法諮詢：儲備、</text><text x="796" y="478" font-weight="400" font-size="19" fill="#6B6B6B">資本、贖回與資訊揭露</text>
-    <rect x="796" y="502" width="436" height="2" fill="#C7CEE4"/>
-    <text x="796" y="566" font-weight="900" font-size="26" fill="#0A1138">60 個職缺要求中文</text>
-    <text x="796" y="604" font-weight="400" font-size="19" fill="#6B6B6B">追蹤的 1,104 個職缺中，</text><text x="796" y="634" font-weight="400" font-size="19" fill="#6B6B6B">主要在香港、新加坡、台灣</text>
-  </g>
-  <g id="source" data-pptx-bounds="48 672 696 32">
-    <text x="48" y="692" font-weight="400" font-size="15" fill="#6B6B6B">資料：MoleDAO, Web3 Hiring Market Report Q3 2026</text>
+  <g id="policy" data-pptx-bounds="772 150 460 530">
+    <text x="796" y="186" font-weight="700" font-size="15" fill="#6B6B6B">新加坡正在推的</text>
+    <text x="796" y="294" font-weight="900" font-size="25" fill="#0A1138">Project Guardian</text>
+    <text x="796" y="330" font-weight="400" font-size="19" fill="#6B6B6B">資產代幣化試點，</text><text x="796" y="360" font-weight="400" font-size="19" fill="#6B6B6B">40 多家金融機構參與</text>
+    <rect x="796" y="384" width="436" height="2" fill="#C7CEE4"/>
+    <text x="796" y="446" font-weight="900" font-size="25" fill="#0A1138">Global Layer One</text>
+    <text x="796" y="482" font-weight="400" font-size="19" fill="#6B6B6B">金融機構共建的</text><text x="796" y="512" font-weight="400" font-size="19" fill="#6B6B6B">共享帳本基礎設施</text>
+    <rect x="796" y="536" width="436" height="2" fill="#C7CEE4"/>
+    <text x="796" y="598" font-weight="900" font-size="25" fill="#0A1138">穩定幣監管框架</text>
+    <text x="796" y="634" font-weight="400" font-size="19" fill="#6B6B6B">單一貨幣穩定幣的</text><text x="796" y="664" font-weight="400" font-size="19" fill="#6B6B6B">發行與儲備規範</text>
   </g>
 </svg>

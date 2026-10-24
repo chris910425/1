@@ -6,9 +6,8 @@
   <g id="panel" data-pptx-bounds="0 0 640 720">
     <rect x="0" y="0" width="640" height="720" fill="#FFFFFF"/>
     <rect x="640" y="0" width="3" height="720" fill="#0A1138"/>
-    <rect x="48" y="48" width="308" height="73.66153846153847" fill="#0A1138"/><image href="../images/ntu-cctf-lockup.png" x="62" y="62" width="280" height="45.66153846153846" preserveAspectRatio="xMidYMid meet"/>
+    <image href="../images/ntu-logo.png" x="48" y="52" width="146.5" height="54" preserveAspectRatio="xMidYMid meet"/><rect x="216.5" y="54" width="2" height="50" fill="#93A0C9"/><text x="238.5" y="75.76" font-weight="700" font-size="13" fill="#0A1138">NTU Centre in Computational</text><text x="238.5" y="92.76" font-weight="700" font-size="13" fill="#0A1138">Technologies for Finance</text><text x="238.5" y="111.76" font-weight="700" font-size="10" fill="#6B6B6B">Graduate College</text>
     <text x="48" y="232" font-weight="900" font-size="64" fill="#0A1138">謝謝聆聽</text>
-    <rect x="48" y="268" width="96" height="5" fill="#D21540"/>
     <text x="48" y="318" font-weight="700" font-size="24" fill="#0A1138">張鈞威 ・ NTU MSBT</text>
     <rect x="48" y="380" width="168" height="168" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/>
     <image href="../images/qr-linkedin.png" x="56" y="388" width="152" height="152" preserveAspectRatio="xMidYMid meet"/>

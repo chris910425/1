@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" lang="zh-Hant" data-pptx-page-role="cover" font-family="Noto Sans TC">
   <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
   <g id="topband" data-pptx-bounds="0 0 1280 95">
-    <rect x="48" y="10" width="308" height="73.66153846153847" fill="#0A1138"/><image href="../images/ntu-cctf-lockup.png" x="62" y="24" width="280" height="45.66153846153846" preserveAspectRatio="xMidYMid meet"/>
+    <image href="../images/ntu-logo.png" x="48" y="16" width="151.92592592592592" height="56" preserveAspectRatio="xMidYMid meet"/><rect x="221.92592592592592" y="18" width="2" height="52" fill="#93A0C9"/><text x="243.92592592592592" y="40.64" font-weight="700" font-size="13" fill="#0A1138">NTU Centre in Computational</text><text x="243.92592592592592" y="57.64" font-weight="700" font-size="13" fill="#0A1138">Technologies for Finance</text><text x="243.92592592592592" y="76.64" font-weight="700" font-size="10" fill="#6B6B6B">Graduate College</text>
     <text x="1232" y="57" font-weight="700" font-size="19" fill="#0A1138" text-anchor="end">NTU CCTF 台灣招生說明會</text>
     <rect x="0" y="92" width="1280" height="3" fill="#0A1138"/>
   </g>
@@ -10,10 +10,10 @@
   </g>
   <g id="title" data-pptx-bounds="48 168 654 314">
     <rect x="54" y="174" width="648" height="308" fill="#0A1138"/><rect x="48" y="168" width="648" height="308" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/>
-    <text x="88" y="288" font-weight="900" font-size="72" fill="#0A1138">來 NTU 之前，</text>
-    <text x="88" y="376" font-weight="900" font-size="72" fill="#0A1138">該知道的事</text>
-    <rect x="92" y="414" width="96" height="5" fill="#D21540"/>
-    <text x="92" y="456" font-weight="400" font-size="24" fill="#6B6B6B">生活開銷 ・ 課程 ・ 還有我的真心話</text>
+    <text x="88" y="276" font-weight="900" font-size="72" fill="#0A1138">在新加坡</text>
+    <text x="88" y="362" font-weight="900" font-size="72" fill="#0A1138">念書這一年</text>
+    <text x="92" y="416" font-weight="400" font-size="24" fill="#6B6B6B">花多少錢，念什麼課，</text>
+    <text x="92" y="450" font-weight="400" font-size="24" fill="#6B6B6B">還有我會不會推薦你來</text>
   </g>
   <g id="footband" data-pptx-bounds="0 625 1280 95">
     <rect x="0" y="625" width="1280" height="3" fill="#0A1138"/>

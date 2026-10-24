@@ -133,9 +133,9 @@ def header(title_text, n, total=TOTAL):
              hline(MARGIN, 90, 1280 - 2 * MARGIN))
 
 
-def claim(x, y, s, size=44, rule=96):
-    """The slide's one assertion, with the red rule under it."""
-    return ttl(x, y, s, size) + hline(x, y + 20, rule, col=RED, t=5)
+def claim(x, y, s, size=44):
+    """The slide's one assertion. No rule under it: red is reserved for the data."""
+    return ttl(x, y, s, size)
 
 
 # ---- bars -------------------------------------------------------------------
@@ -265,12 +265,18 @@ def flight_map(x, y, w, h, frm, to, pad_lon=9, pad_lat=(7, 6)):
     return "".join(grat) + "".join(land) + arc, pr, A, B
 
 
-def lockup(x, y, w=280, pad=14):
-    """The official CCTF lockup, kept in its own colours by sitting on a navy block
-    instead of being recoloured (its wordmark is the reversed version)."""
-    h = w * 106 / 650
-    return (cell(x, y, w + 2 * pad, h + 2 * pad, NAVY)
-            + img("../images/ntu-cctf-lockup.png", x + pad, y + pad, w, h, "xMidYMid meet"))
+def lockup(x, y, h=56, centre=True):
+    """Official NTU logo (full colour, on white) plus the centre's name, set the way
+    the real lockup is built: logo, hairline rule, two lines of type."""
+    w = h * 879 / 324
+    out = [img("../images/ntu-logo.png", x, y, w, h, "xMidYMid meet")]
+    if centre:
+        rx = x + w + 22
+        out += [vline(rx, y + 2, h - 4, col=NAVY_4, t=2),
+                txt(rx + 22, y + h * 0.44, "NTU Centre in Computational", 13, weight=700),
+                txt(rx + 22, y + h * 0.44 + 17, "Technologies for Finance", 13, weight=700),
+                txt(rx + 22, y + h * 0.44 + 36, "Graduate College", 10, fill=MUTED, weight=700)]
+    return "".join(out)
 
 
 def pin(px, py, name, side="right", col=NAVY):
@@ -294,3 +300,38 @@ def orchid(x, y, h, ink=NAVY_4, petal=PAPER, lip=None, stem=None, rib=None):
             .replace("{LIP}", lip or PALE).replace("{STEM}", stem or ink)
             .replace("{RIB}", rib or NAVY_5))
     return f'<g transform="translate({x} {y}) scale({k:.4f})">{body}</g>'
+
+
+# ---- grouped column chart ---------------------------------------------------
+def vbars(x, y, w, h, groups, series, scale, pad_top=28):
+    """Grouped vertical bars: `groups` are the categories along the baseline,
+    `series` is [(name, colour, [value per group]), ...]. Values are drawn against
+    `scale` (the top of the axis) and labelled above each column."""
+    out, base = [], y + h
+    for t in range(0, int(scale) + 1, 10):
+        gy = base - h * t / scale
+        out.append(hline(x, gy, w, col=NAVY_5 if t else NAVY, t=2 if t else 3))
+        out.append(txt(x - 14, gy + 6, f"{t}%", 15, fill=MUTED, anchor="end", family=MONO))
+    pitch = w / len(groups)
+    bw = pitch * 0.22
+    gap = 10
+    span = len(series) * bw + (len(series) - 1) * gap
+    for gi, name in enumerate(groups):
+        cx = x + pitch * (gi + 0.5)
+        for si, (_, col, vals) in enumerate(series):
+            v = vals[gi]
+            bh = max((h - pad_top) * v / scale, 3)
+            bx = cx - span / 2 + si * (bw + gap)
+            out.append(cell(bx, base - bh, bw, bh, col))
+            out.append(txt(bx + bw / 2, base - bh - 14, f"{v}%", 21, weight=900,
+                           fill=col, anchor="middle"))
+        out.append(txt(cx, base + 34, name, 21, weight=700, anchor="middle"))
+    return "".join(out)
+
+
+def legend_row(x, y, series, gap=190):
+    out = []
+    for i, (name, col, _) in enumerate(series):
+        lx = x + i * gap
+        out += [cell(lx, y - 14, 18, 18, col), txt(lx + 28, y, name, 19, weight=700)]
+    return "".join(out)

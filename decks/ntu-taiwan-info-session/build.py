@@ -13,7 +13,8 @@ sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from theme import (  # noqa: E402
     CAT, FILL_1, FILL_2, FILL_3, MARGIN, MONO, MUTED, NAVY, NAVY_2, NAVY_3, NAVY_4, NAVY_5,
     PALE, PAPER, RED, RED_PALE, arrow_item, card, cell, claim, doughnut, esc, flight_map, g,
-    ghost, hbar, header, hline, img, label, lockup, orchid, page, para, pin, ttl, txt, vline,
+    ghost, hbar, header, hline, img, label, legend_row, lockup, orchid, page, para, pin,
+    ttl, txt, vbars, vline,
 )
 
 OUT = pathlib.Path(__file__).parent / "svg_output"
@@ -29,16 +30,16 @@ WHEN = "2026 年 ・ 台北"          # TODO 場次日期與地點待確認
 # =============================================================================
 S["01_cover"] = page("cover",
     g("topband", "0 0 1280 95",
-      lockup(MARGIN, 10, 280),
+      lockup(MARGIN, 16, 56),
       txt(1232, 57, EVENT, 19, weight=700, anchor="end"),
       hline(0, 92, 1280)) +
     g("photo", "0 95 1280 530", img("../images/hive-cover.jpg", 0, 95, 1280, 530), role="background") +
     g("title", "48 168 654 314",
       card(MARGIN, 168, 648, 308),
-      ttl(88, 288, "來 NTU 之前，", 72),
-      ttl(88, 376, "該知道的事", 72),
-      hline(92, 414, 96, col=RED, t=5),
-      txt(92, 456, "生活開銷 ・ 課程 ・ 還有我的真心話", 24, fill=MUTED)) +
+      ttl(88, 276, "在新加坡", 72),
+      ttl(88, 362, "念書這一年", 72),
+      txt(92, 416, "花多少錢，念什麼課，", 24, fill=MUTED),
+      txt(92, 450, "還有我會不會推薦你來", 24, fill=MUTED)) +
     g("footband", "0 625 1280 95",
       hline(0, 625, 1280),
       txt(MARGIN, 684, f"{SPEAKER} ・ MSBT 2026 入學", 20, weight=700),
@@ -52,8 +53,7 @@ ROWS = ["東吳大學 哲學系", "沒有程式背景", "NTU MSBT 2026 入學", 
 S["02_about"] = page("content",
     header("個人簡介", 2) +
     g("name", "48 130 640 160",
-      ttl(MARGIN, 232, SPEAKER, 84),
-      hline(MARGIN, 262, 96, col=RED, t=5)) +
+      ttl(MARGIN, 232, SPEAKER, 84)) +
     g("rows", "48 310 640 300",
       *[arrow_item(MARGIN, 352 + i * 62, r, 26,
                    fill=MUTED if r.startswith("（") else NAVY) for i, r in enumerate(ROWS)]) +
@@ -67,9 +67,9 @@ S["02_about"] = page("content",
 # 03  為什麼是新加坡
 # =============================================================================
 WHY = [
-    ("01", "在國際級的職場裡學", ["近年成為亞洲金融中心，", "許多跨國企業把亞洲總部設在這裡。"]),
-    ("02", "生活安全、乾淨", ["治安好，公共環境整潔，", "一個人住也放心。"]),
-    ("03", "離家 4.5 小時", ["直飛台北，", "想回去隨時可以。"]),
+    ("01", "公司總部都設在這", ["近年成為亞洲金融中心，", "許多跨國企業把亞洲總部設在這裡。"]),
+    ("02", "晚上一個人走路不用怕", ["公共環境也乾淨。"]),
+    ("03", "飛 4.5 小時到家", []),
 ]
 route, _pr, A, B = flight_map(716, 124, 516, 532,
                               ("台北", 121.56, 25.03), ("新加坡", 103.85, 1.29))
@@ -116,7 +116,7 @@ S["04_cost"] = page("content",
       txt(CX, 580, "≈ NT$47,175", 34, weight=900, anchor="middle")) +
     g("takeaway", "748 580 484 76",
       cell(748, 584, 484, 72, PALE),
-      txt(772, 630, "宿舍不一定抽得到，先找房子", 24, weight=700)))
+      txt(772, 630, "宿舍很難抽，早點找房", 24, weight=700)))
 
 
 # =============================================================================
@@ -124,42 +124,42 @@ S["04_cost"] = page("content",
 # =============================================================================
 # MoleDAO, Web3 Hiring Market Report Q3 2026 — one sample only (the Moledao
 # platform's Q3 postings and applications). Shares are of ALL postings and ALL
-# applications, so the three shown here are part of a larger set.
-GAPS = [("合規・法務・風控", 7.5, 2.3, RED),
-        ("工程", 27.2, 22.4, CAT[1]),
-        ("行銷・成長", 7.9, 20.8, CAT[3])]
-FACTS = [
-    ("Project Guardian", ["MAS 的資產代幣化計畫，", "40 多家金融機構參與"]),
-    ("穩定幣監管框架", ["MAS 已就修法諮詢：儲備、", "資本、贖回與資訊揭露"]),
-    ("60 個職缺要求中文", ["追蹤的 1,104 個職缺中，", "主要在香港、新加坡、台灣"]),
+# applications, so the three groups shown here are part of a larger set.
+JOBS = ["合規・法務・風控", "工程", "行銷・成長"]
+SERIES = [("職缺", RED, [7.5, 27.2, 7.9]), ("應徵", NAVY, [2.3, 22.4, 20.8])]
+# Singapore's own push, for the variant that keeps a right-hand column
+SG_POLICY = [
+    ("Project Guardian", ["資產代幣化試點，", "40 多家金融機構參與"]),
+    ("Global Layer One", ["金融機構共建的", "共享帳本基礎設施"]),
+    ("穩定幣監管框架", ["單一貨幣穩定幣的", "發行與儲備規範"]),
 ]
-SCALE = 30.0
+SOURCE = "資料：MoleDAO, Web3 Hiring Market Report Q3 2026"
 
-bars = []
-for i, (nm, post, appl, col) in enumerate(GAPS):
-    y = 246 + i * 146
-    bars += [txt(MARGIN, y, nm, 23, weight=700),
-             txt(MARGIN, y + 42, "職缺", 16, fill=MUTED),
-             hbar(104, y + 24, 430, post / SCALE, col, h=24),
-             txt(548, y + 43, f"{post}%", 23, weight=900, fill=col),
-             txt(MARGIN, y + 84, "應徵", 16, fill=MUTED),
-             hbar(104, y + 66, 430, appl / SCALE, NAVY_4, h=24),
-             txt(548, y + 85, f"{appl}%", 23, weight=900, fill=NAVY_3)]
 
-S["05_market"] = page("content",
-    header("該不該選這個系", 5) +
-    g("claim", "48 108 700 96", claim(MARGIN, 180, "工程的缺最多，合規的缺最沒人補", 40)) +
-    g("axis", "48 206 696 28", txt(MARGIN, 224, "占平台全部職缺／全部應徵的比例", 17, fill=MUTED)) +
-    g("bars", "48 236 696 420", *bars) +
-    g("divider", "756 92 4 628", vline(756, 92, 628)) +
-    g("facts", "772 150 460 470",
-      *[s for i, (t, lines) in enumerate(FACTS) for s in (
-          hline(796, 190 + i * 156, 436, col=NAVY_5, t=2) if i else "",
-          ttl(796, 254 + i * 156, t, 26),
-          para(796, 292 + i * 156, lines, 19),
-      )]) +
-    g("source", "48 672 696 32",
-      txt(MARGIN, 692, "資料：MoleDAO, Web3 Hiring Market Report Q3 2026", 15, fill=MUTED)))
+def market_page(wide: bool):
+    """wide=True lets the chart fill the slide; wide=False keeps the policy column."""
+    cw = 1184 if wide else 668
+    body = (header("該不該選這個系", 5) +
+            g("claim", "48 106 700 86", claim(MARGIN, 172, "合規的缺，沒人去投", 44)) +
+            g("legend", "48 194 660 44",
+              legend_row(MARGIN, 218, SERIES),
+              txt(MARGIN + 300, 218, "占平台全部職缺／全部應徵的比例", 16, fill=MUTED)) +
+            g("chart", f"48 242 {cw} 412",
+              vbars(92, 258, cw - 60, 336, JOBS, SERIES, 30)) +
+            g("source", "48 666 696 34", txt(MARGIN, 690, SOURCE, 15, fill=MUTED)))
+    if not wide:
+        body += (g("divider", "756 92 4 628", vline(756, 92, 628)) +
+                 g("policy", "772 150 460 530",
+                   label(796, 186, "新加坡正在推的", 15, fill=MUTED),
+                   *[s for i, (t, lines) in enumerate(SG_POLICY) for s in (
+                       hline(796, 232 + i * 152, 436, col=NAVY_5, t=2) if i else "",
+                       ttl(796, 294 + i * 152, t, 25),
+                       para(796, 330 + i * 152, lines, 19),
+                   )]))
+    return page("content", body)
+
+
+S["05_market"] = market_page(wide=False)
 
 
 # =============================================================================
@@ -203,22 +203,10 @@ for title_, items, fill, x in BOXES:
 
 S["06_courses"] = page("content",
     header("該不該選這個系", 6) +
-    g("claim", "48 104 760 92", claim(MARGIN, 168, "必修打底，選修決定你變成什麼人", 40)) +
+    g("claim", "48 104 760 92", claim(MARGIN, 168, "必修都一樣，差別在選修", 40)) +
     g("columns", "48 200 1184 492", *cols,
       cell(984, 556, 112, 112, PAPER, stroke=NAVY),
       img("../images/qr-course-content.png", 989, 561, 102, 102, "xMidYMid meet")))
-
-
-# =============================================================================
-# 07  結語
-# =============================================================================
-# Just the word, with Vanda Miss Joaquim — Singapore's national flower — bleeding
-# off the corner. Everything else on this page is spoken.
-S["07_closing"] = page("section",
-    g("flower", "900 260 380 460", orchid(960, 274, 620), role="decoration") +
-    g("word", "440 330 400 180",
-      ttl(640, 452, "結語", 132, anchor="middle"),
-      hline(586, 500, 108, col=RED, t=6)))
 
 
 # =============================================================================
@@ -230,9 +218,8 @@ S["08_contact"] = page("content",
       role="background") +
     g("panel", "0 0 640 720",
       cell(0, 0, 640, 720, PAPER), vline(640, 0, 720),
-      lockup(MARGIN, 48, 280),
+      lockup(MARGIN, 52, 54),
       ttl(MARGIN, 232, "謝謝聆聽", 64),
-      hline(MARGIN, 268, 96, col=RED, t=5),
       txt(MARGIN, 318, f"{SPEAKER} ・ NTU MSBT", 24, weight=700),
       *[s for name, f, x in QRS for s in (
           cell(x, 380, 168, 168, PAPER, stroke=NAVY),
@@ -243,6 +230,62 @@ S["08_contact"] = page("content",
 
 
 # =============================================================================
+# Alternates for the user to choose from (not part of the deck itself)
+# =============================================================================
+ALT = {}
+
+
+def closing(variant):
+    """Three ways to build a closing plate out of Vanda Miss Joaquim, Singapore's
+    national flower, in Raw Grid's language: cells that meet without gaps, 3px
+    lines, hard offset shadows, the deck's two quiet fills."""
+    if variant == "A":      # a specimen row: three cells along the foot, one spray each
+        fills = [PALE, PAPER, FILL_3]
+        cells = [s for i, f in enumerate(fills) for s in (
+            cell(i * 427, 452, 427 if i < 2 else 426, 268, f),
+            vline(i * 427, 452, 268) if i else "",
+            orchid(i * 427 + 118, 478, 224, ink=NAVY_3, petal=PAPER,
+                   lip=PALE if i != 0 else PAPER),
+        )]
+        return page("section",
+            g("row", "0 450 1280 270", hline(0, 452, 1280), *cells, role="decoration") +
+            g("word", "440 268 400 170", ttl(640, 392, "結語", 128, anchor="middle")))
+
+    if variant == "B":      # two sprays breaking in from opposite corners, word on a card
+        return page("section",
+            g("flower", "0 0 1280 720",
+              orchid(-110, -40, 520, ink=NAVY_5, petal=PAPER, lip=PAPER),
+              f'<g transform="translate(1390 760) rotate(180)">'
+              f'{orchid(0, 0, 600, ink=NAVY_5, petal=PAPER, lip=PAPER)}</g>',
+              role="decoration") +
+            g("word", "410 280 460 170",
+              card(410, 280, 456, 164, fill=PAPER),
+              ttl(638, 396, "結語", 112, anchor="middle")))
+
+    # C: a pale band cuts the page and the sprays break out of it, top and bottom
+    return page("section",
+        g("band", "0 256 1280 208",
+          cell(0, 256, 1280, 208, PALE), hline(0, 256, 1280), hline(0, 461, 1280)) +
+        g("right", "860 120 420 540",
+          orchid(900, 132, 560, ink=NAVY_3, petal=PAPER, lip=PALE), role="decoration") +
+        g("left", "20 150 340 500",
+          f'<g transform="translate(340 168) scale(-1 1)">'
+          f'{orchid(0, 0, 452, ink=NAVY_4, petal=PAPER, lip=PALE)}</g>', role="decoration") +
+        g("word", "440 290 400 150", ttl(640, 396, "結語", 116, anchor="middle")))
+
+
+for v in ("A", "B", "C"):
+    ALT[f"07_closing_{v}"] = closing(v)
+S["07_closing"] = ALT["07_closing_A"]
+
+ALTDIR = pathlib.Path(__file__).parent / "alts"
+ALTDIR.mkdir(exist_ok=True)
+for f in ALTDIR.glob("*.svg"):
+    f.unlink()
+for name, svg in ALT.items():
+    (ALTDIR / f"{name}.svg").write_text(svg, encoding="utf-8")
+(ALTDIR / "05_market_wide.svg").write_text(market_page(wide=True), encoding="utf-8")
+
 OUT.mkdir(exist_ok=True)
 for f in OUT.glob("*.svg"):
     f.unlink()
