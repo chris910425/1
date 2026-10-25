@@ -16,7 +16,6 @@
   </g>
   <g id="portrait" data-pptx-bounds="740 130 492 490">
     <rect x="746" y="136" width="486" height="484" fill="#0A1138"/><rect x="740" y="130" width="486" height="484" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/>
-    <text x="983" y="360" font-weight="400" font-size="24" fill="#93A0C9" text-anchor="middle">（個人照片）</text>
-    <text x="983" y="398" font-weight="400" font-size="18" fill="#93A0C9" text-anchor="middle">待提供</text>
+    <image href="../images/speaker.jpg" x="746" y="136" width="474" height="472" preserveAspectRatio="xMidYMid slice"/>
   </g>
 </svg>

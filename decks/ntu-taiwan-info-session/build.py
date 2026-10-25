@@ -60,8 +60,7 @@ S["02_about"] = page("content",
                    fill=MUTED if r.startswith("（") else NAVY) for i, r in enumerate(ROWS)]) +
     g("portrait", "740 130 492 490",
       card(740, 130, 486, 484, fill=PAPER),
-      txt(983, 360, "（個人照片）", 24, fill=NAVY_4, anchor="middle"),
-      txt(983, 398, "待提供", 18, fill=NAVY_4, anchor="middle")))
+      img("../images/speaker.jpg", 746, 136, 474, 472)))
 
 
 # =============================================================================

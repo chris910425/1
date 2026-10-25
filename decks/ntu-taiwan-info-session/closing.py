@@ -10,7 +10,7 @@ HERE = pathlib.Path(__file__).parent
 sys.path.insert(0, str(HERE))
 import batik as B  # noqa: E402
 from theme import (  # noqa: E402
-    FILL_3, NAVY, PALE, PAPER, cell, g, hline, page, ttl, vline,
+    FILL_3, NAVY, NAVY_5, PALE, PAPER, card, cell, g, hline, orchid, page, ttl, vline,
 )
 
 CREAM = "#F7E9D9"
@@ -99,8 +99,23 @@ def v5():
         g("word", "470 326 340 182", word(NAVY)))
 
 
-PLATES = (v1, v2, v3, v4, v5)
-CHOSEN = 2                      # which plate the deck uses; change to pick another
+# --- 6  the one the user picked: the word on a card, two orchid sprays ---------
+def v6():
+    """Vanda Miss Joaquim, Singapore's national flower, breaking in from opposite
+    corners; the word sits on a Raw Grid card with its hard offset shadow."""
+    return page("section",
+        g("flower", "0 0 1280 720",
+          orchid(-110, -40, 520, ink=NAVY_5, petal=PAPER, lip=PAPER),
+          '<g transform="translate(1390 760) rotate(180)">'
+          + orchid(0, 0, 600, ink=NAVY_5, petal=PAPER, lip=PAPER) + '</g>',
+          role="decoration") +
+        g("word", "412 280 462 172",
+          card(412, 280, 456, 164, fill=PAPER),
+          ttl(640, 396, "結語", 112, anchor="middle")))
+
+
+PLATES = (v1, v2, v3, v4, v5, v6)
+CHOSEN = 6                      # which plate the deck uses; change to pick another
 
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
