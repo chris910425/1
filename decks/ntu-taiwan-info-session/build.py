@@ -10,6 +10,7 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
+from closing import CHOSEN, PLATES  # noqa: E402
 from theme import (  # noqa: E402
     CAT, FILL_1, FILL_2, FILL_3, MARGIN, MONO, MUTED, NAVY, NAVY_2, NAVY_3, NAVY_4, NAVY_5,
     PALE, PAPER, RED, RED_PALE, arrow_item, card, cell, claim, doughnut, esc, flight_map, g,
@@ -229,63 +230,9 @@ S["08_contact"] = page("content",
       txt(MARGIN, 664, "有問題歡迎現在提問，或會後找我。", 20, fill=MUTED)))
 
 
+S["07_closing"] = PLATES[CHOSEN - 1]()
+
 # =============================================================================
-# Alternates for the user to choose from (not part of the deck itself)
-# =============================================================================
-ALT = {}
-
-
-def closing(variant):
-    """Three ways to build a closing plate out of Vanda Miss Joaquim, Singapore's
-    national flower, in Raw Grid's language: cells that meet without gaps, 3px
-    lines, hard offset shadows, the deck's two quiet fills."""
-    if variant == "A":      # a specimen row: three cells along the foot, one spray each
-        fills = [PALE, PAPER, FILL_3]
-        cells = [s for i, f in enumerate(fills) for s in (
-            cell(i * 427, 452, 427 if i < 2 else 426, 268, f),
-            vline(i * 427, 452, 268) if i else "",
-            orchid(i * 427 + 118, 478, 224, ink=NAVY_3, petal=PAPER,
-                   lip=PALE if i != 0 else PAPER),
-        )]
-        return page("section",
-            g("row", "0 450 1280 270", hline(0, 452, 1280), *cells, role="decoration") +
-            g("word", "440 268 400 170", ttl(640, 392, "結語", 128, anchor="middle")))
-
-    if variant == "B":      # two sprays breaking in from opposite corners, word on a card
-        return page("section",
-            g("flower", "0 0 1280 720",
-              orchid(-110, -40, 520, ink=NAVY_5, petal=PAPER, lip=PAPER),
-              f'<g transform="translate(1390 760) rotate(180)">'
-              f'{orchid(0, 0, 600, ink=NAVY_5, petal=PAPER, lip=PAPER)}</g>',
-              role="decoration") +
-            g("word", "410 280 460 170",
-              card(410, 280, 456, 164, fill=PAPER),
-              ttl(638, 396, "結語", 112, anchor="middle")))
-
-    # C: a pale band cuts the page and the sprays break out of it, top and bottom
-    return page("section",
-        g("band", "0 256 1280 208",
-          cell(0, 256, 1280, 208, PALE), hline(0, 256, 1280), hline(0, 461, 1280)) +
-        g("right", "860 120 420 540",
-          orchid(900, 132, 560, ink=NAVY_3, petal=PAPER, lip=PALE), role="decoration") +
-        g("left", "20 150 340 500",
-          f'<g transform="translate(340 168) scale(-1 1)">'
-          f'{orchid(0, 0, 452, ink=NAVY_4, petal=PAPER, lip=PALE)}</g>', role="decoration") +
-        g("word", "440 290 400 150", ttl(640, 396, "結語", 116, anchor="middle")))
-
-
-for v in ("A", "B", "C"):
-    ALT[f"07_closing_{v}"] = closing(v)
-S["07_closing"] = ALT["07_closing_A"]
-
-ALTDIR = pathlib.Path(__file__).parent / "alts"
-ALTDIR.mkdir(exist_ok=True)
-for f in ALTDIR.glob("*.svg"):
-    f.unlink()
-for name, svg in ALT.items():
-    (ALTDIR / f"{name}.svg").write_text(svg, encoding="utf-8")
-(ALTDIR / "05_market_wide.svg").write_text(market_page(wide=True), encoding="utf-8")
-
 OUT.mkdir(exist_ok=True)
 for f in OUT.glob("*.svg"):
     f.unlink()
