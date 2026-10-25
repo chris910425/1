@@ -10,18 +10,18 @@ import pathlib
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
-from closing import CHOSEN, PLATES  # noqa: E402
 from theme import (  # noqa: E402
     CAT, FILL_1, FILL_2, FILL_3, MARGIN, MONO, MUTED, NAVY, NAVY_2, NAVY_3, NAVY_4, NAVY_5,
-    PALE, PAPER, RED, RED_PALE, arrow_item, card, cell, claim, doughnut, esc, flight_map, g,
-    ghost, hbar, header, hline, img, label, legend_row, lockup, orchid, page, para, pin,
-    ttl, txt, vbars, vline,
+    PALE, PAPER, RED, RED_PALE, arrow_item, card, cell, claim, doughnut, esc, flight_map,
+    fx_circle, g, ghost, hbar, header, hline, img, label, legend_row, lockup, page, para,
+    pin, ttl, txt, vbars, vline,
 )
 
 OUT = pathlib.Path(__file__).parent / "svg_output"
 S = {}
 
 SPEAKER = "張鈞威"
+MARK_ME = True          # draw the hand-drawn loop around the speaker in the group photo
 EVENT = "NTU CCTF 台灣招生說明會"
 WHEN = "2026 年 ・ 台北"          # TODO 場次日期與地點待確認
 
@@ -60,7 +60,8 @@ S["02_about"] = page("content",
                    fill=MUTED if r.startswith("（") else NAVY) for i, r in enumerate(ROWS)]) +
     g("portrait", "740 130 492 490",
       card(740, 130, 486, 484, fill=PAPER),
-      img("../images/speaker.jpg", 746, 136, 474, 472)))
+      img("../images/speaker-group.jpg", 746, 136, 474, 472, "xMidYMid meet"),
+      fx_circle(1046, 272, 118, 136) if MARK_ME else ""))
 
 
 # =============================================================================
@@ -159,7 +160,7 @@ def market_page(wide: bool):
     return page("content", body)
 
 
-S["05_market"] = market_page(wide=False)
+S["05_market"] = market_page(wide=True)
 
 
 # =============================================================================
@@ -213,7 +214,7 @@ S["06_courses"] = page("content",
 # 08  聯絡資訊
 # =============================================================================
 QRS = [("LINKEDIN", "qr-linkedin.png", 48), ("LINE", "qr-line.png", 244)]
-S["08_contact"] = page("content",
+S["07_contact"] = page("content",
     g("photo", "640 0 640 720", img("../images/hive-interior.jpg", 640, 0, 640, 720),
       role="background") +
     g("panel", "0 0 640 720",
@@ -228,8 +229,6 @@ S["08_contact"] = page("content",
       )],
       txt(MARGIN, 664, "有問題歡迎現在提問，或會後找我。", 20, fill=MUTED)))
 
-
-S["07_closing"] = PLATES[CHOSEN - 1]()
 
 # =============================================================================
 OUT.mkdir(exist_ok=True)

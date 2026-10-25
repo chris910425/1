@@ -2,7 +2,7 @@
   <rect id="bg" data-pptx-role="background" x="0" y="0" width="1280" height="720" fill="#FFFFFF"/>
   <g id="header" data-pptx-bounds="0 0 1280 92">
     <text x="48" y="62" font-weight="900" font-size="30" fill="#0A1138">個人簡介</text>
-    <rect x="1094" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1112" y="46" width="12" height="12" fill="#0A1138" stroke="#0A1138" stroke-width="2"/><rect x="1130" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1148" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1166" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1184" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1202" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1220" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/>
+    <rect x="1112" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1130" y="46" width="12" height="12" fill="#0A1138" stroke="#0A1138" stroke-width="2"/><rect x="1148" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1166" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1184" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1202" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/><rect x="1220" y="46" width="12" height="12" fill="#FFFFFF" stroke="#0A1138" stroke-width="2"/>
     <rect x="48" y="90" width="1184" height="3" fill="#0A1138"/>
   </g>
   <g id="name" data-pptx-bounds="48 130 640 160">
@@ -16,6 +16,7 @@
   </g>
   <g id="portrait" data-pptx-bounds="740 130 492 490">
     <rect x="746" y="136" width="486" height="484" fill="#0A1138"/><rect x="740" y="130" width="486" height="484" fill="#FFFFFF" stroke="#0A1138" stroke-width="3"/>
-    <image href="../images/speaker.jpg" x="746" y="136" width="474" height="472" preserveAspectRatio="xMidYMid slice"/>
+    <image href="../images/speaker-group.jpg" x="746" y="136" width="474" height="472" preserveAspectRatio="xMidYMid meet"/>
+    <path d="M1104.0 272.2 L1104.4 287.5 L1101.7 299.8 L1091.8 315.7 L1082.5 324.1 L1073.4 333.1 L1060.1 338.2 L1046.6 338.6 L1033.8 339.8 L1020.7 334.2 L1009.3 323.4 L999.2 314.8 L990.0 299.6 L988.5 287.0 L987.9 273.5 L990.8 258.6 L994.5 243.7 L1001.3 231.3 L1011.4 217.2 L1018.7 209.6 L1034.3 205.4 L1046.5 203.2 L1059.6 205.2 L1071.2 211.1 L1082.5 220.5 L1091.2 231.3 L1098.5 244.5 L1102.8 255.5 L1106.4 273.9 L1106.6 287.4 L1102.1 300.3" fill="none" stroke="#D21540" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1106.3 272.3 L1104.1 285.4 L1102.6 303.5 L1092.1 315.6 L1083.1 323.8 L1070.5 334.3 L1060.2 336.5 L1046.5 338.2 L1034.2 337.6 L1022.2 335.2 L1008.6 327.2 L997.4 312.7 L991.2 299.6 L985.8 286.8 L987.4 270.6 L988.1 258.3 L994.2 244.3 L1003.1 229.1 L1009.7 218.9 L1020.7 211.1 L1032.7 206.2 L1047.8 204.0 L1059.3 206.6 L1070.8 209.9 L1084.1 218.9 L1090.7 227.6 L1096.7 242.8 L1100.2 257.3 L1105.5 270.2 L1105.5 287.0 L1101.9 300.9" fill="none" stroke="#D21540" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
 </svg>

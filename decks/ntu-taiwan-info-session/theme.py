@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import math
 import pathlib
+import random
 from xml.sax.saxutils import escape as esc  # noqa: F401  (re-exported)
 
 # ---- tokens -----------------------------------------------------------------
@@ -40,7 +41,7 @@ SHADOW = 6
 
 FONT = "Noto Sans TC"
 MONO = "Consolas, Noto Sans TC"
-TOTAL = 8               # slides, for the block-progress chain
+TOTAL = 7               # slides, for the block-progress chain
 MARGIN = 48
 
 
@@ -335,3 +336,25 @@ def legend_row(x, y, series, gap=190):
         lx = x + i * gap
         out += [cell(lx, y - 14, 18, 18, col), txt(lx + 28, y, name, 19, weight=700)]
     return "".join(out)
+
+
+# ---- hand-drawn marks -------------------------------------------------------
+def _rough(points, seed, jitter=2.0, passes=2, col=RED, sw=3):
+    """Two slightly different passes, the way a marker doubles back. From the
+    Raw Grid kit's text effects."""
+    rnd = random.Random(seed)
+    return "".join(
+        f'<path d="M' + " L".join(
+            f'{px + rnd.uniform(-jitter, jitter):.1f} {py + rnd.uniform(-jitter, jitter):.1f}'
+            for px, py in points)
+        + f'" fill="none" stroke="{col}" stroke-width="{sw}" stroke-linecap="round" '
+          f'stroke-linejoin="round"/>'
+        for _ in range(passes))
+
+
+def fx_circle(cx, cy, w, h, col=RED, seed=3, sw=4):
+    """Hand-drawn loop around something, to point at it."""
+    pts = [(cx + (w / 2) * math.cos(a) * (1 + 0.04 * math.sin(3 * a)),
+            cy + (h / 2) * math.sin(a))
+           for a in [i * 2 * math.pi / 28 for i in range(31)]]
+    return _rough(pts, seed, jitter=2, passes=2, col=col, sw=sw)
