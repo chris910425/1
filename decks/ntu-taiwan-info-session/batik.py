@@ -187,3 +187,53 @@ def garden(rng, pal, box, keep_out=None, vines=5, per_vine=9, r0=36,
             r = r0 * rng.uniform(0.58, 1.2) * (1 - 0.3 * fade * f)
             out.append(motif(rng, pal, mx, my, r, ang))
     return "".join(out)
+
+
+# ---- the reference's own shape: a packed crown, a few vines falling out of it --
+def canopy_mat(rng, pal, box, mesh=9, cell=68, fade_from=0.52, r0=30):
+    """A dense mat of blooms across the top, thinning toward its lower edge, laid
+    over a tangle of short vines — the way the reference packs its crown."""
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    out = []
+    for _ in range(mesh):                       # the tangle goes down first
+        ax, ay = x0 + rng.uniform(-60, w + 60), y0 + rng.uniform(0, h * 0.9)
+        L = rng.uniform(w * 0.3, w * 0.75)
+        bx = ax + L * rng.choice((-1, 1))
+        by = ay + rng.uniform(-h * 0.25, h * 0.45)
+        amp = rng.uniform(40, 110) * rng.choice((-1, 1))
+        out.append(vine((ax, ay), (ax + (bx - ax) * .3, ay + amp),
+                        (ax + (bx - ax) * .7, by - amp), (bx, by)))
+    cols = int(w / cell) + 2
+    rows = int(h / cell) + 2
+    for ri in range(rows):
+        for ci in range(cols):
+            x = x0 + ci * cell + rng.uniform(-cell * .3, cell * .3)
+            y = y0 + ri * cell + rng.uniform(-cell * .3, cell * .3)
+            d = (y - y0) / max(h, 1)
+            if d < fade_from:
+                keep = 1.0                     # the crown is solid before it thins
+            else:
+                keep = max(0.0, 1 - (d - fade_from) / (1 - fade_from)) ** 1.3
+            if rng.random() > keep:
+                continue
+            r = r0 * rng.uniform(0.6, 1.15) * (1 - 0.28 * d)
+            out.append(motif(rng, pal, x, y, r, rng.uniform(0, 360)))
+    return "".join(out)
+
+
+def tendril(rng, pal, p0, p1, p2, p3, n=5, r0=26, taper=0.55, keep_out=None, pad=30):
+    """One vine that falls out of the crown, carrying fewer and smaller blooms
+    the further it gets."""
+    out = [vine(p0, p1, p2, p3, w=2.2)]
+    for i in range(n):
+        f = i / max(n - 1, 1)
+        t = 0.12 + 0.84 * f + rng.uniform(-0.05, 0.05)
+        (x, y), ang = vine_at(p0, p1, p2, p3, min(max(t, 0.02), 0.99))
+        off = rng.uniform(-1, 1) * r0 * 0.7
+        x += math.cos(math.radians(ang + 90)) * off
+        y += math.sin(math.radians(ang + 90)) * off
+        if keep_out and _inside(x, y, keep_out, pad):
+            continue
+        out.append(motif(rng, pal, x, y, r0 * (1 - taper * f) * rng.uniform(0.85, 1.15), ang))
+    return "".join(out)

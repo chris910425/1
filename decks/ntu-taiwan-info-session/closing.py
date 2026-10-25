@@ -24,14 +24,24 @@ def word(fill=NAVY, y=452, size=132, cx=640):
     return ttl(cx, y, "結語", size, fill=fill, anchor="middle")
 
 
-# --- 1  navy field: the crown falls from the top, the word sits in the open ----
+# --- 1  navy field: a packed crown, a few vines falling out of it -------------
 def v1():
     r = random.Random(7)
+    keep = (486, 486, 800, 660)              # the word's own air
+    # four long falls kept to the sides, one short one in the middle that stops high
+    falls = ((((214, 248), (104, 400), (286, 486), (176, 650)), 6),
+             ((((400, 266), (474, 392), (356, 470), (430, 588))), 5),
+             ((((886, 242), (806, 386), (962, 470), (872, 664))), 6),
+             ((((1092, 262), (1176, 384), (1030, 452), (1116, 596))), 5),
+             ((((654, 228), (626, 286), (672, 318), (648, 372))), 3))
     return page("section",
         g("ground", "0 0 1280 720", cell(0, 0, 1280, 720, NAVY), role="background") +
-        g("garden", "0 0 1280 470",
-          B.garden(r, PAL, (-40, -70, 1320, 470), keep_out=(380, 380, 900, 560),
-                   vines=7, per_vine=11, r0=40, fade=0.75), role="decoration") +
+        g("falls", "0 210 1280 480",
+          *[B.tendril(r, PAL, *f, n=n, r0=28, keep_out=keep) for f, n in falls],
+          role="decoration") +
+        g("crown", "0 -60 1280 340",
+          B.canopy_mat(r, PAL, (-50, -66, 1330, 318), mesh=13, cell=61,
+                       fade_from=0.44, r0=30), role="decoration") +
         g("word", "440 498 400 180", word(CREAM, 614)), bg=NAVY)
 
 
