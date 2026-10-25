@@ -7,6 +7,18 @@
       "skillPath": "skills/find-skills/SKILL.md",
       "computedHash": "913b9d37d0d54047dd65222bb8c67b2bf04e3cb87dcad1729068d7a8b2c8c396"
     },
+    "humanizer": {
+      "source": "blader/humanizer",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "d85c4727f62296887c3206e32a99caeed7611af7c4701c1b9931897260e31a73"
+    },
+    "shuorenhua": {
+      "source": "MrGeDiao/shuorenhua",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "24d5d20e7d9f11479b36bc6336fc2ebcdee45c638d6870f06147e40c37bc28c3"
+    },
     "skill-creator": {
       "source": "anthropics/skills",
       "sourceType": "github",
