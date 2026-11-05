@@ -23,7 +23,7 @@ S = {}
 SPEAKER = "張鈞威"
 MARK_ME = True          # draw the hand-drawn loop around the speaker in the group photo
 EVENT = "NTU CCTF 台灣招生說明會"
-WHEN = "2026 年 ・ 台北"          # TODO 場次日期與地點待確認
+WHEN = "2026 年 11 月 6 日 ・ 台北"
 
 
 # =============================================================================
